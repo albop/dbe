@@ -10,10 +10,10 @@ website:
         - section: lectures
           contents:
             - slides/session_1/index.qmd
-        - section: tutorials
-          contents:
-            - tutorials/session_1/Exercises.ipynb
-            - tutorials/session_1/Python_basics.ipynb
+        # - section: tutorials
+        #   contents:
+        #     - tutorials/session_1/Exercises.ipynb
+        #     - tutorials/session_1/Python_basics.ipynb
 
 format:
   html:

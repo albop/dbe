@@ -1,7 +1,13 @@
 ---
-title: "."
+title: "Data-Based Economics"
+listing:
+  id: sample-listings
+  type: table
+  sort-ui: false
+  filter-ui: false
+  contents: 
+    - session_1/index.qmd
+  sort: date
+  fields: [date, title]
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

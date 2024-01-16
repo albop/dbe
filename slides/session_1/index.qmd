@@ -1,16 +1,16 @@
 ---
 title: Introduction
 subtitle: Data-Based Economics
-author: Year 2022-2023
+author: Year 2023-2024
 format:
-  html: default
+  # html: default
   revealjs:
     navigation: grid
-    width: 1920
-    height: 1080
-    output-file: slides.html
+    # width: 1920
+    # height: 1080
+    # output-file: slides.html
 ---
-
+<!-- 
 <style>
 .container{
     display: flex;
@@ -18,9 +18,9 @@ format:
 .col{
     flex: 1;
 }
-</style>
+</style> -->
 
----
+<!-- --- -->
 
 ### General
 
@@ -78,7 +78,7 @@ In practice these are the tasks an economist needs to perform:
 
 ### Econometricks
 
-- An art invented by economists: $$\underbrace{y}\_{\text{dependent variable}} = a \underbrace{x}\_{\text{explanatory variable}} + b$$
+- An art invented by economists: $$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanatory variable}} + b$$
 
 - <!-- .element: class="fragment" -->Main challenge:
   - given dataset $(x_i, y_i)$
@@ -94,7 +94,7 @@ In practice these are the tasks an economist needs to perform:
 
 ### Econometricks (2)
 
-$$\underbrace{y}\_{\text{dependent variable}} = a \underbrace{x}\_{\text{explanatory variable}} + b$$
+$$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanatory variable}} + b$$
 
 - <!-- .element: class="fragment" --> Example 2:
   -  young men who go to war receive *in average* lower wages when they return than men who didn't go to war
@@ -108,7 +108,7 @@ $$\underbrace{y}\_{\text{dependent variable}} = a \underbrace{x}\_{\text{explana
 
 ### Econometricks (3)
 
-$$\underbrace{y}\_{\text{dependent variable}} = a \underbrace{x}\_{\text{explanatory variable}} + b$$
+$$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanatory variable}} + b$$
 
 - <!-- .element: class="fragment" --> Example 3:
   - I want to establish a link between growth and trade openness
@@ -140,7 +140,7 @@ $$\underbrace{y}\_{\text{dependent variable}} = a \underbrace{x}\_{\text{explana
 
 ### Machine Learning
 
-$$\underbrace{y}\_{\text{predicted variable}} = f( \underbrace{x}\_{\text{feature}} , a)$$
+$$\underbrace{y}_{\text{predicted variable}} = f( \underbrace{x}_{\text{feature}} , a)$$
 
 - Challenge:
   - given dataset $(x_i, y_i)$
@@ -188,28 +188,46 @@ Deep learning: artificial neural nets
 
 ---
 
-### Because
+### Because {auto-animate="true"}
 
 Python is:
 
-<div class="r-stack">
-  <div class="fragment current-visible">
-    <img src="python_kids.jpg" width=800><br>Easy
-  </div>
-  <div class="fragment current-visible">
-    <img src="download_python.png" width=1200><br>Free
-  </div>
-  <div class="fragment current-visible">
-  
-  <img src="tiobe.png"><br>
 
-  Popular ([TIOBE Index](https://www.tiobe.com/tiobe-index/))
-  - lively community
+::: {r-stack}
+
+:::: {.fragment .current-visible}
+
+![Easy](python_kids.jpg){width=800}
+
+::::
+
+:::: {.fragment .current-visible}
+
+![Free](download_python.png){width=1200}
+
+::::
+
+:::: {.fragment .current-visible}
+
+![Popular ](tiobe.png)
+
+([TIOBE Index](ttps://www.tiobe.com/tiobe-index/))
+
+::::
+
+:::
+
+---
+
+### Because {auto-animate="true"}
+
+Python has:
+
+  - a lively community
   - lots of online ressources
   - libraries for virtually anything
 
-  </div>
-
+  
   <div class="fragment current-visible">
   <img src="jax.png" width=200> 
   <img src="sklearn.png" width=200>
@@ -222,8 +240,6 @@ Python is:
 
   </div>
 
-</div>
-
 ---
 
 <img src="python.png" height="1000">
@@ -232,16 +248,17 @@ Python is:
 
 ## Why Should you learn programming ?
 
-- <!-- .element: class="fragment" -->Researchers (econometricians or data scientists) spend 80% of their time writing code.
-- <!-- .element: class="fragment" -->Presentation (plots, interactive apps) is key and relies on
+- Researchers (econometricians or data scientists) spend 80% of their time writing code.
+- Presentation (plots, interactive apps) is key and relies on
   - ... programming
--  <!-- .element: class="fragment" -->Interaction with code becomes unavoidable in business environment
+-  Interaction with code becomes unavoidable in business environment
   - fixing the website
   - querying the database
   - ...
-- <!-- .element: class="fragment" -->Worth investing a  bit of time to learn it
+- Worth investing a  bit of time to learn it
   - you can easily become an __expert__
-- <!-- .element: class="fragment" -->Plus it's fun
+  - and can do *anything*
+- Plus it's fun
 
 ---
 
@@ -253,31 +270,36 @@ Python is:
 ## How good should you program ?
 
 
-<div class="container">
-<div class="col">
+::: {.columns}
 
-  <div class="r-stack">
-    <div class="fragment current-visible" data-fragment-index=1>   <img src="anxious.jpg"> </div>
-    <div class="fragment current-visible" data-fragment-index=2>   <img src="furious.webp">  </div>
-    <div class="fragment current-visible" data-fragment-index=3>  <img src="relieved.jpg"> </div>
-    <div class="fragment current-visible" data-fragment-index=4>  <img src="googleit.avif">  </div>
-    <div class="fragment current-visible" data-fragment-index=5>  <img src="happy.jpeg" width=600>  </div>
+:::: {.column}
 
-  </div>
+::::: {.r-stack}
+![](anxious.jpg){.fragment  .current-visible}
 
-  </div>
+![](furious.webp){.fragment .current-visible}
 
-  <div class="col">
+![](relieved.jpg){.fragment .current-visible}
 
-  - <!-- .element: class="fragment" data-fragment-index="1" -->We will "assume" everybody as some prior experience with Python
-  - <!-- .element: class="fragment" data-fragment-index="2"-->Even though some of you have possibly never touched it
-  - <!-- .element: class="fragment" data-fragment-index="3"-->We'll do some catchup today
-  - <!-- .element: class="fragment" data-fragment-index="4"-->And count on you to find the resources to learn what you need when you need it
-  - <!-- .element: class="fragment" data-fragment-index="5" -->Of course you can always ask questions
+![](googleit.avif){.fragment .current-visible}
 
-  </div>
+![](happy.jpeg){.fragment .current-visible}
 
-</div>
+:::::
+
+::::
+
+:::: {.column}
+
+- We will "assume" everybody as some prior experience with Python
+- Even though some of you have possibly never touched it
+- We'll do some catchup today
+- And count on you to find the resources to learn what you need when you need it
+- Of course you can always ask questions
+
+::::
+
+:::
 
 ---
 
@@ -295,30 +317,19 @@ Plenty of online resources to learn python/econometrics/machine learning
 
 ## Quantecon
 
-![](qe-logo-large.png)
+::: { layout-ncol=3}
 
+![QuantEcon](qe-logo-large.png){width=90%}
 
+![Tom Sargent](tom_sargent.jpg){width=100%}
 
-<div class="r-stack">
-  <div class="fragment current-visible" data-index-order=1>
-  <div class="container">
-    <div class="col" >
-    <img src="tom_sargent.jpg" ><br>
-    Tom Sargent
-    </div>
-    <div class="col">
-    <img src="john_stachurski.jpg" width=50%><br>
-    John Stachurski
-    </div>
-  </div>
-  </div>
-  <div class="fragment current-visible"  data-index-order=2 >
-    Tom Sargent @ ESCP <br>
-    <img  src="t3m_escp.jpg">
-  </div>
-</div>
+![John Stachurski](john_stachurski.jpg){width=100%}
 
-<br>
+:::
+
+<!-- ![Tom Sargent @ ESCP](t3m_escp.jpg) -->
+
+\ 
 
 - __Quantecon__: free online [lectures](https://quantecon.org/lectures/) to learn python programming and (advanced) economics
   - now with a section on [datascience](https://datascience.quantecon.org/)
