@@ -2,28 +2,36 @@
 title: Introduction
 subtitle: Data-Based Economics
 author: Year 2023-2024
+date: 2024/01/17
 format:
   # html: default
   revealjs:
-    navigation: grid
+    # width: 1920
+    # height: 1080
+    menu:
+      side: left
+      width: normal
     # width: 1920
     # height: 1080
     # output-file: slides.html
 ---
 
-### General
+## General (1)
 
 - Your instructors:
-  - Pablo Winant: `pwinant@escp.eu` (course and tutorials)
+  - Pablo Winadnt: `pwinant@escp.eu` (course and tutorials)
   - Rayane Hanifi: `rayane.hanifi@edu.escp.eu` (tutorials)
   - Émilie Rannou: (session on LLMs)
 - Hint: start your mail subject by `[dbe]`
-- All course material on *Nuvolos*
+
+## General (2)
+
+- All course material on [www.mosphere.fr/dbe](www.mosphere.fr/dbe)
+- Tutorials on *Nuvolos*
   - a datascience platform
   - you'll be able to keep a full backup afterwards
 - Collaboration between students is strongly encouraged
 
----
 
 ## So what will we do ?
 
@@ -33,19 +41,16 @@ format:
 - Econometrics / Machine Learning
 - Talk about economics
 
----
 
-### Data-based economics (1)
+## Data-based economics (1)
 
 - Most economists use data all the time
   - to illustrate facts
   - to test theories
 
----
+## What do economists do ?
 
-### Data-based economics
-
-In practice these are the tasks an economist needs to perform:
+::: {.incremental}
 
 - import data
 - clean the data
@@ -56,17 +61,16 @@ In practice these are the tasks an economist needs to perform:
 - interpret it using a model
 - present results
 
----
+:::
+
+##
 
 ![](data_story.png)
 
----
 
-## Econometrics
+# Econometrics
 
----
-
-### Econometricks
+## Econometricks
 
 - An art invented by economists: $$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanatory variable}} + b$$
 
@@ -78,30 +82,46 @@ In practice these are the tasks an economist needs to perform:
   - understand robustness of results
   - predict new values of $y$ for new values of $x$
 
-### Econometricks (2)
-
-- Example 1:
-  - [How happy are you?](http://medialab.github.io/well-being-metrics/app/#/)
-  - What is $x$ ? What is $y$ ?
-
----
+## Econometricks: Example 1
 
 
-### Econometricks (3)
+Check out the following website: [How happy are you?](http://medialab.github.io/well-being-metrics/app/#/)
+
+. . .
+
+What is $x$ ? What is $y$ ?
+
+
+## Econometricks: Example 2
 
 $$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanatory variable}} + b$$
 
-- Example 2:
+::: {.incremental}
+
+- A famous study:
   -  young men who go to war receive *in average* lower wages when they return than men who didn't go to war
   - ... is it because they skipped college?
   - ... or did they choose to go to war because they were less skilled for college?
+- How to decide?
+
+:::
+
+## Econometricks: Example 2
+
+$$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanatory variable}} + b$$
+
+::: {.incremental}
+
+- How to decide?
   -  find a way to extract *causality*
   -  instrumental variables
-- This was worth a Nobel Prize! (D. Card, J. Angrist, G.W. Imbens)
+  - This was worth a Nobel Prize! (D. Card, J. Angrist, G.W. Imbens)
 
----
+:::
 
-### Big Data Era and Machine Learning
+
+
+## Big Data Era and Machine Learning (1) {auto-animate="true"}
 
 - Data has become very abundant
 - Large amounts of data of all kinds
@@ -112,14 +132,23 @@ $$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanato
   - ... so powerful some call it *artificial intelligence*
     - they *learn* by processing data
   - ... to extract information and relations in large data sets
+
+
+## Big Data Era and Machine Learning (2)  {auto-animate="true"}
+
+
+- Machine learning:
+  - a set of powerful algorithms...
+  - ... so powerful some call it *artificial intelligence*
+    - they *learn* by processing data
+  - ... to extract information and relations in large data sets
   - ... 
 - Comparison with econometrics
   - ML has it own, partially redundant, jargon
-  - much harder to understand causality, standard deviation (i.e. precision)
+  - harder to study causality, standard deviation (precision)
 
----
 
-### Machine Learning
+## Machine Learning
 
 $$\underbrace{y}_{\text{predicted variable}} = f( \underbrace{x}_{\text{feature}} , a)$$
 
@@ -128,11 +157,10 @@ $$\underbrace{y}_{\text{predicted variable}} = f( \underbrace{x}_{\text{feature}
   - find $a$, that is find a nonlinear relationship between $a$ and $b$
   - predict new values of $y$ given new values of $x$
 
-- What are the difference with econometrics?
+- What is the difference with econometrics?
 
----
 
-### Big Data Era and Machine Learning (1)
+## Big Data Era and Machine Learning (1)
 
 <img src=sentiment_analysis.png width=60%>
 
@@ -140,21 +168,27 @@ Sentiment analysis: predict population's optimism by analyzing tweets.
 
 Check [sentiment viz](https://www.csc2.ncsu.edu/faculty/healey/tweet_viz/tweet_app/)
 
----
 
-### Big Data Era and Machine Learning (2)
+## Big Data Era and Machine Learning (2) {auto-animate="true"}
 
-![](NVIDIA_Portrait_Example.jpeg)
+![Beautiful people (from NVIDIA presentation)](NVIDIA_challenge.jpeg){width=30%}
 
-Deep learning: artificial neural nets
 
----
 
-## Programming
 
----
+## Big Data Era and Machine Learning (2) {auto-animate="true"}
 
-### Why program in Python?
+![Beautiful people (from NVIDIA presentation)](NVIDIA_Portrait_Example.jpeg){width=30%}
+
+Task: predict second and third columns from the first one.
+
+Solution: deep learning with artificial neural nets
+
+
+# Programming
+
+
+## Why program in Python?
 
 - Why learn and use Python?
 - And not <!-- .element: class="fragment" -->
@@ -167,40 +201,29 @@ Deep learning: artificial neural nets
   - SQL
   - ...
 
----
 
-### Because {auto-animate="true"}
+## Because
 
-Python is:
+Python is: __Easy__
 
+![](python_kids.jpg){ height=100%}
 
-::: {r-stack}
+## Because {auto-animate="true"}
 
-:::: {.fragment .current-visible}
+Python is: __Free__
 
-![Easy](python_kids.jpg){width=800}
+![](download_python.png){ height=80%}
 
-::::
+## Because {auto-animate="true"}
 
-:::: {.fragment .current-visible}
+Python is: __Popular__
 
-![Free](download_python.png){width=1200}
-
-::::
-
-:::: {.fragment .current-visible}
-
-![Popular ](tiobe.png)
+![](tiobe.png)
 
 ([TIOBE Index](ttps://www.tiobe.com/tiobe-index/))
 
-::::
 
-:::
-
----
-
-### Because {auto-animate="true"}
+## Because  {auto-animate="true"}
 
 Python has:
 
@@ -208,44 +231,64 @@ Python has:
   - lots of online ressources
   - libraries for virtually anything
 
-  
+  ![](jax.png){width=200}
+  ![](sklearn.png){width=200}
+  ![](openai.png){width=200}
+  ![](pytorch.png){width=200}
+
+
+## Because  {auto-animate="true"}
 
   ![](jax.png){width=200}
-  <img src="sklearn.png" width=200>
-  <img src="openai.png" width=200>
-  <img src="pytorch.png" width=200>
+  ![](sklearn.png){width=200}
+  ![](openai.png){width=200}
+  ![](pytorch.png){width=200}
 
   
   - The lingua Franca of Machine learning
     - All major machine learning softwares are written or interface with Python
 
-  </div>
 
----
 
-<img src="python.png" height="1000">
+## Why learn programming ? (1)
 
----
-
-## Why Should you learn programming ?
+::: {.incremental}
 
 - Researchers (econometricians or data scientists) spend 80% of their time writing code.
 - Presentation (plots, interactive apps) is key and relies on
-  - ... programming
+    - ... programming
 -  Interaction with code becomes unavoidable in business environment
-  - fixing the website
-  - querying the database
-  - ...
+    - fixing the website
+    - querying the database, ...
+    - ...
+
+:::
+
+## Why learn programming ? (2) {auto-animate="true"}
+
+::: {.columns}
+
+:::: {.column}
+
 - Worth investing a  bit of time to learn it
   - you can easily become an __expert__
   - and can do *anything*
 - Plus it's fun
 
----
+::::
 
-## Programming
+:::: {.column}
 
----
+![import antigravity](python.png){width=20%}
+
+::::
+
+:::
+
+## Why should you learn programming ? (2) {auto-animate="true"}
+
+![import antigravity](python.png){width=100%}
+
 
 
 ## How good should you program ?
@@ -253,7 +296,7 @@ Python has:
 
 ::: {.columns}
 
-:::: {.column}
+:::: {.column width=30%}
 
 ::::: {.r-stack}
 ![](anxious.jpg){.fragment  .current-visible}
@@ -270,7 +313,7 @@ Python has:
 
 ::::
 
-:::: {.column}
+:::: {.column width=70%}
 
 - We will "assume" everybody as some prior experience with Python
 - Even though some of you have possibly never touched it
@@ -281,8 +324,6 @@ Python has:
 ::::
 
 :::
-
----
 
 
 ## Additional resources
