@@ -10,23 +10,13 @@ format:
     # height: 1080
     # output-file: slides.html
 ---
-<!-- 
-<style>
-.container{
-    display: flex;
-}
-.col{
-    flex: 1;
-}
-</style> -->
-
-<!-- --- -->
 
 ### General
 
 - Your instructors:
   - Pablo Winant: `pwinant@escp.eu` (course and tutorials)
   - Rayane Hanifi: `rayane.hanifi@edu.escp.eu` (tutorials)
+  - Émilie Rannou: (session on LLMs)
 - Hint: start your mail subject by `[dbe]`
 - All course material on *Nuvolos*
   - a datascience platform
@@ -57,14 +47,14 @@ format:
 
 In practice these are the tasks an economist needs to perform:
 
-- <!-- .element: class="fragment" -->import data
-- <!-- .element: class="fragment" -->clean the data
+- import data
+- clean the data
   - deal with heterogenous sources, missing data, abnormal observerations
   - super time consuming
   - we'll make this part easy for you
-- <!-- .element: class="fragment" -->describe the data (statistics), visualize it
-- <!-- .element: class="fragment" -->interpret it using a model
-- <!-- .element: class="fragment" -->present results
+- describe the data (statistics), visualize it
+- interpret it using a model
+- present results
 
 ---
 
@@ -80,59 +70,50 @@ In practice these are the tasks an economist needs to perform:
 
 - An art invented by economists: $$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanatory variable}} + b$$
 
-- <!-- .element: class="fragment" -->Main challenge:
+. . . 
+
+- Main challenge:
   - given dataset $(x_i, y_i)$
   - find $a$ while *controlling* for $b$
   - understand robustness of results
   - predict new values of $y$ for new values of $x$
-- <!-- .element: class="fragment" -->Example 1:
+
+### Econometricks (2)
+
+- Example 1:
   - [How happy are you?](http://medialab.github.io/well-being-metrics/app/#/)
   - What is $x$ ? What is $y$ ?
 
 ---
 
 
-### Econometricks (2)
-
-$$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanatory variable}} + b$$
-
-- <!-- .element: class="fragment" --> Example 2:
-  -  young men who go to war receive *in average* lower wages when they return than men who didn't go to war
-  - <!-- .element: class="fragment" --> ... is it because they skipped college?
-  -  <!-- .element: class="fragment" -->... or did they choose to go to war because they were less skilled for college?
-  -  <!-- .element: class="fragment" -->find a way to extract *causality*
-  -  <!-- .element: class="fragment" -->-> instrumental variables
--  <!-- .element: class="fragment" -->This was worth a Nobel Prize! (D. Card, J. Angrist, G.W. Imbens)
-
----
-
 ### Econometricks (3)
 
 $$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanatory variable}} + b$$
 
-- <!-- .element: class="fragment" --> Example 3:
-  - I want to establish a link between growth and trade openness
-  - <!-- .element: class="fragment" -->but my country has only 10 years of historical data... (within dimension)
-  - <!-- .element: class="fragment" -->... let's take 50 countries at the same time (between dimension)
-  - <!-- .element: class="fragment" -->find a way to analyze both dimensions at the same time
-  - <!-- .element: class="fragment" -->-> panel data
+- Example 2:
+  -  young men who go to war receive *in average* lower wages when they return than men who didn't go to war
+  - ... is it because they skipped college?
+  - ... or did they choose to go to war because they were less skilled for college?
+  -  find a way to extract *causality*
+  -  instrumental variables
+- This was worth a Nobel Prize! (D. Card, J. Angrist, G.W. Imbens)
 
 ---
-
 
 ### Big Data Era and Machine Learning
 
 - Data has become very abundant
-- <!-- .element: class="fragment" -->Large amounts of data of all kinds
+- Large amounts of data of all kinds
   - structured (tables, ...)
   - unstructured (text, images, ...)
-- <!-- .element: class="fragment" -->Machine learning:
+- Machine learning:
   - a set of powerful algorithms...
   - ... so powerful some call it *artificial intelligence*
     - they *learn* by processing data
   - ... to extract information and relations in large data sets
   - ... 
-- <!-- .element: class="fragment" -->Comparison with econometrics
+- Comparison with econometrics
   - ML has it own, partially redundant, jargon
   - much harder to understand causality, standard deviation (i.e. precision)
 
@@ -228,8 +209,8 @@ Python has:
   - libraries for virtually anything
 
   
-  <div class="fragment current-visible">
-  <img src="jax.png" width=200> 
+
+  ![](jax.png){width=200}
   <img src="sklearn.png" width=200>
   <img src="openai.png" width=200>
   <img src="pytorch.png" width=200>
