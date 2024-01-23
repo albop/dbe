@@ -6,7 +6,7 @@ listing:
   sort-ui: false
   filter-ui: false
   contents: 
-    - session_1/index.qmd
+    - session_*/index.qmd
   sort: date
   fields: [date, title]
 ---
