@@ -91,7 +91,7 @@ aspectratio: 169
 
   <div class="col">
 
-  <img src="relational_database.png" width=1000%>
+  <img src="relational_database.png" width=100%>
 
   </div>
 
