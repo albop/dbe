@@ -1,71 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://albop.github.io/dbe/pushups/pushups_1_correction.html</loc>
-    <lastmod>2024-01-17T08:03:24.153Z</lastmod>
+    <loc>https://albop.github.io/dbe/index.html</loc>
+    <lastmod>2024-01-23T16:18:57.034Z</lastmod>
   </url>
   <url>
-    <loc>https://albop.github.io/dbe/pushups/pushups_1.html</loc>
-    <lastmod>2024-01-17T08:03:24.153Z</lastmod>
+    <loc>https://albop.github.io/dbe/slides/session_2/Exercises.html</loc>
+    <lastmod>2024-01-23T16:17:34.120Z</lastmod>
   </url>
   <url>
-    <loc>https://albop.github.io/dbe/pushups/pushups_2_correction.html</loc>
-    <lastmod>2024-01-17T08:03:24.153Z</lastmod>
+    <loc>https://albop.github.io/dbe/slides/session_2/Numerical Python.html</loc>
+    <lastmod>2024-01-23T16:17:34.120Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/slides/session_2/DataFrames.html</loc>
+    <lastmod>2024-01-23T16:17:34.116Z</lastmod>
   </url>
   <url>
     <loc>https://albop.github.io/dbe/pushups/pushups_3.html</loc>
-    <lastmod>2024-01-17T08:03:24.153Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_functions.html</loc>
-    <lastmod>2024-01-17T08:03:24.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_control.html</loc>
-    <lastmod>2024-01-17T08:03:24.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_functions_answers.html</loc>
-    <lastmod>2024-01-17T08:03:24.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_collections.html</loc>
-    <lastmod>2024-01-17T08:03:24.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/slides/session_1/index.html</loc>
-    <lastmod>2024-01-17T08:03:24.157Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/index.html</loc>
-    <lastmod>2024-01-17T09:29:59.218Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_collections_answers.html</loc>
-    <lastmod>2024-01-17T08:03:24.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_basics_answers.html</loc>
-    <lastmod>2024-01-17T08:03:24.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_basics.html</loc>
-    <lastmod>2024-01-17T08:03:24.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_control_answers.html</loc>
-    <lastmod>2024-01-17T08:03:24.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://albop.github.io/dbe/pushups/pushups_4_correction.html</loc>
-    <lastmod>2024-01-17T08:03:24.153Z</lastmod>
+    <lastmod>2023-02-04T14:36:20.000Z</lastmod>
   </url>
   <url>
     <loc>https://albop.github.io/dbe/pushups/pushups_4.html</loc>
-    <lastmod>2024-01-17T08:03:24.153Z</lastmod>
+    <lastmod>2023-04-03T07:53:40.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/pushups/pushups_2_correction.html</loc>
+    <lastmod>2023-02-07T22:22:30.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_control_answers.html</loc>
+    <lastmod>2024-01-16T22:14:32.070Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_functions_answers.html</loc>
+    <lastmod>2024-01-16T22:14:32.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_basics_answers.html</loc>
+    <lastmod>2024-01-16T22:14:32.054Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_basics.html</loc>
+    <lastmod>2024-01-16T23:43:54.590Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_collections.html</loc>
+    <lastmod>2024-01-16T23:46:06.272Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_collections_answers.html</loc>
+    <lastmod>2024-01-16T22:14:32.066Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_functions.html</loc>
+    <lastmod>2024-01-16T22:54:22.955Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/tutorials/session_1/qe_control.html</loc>
+    <lastmod>2024-01-16T22:54:22.935Z</lastmod>
   </url>
   <url>
     <loc>https://albop.github.io/dbe/pushups/pushups_2.html</loc>
-    <lastmod>2024-01-17T08:03:24.153Z</lastmod>
+    <lastmod>2023-02-07T22:09:58.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/pushups/pushups_1.html</loc>
+    <lastmod>2023-02-07T22:11:14.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/pushups/pushups_4_correction.html</loc>
+    <lastmod>2023-04-03T07:52:54.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/pushups/pushups_1_correction.html</loc>
+    <lastmod>2023-02-07T22:20:50.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/slides/session_2/Exercises_correction.html</loc>
+    <lastmod>2024-01-23T16:17:34.120Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/slides/session_2/slides.html</loc>
+    <lastmod>2024-01-23T22:22:14.022Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/slides/session_2/index.html</loc>
+    <lastmod>2024-01-23T22:22:14.022Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/slides/session_1/index.html</loc>
+    <lastmod>2024-01-23T16:16:59.884Z</lastmod>
   </url>
 </urlset>
