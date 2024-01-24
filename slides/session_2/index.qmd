@@ -11,6 +11,7 @@ format:
     height: 1080
     output-file: slides.html
 aspectratio: 169
+
 ---
 
 <style>
@@ -24,16 +25,16 @@ aspectratio: 169
 
 ---
 
-## Tabular Data
+# Tabular Data
 
 ----
 
-### DataFrame
+## DataFrame
 
 
-<div class="container">
+::: columns
 
-<div class="col">
+:::: column
 
 - A __DataFrame__ (aka a table) is a 2-D labeled data structure with columns 
   - each column has a specific type and a column name
@@ -42,29 +43,28 @@ aspectratio: 169
 - first goal of an econometrician: constitute a good dataframe
     - aka "cleaning the data"
 
-</div>
-<div class="col">
+::::
+
+:::: column
 
 ![](dataframe.png)
 
+::::
+
+:::
 
 
-</div>
-</div>
-
-----
-
-### DataFrames are everywhere
+## DataFrames are everywhere
 
 
-<div class="container">
+::: columns
 
-  <div class="col">
 
-  <div class="r-stack">
+:::: column
 
-  <div class="fragment current-visible">
+::::: {.r-stack}
 
+:::::: {.fragment .current-visible}
 
   - sometimes data comes from several linked dataframes
     - relational database
@@ -72,38 +72,43 @@ aspectratio: 169
     - ... through a __join__ operation
 
 
-  </div>
+::::::
 
-  <div class="fragment current-visible">
+:::::: {.fragment .current-visible}
 
 - dataframes / relational databases are so ubiquitous a language has been developed for them 
   - SQL
   - in the 80s...
 -  probably worth looking at if you have some "data" ambitions
   -  you will see the shadow of SQL everywhere
-  - plenty of resources to learn:
+  - plenty of resources to learn (example: [sqbolt](https://sqlbolt.com/lesson/select_queries_introduction))
 
-  </div>
+::::::
 
-  </div>
-  
-  </div>
+:::::
 
-  <div class="col">
+::::
+:::: column
 
   <img src="relational_database.png" width=100%>
 
-  </div>
+::::
 
-</div>
+:::
 
 ---
 
-## Pandas
+# Pandas
 
 ----
 
-### pandas
+##
+
+![](red_pandas.webp)
+
+---
+
+## pandas
 
 
 - pandas =  panel + datas
@@ -116,12 +121,14 @@ aspectratio: 169
   - official documenation [doc](https://pandas.pydata.org/)
   - [quantecon](https://datascience.quantecon.org/pandas/index.html)
 
-TODO: sweet pandas ?
 
-----
+## creating a dataframe (1)
 
-### creating a dataframe (1)
 
+
+::: columns
+
+:::: column
 
 - Import pandas
   - preferably with standard alias `pd`
@@ -139,6 +146,8 @@ d = {
 pd.DataFrame(d)
 ```
 
+::::
+:::: column
 
 
 
@@ -184,9 +193,10 @@ pd.DataFrame(d)
 </table>
 </div>
 
-----
+::::
+:::
 
-### creating a dataframe (2)
+## creating a dataframe (2)
 
 - there are many other ways to create a dataframe
   - for instance using a numpy matrix (numpy is a linear algebra library)
@@ -247,13 +257,12 @@ df
 </table>
 </div>
 
----
 
-## File Formats
 
-----
+# File Formats
 
-### Common file formats
+
+## Common file formats
 
 - comma separated files: `csv` file
     - often distributed online
@@ -265,9 +274,8 @@ df
 
 ![](excel.jpg)
 
-----
 
-### Comma separated file
+## Comma separated file
 
 - one can actually a file from python
 ```python
@@ -351,9 +359,7 @@ df
 </table>
 </div>
 
-----
-
-### "Annoying" Comma Separated File
+## "Annoying" Comma Separated File
 
 - Sometimes, comma-separated files, are not quite comma-separated...
     - inspect the file with a text editor to see what it contains
@@ -441,9 +447,7 @@ pd.read_csv("annoying_dummy_file.csv", sep=";")
 </table>
 </div>
 
-----
-
-### Exporting a DataFrame
+## Exporting a DataFrame
 
 - pandas can export to many formats: `df.to_...`
 
@@ -465,13 +469,9 @@ print( df.to_csv() )
 df.to_stata('dummy_example.dta')
 ```
 
----
+# Data Sources
 
-## Data Sources
-
-----
-
-### Types of Data Sources
+## Types of Data Sources
 
 <div class="container">
 
@@ -498,9 +498,8 @@ df.to_stata('dummy_example.dta')
 
 </div>
 
-----
 
-### Data providers
+## Data providers
 
 - commercial ones:
     - bloomberg, macrobond, factsets, quandl ...
@@ -647,7 +646,7 @@ df
 ----
 
 
-### DBnomics example
+## DBnomics example
 
 - [DBnomics](https://db.nomics.world/) aggregates time series from various public sources
 - data is organized as provider/database/series
@@ -661,13 +660,9 @@ df = dbnomics.fetch_series('AMECO/ZUTN/EA19.1.0.0.0.ZUTN')
 !pip install dbnomics
 ```
 
----
+# Inspect / describe data
 
-## Inspect / describe data
-
-----
-
-### Inspecting data
+## Inspecting data
 
 - once the data is loaded as `df`, we want to look at some basic properties:
 - general
@@ -835,15 +830,9 @@ df.describe()
 </table>
 </div>
 
+# Manipulating DataFrames
 
-
----
-
-## Manipulating DataFrames
-
-----
-
-### Changing names of columns
+## Changing names of columns
 
 - Columns are defined by property `df.columns`
 ```python
@@ -905,9 +894,7 @@ df.head(2)
 </table>
 </div>
 
-----
-
-### Indexing a column
+## Indexing a column
 
 - A column can be extracted using its name as in a dictionary (like `df['sLength']`)
 ```python
@@ -935,9 +922,8 @@ Name: sWidth, Length: 150, dtype: float64
     <!-- <AxesSubplot:>
     <!-- ![png](DataFrames_files/DataFrames_41_1.png) -->
     
-----
 
-### Creating a new column
+## Creating a new column
 
 
 - It is possible to create a new column by combining existing ones
@@ -998,9 +984,8 @@ df.head(2)
 </table>
 </div>
 
-----
 
-### Replacing a column
+## Replacing a column
 
 - An existing column can be replaced with the same syntax.
 ```python
@@ -1057,9 +1042,8 @@ df.head(2)
 </table>
 </div>
 
-----
 
-### Selecting several columns
+## Selecting several columns
 
 - Index with a list of column names
 ```python
@@ -1109,9 +1093,7 @@ e.head(3)
 </table>
 </div>
 
-----
-
-### Selecting lines (1)
+## Selecting lines (1)
 
 - use index range
   - ☡: in Python the end of a range is *not included* !
@@ -1171,9 +1153,8 @@ df[2:4]
 </table>
 </div>
 
-----
 
-### Selecting lines (2)
+## Selecting lines (2)
 
 - let's look at unique species
 ```python
@@ -1266,9 +1247,7 @@ df[df['species'] == 'virginica']
 </table>
 </div>
 
-----
-
-### Selecting lines and columns
+## Selecting lines and columns
 
 - sometimes, one wants finer control about which lines *and* columns to select:
     - use `df.loc[...]` which can be indexed as a matrix
@@ -1288,9 +1267,7 @@ df.loc[0:4, 'species']
     4    setosa
     Name: species, dtype: object
 
-----
-
-### Combine everything
+## Combine everything
 
 - Here is an example combiing serveral techniques
   - Let's change the way totalLength is computed, but only for 'virginica'
@@ -1299,11 +1276,10 @@ index = (df['species']=='virginica')
 df.loc[index,'totalLength'] = df.loc[index,'sLength'] + 1.5*df[index]['pLength']
 ```
 
----
 
-## Reshaping DataFrames
+# Reshaping DataFrames
 
-----
+## 
 
 The following code creates two example databases.
 
@@ -1349,9 +1325,7 @@ df_long = pd.read_csv("dummy_file_long.csv")
 df_wide = pd.read_csv("dummy_file_wide.csv")
 ```
 
-----
-
-### Wide vs Long format (1)
+## Wide vs Long format (1)
 
 Compare the following tables
 
@@ -1487,9 +1461,8 @@ df_long
 
 </div>
 
-----
 
-### Wide vs Long format (2)
+## Wide vs Long format (2)
 
 - in long format: each line is an independent observation
     - two lines may belong to the same category (year, or country)
@@ -1500,14 +1473,19 @@ df_long
     - values of different kinds are in different columns
     - the types/categories are stored as column names
 - both representations are useful
-- tidy data:
+
+## Tidy data:
+
+
+- *tidy* data:
     - every column is a variable.
     - every row is an observation.
     - every cell is a single value.
+- a very good format for:
+  - quick visualization
+  - data analysis
 
-----
-
-### Converting from Wide to Long
+## Converting from Wide to Long
 
 
 ```python
@@ -1581,9 +1559,8 @@ df_wide.melt(id_vars='year')
 </table>
 </div>
 
-----
 
-### Converting from Long to Wide
+## Converting from Long to Wide
 
 
 ```python
@@ -1709,9 +1686,8 @@ df_
 </table>
 </div>
 
-----
 
-### groupby
+## groupby
 
 - `groupby` is a very powerful function which can be used to work directly on data in the long format.
   - for instance to compute averages per country
@@ -1767,13 +1743,11 @@ df_long.groupby("country").mean()
 df_long.groupby("country").agg(['mean','std'])
 ```
 
----
 
-## Merging
+# Merging
 
-----
 
-### Merging two dataframes
+## Merging two dataframes
 
 - Suppose we have two dataframes, with related observations
 - How can we construct one single database with all informations?
@@ -1814,11 +1788,6 @@ open("dummy_long_2.csv",'w').write(txt_long_2)
 df_long_1 = pd.read_csv('dummy_long_1.csv')
 df_long_2 = pd.read_csv('dummy_long_2.csv')
 ```
-
-
-
-
-----
 
 ## Merging two DataFrames with pandas
 
