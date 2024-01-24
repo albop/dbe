@@ -8,10 +8,11 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.533">
+  <meta name="generator" content="quarto-1.4.487">
 
-  <meta name="author" content="Year 2022-2023">
-  <title>Data-Based Economics - Introduction</title>
+  <meta name="author" content="Pablo Winant">
+  <meta name="dcterms.date" content="2024-03-25">
+  <title>Data-Based Economics - Wrap-Up</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -326,373 +327,29 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction</h1>
-  <p class="subtitle">Data-Based Economics</p>
+  <h1 class="title">Wrap-Up</h1>
+  <p class="subtitle">Data-Based Economics, ESCP, 2023-2024</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Year 2022-2023 
+Pablo Winant 
 </div>
 </div>
 </div>
 
-</section>
-<section class="slide level2">
-
-<!-- 
-<style>
-.container{
-    display: flex;
-}
-.col{
-    flex: 1;
-}
-</style> -->
-<!-- --- -->
-<h3 id="general">General</h3>
-<ul>
-<li>Your instructors:
-<ul>
-<li>Pablo Winant: <code>pwinant@escp.eu</code> (course and tutorials)</li>
-<li>Rayane Hanifi: <code>rayane.hanifi@edu.escp.eu</code> (tutorials)</li>
-</ul></li>
-<li>Hint: start your mail subject by <code>[dbe]</code></li>
-<li>All course material on <em>Nuvolos</em>
-<ul>
-<li>a datascience platform</li>
-<li>you’ll be able to keep a full backup afterwards</li>
-</ul></li>
-<li>Collaboration between students is strongly encouraged</li>
-</ul>
-</section>
-<section id="so-what-will-we-do" class="slide level2">
-<h2>So what will we do ?</h2>
-
-<img data-src="vain_diagram.jpg" class="r-stretch"><ul>
-<li>Programming</li>
-<li>Econometrics / Machine Learning</li>
-<li>Talk about economics</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="data-based-economics-1">Data-based economics (1)</h3>
-<ul>
-<li>Most economists use data all the time
-<ul>
-<li>to illustrate facts</li>
-<li>to test theories</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="data-based-economics">Data-based economics</h3>
-<p>In practice these are the tasks an economist needs to perform:</p>
-<ul>
-<li><!-- .element: class="fragment" -->
-import data</li>
-<li><!-- .element: class="fragment" -->
-clean the data
-<ul>
-<li>deal with heterogenous sources, missing data, abnormal observerations</li>
-<li>super time consuming</li>
-<li>we’ll make this part easy for you</li>
-</ul></li>
-<li><!-- .element: class="fragment" -->
-describe the data (statistics), visualize it</li>
-<li><!-- .element: class="fragment" -->
-interpret it using a model</li>
-<li><!-- .element: class="fragment" -->
-present results</li>
-</ul>
+  <p class="date">2024-03-25</p>
 </section>
 <section class="slide level2">
 
 
-<img data-src="data_story.png" class="r-stretch"></section>
-<section id="econometrics" class="slide level2">
-<h2>Econometrics</h2>
-</section>
-<section class="slide level2">
+<img data-src="wip.png" class="r-stretch"><p>Come back later!.</p>
 
-<h3 id="econometricks">Econometricks</h3>
-<ul>
-<li><p>An art invented by economists: <span class="math display">\[\underbrace{y}\_{\text{dependent variable}} = a \underbrace{x}\_{\text{explanatory variable}} + b\]</span></p></li>
-<li><!-- .element: class="fragment" -->
-<p>Main challenge:</p>
-<ul>
-<li>given dataset <span class="math inline">\((x_i, y_i)\)</span></li>
-<li>find <span class="math inline">\(a\)</span> while <em>controlling</em> for <span class="math inline">\(b\)</span></li>
-<li>understand robustness of results</li>
-<li>predict new values of <span class="math inline">\(y\)</span> for new values of <span class="math inline">\(x\)</span></li>
-</ul></li>
-<li><!-- .element: class="fragment" -->
-<p>Example 1:</p>
-<ul>
-<li><a href="http://medialab.github.io/well-being-metrics/app/#/">How happy are you?</a></li>
-<li>What is <span class="math inline">\(x\)</span> ? What is <span class="math inline">\(y\)</span> ?</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="econometricks-2">Econometricks (2)</h3>
-<p><span class="math display">\[\underbrace{y}\_{\text{dependent variable}} = a \underbrace{x}\_{\text{explanatory variable}} + b\]</span></p>
-<ul>
-<li><!-- .element: class="fragment" -->
-Example 2:
-<ul>
-<li>young men who go to war receive <em>in average</em> lower wages when they return than men who didn’t go to war</li>
-<li><!-- .element: class="fragment" -->
-… is it because they skipped college?</li>
-<li><!-- .element: class="fragment" -->
-… or did they choose to go to war because they were less skilled for college?</li>
-<li><!-- .element: class="fragment" -->
-find a way to extract <em>causality</em></li>
-<li><!-- .element: class="fragment" -->
--&gt; instrumental variables</li>
-</ul></li>
-<li><!-- .element: class="fragment" -->
-This was worth a Nobel Prize! (D. Card, J. Angrist, G.W. Imbens)</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="econometricks-3">Econometricks (3)</h3>
-<p><span class="math display">\[\underbrace{y}\_{\text{dependent variable}} = a \underbrace{x}\_{\text{explanatory variable}} + b\]</span></p>
-<ul>
-<li><!-- .element: class="fragment" -->
-Example 3:
-<ul>
-<li>I want to establish a link between growth and trade openness</li>
-<li><!-- .element: class="fragment" -->
-but my country has only 10 years of historical data… (within dimension)</li>
-<li><!-- .element: class="fragment" -->
-… let’s take 50 countries at the same time (between dimension)</li>
-<li><!-- .element: class="fragment" -->
-find a way to analyze both dimensions at the same time</li>
-<li><!-- .element: class="fragment" -->
--&gt; panel data</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="big-data-era-and-machine-learning">Big Data Era and Machine Learning</h3>
-<ul>
-<li>Data has become very abundant</li>
-<li><!-- .element: class="fragment" -->
-Large amounts of data of all kinds
-<ul>
-<li>structured (tables, …)</li>
-<li>unstructured (text, images, …)</li>
-</ul></li>
-<li><!-- .element: class="fragment" -->
-Machine learning:
-<ul>
-<li>a set of powerful algorithms…</li>
-<li>… so powerful some call it <em>artificial intelligence</em>
-<ul>
-<li>they <em>learn</em> by processing data</li>
-</ul></li>
-<li>… to extract information and relations in large data sets</li>
-<li>…</li>
-</ul></li>
-<li><!-- .element: class="fragment" -->
-Comparison with econometrics
-<ul>
-<li>ML has it own, partially redundant, jargon</li>
-<li>much harder to understand causality, standard deviation (i.e.&nbsp;precision)</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="machine-learning">Machine Learning</h3>
-<p><span class="math display">\[\underbrace{y}\_{\text{predicted variable}} = f( \underbrace{x}\_{\text{feature}} , a)\]</span></p>
-<ul>
-<li>Challenge:
-<ul>
-<li>given dataset <span class="math inline">\((x_i, y_i)\)</span></li>
-<li>find <span class="math inline">\(a\)</span>, that is find a nonlinear relationship between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></li>
-<li>predict new values of <span class="math inline">\(y\)</span> given new values of <span class="math inline">\(x\)</span></li>
-</ul></li>
-<li>What are the difference with econometrics?</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="big-data-era-and-machine-learning-1">Big Data Era and Machine Learning (1)</h3>
-
-<img src="sentiment_analysis.png" width="60%" class="r-stretch"><p>Sentiment analysis: predict population’s optimism by analyzing tweets.</p>
-<p>Check <a href="https://www.csc2.ncsu.edu/faculty/healey/tweet_viz/tweet_app/">sentiment viz</a></p>
-</section>
-<section class="slide level2">
-
-<h3 id="big-data-era-and-machine-learning-2">Big Data Era and Machine Learning (2)</h3>
-
-<img data-src="NVIDIA_Portrait_Example.jpeg" class="r-stretch"><p>Deep learning: artificial neural nets</p>
-</section>
-<section id="programming" class="slide level2">
-<h2>Programming</h2>
-</section>
-<section class="slide level2">
-
-<h3 id="why-program-in-python">Why program in Python?</h3>
-<ul>
-<li>Why learn and use Python?</li>
-<li>And not <!-- .element: class="fragment" -->
-<ul>
-<li>R</li>
-<li>SPSS</li>
-<li>Stata</li>
-<li>Matlab</li>
-<li>C</li>
-<li>Javascript</li>
-<li>SQL</li>
-<li>…</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="because">Because</h3>
-<p>Python is:</p>
-<div class="r-stack">
-<div class="fragment current-visible">
-<pre><code>&lt;img src="python_kids.jpg" width=800&gt;&lt;br&gt;Easy</code></pre>
-</div>
-<div class="fragment current-visible">
-<pre><code>&lt;img src="download_python.png" width=1200&gt;&lt;br&gt;Free</code></pre>
-</div>
-<div class="fragment current-visible">
-<p><img src="tiobe.png"><br></p>
-<p>Popular (<a href="https://www.tiobe.com/tiobe-index/">TIOBE Index</a>) - lively community - lots of online ressources - libraries for virtually anything</p>
-</div>
-<div class="fragment current-visible">
-<p><img src="jax.png" width="200"> <img src="sklearn.png" width="200"> <img src="openai.png" width="200"> <img src="pytorch.png" width="200"></p>
-<ul>
-<li>The lingua Franca of Machine learning
-<ul>
-<li>All major machine learning softwares are written or interface with Python</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<p><img src="python.png" height="1000"></p>
-</section>
-<section id="why-should-you-learn-programming" class="slide level2">
-<h2>Why Should you learn programming ?</h2>
-<ul>
-<li><!-- .element: class="fragment" -->
-Researchers (econometricians or data scientists) spend 80% of their time writing code.</li>
-<li><!-- .element: class="fragment" -->
-Presentation (plots, interactive apps) is key and relies on
-<ul>
-<li>… programming</li>
-</ul></li>
-<li><!-- .element: class="fragment" -->
-Interaction with code becomes unavoidable in business environment</li>
-<li>fixing the website</li>
-<li>querying the database</li>
-<li>…</li>
-<li><!-- .element: class="fragment" -->
-Worth investing a bit of time to learn it
-<ul>
-<li>you can easily become an <strong>expert</strong></li>
-</ul></li>
-<li><!-- .element: class="fragment" -->
-Plus it’s fun</li>
-</ul>
-</section>
-<section id="programming-1" class="slide level2">
-<h2>Programming</h2>
-</section>
-<section id="how-good-should-you-program" class="slide level2">
-<h2>How good should you program ?</h2>
-<p>::: {.columns}</p>
-<p>:::: {.column}</p>
-<div class="r-stack">
-<pre><code>&lt;div class="fragment current-visible" data-fragment-index=1&gt;   &lt;img src="anxious.jpg"&gt; &lt;/div&gt;
-&lt;div class="fragment current-visible" data-fragment-index=2&gt;   &lt;img src="furious.webp"&gt;  &lt;/div&gt;
-&lt;div class="fragment current-visible" data-fragment-index=3&gt;  &lt;img src="relieved.jpg"&gt; &lt;/div&gt;
-&lt;div class="fragment current-visible" data-fragment-index=4&gt;  &lt;img src="googleit.avif"&gt;  &lt;/div&gt;
-&lt;div class="fragment current-visible" data-fragment-index=5&gt;  &lt;img src="happy.jpeg" width=600&gt;  &lt;/div&gt;</code></pre>
-<p>::::</p>
-<div class="column">
-<ul>
-<li>We will “assume” everybody as some prior experience with Python</li>
-<li>Even though some of you have possibly never touched it</li>
-<li>We’ll do some catchup today</li>
-<li>And count on you to find the resources to learn what you need when you need it</li>
-<li>Of course you can always ask questions</li>
-</ul>
-</div>
-<p>:::</p>
-</div></section>
-<section id="additional-resources" class="slide level2">
-<h2>Additional resources</h2>
-<p>Plenty of online resources to learn python/econometrics/machine learning</p>
-<ul>
-<li><a href="learnpython.org">learnpython</a> sponsored by <a href="https://www.datacamp.com/">datacamp</a></li>
-<li><a href="https://datascience.quantecon.org/">quantecon</a>: designed for economists, good examples of projects</li>
-<li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/">Python Data Science Handbook</a>: by Jake Van der Plas, very complete. Online free version.</li>
-<li><a href="https://scpoecon.github.io/ScPoEconometrics/">Introduction to Econometrics with R</a>, in R but very clear (beginner and advanced versions)</li>
-</ul>
-</section>
-<section id="quantecon" class="slide level2">
-<h2>Quantecon</h2>
-<div class="quarto-layout-panel" data-layout-ncol="3">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;display: flex;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="qe-logo-large.png" style="width:90.0%"></p>
-<figcaption>QuantEcon</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;display: flex;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="tom_sargent.jpg" style="width:100.0%"></p>
-<figcaption>Tom Sargent</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;display: flex;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="john_stachurski.jpg" style="width:100.0%"></p>
-<figcaption>John Stachurski</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<!-- ![Tom Sargent @ ESCP](t3m_escp.jpg) -->
-<p>&nbsp;</p>
-<ul>
-<li><strong>Quantecon</strong>: free online <a href="https://quantecon.org/lectures/">lectures</a> to learn python programming and (advanced) economics
-<ul>
-<li>now with a section on <a href="https://datascience.quantecon.org/">datascience</a></li>
-<li>it is excellent!</li>
-<li>we will use some of it today</li>
-</ul></li>
-</ul>
-
-
-</section>
-    <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-</div></div>
+</section>
+    </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
@@ -722,7 +379,7 @@ Plus it’s fun</li>
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"normal"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -868,9 +525,9 @@ Plus it’s fun</li>
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1920,
+        width: 1050,
 
-        height: 1080,
+        height: 700,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,

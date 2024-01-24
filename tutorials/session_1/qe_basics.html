@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.533">
+<meta name="generator" content="quarto-1.4.487">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,7 +78,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -87,33 +86,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -179,9 +151,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">Basics</a>
-  <ul class="collapse">
-  <li><a href="#first-steps" id="toc-first-steps" class="nav-link" data-scroll-target="#first-steps">First Steps</a>
+  <li><a href="#first-steps" id="toc-first-steps" class="nav-link active" data-scroll-target="#first-steps">First Steps</a>
   <ul class="collapse">
   <li><a href="#variable-assignment" id="toc-variable-assignment" class="nav-link" data-scroll-target="#variable-assignment">Variable Assignment</a></li>
   <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
@@ -249,7 +219,6 @@ window.Quarto = {
   <li><a href="#exercise-15-1" id="toc-exercise-15-1" class="nav-link" data-scroll-target="#exercise-15-1">Exercise 15</a></li>
   <li><a href="#exercise-16" id="toc-exercise-16" class="nav-link" data-scroll-target="#exercise-16">Exercise 16</a></li>
   </ul></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -275,8 +244,6 @@ window.Quarto = {
 </header>
 
 
-<section id="basics" class="level1">
-<h1>Basics</h1>
 <p><strong>Outcomes</strong></p>
 <ul>
 <li>Programming concepts
@@ -449,7 +416,7 @@ flush: whether to forcibly flush the stream.
 <p>Sometimes we refer to the functions inside an object as <em>methods</em>.</p>
 <p>We can investigate what data is inside an object and which methods it supports by typing <code>.</code> after that particular variable, then hitting <code>TAB</code>.</p>
 <p>It should then list data and method names to the right of the variable name like this:</p>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://datascience.quantecon.org/_static/introspection.png" class="img-fluid figure-img"></p>
 <figcaption>https://datascience.quantecon.org/_static/introspection.png</figcaption>
@@ -986,9 +953,7 @@ flush: whether to forcibly flush the stream.
 </section>
 <section id="exercise-7-1" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-7-1">Exercise 7</h3>
-<p>Verify the “trick” where the percent difference ($ <span class="math inline">\()
-between two numbers close to 1 can be well approximated by the difference
-between the log of the two numbers (\)</span> (x) - (y) $).</p>
+<p>Verify the “trick” where the percent difference ($ <span class="math inline">\() between two numbers close to 1 can be well approximated by the difference between the log of the two numbers (\)</span> (x) - (y) $).</p>
 <p>Use the numbers <code>x</code> and <code>y</code> below.</p>
 <p>you will want to use the <code>math.log</code> function</p>
 <div id="526b5c9f" class="cell" data-hide-output="false">
@@ -1117,7 +1082,6 @@ between the log of the two numbers (\)</span> (x) - (y) $).</p>
 <p>(<a href="#dir16">back to text</a>)</p>
 
 
-</section>
 </section>
 </section>
 
@@ -1250,28 +1214,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
+        typesetMath(container);
         return container.innerHTML
       } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -1280,9 +1254,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
+      typesetMath(note);
       return note.innerHTML;
     }
   }

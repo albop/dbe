@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.533">
+<meta name="generator" content="quarto-1.4.487">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -80,7 +80,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -89,33 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -186,6 +158,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#pandas" id="toc-pandas" class="nav-link" data-scroll-target="#pandas">Pandas</a>
   <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#pandas-1" id="toc-pandas-1" class="nav-link" data-scroll-target="#pandas-1">pandas</a></li>
   <li><a href="#creating-a-dataframe-1" id="toc-creating-a-dataframe-1" class="nav-link" data-scroll-target="#creating-a-dataframe-1">creating a dataframe (1)</a></li>
   <li><a href="#creating-a-dataframe-2" id="toc-creating-a-dataframe-2" class="nav-link" data-scroll-target="#creating-a-dataframe-2">creating a dataframe (2)</a></li>
@@ -221,8 +194,10 @@ window.Quarto = {
   </ul></li>
   <li><a href="#reshaping-dataframes" id="toc-reshaping-dataframes" class="nav-link" data-scroll-target="#reshaping-dataframes">Reshaping DataFrames</a>
   <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
   <li><a href="#wide-vs-long-format-1" id="toc-wide-vs-long-format-1" class="nav-link" data-scroll-target="#wide-vs-long-format-1">Wide vs Long format (1)</a></li>
   <li><a href="#wide-vs-long-format-2" id="toc-wide-vs-long-format-2" class="nav-link" data-scroll-target="#wide-vs-long-format-2">Wide vs Long format (2)</a></li>
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy data:</a></li>
   <li><a href="#converting-from-wide-to-long" id="toc-converting-from-wide-to-long" class="nav-link" data-scroll-target="#converting-from-wide-to-long">Converting from Wide to Long</a></li>
   <li><a href="#converting-from-long-to-wide" id="toc-converting-from-long-to-wide" class="nav-link" data-scroll-target="#converting-from-long-to-wide">Converting from Long to Wide</a></li>
   <li><a href="#groupby" id="toc-groupby" class="nav-link" data-scroll-target="#groupby">groupby</a></li>
@@ -230,8 +205,8 @@ window.Quarto = {
   <li><a href="#merging" id="toc-merging" class="nav-link" data-scroll-target="#merging">Merging</a>
   <ul class="collapse">
   <li><a href="#merging-two-dataframes" id="toc-merging-two-dataframes" class="nav-link" data-scroll-target="#merging-two-dataframes">Merging two dataframes</a></li>
-  </ul></li>
   <li><a href="#merging-two-dataframes-with-pandas" id="toc-merging-two-dataframes-with-pandas" class="nav-link" data-scroll-target="#merging-two-dataframes-with-pandas">Merging two DataFrames with pandas</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -279,13 +254,13 @@ window.Quarto = {
 }
 </style>
 <hr>
-<section id="tabular-data" class="level2">
-<h2 class="anchored" data-anchor-id="tabular-data">Tabular Data</h2>
+<section id="tabular-data" class="level1">
+<h1>Tabular Data</h1>
 <hr>
-<section id="dataframe" class="level3">
-<h3 class="anchored" data-anchor-id="dataframe">DataFrame</h3>
-<div class="container">
-<div class="col">
+<section id="dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="dataframe">DataFrame</h2>
+<div class="columns">
+<div class="column">
 <ul>
 <li>A <strong>DataFrame</strong> (aka a table) is a 2-D labeled data structure with columns
 <ul>
@@ -298,17 +273,15 @@ window.Quarto = {
 <li>aka “cleaning the data”</li>
 </ul></li>
 </ul>
-</div>
-<div class="col">
+</div><div class="column">
 <p><img src="dataframe.png" class="img-fluid"></p>
 </div>
 </div>
-<hr>
 </section>
-<section id="dataframes-are-everywhere" class="level3">
-<h3 class="anchored" data-anchor-id="dataframes-are-everywhere">DataFrames are everywhere</h3>
-<div class="container">
-<div class="col">
+<section id="dataframes-are-everywhere" class="level2">
+<h2 class="anchored" data-anchor-id="dataframes-are-everywhere">DataFrames are everywhere</h2>
+<div class="columns">
+<div class="column">
 <div class="r-stack">
 <div class="fragment current-visible">
 <ul>
@@ -329,23 +302,27 @@ window.Quarto = {
 </ul></li>
 <li>probably worth looking at if you have some “data” ambitions</li>
 <li>you will see the shadow of SQL everywhere</li>
-<li>plenty of resources to learn:</li>
+<li>plenty of resources to learn (example: <a href="https://sqlbolt.com/lesson/select_queries_introduction">sqbolt</a>)</li>
 </ul>
 </div>
 </div>
-</div>
-<div class="col">
+</div><div class="column">
 <p><img src="relational_database.png" width="100%"></p>
 </div>
 </div>
 <hr>
 </section>
 </section>
-<section id="pandas" class="level2">
-<h2 class="anchored" data-anchor-id="pandas">Pandas</h2>
+<section id="pandas" class="level1">
+<h1>Pandas</h1>
 <hr>
-<section id="pandas-1" class="level3">
-<h3 class="anchored" data-anchor-id="pandas-1">pandas</h3>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p><img src="red_pandas.webp" class="img-fluid"></p>
+<hr>
+</section>
+<section id="pandas-1" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-1">pandas</h2>
 <ul>
 <li>pandas = panel + datas
 <ul>
@@ -363,11 +340,11 @@ window.Quarto = {
 <li><a href="https://datascience.quantecon.org/pandas/index.html">quantecon</a></li>
 </ul></li>
 </ul>
-<p>TODO: sweet pandas ?</p>
-<hr>
 </section>
-<section id="creating-a-dataframe-1" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-dataframe-1">creating a dataframe (1)</h3>
+<section id="creating-a-dataframe-1" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-dataframe-1">creating a dataframe (1)</h2>
+<div class="columns">
+<div class="column">
 <ul>
 <li>Import pandas
 <ul>
@@ -385,6 +362,7 @@ window.Quarto = {
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
+</div><div class="column">
 <div>
 
 <table class="dataframe table table-sm table-striped small">
@@ -437,10 +415,11 @@ France
 </tbody>
 </table>
 </div>
-<hr>
+</div>
+</div>
 </section>
-<section id="creating-a-dataframe-2" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-dataframe-2">creating a dataframe (2)</h3>
+<section id="creating-a-dataframe-2" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-dataframe-2">creating a dataframe (2)</h2>
 <ul>
 <li>there are many other ways to create a dataframe
 <ul>
@@ -508,14 +487,12 @@ travel
 </tbody>
 </table>
 </div>
-<hr>
 </section>
 </section>
-<section id="file-formats" class="level2">
-<h2 class="anchored" data-anchor-id="file-formats">File Formats</h2>
-<hr>
-<section id="common-file-formats" class="level3">
-<h3 class="anchored" data-anchor-id="common-file-formats">Common file formats</h3>
+<section id="file-formats" class="level1">
+<h1>File Formats</h1>
+<section id="common-file-formats" class="level2">
+<h2 class="anchored" data-anchor-id="common-file-formats">Common file formats</h2>
 <ul>
 <li>comma separated files: <code>csv</code> file
 <ul>
@@ -530,10 +507,9 @@ travel
 </ul></li>
 </ul>
 <p><img src="excel.jpg" class="img-fluid"></p>
-<hr>
 </section>
-<section id="comma-separated-file" class="level3">
-<h3 class="anchored" data-anchor-id="comma-separated-file">Comma separated file</h3>
+<section id="comma-separated-file" class="level2">
+<h2 class="anchored" data-anchor-id="comma-separated-file">Comma separated file</h2>
 <ul>
 <li>one can actually a file from python</li>
 </ul>
@@ -657,10 +633,9 @@ usa
 </tbody>
 </table>
 </div>
-<hr>
 </section>
-<section id="annoying-comma-separated-file" class="level3">
-<h3 class="anchored" data-anchor-id="annoying-comma-separated-file">“Annoying” Comma Separated File</h3>
+<section id="annoying-comma-separated-file" class="level2">
+<h2 class="anchored" data-anchor-id="annoying-comma-separated-file">“Annoying” Comma Separated File</h2>
 <ul>
 <li>Sometimes, comma-separated files, are not quite comma-separated…
 <ul>
@@ -787,10 +762,9 @@ usa
 </tbody>
 </table>
 </div>
-<hr>
 </section>
-<section id="exporting-a-dataframe" class="level3">
-<h3 class="anchored" data-anchor-id="exporting-a-dataframe">Exporting a DataFrame</h3>
+<section id="exporting-a-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-a-dataframe">Exporting a DataFrame</h2>
 <ul>
 <li><p>pandas can export to many formats: <code>df.to_...</code></p></li>
 <li><p>to (standard) CSV</p></li>
@@ -807,14 +781,12 @@ usa
 <li>or to stata</li>
 </ul>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.to_stata(<span class="st">'dummy_example.dta'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
 </section>
 </section>
-<section id="data-sources" class="level2">
-<h2 class="anchored" data-anchor-id="data-sources">Data Sources</h2>
-<hr>
-<section id="types-of-data-sources" class="level3">
-<h3 class="anchored" data-anchor-id="types-of-data-sources">Types of Data Sources</h3>
+<section id="data-sources" class="level1">
+<h1>Data Sources</h1>
+<section id="types-of-data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-data-sources">Types of Data Sources</h2>
 <div class="container">
 <div class="col">
 <ul>
@@ -839,10 +811,9 @@ usa
 <p><img src="bloomberg.png" width="60%"></p>
 </div>
 </div>
-<hr>
 </section>
-<section id="data-providers" class="level3">
-<h3 class="anchored" data-anchor-id="data-providers">Data providers</h3>
+<section id="data-providers" class="level2">
+<h2 class="anchored" data-anchor-id="data-providers">Data providers</h2>
 <ul>
 <li>commercial ones:
 <ul>
@@ -1114,8 +1085,8 @@ virginica
 <p><img src="iris.jpeg" width="60%"></p>
 <hr>
 </section>
-<section id="dbnomics-example" class="level3">
-<h3 class="anchored" data-anchor-id="dbnomics-example">DBnomics example</h3>
+<section id="dbnomics-example" class="level2">
+<h2 class="anchored" data-anchor-id="dbnomics-example">DBnomics example</h2>
 <ul>
 <li><a href="https://db.nomics.world/">DBnomics</a> aggregates time series from various public sources</li>
 <li>data is organized as provider/database/series</li>
@@ -1127,14 +1098,12 @@ virginica
 <li>tip: in case one python package is missing, it can be installed on the fly as in</li>
 </ul>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install dbnomics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
 </section>
 </section>
-<section id="inspect-describe-data" class="level2">
-<h2 class="anchored" data-anchor-id="inspect-describe-data">Inspect / describe data</h2>
-<hr>
-<section id="inspecting-data" class="level3">
-<h3 class="anchored" data-anchor-id="inspecting-data">Inspecting data</h3>
+<section id="inspect-describe-data" class="level1">
+<h1>Inspect / describe data</h1>
+<section id="inspecting-data" class="level2">
+<h2 class="anchored" data-anchor-id="inspecting-data">Inspecting data</h2>
 <ul>
 <li>once the data is loaded as <code>df</code>, we want to look at some basic properties:</li>
 <li>general
@@ -1391,14 +1360,12 @@ max
 </tbody>
 </table>
 </div>
-<hr>
 </section>
 </section>
-<section id="manipulating-dataframes" class="level2">
-<h2 class="anchored" data-anchor-id="manipulating-dataframes">Manipulating DataFrames</h2>
-<hr>
-<section id="changing-names-of-columns" class="level3">
-<h3 class="anchored" data-anchor-id="changing-names-of-columns">Changing names of columns</h3>
+<section id="manipulating-dataframes" class="level1">
+<h1>Manipulating DataFrames</h1>
+<section id="changing-names-of-columns" class="level2">
+<h2 class="anchored" data-anchor-id="changing-names-of-columns">Changing names of columns</h2>
 <ul>
 <li>Columns are defined by property <code>df.columns</code></li>
 </ul>
@@ -1477,10 +1444,9 @@ setosa
 </tbody>
 </table>
 </div>
-<hr>
 </section>
-<section id="indexing-a-column" class="level3">
-<h3 class="anchored" data-anchor-id="indexing-a-column">Indexing a column</h3>
+<section id="indexing-a-column" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-a-column">Indexing a column</h2>
 <ul>
 <li>A column can be extracted using its name as in a dictionary (like <code>df['sLength']</code>)</li>
 </ul>
@@ -1513,10 +1479,9 @@ Name: sWidth, Length: 150, dtype: float64</code></pre>
 <!-- ![png](DataFrames_files/DataFrames_41_1.png) --></li>
 </ul></li>
 </ul>
-<hr>
 </section>
-<section id="creating-a-new-column" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-new-column">Creating a new column</h3>
+<section id="creating-a-new-column" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-new-column">Creating a new column</h2>
 <ul>
 <li>It is possible to create a new column by combining existing ones</li>
 </ul>
@@ -1601,10 +1566,9 @@ setosa
 </tbody>
 </table>
 </div>
-<hr>
 </section>
-<section id="replacing-a-column" class="level3">
-<h3 class="anchored" data-anchor-id="replacing-a-column">Replacing a column</h3>
+<section id="replacing-a-column" class="level2">
+<h2 class="anchored" data-anchor-id="replacing-a-column">Replacing a column</h2>
 <ul>
 <li>An existing column can be replaced with the same syntax.</li>
 </ul>
@@ -1687,10 +1651,9 @@ setosa
 </tbody>
 </table>
 </div>
-<hr>
 </section>
-<section id="selecting-several-columns" class="level3">
-<h3 class="anchored" data-anchor-id="selecting-several-columns">Selecting several columns</h3>
+<section id="selecting-several-columns" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-several-columns">Selecting several columns</h2>
 <ul>
 <li>Index with a list of column names</li>
 </ul>
@@ -1748,10 +1711,9 @@ sLength
 </tbody>
 </table>
 </div>
-<hr>
 </section>
-<section id="selecting-lines-1" class="level3">
-<h3 class="anchored" data-anchor-id="selecting-lines-1">Selecting lines (1)</h3>
+<section id="selecting-lines-1" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-lines-1">Selecting lines (1)</h2>
 <ul>
 <li>use index range
 <ul>
@@ -1836,10 +1798,9 @@ setosa
 </tbody>
 </table>
 </div>
-<hr>
 </section>
-<section id="selecting-lines-2" class="level3">
-<h3 class="anchored" data-anchor-id="selecting-lines-2">Selecting lines (2)</h3>
+<section id="selecting-lines-2" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-lines-2">Selecting lines (2)</h2>
 <ul>
 <li>let’s look at unique species</li>
 </ul>
@@ -1984,10 +1945,9 @@ virginica
 </tbody>
 </table>
 </div>
-<hr>
 </section>
-<section id="selecting-lines-and-columns" class="level3">
-<h3 class="anchored" data-anchor-id="selecting-lines-and-columns">Selecting lines and columns</h3>
+<section id="selecting-lines-and-columns" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-lines-and-columns">Selecting lines and columns</h2>
 <ul>
 <li>sometimes, one wants finer control about which lines <em>and</em> columns to select:
 <ul>
@@ -2001,10 +1961,9 @@ virginica
 3    setosa
 4    setosa
 Name: species, dtype: object</code></pre>
-<hr>
 </section>
-<section id="combine-everything" class="level3">
-<h3 class="anchored" data-anchor-id="combine-everything">Combine everything</h3>
+<section id="combine-everything" class="level2">
+<h2 class="anchored" data-anchor-id="combine-everything">Combine everything</h2>
 <ul>
 <li>Here is an example combiing serveral techniques
 <ul>
@@ -2013,12 +1972,12 @@ Name: species, dtype: object</code></pre>
 <div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> (df[<span class="st">'species'</span>]<span class="op">==</span><span class="st">'virginica'</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df.loc[index,<span class="st">'totalLength'</span>] <span class="op">=</span> df.loc[index,<span class="st">'sLength'</span>] <span class="op">+</span> <span class="fl">1.5</span><span class="op">*</span>df[index][<span class="st">'pLength'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
-<hr>
 </section>
 </section>
-<section id="reshaping-dataframes" class="level2">
-<h2 class="anchored" data-anchor-id="reshaping-dataframes">Reshaping DataFrames</h2>
-<hr>
+<section id="reshaping-dataframes" class="level1">
+<h1>Reshaping DataFrames</h1>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
 <p>The following code creates two example databases.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>txt_wide <span class="op">=</span> <span class="st">"""year,france,usa</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="st">2018,950.0,2500.0</span></span>
@@ -2039,9 +1998,9 @@ Name: species, dtype: object</code></pre>
 <pre><code>136</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_csv(<span class="st">"dummy_file_long.csv"</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df_wide <span class="op">=</span> pd.read_csv(<span class="st">"dummy_file_wide.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-<section id="wide-vs-long-format-1" class="level3">
-<h3 class="anchored" data-anchor-id="wide-vs-long-format-1">Wide vs Long format (1)</h3>
+</section>
+<section id="wide-vs-long-format-1" class="level2">
+<h2 class="anchored" data-anchor-id="wide-vs-long-format-1">Wide vs Long format (1)</h2>
 <p>Compare the following tables</p>
 <div class="container">
 <div class="col">
@@ -2221,10 +2180,9 @@ usa
 </div>
 </div>
 </div>
-<hr>
 </section>
-<section id="wide-vs-long-format-2" class="level3">
-<h3 class="anchored" data-anchor-id="wide-vs-long-format-2">Wide vs Long format (2)</h3>
+<section id="wide-vs-long-format-2" class="level2">
+<h2 class="anchored" data-anchor-id="wide-vs-long-format-2">Wide vs Long format (2)</h2>
 <ul>
 <li>in long format: each line is an independent observation
 <ul>
@@ -2239,17 +2197,26 @@ usa
 <li>the types/categories are stored as column names</li>
 </ul></li>
 <li>both representations are useful</li>
-<li>tidy data:
+</ul>
+</section>
+<section id="tidy-data" class="level2">
+<h2 class="anchored" data-anchor-id="tidy-data">Tidy data:</h2>
+<ul>
+<li><em>tidy</em> data:
 <ul>
 <li>every column is a variable.</li>
 <li>every row is an observation.</li>
 <li>every cell is a single value.</li>
 </ul></li>
+<li>a very good format for:
+<ul>
+<li>quick visualization</li>
+<li>data analysis</li>
+</ul></li>
 </ul>
-<hr>
 </section>
-<section id="converting-from-wide-to-long" class="level3">
-<h3 class="anchored" data-anchor-id="converting-from-wide-to-long">Converting from Wide to Long</h3>
+<section id="converting-from-wide-to-long" class="level2">
+<h2 class="anchored" data-anchor-id="converting-from-wide-to-long">Converting from Wide to Long</h2>
 <div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df_wide.melt(id_vars<span class="op">=</span><span class="st">'year'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 
@@ -2357,10 +2324,9 @@ usa
 </tbody>
 </table>
 </div>
-<hr>
 </section>
-<section id="converting-from-long-to-wide" class="level3">
-<h3 class="anchored" data-anchor-id="converting-from-long-to-wide">Converting from Long to Wide</h3>
+<section id="converting-from-long-to-wide" class="level2">
+<h2 class="anchored" data-anchor-id="converting-from-long-to-wide">Converting from Long to Wide</h2>
 <div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_ <span class="op">=</span> df_long.pivot(index<span class="op">=</span><span class="st">'year'</span>, columns<span class="op">=</span><span class="st">'country'</span>)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>df_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
@@ -2498,10 +2464,9 @@ year
 </tbody>
 </table>
 </div>
-<hr>
 </section>
-<section id="groupby" class="level3">
-<h3 class="anchored" data-anchor-id="groupby">groupby</h3>
+<section id="groupby" class="level2">
+<h2 class="anchored" data-anchor-id="groupby">groupby</h2>
 <ul>
 <li><code>groupby</code> is a very powerful function which can be used to work directly on data in the long format.
 <ul>
@@ -2563,14 +2528,12 @@ usa
 <li>You can perform several aggregations at the same time:</li>
 </ul>
 <div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_long.groupby(<span class="st">"country"</span>).agg([<span class="st">'mean'</span>,<span class="st">'std'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
 </section>
 </section>
-<section id="merging" class="level2">
-<h2 class="anchored" data-anchor-id="merging">Merging</h2>
-<hr>
-<section id="merging-two-dataframes" class="level3">
-<h3 class="anchored" data-anchor-id="merging-two-dataframes">Merging two dataframes</h3>
+<section id="merging" class="level1">
+<h1>Merging</h1>
+<section id="merging-two-dataframes" class="level2">
+<h2 class="anchored" data-anchor-id="merging-two-dataframes">Merging two dataframes</h2>
 <ul>
 <li>Suppose we have two dataframes, with related observations</li>
 <li>How can we construct one single database with all informations?</li>
@@ -2605,8 +2568,6 @@ usa
 <span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="bu">open</span>(<span class="st">"dummy_long_2.csv"</span>,<span class="st">'w'</span>).write(txt_long_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_long_1 <span class="op">=</span> pd.read_csv(<span class="st">'dummy_long_1.csv'</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>df_long_2 <span class="op">=</span> pd.read_csv(<span class="st">'dummy_long_2.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
 </section>
 <section id="merging-two-dataframes-with-pandas" class="level2">
 <h2 class="anchored" data-anchor-id="merging-two-dataframes-with-pandas">Merging two DataFrames with pandas</h2>
@@ -2741,6 +2702,7 @@ moriarty
 
 
 </section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -2871,28 +2833,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
+        typesetMath(container);
         return container.innerHTML
       } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -2901,9 +2873,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
+      typesetMath(note);
       return note.innerHTML;
     }
   }

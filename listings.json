@@ -3,7 +3,15 @@
     "listing": "/index.html",
     "items": [
       "/slides/session_1/index.html",
-      "/slides/session_2/index.html"
+      "/slides/session_2/index.html",
+      "/slides/prep_3/index_handout.html",
+      "/slides/prep_4/index_handout.html",
+      "/slides/prep_5/index_handout.html",
+      "/slides/prep_6/index_handout.html",
+      "/slides/prep_7/index_handout.html",
+      "/slides/prep_8/index_handout.html",
+      "/slides/prep_9/index_handout.html",
+      "/slides/prep_10/index_handout.html"
     ]
   }
 ]

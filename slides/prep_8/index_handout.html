@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Pablo Winant">
+<meta name="dcterms.date" content="2024-03-18">
 
-<title>Data-Based Economics</title>
+<title>Data-Based Economics - Large Language Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,20 +25,18 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -51,40 +51,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-sample-listings .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-sample-listings'] = new List('listing-sample-listings', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -110,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data-Based Economics</a> 
+      <a href="../../">Data-Based Economics</a> 
     </div>
       </div>
     <div class="sidebar-menu-container"> 
@@ -126,13 +95,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/session_1/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/session_2/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dataframes</span></a>
   </div>
 </li>
@@ -145,20 +114,33 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data-Based Economics</h1>
+<h1 class="title">Large Language Models</h1>
+<p class="subtitle lead">Data-Based Economics, ESCP, 2023-2024</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Pablo Winant </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 18, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -168,109 +150,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><img src="wip.png" class="img-fluid"></p>
+<p>Come back later!.</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-sample-listings">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1705446000000" data-listing-file-modified-sort="1705478604157" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="963" data-listing-title-sort="Introduction" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 17, 2024</span>
-</td>
-<td>
-<a href="./slides/session_1/index.html" class="title listing-title">Introduction</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1706050800000" data-listing-file-modified-sort="1706082390605" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="35" data-listing-word-count-sort="6913" data-listing-title-sort="Dataframes" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 24, 2024</span>
-</td>
-<td>
-<a href="./slides/session_2/index.html" class="title listing-title">Dataframes</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1706569200000" data-listing-file-modified-sort="1706080577376" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Linear Regression" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 30, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_3/index_handout.html" class="title listing-title">Linear Regression</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1707174000000" data-listing-file-modified-sort="1706080699304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Multiple Regression" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 6, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_4/index_handout.html" class="title listing-title">Multiple Regression</a>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1707778800000" data-listing-file-modified-sort="1706080818052" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Instrumental Variables" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 13, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_5/index_handout.html" class="title listing-title">Instrumental Variables</a>
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="1708988400000" data-listing-file-modified-sort="1706080828388" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Machine Learning" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 27, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_6/index_handout.html" class="title listing-title">Machine Learning</a>
-</td>
-</tr>
-<tr data-index="6" data-listing-date-sort="1709593200000" data-listing-file-modified-sort="1706080839396" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Text Analysis" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 5, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_7/index_handout.html" class="title listing-title">Text Analysis</a>
-</td>
-</tr>
-<tr data-index="7" data-listing-date-sort="1710716400000" data-listing-file-modified-sort="1706080464800" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Large Language Models" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 18, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_8/index_handout.html" class="title listing-title">Large Language Models</a>
-</td>
-</tr>
-<tr data-index="8" data-listing-date-sort="1711321200000" data-listing-file-modified-sort="1706080845772" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Wrap-Up" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 25, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_9/index_handout.html" class="title listing-title">Wrap-Up</a>
-</td>
-</tr>
-<tr data-index="9" data-listing-date-sort="1711922400000" data-listing-file-modified-sort="1706080277111" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Final Exam ☠" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 1, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_10/index_handout.html" class="title listing-title">Final Exam ☠</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
