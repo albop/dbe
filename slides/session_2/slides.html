@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.487">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Year 2022-2023">
   <meta name="dcterms.date" content="2024-01-24">
@@ -519,17 +519,17 @@ Year 2022-2023
 <ul>
 <li>preferably with standard alias <code>pd</code></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li>Import a dataframe
 <ul>
 <li>each line a different entry in a dictionary</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># from a dictionary</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>d <span class="op">=</span> {</span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="st">"country"</span>: [<span class="st">"USA"</span>, <span class="st">"UK"</span>, <span class="st">"France"</span>],</span>
-<span id="cb2-4"><a href="#cb2-4"></a>  <span class="st">"comics"</span>: [<span class="dv">13</span>, <span class="dv">10</span>, <span class="dv">12</span>]   </span>
-<span id="cb2-5"><a href="#cb2-5"></a>}</span>
-<span id="cb2-6"><a href="#cb2-6"></a>pd.DataFrame(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># from a dictionary</span></span>
+<span id="cb2-2"><a></a>d <span class="op">=</span> {</span>
+<span id="cb2-3"><a></a>  <span class="st">"country"</span>: [<span class="st">"USA"</span>, <span class="st">"UK"</span>, <span class="st">"France"</span>],</span>
+<span id="cb2-4"><a></a>  <span class="st">"comics"</span>: [<span class="dv">13</span>, <span class="dv">10</span>, <span class="dv">12</span>]   </span>
+<span id="cb2-5"><a></a>}</span>
+<span id="cb2-6"><a></a>pd.DataFrame(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </div><div class="column">
 <div>
@@ -606,15 +606,15 @@ France
 <ul>
 <li>for instance using a numpy matrix (numpy is a linear algebra library)</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># from a matrix</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-3"><a href="#cb3-3"></a>M <span class="op">=</span> np.array(</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    [[<span class="dv">18</span>, <span class="dv">150</span>],</span>
-<span id="cb3-5"><a href="#cb3-5"></a>     [<span class="dv">21</span>, <span class="dv">200</span>],</span>
-<span id="cb3-6"><a href="#cb3-6"></a>     [<span class="dv">29</span>, <span class="dv">1500</span>]]</span>
-<span id="cb3-7"><a href="#cb3-7"></a>)   </span>
-<span id="cb3-8"><a href="#cb3-8"></a>df <span class="op">=</span> pd.DataFrame( M, columns<span class="op">=</span>[<span class="st">"age"</span>, <span class="st">"travel"</span>] )</span>
-<span id="cb3-9"><a href="#cb3-9"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># from a matrix</span></span>
+<span id="cb3-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a></a>M <span class="op">=</span> np.array(</span>
+<span id="cb3-4"><a></a>    [[<span class="dv">18</span>, <span class="dv">150</span>],</span>
+<span id="cb3-5"><a></a>     [<span class="dv">21</span>, <span class="dv">200</span>],</span>
+<span id="cb3-6"><a></a>     [<span class="dv">29</span>, <span class="dv">1500</span>]]</span>
+<span id="cb3-7"><a></a>)   </span>
+<span id="cb3-8"><a></a>df <span class="op">=</span> pd.DataFrame( M, columns<span class="op">=</span>[<span class="st">"age"</span>, <span class="st">"travel"</span>] )</span>
+<span id="cb3-9"><a></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <div>
 <style scoped="">
@@ -708,20 +708,20 @@ travel
 <ul>
 <li>one can actually a file from python</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>txt <span class="op">=</span> <span class="st">"""year,country,measure</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="st">2018,"france",950.0</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="st">2019,"france",960.0</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="st">2020,"france",1000.0</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="st">2018,"usa",2500.0</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="st">2019,"usa",2150.0</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="st">2020,"usa",2300.0</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="st">"""</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="bu">open</span>(<span class="st">'dummy_file.csv'</span>,<span class="st">'w'</span>).write(txt) <span class="co"># we write it to a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>txt <span class="op">=</span> <span class="st">"""year,country,measure</span></span>
+<span id="cb4-2"><a></a><span class="st">2018,"france",950.0</span></span>
+<span id="cb4-3"><a></a><span class="st">2019,"france",960.0</span></span>
+<span id="cb4-4"><a></a><span class="st">2020,"france",1000.0</span></span>
+<span id="cb4-5"><a></a><span class="st">2018,"usa",2500.0</span></span>
+<span id="cb4-6"><a></a><span class="st">2019,"usa",2150.0</span></span>
+<span id="cb4-7"><a></a><span class="st">2020,"usa",2300.0</span></span>
+<span id="cb4-8"><a></a><span class="st">"""</span></span>
+<span id="cb4-9"><a></a><span class="bu">open</span>(<span class="st">'dummy_file.csv'</span>,<span class="st">'w'</span>).write(txt) <span class="co"># we write it to a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>and import it</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'dummy_file.csv'</span>) <span class="co"># what index should we use ?</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">'dummy_file.csv'</span>) <span class="co"># what index should we use ?</span></span>
+<span id="cb5-2"><a></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -850,19 +850,19 @@ usa
 <ul>
 <li>the kind of separator, whether there are quotes…</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>txt <span class="op">=</span> <span class="st">"""year;country;measure</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="st">2018;"france";950.0</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="st">2019;"france";960.0</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="st">2020;"france";1000.0</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="st">2018;"usa";2500.0</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="st">2019;"usa";2150.0</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="st">2020;"usa";2300.0</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="st">"""</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="bu">open</span>(<span class="st">'annoying_dummy_file.csv'</span>,<span class="st">'w'</span>).write(txt) <span class="co"># we write it to a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>txt <span class="op">=</span> <span class="st">"""year;country;measure</span></span>
+<span id="cb6-2"><a></a><span class="st">2018;"france";950.0</span></span>
+<span id="cb6-3"><a></a><span class="st">2019;"france";960.0</span></span>
+<span id="cb6-4"><a></a><span class="st">2020;"france";1000.0</span></span>
+<span id="cb6-5"><a></a><span class="st">2018;"usa";2500.0</span></span>
+<span id="cb6-6"><a></a><span class="st">2019;"usa";2150.0</span></span>
+<span id="cb6-7"><a></a><span class="st">2020;"usa";2300.0</span></span>
+<span id="cb6-8"><a></a><span class="st">"""</span></span>
+<span id="cb6-9"><a></a><span class="bu">open</span>(<span class="st">'annoying_dummy_file.csv'</span>,<span class="st">'w'</span>).write(txt) <span class="co"># we write it to a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
 <li>add relevant options to <code>pd.read_csv</code> and check result</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>pd.read_csv(<span class="st">"annoying_dummy_file.csv"</span>, sep<span class="op">=</span><span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>pd.read_csv(<span class="st">"annoying_dummy_file.csv"</span>, sep<span class="op">=</span><span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -988,7 +988,7 @@ usa
 <li><p>pandas can export to many formats: <code>df.to_...</code></p></li>
 <li><p>to (standard) CSV</p></li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">print</span>( df.to_csv() )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="bu">print</span>( df.to_csv() )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>,year,country,measure
 0,2018,france,950.0
 1,2019,france,960.0
@@ -999,7 +999,7 @@ usa
 <ul>
 <li>or to stata</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df.to_stata(<span class="st">'dummy_example.dta'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>df.to_stata(<span class="st">'dummy_example.dta'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="data-sources" class="title-slide slide level1 center">
@@ -1050,9 +1050,9 @@ usa
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> vega_datasets</span>
-<span id="cb11-2"><a href="#cb11-2"></a>df <span class="op">=</span> vega_datasets.data(<span class="st">'iris'</span>)</span>
-<span id="cb11-3"><a href="#cb11-3"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> vega_datasets</span>
+<span id="cb11-2"><a></a>df <span class="op">=</span> vega_datasets.data(<span class="st">'iris'</span>)</span>
+<span id="cb11-3"><a></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1328,12 +1328,12 @@ virginica
 <li>data is organized as provider/database/series</li>
 <li>try to find the identifer of one or several series</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> dbnomics</span>
-<span id="cb12-2"><a href="#cb12-2"></a>df <span class="op">=</span> dbnomics.fetch_series(<span class="st">'AMECO/ZUTN/EA19.1.0.0.0.ZUTN'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> dbnomics</span>
+<span id="cb12-2"><a></a>df <span class="op">=</span> dbnomics.fetch_series(<span class="st">'AMECO/ZUTN/EA19.1.0.0.0.ZUTN'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>tip: in case one python package is missing, it can be installed on the fly as in</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">!</span>pip install dbnomics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="op">!</span>pip install dbnomics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="inspect-describe-data" class="title-slide slide level1 center">
@@ -1369,7 +1369,7 @@ virginica
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1450,7 +1450,7 @@ setosa
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1635,13 +1635,13 @@ max
 <ul>
 <li>Columns are defined by property <code>df.columns</code></li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>Index(['sepalLength', 'sepalWidth', 'petalLength', 'petalWidth', 'species'], dtype='object')</code></pre>
 <ul>
 <li>This property can be set with a list of the right length</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.columns <span class="op">=</span> [<span class="st">'sLength'</span>, <span class="st">'sWidth'</span>, <span class="st">'pLength'</span>, <span class="st">'pWidth'</span>, <span class="st">'species'</span>]</span>
-<span id="cb18-2"><a href="#cb18-2"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>df.columns <span class="op">=</span> [<span class="st">'sLength'</span>, <span class="st">'sWidth'</span>, <span class="st">'pLength'</span>, <span class="st">'pWidth'</span>, <span class="st">'species'</span>]</span>
+<span id="cb18-2"><a></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1728,8 +1728,8 @@ setosa
 <ul>
 <li>A column can be extracted using its name as in a dictionary (like <code>df['sLength']</code>)</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>series <span class="op">=</span> df[<span class="st">'sWidth'</span>] <span class="co"># note the resulting object: a series</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>series</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>series <span class="op">=</span> df[<span class="st">'sWidth'</span>] <span class="co"># note the resulting object: a series</span></span>
+<span id="cb19-2"><a></a>series</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>0      3.5
 1      3.0
       ... 
@@ -1763,10 +1763,10 @@ Name: sWidth, Length: 150, dtype: float64</code></pre>
 <ul>
 <li>It is possible to create a new column by combining existing ones</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>df[<span class="st">'totalLength'</span>] <span class="op">=</span> df[<span class="st">'pLength'</span>] <span class="op">+</span> df[<span class="st">'sLength'</span>]</span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="co"># this would also work</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>df[<span class="st">'totalLength'</span>] <span class="op">=</span> <span class="fl">0.5</span><span class="op">*</span>df[<span class="st">'pLength'</span>] <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>df[<span class="st">'sLength'</span>]</span>
-<span id="cb21-4"><a href="#cb21-4"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>df[<span class="st">'totalLength'</span>] <span class="op">=</span> df[<span class="st">'pLength'</span>] <span class="op">+</span> df[<span class="st">'sLength'</span>]</span>
+<span id="cb21-2"><a></a><span class="co"># this would also work</span></span>
+<span id="cb21-3"><a></a>df[<span class="st">'totalLength'</span>] <span class="op">=</span> <span class="fl">0.5</span><span class="op">*</span>df[<span class="st">'pLength'</span>] <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>df[<span class="st">'sLength'</span>]</span>
+<span id="cb21-4"><a></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1862,8 +1862,8 @@ setosa
 <ul>
 <li>An existing column can be replaced with the same syntax.</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df[<span class="st">'totalLength'</span>] <span class="op">=</span> df[<span class="st">'pLength'</span>] <span class="op">+</span> df[<span class="st">'sLength'</span>]<span class="op">*</span><span class="fl">0.5</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>df[<span class="st">'totalLength'</span>] <span class="op">=</span> df[<span class="st">'pLength'</span>] <span class="op">+</span> df[<span class="st">'sLength'</span>]<span class="op">*</span><span class="fl">0.5</span></span>
+<span id="cb22-2"><a></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1959,8 +1959,8 @@ setosa
 <ul>
 <li>Index with a list of column names</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>e <span class="op">=</span> df[ [<span class="st">'pLength'</span>, <span class="st">'sLength'</span>] ]</span>
-<span id="cb23-2"><a href="#cb23-2"></a>e.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>e <span class="op">=</span> df[ [<span class="st">'pLength'</span>, <span class="st">'sLength'</span>] ]</span>
+<span id="cb23-2"><a></a>e.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2033,7 +2033,7 @@ sLength
 <ul>
 <li>☡: in Python the end of a range is <em>not included</em> !</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df[<span class="dv">2</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>df[<span class="dv">2</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <div>
 <style scoped="">
@@ -2130,17 +2130,17 @@ setosa
 <ul>
 <li>let’s look at unique species</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>df[<span class="st">'species'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>df[<span class="st">'species'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>array(['setosa', 'versicolor', 'virginica'], dtype=object)</code></pre>
 <ul>
 <li>we would like to keep only the lines with <code>virginica</code></li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>bool_ind <span class="op">=</span> df[<span class="st">'species'</span>] <span class="op">==</span> <span class="st">'virginica'</span> <span class="co"># this is a boolean serie</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a>bool_ind <span class="op">=</span> df[<span class="st">'species'</span>] <span class="op">==</span> <span class="st">'virginica'</span> <span class="co"># this is a boolean serie</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>the result is a boolean series, where each element tells whether a line should be kept or not</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>e <span class="op">=</span> df[ bool_ind ]</span>
-<span id="cb28-2"><a href="#cb28-2"></a>e.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>e <span class="op">=</span> df[ bool_ind ]</span>
+<span id="cb28-2"><a></a>e.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>if you want you can keep the recipe:</li>
 </ul>
@@ -2292,7 +2292,7 @@ virginica
 <li>use <code>df.loc[...]</code> which can be indexed as a matrix</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>df.loc[<span class="dv">0</span>:<span class="dv">4</span>, <span class="st">'species'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>df.loc[<span class="dv">0</span>:<span class="dv">4</span>, <span class="st">'species'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>0    setosa
 1    setosa
 2    setosa
@@ -2307,8 +2307,8 @@ Name: species, dtype: object</code></pre>
 <ul>
 <li>Let’s change the way totalLength is computed, but only for ‘virginica’</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>index <span class="op">=</span> (df[<span class="st">'species'</span>]<span class="op">==</span><span class="st">'virginica'</span>)</span>
-<span id="cb32-2"><a href="#cb32-2"></a>df.loc[index,<span class="st">'totalLength'</span>] <span class="op">=</span> df.loc[index,<span class="st">'sLength'</span>] <span class="op">+</span> <span class="fl">1.5</span><span class="op">*</span>df[index][<span class="st">'pLength'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>index <span class="op">=</span> (df[<span class="st">'species'</span>]<span class="op">==</span><span class="st">'virginica'</span>)</span>
+<span id="cb32-2"><a></a>df.loc[index,<span class="st">'totalLength'</span>] <span class="op">=</span> df.loc[index,<span class="st">'sLength'</span>] <span class="op">+</span> <span class="fl">1.5</span><span class="op">*</span>df[index][<span class="st">'pLength'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section></section>
 <section>
@@ -2319,32 +2319,32 @@ Name: species, dtype: object</code></pre>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <p>The following code creates two example databases.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>txt_wide <span class="op">=</span> <span class="st">"""year,france,usa</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="st">2018,950.0,2500.0</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a><span class="st">2019,960.0,2150.0</span></span>
-<span id="cb33-4"><a href="#cb33-4"></a><span class="st">2020,1000.0,2300.0</span></span>
-<span id="cb33-5"><a href="#cb33-5"></a><span class="st">"""</span></span>
-<span id="cb33-6"><a href="#cb33-6"></a><span class="bu">open</span>(<span class="st">'dummy_file_wide.csv'</span>,<span class="st">'w'</span>).write(txt_wide) <span class="co"># we write it to a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>txt_wide <span class="op">=</span> <span class="st">"""year,france,usa</span></span>
+<span id="cb33-2"><a></a><span class="st">2018,950.0,2500.0</span></span>
+<span id="cb33-3"><a></a><span class="st">2019,960.0,2150.0</span></span>
+<span id="cb33-4"><a></a><span class="st">2020,1000.0,2300.0</span></span>
+<span id="cb33-5"><a></a><span class="st">"""</span></span>
+<span id="cb33-6"><a></a><span class="bu">open</span>(<span class="st">'dummy_file_wide.csv'</span>,<span class="st">'w'</span>).write(txt_wide) <span class="co"># we write it to a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>71</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>txt_long <span class="op">=</span> <span class="st">"""year,country,measure</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="st">2018,"france",950.0</span></span>
-<span id="cb35-3"><a href="#cb35-3"></a><span class="st">2019,"france",960.0</span></span>
-<span id="cb35-4"><a href="#cb35-4"></a><span class="st">2020,"france",1000.0</span></span>
-<span id="cb35-5"><a href="#cb35-5"></a><span class="st">2018,"usa",2500.0</span></span>
-<span id="cb35-6"><a href="#cb35-6"></a><span class="st">2019,"usa",2150.0</span></span>
-<span id="cb35-7"><a href="#cb35-7"></a><span class="st">2020,"usa",2300.0</span></span>
-<span id="cb35-8"><a href="#cb35-8"></a><span class="st">"""</span></span>
-<span id="cb35-9"><a href="#cb35-9"></a><span class="bu">open</span>(<span class="st">'dummy_file_long.csv'</span>,<span class="st">'w'</span>).write(txt_long) <span class="co"># we write it to a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>txt_long <span class="op">=</span> <span class="st">"""year,country,measure</span></span>
+<span id="cb35-2"><a></a><span class="st">2018,"france",950.0</span></span>
+<span id="cb35-3"><a></a><span class="st">2019,"france",960.0</span></span>
+<span id="cb35-4"><a></a><span class="st">2020,"france",1000.0</span></span>
+<span id="cb35-5"><a></a><span class="st">2018,"usa",2500.0</span></span>
+<span id="cb35-6"><a></a><span class="st">2019,"usa",2150.0</span></span>
+<span id="cb35-7"><a></a><span class="st">2020,"usa",2300.0</span></span>
+<span id="cb35-8"><a></a><span class="st">"""</span></span>
+<span id="cb35-9"><a></a><span class="bu">open</span>(<span class="st">'dummy_file_long.csv'</span>,<span class="st">'w'</span>).write(txt_long) <span class="co"># we write it to a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>136</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>df_long <span class="op">=</span> pd.read_csv(<span class="st">"dummy_file_long.csv"</span>)</span>
-<span id="cb37-2"><a href="#cb37-2"></a>df_wide <span class="op">=</span> pd.read_csv(<span class="st">"dummy_file_wide.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>df_long <span class="op">=</span> pd.read_csv(<span class="st">"dummy_file_long.csv"</span>)</span>
+<span id="cb37-2"><a></a>df_wide <span class="op">=</span> pd.read_csv(<span class="st">"dummy_file_wide.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="wide-vs-long-format-1" class="slide level2">
 <h2>Wide vs Long format (1)</h2>
 <p>Compare the following tables</p>
 <div class="container">
 <div class="col">
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>df_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>df_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2423,7 +2423,7 @@ usa
 </div>
 </div>
 <div class="col">
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>df_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a>df_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2581,7 +2581,7 @@ usa
 </section>
 <section id="converting-from-wide-to-long" class="slide level2">
 <h2>Converting from Wide to Long</h2>
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>df_wide.melt(id_vars<span class="op">=</span><span class="st">'year'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a>df_wide.melt(id_vars<span class="op">=</span><span class="st">'year'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2703,8 +2703,8 @@ usa
 </section>
 <section id="converting-from-long-to-wide" class="slide level2">
 <h2>Converting from Long to Wide</h2>
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>df_ <span class="op">=</span> df_long.pivot(index<span class="op">=</span><span class="st">'year'</span>, columns<span class="op">=</span><span class="st">'country'</span>)</span>
-<span id="cb41-2"><a href="#cb41-2"></a>df_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a>df_ <span class="op">=</span> df_long.pivot(index<span class="op">=</span><span class="st">'year'</span>, columns<span class="op">=</span><span class="st">'country'</span>)</span>
+<span id="cb41-2"><a></a>df_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2790,10 +2790,10 @@ year
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># the result of pivot has a "hierarchical index"</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a><span class="co"># let's change columns names</span></span>
-<span id="cb42-3"><a href="#cb42-3"></a>df_.columns <span class="op">=</span> df_.columns.get_level_values(<span class="dv">1</span>)</span>
-<span id="cb42-4"><a href="#cb42-4"></a>df_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="co"># the result of pivot has a "hierarchical index"</span></span>
+<span id="cb42-2"><a></a><span class="co"># let's change columns names</span></span>
+<span id="cb42-3"><a></a>df_.columns <span class="op">=</span> df_.columns.get_level_values(<span class="dv">1</span>)</span>
+<span id="cb42-4"><a></a>df_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -2876,7 +2876,7 @@ year
 <ul>
 <li>for instance to compute averages per country</li>
 </ul>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>df_long.groupby(<span class="st">"country"</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a>df_long.groupby(<span class="st">"country"</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <div>
 <style scoped="">
@@ -2943,7 +2943,7 @@ usa
 <ul>
 <li>You can perform several aggregations at the same time:</li>
 </ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>df_long.groupby(<span class="st">"country"</span>).agg([<span class="st">'mean'</span>,<span class="st">'std'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a>df_long.groupby(<span class="st">"country"</span>).agg([<span class="st">'mean'</span>,<span class="st">'std'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="merging" class="title-slide slide level1 center">
@@ -2968,30 +2968,30 @@ usa
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>txt_long_1 <span class="op">=</span> <span class="st">"""year,country,measure</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a><span class="st">2018,"france",950.0</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a><span class="st">2019,"france",960.0</span></span>
-<span id="cb45-4"><a href="#cb45-4"></a><span class="st">2020,"france",1000.0</span></span>
-<span id="cb45-5"><a href="#cb45-5"></a><span class="st">2018,"usa",2500.0</span></span>
-<span id="cb45-6"><a href="#cb45-6"></a><span class="st">2019,"usa",2150.0</span></span>
-<span id="cb45-7"><a href="#cb45-7"></a><span class="st">2020,"usa",2300.0</span></span>
-<span id="cb45-8"><a href="#cb45-8"></a><span class="st">"""</span></span>
-<span id="cb45-9"><a href="#cb45-9"></a><span class="bu">open</span>(<span class="st">"dummy_long_1.csv"</span>,<span class="st">'w'</span>).write(txt_long_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>txt_long_2 <span class="op">=</span> <span class="st">"""year,country,recipient</span></span>
-<span id="cb46-2"><a href="#cb46-2"></a><span class="st">2018,"france",maxime</span></span>
-<span id="cb46-3"><a href="#cb46-3"></a><span class="st">2019,"france",mauricette</span></span>
-<span id="cb46-4"><a href="#cb46-4"></a><span class="st">2020,"france",mathilde</span></span>
-<span id="cb46-5"><a href="#cb46-5"></a><span class="st">2018,"usa",sherlock</span></span>
-<span id="cb46-6"><a href="#cb46-6"></a><span class="st">2019,"usa",watson</span></span>
-<span id="cb46-7"><a href="#cb46-7"></a><span class="st">2020,"usa",moriarty</span></span>
-<span id="cb46-8"><a href="#cb46-8"></a><span class="st">"""</span></span>
-<span id="cb46-9"><a href="#cb46-9"></a><span class="bu">open</span>(<span class="st">"dummy_long_2.csv"</span>,<span class="st">'w'</span>).write(txt_long_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>df_long_1 <span class="op">=</span> pd.read_csv(<span class="st">'dummy_long_1.csv'</span>)</span>
-<span id="cb47-2"><a href="#cb47-2"></a>df_long_2 <span class="op">=</span> pd.read_csv(<span class="st">'dummy_long_2.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a>txt_long_1 <span class="op">=</span> <span class="st">"""year,country,measure</span></span>
+<span id="cb45-2"><a></a><span class="st">2018,"france",950.0</span></span>
+<span id="cb45-3"><a></a><span class="st">2019,"france",960.0</span></span>
+<span id="cb45-4"><a></a><span class="st">2020,"france",1000.0</span></span>
+<span id="cb45-5"><a></a><span class="st">2018,"usa",2500.0</span></span>
+<span id="cb45-6"><a></a><span class="st">2019,"usa",2150.0</span></span>
+<span id="cb45-7"><a></a><span class="st">2020,"usa",2300.0</span></span>
+<span id="cb45-8"><a></a><span class="st">"""</span></span>
+<span id="cb45-9"><a></a><span class="bu">open</span>(<span class="st">"dummy_long_1.csv"</span>,<span class="st">'w'</span>).write(txt_long_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a>txt_long_2 <span class="op">=</span> <span class="st">"""year,country,recipient</span></span>
+<span id="cb46-2"><a></a><span class="st">2018,"france",maxime</span></span>
+<span id="cb46-3"><a></a><span class="st">2019,"france",mauricette</span></span>
+<span id="cb46-4"><a></a><span class="st">2020,"france",mathilde</span></span>
+<span id="cb46-5"><a></a><span class="st">2018,"usa",sherlock</span></span>
+<span id="cb46-6"><a></a><span class="st">2019,"usa",watson</span></span>
+<span id="cb46-7"><a></a><span class="st">2020,"usa",moriarty</span></span>
+<span id="cb46-8"><a></a><span class="st">"""</span></span>
+<span id="cb46-9"><a></a><span class="bu">open</span>(<span class="st">"dummy_long_2.csv"</span>,<span class="st">'w'</span>).write(txt_long_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a>df_long_1 <span class="op">=</span> pd.read_csv(<span class="st">'dummy_long_1.csv'</span>)</span>
+<span id="cb47-2"><a></a>df_long_2 <span class="op">=</span> pd.read_csv(<span class="st">'dummy_long_2.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="merging-two-dataframes-with-pandas" class="slide level2">
 <h2>Merging two DataFrames with pandas</h2>
-<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>df_long_1.merge(df_long_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a>df_long_1.merge(df_long_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -3132,8 +3132,10 @@ moriarty
 </table>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.487">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,6 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -146,6 +147,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Linear Regression</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_4/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple Regression</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -158,7 +165,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link active" data-scroll-target="#tabular-data">Tabular Data</a>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link active" data-scroll-target="#data-frames">Data Frames</a>
+  <ul class="collapse">
+  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data">Tabular Data</a>
   <ul class="collapse">
   <li><a href="#dataframe" id="toc-dataframe" class="nav-link" data-scroll-target="#dataframe">DataFrame</a></li>
   <li><a href="#dataframes-are-everywhere" id="toc-dataframes-are-everywhere" class="nav-link" data-scroll-target="#dataframes-are-everywhere">DataFrames are everywhere</a></li>
@@ -209,6 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#merging-two-dataframes" id="toc-merging-two-dataframes" class="nav-link" data-scroll-target="#merging-two-dataframes">Merging two dataframes</a></li>
   <li><a href="#merging-two-dataframes-with-pandas" id="toc-merging-two-dataframes-with-pandas" class="nav-link" data-scroll-target="#merging-two-dataframes-with-pandas">Merging two DataFrames with pandas</a></li>
   </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -234,6 +244,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="data-frames" class="level1">
+<h1>Data Frames</h1>
 <section id="tabular-data" class="level2">
 <h2 class="anchored" data-anchor-id="tabular-data">Tabular Data</h2>
 <section id="dataframe" class="level3">
@@ -265,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="pandas" class="level2">
 <h2 class="anchored" data-anchor-id="pandas">Pandas</h2>
-<div id="cell-7" class="cell" data-execution_count="1">
+<div id="cell-6" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="pandas-1" class="level3">
@@ -283,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="creating-a-dataframe-1" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-dataframe-1">creating a dataframe (1)</h3>
-<div id="cell-10" class="cell" data-execution_count="6">
+<div id="cell-9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from a dictionary</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"country"</span>: [<span class="st">"USA"</span>, <span class="st">"UK"</span>, <span class="st">"France"</span>],</span>
@@ -327,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="creating-a-dataframe-2" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-dataframe-2">creating a dataframe (2)</h3>
-<div id="cell-12" class="cell" data-execution_count="11">
+<div id="cell-11" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from a matrix</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.array([</span>
@@ -390,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="comma-separated-file" class="level3">
 <h3 class="anchored" data-anchor-id="comma-separated-file">Comma separated file</h3>
-<div id="cell-16" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-execution_count="12">
+<div id="cell-15" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> <span class="st">"""year,country,measure</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">2018,"france",950.0</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">2019,"france",960.0</span></span>
@@ -404,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>136</code></pre>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="14">
+<div id="cell-16" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'dummy_file.csv'</span>) <span class="co"># what index should we use ?</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -473,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>add options to <code>pd.read_csv</code></li>
 </ul></li>
 </ul>
-<div id="cell-19" class="cell" data-execution_count="16">
+<div id="cell-18" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> <span class="st">"""year;country;measure</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">2018;"france";950.0</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">2019;"france";960.0</span></span>
@@ -487,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>136</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="19">
+<div id="cell-19" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">"annoying_dummy_file.csv"</span>, sep<span class="op">=</span><span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div>
@@ -551,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>pandas can export to many formats: <code>df.to_...</code></li>
 </ul>
-<div id="cell-22" class="cell" data-execution_count="20">
+<div id="cell-21" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( df.to_csv() )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>,year,country,measure
@@ -564,7 +576,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </code></pre>
 </div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="23">
+<div id="cell-22" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.to_stata(<span class="st">'dummy_example.dta'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -609,7 +621,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>!pip install ...</code></li>
 </ul></li>
 </ul>
-<div id="cell-28" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="2">
+<div id="cell-27" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install vega_datasets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Requirement already satisfied: vega_datasets in /home/pablo/.local/opt/miniconda3/lib/python3.8/site-packages (0.9.0)
@@ -620,7 +632,7 @@ Requirement already satisfied: numpy&gt;=1.16.5 in /home/pablo/.local/opt/minico
 Requirement already satisfied: six&gt;=1.5 in /home/pablo/.local/opt/miniconda3/lib/python3.8/site-packages (from python-dateutil&gt;=2.7.3-&gt;pandas-&gt;vega_datasets) (1.15.0)</code></pre>
 </div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="1">
+<div id="cell-28" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> vega_datasets</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> vega_datasets.data(<span class="st">'iris'</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -747,7 +759,7 @@ Requirement already satisfied: six&gt;=1.5 in /home/pablo/.local/opt/miniconda3/
 <li><code>df.std()</code> # standard deviations</li>
 </ul></li>
 </ul>
-<div id="cell-31" class="cell" data-execution_count="2">
+<div id="cell-30" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -787,7 +799,7 @@ Requirement already satisfied: six&gt;=1.5 in /home/pablo/.local/opt/miniconda3/
 </div>
 </div>
 </div>
-<div id="cell-32" class="cell" data-execution_count="3">
+<div id="cell-31" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -866,7 +878,7 @@ Requirement already satisfied: six&gt;=1.5 in /home/pablo/.local/opt/miniconda3/
 </div>
 </div>
 </div>
-<div id="cell-33" class="cell" data-execution_count="4">
+<div id="cell-32" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -945,7 +957,7 @@ Requirement already satisfied: six&gt;=1.5 in /home/pablo/.local/opt/miniconda3/
 </div>
 </div>
 </div>
-<div id="cell-34" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="5">
+<div id="cell-33" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
@@ -1031,14 +1043,14 @@ Requirement already satisfied: six&gt;=1.5 in /home/pablo/.local/opt/miniconda3/
 <section id="columns" class="level3">
 <h3 class="anchored" data-anchor-id="columns">Columns</h3>
 <p>Columns are defined by attribute <code>df.columns</code></p>
-<div id="cell-37" class="cell" data-execution_count="6">
+<div id="cell-36" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Index(['sepalLength', 'sepalWidth', 'petalLength', 'petalWidth', 'species'], dtype='object')</code></pre>
 </div>
 </div>
 <p>This attribute can be set</p>
-<div id="cell-39" class="cell" data-execution_count="7">
+<div id="cell-38" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [<span class="st">'sLength'</span>, <span class="st">'sWidth'</span>, <span class="st">'pLength'</span>, <span class="st">'pWidth'</span>, <span class="st">'species'</span>]</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -1083,7 +1095,7 @@ Requirement already satisfied: six&gt;=1.5 in /home/pablo/.local/opt/miniconda3/
 <section id="indexing-a-column" class="level3">
 <h3 class="anchored" data-anchor-id="indexing-a-column">Indexing a column</h3>
 <p>A column can be extracted using its name as in a dictionary (like <code>df['sLength']</code>)</p>
-<div id="cell-41" class="cell" data-execution_count="8">
+<div id="cell-40" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>series <span class="op">=</span> df[<span class="st">'sWidth'</span>] <span class="co"># note the resulting object: a series</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>series</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -1101,16 +1113,20 @@ Requirement already satisfied: six&gt;=1.5 in /home/pablo/.local/opt/miniconda3/
 Name: sWidth, Length: 150, dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-42" class="cell" data-execution_count="9">
+<div id="cell-41" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>series.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="DataFrames_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="DataFrames_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="creating-a-new-column" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-new-column">Creating a new column</h3>
-<div id="cell-44" class="cell" data-execution_count="10">
+<div id="cell-43" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'totalLength'</span>] <span class="op">=</span> df[<span class="st">'pLength'</span>] <span class="op">+</span> df[<span class="st">'sLength'</span>]</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -1157,7 +1173,7 @@ Name: sWidth, Length: 150, dtype: float64</code></pre>
 </section>
 <section id="replacing-a-column" class="level3">
 <h3 class="anchored" data-anchor-id="replacing-a-column">Replacing a column</h3>
-<div id="cell-46" class="cell" data-execution_count="11">
+<div id="cell-45" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'totalLength'</span>] <span class="op">=</span> df[<span class="st">'pLength'</span>] <span class="op">+</span> df[<span class="st">'sLength'</span>]<span class="op">*</span><span class="fl">0.5</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -1207,7 +1223,7 @@ Name: sWidth, Length: 150, dtype: float64</code></pre>
 <ul>
 <li>Index with a list of column names</li>
 </ul>
-<div id="cell-48" class="cell" data-execution_count="12">
+<div id="cell-47" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> df[ [<span class="st">'pLength'</span>, <span class="st">'sLength'</span>] ]</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>e.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -1250,7 +1266,7 @@ Name: sWidth, Length: 150, dtype: float64</code></pre>
 <ul>
 <li>use index range</li>
 </ul>
-<div id="cell-50" class="cell" data-execution_count="13">
+<div id="cell-49" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">2</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
@@ -1299,16 +1315,16 @@ Name: sWidth, Length: 150, dtype: float64</code></pre>
 <ul>
 <li>use boolean</li>
 </ul>
-<div id="cell-52" class="cell" data-execution_count="14">
+<div id="cell-51" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'species'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>array(['setosa', 'versicolor', 'virginica'], dtype=object)</code></pre>
 </div>
 </div>
-<div id="cell-53" class="cell" data-execution_count="15">
+<div id="cell-52" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>bool_ind <span class="op">=</span> df[<span class="st">'species'</span>] <span class="op">==</span> <span class="st">'virginica'</span> <span class="co"># this is a boolean serie</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-54" class="cell" data-execution_count="16">
+<div id="cell-53" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> df[ bool_ind ]</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>e.head(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
@@ -1379,7 +1395,7 @@ Name: sWidth, Length: 150, dtype: float64</code></pre>
 <li>use <code>df.loc[...]</code> which can be indexed as a matrix</li>
 </ul></li>
 </ul>
-<div id="cell-56" class="cell" data-execution_count="17">
+<div id="cell-55" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">0</span>:<span class="dv">4</span>, <span class="st">'species'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>0    setosa
@@ -1393,7 +1409,7 @@ Name: species, dtype: object</code></pre>
 </section>
 <section id="combine-everything" class="level3">
 <h3 class="anchored" data-anchor-id="combine-everything">Combine everything</h3>
-<div id="cell-58" class="cell" data-execution_count="18">
+<div id="cell-57" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's change the way totalLength is computed, only for 'virginica'</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> (df[<span class="st">'species'</span>]<span class="op">==</span><span class="st">'virginica'</span>)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>df.loc[index,<span class="st">'totalLength'</span>] <span class="op">=</span> df.loc[index,<span class="st">'sLength'</span>] <span class="op">+</span> <span class="fl">1.5</span><span class="op">*</span>df[index][<span class="st">'pLength'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1402,7 +1418,7 @@ Name: species, dtype: object</code></pre>
 </section>
 <section id="reshaping-dataframes" class="level2">
 <h2 class="anchored" data-anchor-id="reshaping-dataframes">Reshaping DataFrames</h2>
-<div id="cell-60" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="1">
+<div id="cell-59" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>txt_wide <span class="op">=</span> <span class="st">"""year,france,usa</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="st">2018,950.0,2500.0</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="st">2019,960.0,2150.0</span></span>
@@ -1413,7 +1429,7 @@ Name: species, dtype: object</code></pre>
 <pre><code>71</code></pre>
 </div>
 </div>
-<div id="cell-61" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;-&quot;}" data-execution_count="2">
+<div id="cell-60" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;-&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>txt_long <span class="op">=</span> <span class="st">"""year,country,measure</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="st">2018,"france",950.0</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="st">2019,"france",960.0</span></span>
@@ -1427,7 +1443,7 @@ Name: species, dtype: object</code></pre>
 <pre><code>136</code></pre>
 </div>
 </div>
-<div id="cell-62" class="cell" data-execution_count="5">
+<div id="cell-61" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_csv(<span class="st">"dummy_file_long.csv"</span>)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>df_wide <span class="op">=</span> pd.read_csv(<span class="st">"dummy_file_wide.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1436,7 +1452,7 @@ Name: species, dtype: object</code></pre>
 <ul>
 <li>compare the following tables</li>
 </ul>
-<div id="cell-64" class="cell" data-execution_count="6">
+<div id="cell-63" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
@@ -1476,7 +1492,7 @@ Name: species, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-65" class="cell" data-execution_count="7">
+<div id="cell-64" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
@@ -1551,7 +1567,7 @@ Name: species, dtype: object</code></pre>
 </section>
 <section id="converting-from-wide-to-long" class="level3">
 <h3 class="anchored" data-anchor-id="converting-from-wide-to-long">Converting from Wide to Long</h3>
-<div id="cell-68" class="cell" data-execution_count="8">
+<div id="cell-67" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_wide.melt(id_vars<span class="op">=</span><span class="st">'year'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
@@ -1612,7 +1628,7 @@ Name: species, dtype: object</code></pre>
 </section>
 <section id="converting-from-long-to-wide" class="level3">
 <h3 class="anchored" data-anchor-id="converting-from-long-to-wide">Converting from Long to Wide</h3>
-<div id="cell-70" class="cell" data-execution_count="9">
+<div id="cell-69" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df_ <span class="op">=</span> df_long.pivot(index<span class="op">=</span><span class="st">'year'</span>, columns<span class="op">=</span><span class="st">'country'</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>df_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -1658,7 +1674,7 @@ Name: species, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-71" class="cell" data-execution_count="10">
+<div id="cell-70" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the result of pivot has a "hierarchical index"</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># let's change columns names</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>df_.columns <span class="op">=</span> df_.columns.get_level_values(<span class="dv">1</span>)</span>
@@ -1706,7 +1722,7 @@ Name: species, dtype: object</code></pre>
 <section id="groupby" class="level3">
 <h3 class="anchored" data-anchor-id="groupby">groupby</h3>
 <p><code>groupby</code> is a very powerful function which can be used to work directly on data in the long format.</p>
-<div id="cell-73" class="cell" data-execution_count="19">
+<div id="cell-72" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_long.groupby(<span class="st">"country"</span>).agg(<span class="st">'mean'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'df_long' is not defined</code></pre>
@@ -1731,7 +1747,7 @@ Name: species, dtype: object</code></pre>
 <li>we’ll see them in due time</li>
 </ul></li>
 </ul>
-<div id="cell-76" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="12">
+<div id="cell-75" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;subslide&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>txt_long_1 <span class="op">=</span> <span class="st">"""year,country,measure</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="st">2018,"france",950.0</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="st">2019,"france",960.0</span></span>
@@ -1745,7 +1761,7 @@ Name: species, dtype: object</code></pre>
 <pre><code>136</code></pre>
 </div>
 </div>
-<div id="cell-77" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;-&quot;}" data-execution_count="13">
+<div id="cell-76" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;-&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>txt_long_2 <span class="op">=</span> <span class="st">"""year,country,recipient</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="st">2018,"france",maxime</span></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="st">2019,"france",mauricette</span></span>
@@ -1759,14 +1775,14 @@ Name: species, dtype: object</code></pre>
 <pre><code>150</code></pre>
 </div>
 </div>
-<div id="cell-78" class="cell" data-execution_count="16">
+<div id="cell-77" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>df_long_1 <span class="op">=</span> pd.read_csv(<span class="st">'dummy_long_1.csv'</span>)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>df_long_2 <span class="op">=</span> pd.read_csv(<span class="st">'dummy_long_2.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="merging-two-dataframes-with-pandas" class="level3">
 <h3 class="anchored" data-anchor-id="merging-two-dataframes-with-pandas">Merging two DataFrames with pandas</h3>
-<div id="cell-80" class="cell" data-execution_count="20">
+<div id="cell-79" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>df_long_1.merge(df_long_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'df_long_1' is not defined</code></pre>
@@ -1774,6 +1790,7 @@ Name: species, dtype: object</code></pre>
 </div>
 
 
+</section>
 </section>
 </section>
 
@@ -1906,38 +1923,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -1946,8 +1953,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.487">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data-Based Economics - Graph Replication Exercise</title>
+<title>Data-Based Economics - Sklearn: sparse regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,6 +44,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -109,6 +110,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Linear Regression</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_4/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple Regression</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -121,7 +128,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import-data" id="toc-import-data" class="nav-link active" data-scroll-target="#import-data">Import Data</a></li>
+  <li><a href="#sklearn-sparse-regression" id="toc-sklearn-sparse-regression" class="nav-link active" data-scroll-target="#sklearn-sparse-regression">Sklearn: sparse regression</a>
+  <ul class="collapse">
+  <li><a href="#predicting-breast-cancer" id="toc-predicting-breast-cancer" class="nav-link" data-scroll-target="#predicting-breast-cancer">Predicting Breast Cancer</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -130,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Graph Replication Exercise</h1>
+<h1 class="title">Sklearn: sparse regression</h1>
 </div>
 
 
@@ -147,18 +157,18 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://ourworldindata.org/">Our World in Data</a> features tons of very interesting graphs like the following:</p>
-<p><img src="shares.png" width="500" height="340"></p>
-<p>For each graph it is possible to download the corresponding data file as csv:</p>
-<p><img src="download.png" width="500" height="340"></p>
-<section id="import-data" class="level2">
-<h2 class="anchored" data-anchor-id="import-data">Import Data</h2>
-<p><strong>Choose one graph that you find particularly interesting or beautiful. Download it from the website and upload it on nuvolos in the current folder</strong></p>
-<p><img src="upload.png" width="500" height="340"></p>
-<p><strong>Import the csv file using function <code>pandas.read_csv</code> and print some rows of the database</strong></p>
-<p><strong>Try to replicate the graph using matplotlib or altair (it doesn’t have to be identical, but the main message must be conveyed).</strong></p>
+<section id="sklearn-sparse-regression" class="level1">
+<h1>Sklearn: sparse regression</h1>
+<section id="predicting-breast-cancer" class="level2">
+<h2 class="anchored" data-anchor-id="predicting-breast-cancer">Predicting Breast Cancer</h2>
+<p>Sklearn includes the Winsconsin breast cancer database. It associates medical outcomes for tumor observation, with several characteristics. Can a machine learn how to predict whether a cancer is benign or malignant ?</p>
+<p><strong>Import the Breast Cancer Dataset from sklearn. Describe it.</strong></p>
+<p><strong>Properly train a linear logistic regression to predict cancer morbidity.</strong></p>
+<p><strong>Use k-fold validation to validate the model</strong></p>
+<p><strong>Try with other classifiers. Which one is best?</strong></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -290,38 +300,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -330,8 +330,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

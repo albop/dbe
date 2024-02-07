@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.487">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Year 2022-2023">
   <title>Data-Based Economics - Introduction to Instrumental Variables</title>
@@ -649,13 +649,13 @@ Then we convert to dummy variables exactly like hierarchical indices
 <ul>
 <li>Replace</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>salary <span class="op">~</span> activity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>salary <span class="op">~</span> activity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>by:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>salary <span class="op">~</span> C(activity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>salary <span class="op">~</span> C(activity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>There is an options to choose the reference group</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>salary <span class="op">~</span> C(activity, Treatment(reference<span class="op">=</span><span class="st">"archeologist"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>salary <span class="op">~</span> C(activity, Treatment(reference<span class="op">=</span><span class="st">"archeologist"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="causality" class="title-slide slide level1 center">
@@ -1208,15 +1208,17 @@ We say that we <strong>instrument</strong> <span class="math inline">\(x\)</span
 </ul></li>
 <li>Example from the doc</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>formula <span class="op">=</span> (</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="st">"np.log(drugexp) ~ 1 + totchr + age + linc + blhisp + [hi_empunion ~ ssiratio]"</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>ols <span class="op">=</span> IV2SLS.from_formula(formula, data)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>ols_res <span class="op">=</span> ols.fit(cov_type<span class="op">=</span><span class="st">"robust"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="bu">print</span>(ols_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>formula <span class="op">=</span> (</span>
+<span id="cb4-2"><a></a>    <span class="st">"np.log(drugexp) ~ 1 + totchr + age + linc + blhisp + [hi_empunion ~ ssiratio]"</span></span>
+<span id="cb4-3"><a></a>)</span>
+<span id="cb4-4"><a></a>ols <span class="op">=</span> IV2SLS.from_formula(formula, data)</span>
+<span id="cb4-5"><a></a>ols_res <span class="op">=</span> ols.fit(cov_type<span class="op">=</span><span class="st">"robust"</span>)</span>
+<span id="cb4-6"><a></a><span class="bu">print</span>(ols_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -8,10 +8,10 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.487">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Pablo Winant">
-  <meta name="dcterms.date" content="2024-01-30">
+  <meta name="dcterms.date" content="2024-01-31">
   <title>Data-Based Economics - Linear Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -386,6 +386,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -403,7 +406,17 @@ Pablo Winant
 </div>
 </div>
 
-  <p class="date">2024-01-30</p>
+  <p class="date">2024-01-31</p>
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a href="#/descriptive-statistics" id="/toc-descriptive-statistics">Descriptive Statistics</a></li>
+<li><a href="#/fitting-the-data" id="/toc-fitting-the-data">Fitting the data</a></li>
+<li><a href="#/explained-variance" id="/toc-explained-variance">Explained Variance</a></li>
+<li><a href="#/statistical-inference" id="/toc-statistical-inference">Statistical inference</a></li>
+</ul>
+</nav>
 </section>
 <section>
 <section id="descriptive-statistics" class="title-slide slide level1 center">
@@ -412,69 +425,91 @@ Pablo Winant
 </section>
 <section id="a-simple-dataset" class="slide level2">
 <h2>A Simple Dataset</h2>
+<p>Duncan’s Occupational Prestige Data - Many <em>occupations</em> in 1950. - Education and prestige associated to each occupation</p>
 <ul>
-<li><p>Duncan’s Occupational Prestige Data</p></li>
-<li><p>Many <em>occupations</em> in 1950.</p></li>
-<li><p><span class="math inline">\(x\)</span>: education</p>
+<li><span class="math inline">\(x\)</span>: education
 <ul>
 <li>Percentage of occupational incumbents in 1950 who were high school graduates</li>
 </ul></li>
-<li><p><span class="math inline">\(y\)</span>: income</p>
+<li><span class="math inline">\(y\)</span>: income
 <ul>
 <li>Percentage of occupational incumbents in the 1950 US Census who earned $3,500 or more per year</li>
 </ul></li>
-<li><p><span class="math inline">\(z\)</span>: Percentage of respondents in a social survey who rated the occupation as “good” or better in prestige</p></li>
+<li><span class="math inline">\(z\)</span>: Percentage of respondents in a social survey who rated the occupation as “good” or better in prestige</li>
 </ul>
 </section>
 <section id="quick-look" class="slide level2">
 <h2>Quick look</h2>
-<div class="columns">
-<div class="column">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb1-2"><a href="#cb1-2"></a>dataset <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"Duncan"</span>, <span class="st">"carData"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>df <span class="op">=</span> dataset.data</span>
-<span id="cb1-4"><a href="#cb1-4"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<table>
+<p>Import the data from statsmodels’ dataset:</p>
+<div id="e79d6814" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb1-2"><a></a>dataset <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"Duncan"</span>, <span class="st">"carData"</span>)</span>
+<span id="cb1-3"><a></a>df <span class="op">=</span> dataset.data</span>
+<span id="cb1-4"><a></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
 <thead>
-<tr class="header">
-<th></th>
-<th>type</th>
-<th>income</th>
-<th>education</th>
-<th>prestige</th>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">education</th>
+<th data-quarto-table-cell-role="th">prestige</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">rownames</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>accountant</td>
+<td data-quarto-table-cell-role="th">accountant</td>
 <td>prof</td>
 <td>62</td>
 <td>86</td>
 <td>82</td>
 </tr>
 <tr class="even">
-<td>pilot</td>
+<td data-quarto-table-cell-role="th">pilot</td>
 <td>prof</td>
 <td>72</td>
 <td>76</td>
 <td>83</td>
 </tr>
 <tr class="odd">
-<td>architect</td>
+<td data-quarto-table-cell-role="th">architect</td>
 <td>prof</td>
 <td>75</td>
 <td>92</td>
 <td>90</td>
 </tr>
 <tr class="even">
-<td>author</td>
+<td data-quarto-table-cell-role="th">author</td>
 <td>prof</td>
 <td>55</td>
 <td>90</td>
 <td>76</td>
 </tr>
 <tr class="odd">
-<td>chemist</td>
+<td data-quarto-table-cell-role="th">chemist</td>
 <td>prof</td>
 <td>64</td>
 <td>86</td>
@@ -482,13 +517,8 @@ Pablo Winant
 </tr>
 </tbody>
 </table>
-</div><div class="column">
-<pre><code>plt.plot(df['education'],df['income'],'o')
-plt.grid()
-plt.xlabel("Education")
-plt.ylabel("Income")
-plt.savefig("data_description.png")</code></pre>
-<p><img data-src="graphs/data_description.png"></p>
+
+</div>
 </div>
 </div>
 </section>
@@ -496,82 +526,103 @@ plt.savefig("data_description.png")</code></pre>
 <h2>Descriptive Statistics</h2>
 <div class="columns">
 <div class="column">
-<ul>
-<li>For any variable <span class="math inline">\(v\)</span> with <span class="math inline">\(N\)</span> observations:
+<p>For any variable <span class="math inline">\(v\)</span> with <span class="math inline">\(N\)</span> observations:</p>
 <ul>
 <li>mean: <span class="math inline">\(\overline{v} = \frac{1}{N} \sum_{i=1}^N v_i\)</span></li>
 <li>variance <span class="math inline">\(V({v}) = \frac{1}{N} \sum_{i=1}^N \left(v_i - \overline{v} \right)^2\)</span></li>
 <li>standard deviation : <span class="math inline">\(\sigma(v)=\sqrt{V(v)}\)</span></li>
-</ul></li>
 </ul>
 </div><div class="column">
-<pre><code>df.describe()</code></pre>
-<table>
+<div class="fragment">
+<div id="d072e2b7" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
 <thead>
-<tr class="header">
-<th></th>
-<th>income</th>
-<th>education</th>
-<th>prestige</th>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">education</th>
+<th data-quarto-table-cell-role="th">prestige</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>count</td>
+<td data-quarto-table-cell-role="th">count</td>
 <td>45.000000</td>
 <td>45.000000</td>
 <td>45.000000</td>
 </tr>
 <tr class="even">
-<td>mean</td>
+<td data-quarto-table-cell-role="th">mean</td>
 <td>41.866667</td>
 <td>52.555556</td>
 <td>47.688889</td>
 </tr>
 <tr class="odd">
-<td>std</td>
+<td data-quarto-table-cell-role="th">std</td>
 <td>24.435072</td>
 <td>29.760831</td>
 <td>31.510332</td>
 </tr>
 <tr class="even">
-<td>min</td>
+<td data-quarto-table-cell-role="th">min</td>
 <td>7.000000</td>
 <td>7.000000</td>
 <td>3.000000</td>
 </tr>
 <tr class="odd">
-<td>25 %</td>
+<td data-quarto-table-cell-role="th">25%</td>
 <td>21.000000</td>
 <td>26.000000</td>
 <td>16.000000</td>
 </tr>
 <tr class="even">
-<td>50 %</td>
+<td data-quarto-table-cell-role="th">50%</td>
 <td>42.000000</td>
 <td>45.000000</td>
 <td>41.000000</td>
 </tr>
 <tr class="odd">
-<td>75 %</td>
+<td data-quarto-table-cell-role="th">75%</td>
 <td>64.000000</td>
 <td>84.000000</td>
 <td>81.000000</td>
 </tr>
 <tr class="even">
-<td>max</td>
+<td data-quarto-table-cell-role="th">max</td>
 <td>81.000000</td>
 <td>100.000000</td>
 <td>97.000000</td>
 </tr>
 </tbody>
 </table>
+
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-<h3 id="relation-between-variables">Relation between variables</h3>
+<section id="relation-between-variables" class="slide level2">
+<h2>Relation between variables</h2>
+<div class="fragment">
 <ul>
 <li>How do we measure relations between two variables (with <span class="math inline">\(N\)</span> observations)
 <ul>
@@ -585,85 +636,195 @@ plt.savefig("data_description.png")</code></pre>
 </ul></li>
 <li>Interpretation:
 <ul>
-<li><!-- .element class="fragment" -->
-no interpretation!</li>
+<li>no interpretation!</li>
 <li>correlation is not causality</li>
 <li>also: data can be correlated by pure chance (spurious <a href="https://www.tylervigen.com/spurious-correlations">correlation</a>)</li>
 </ul></li>
 </ul>
+</div>
 </section>
-<section class="slide level2">
-
-<h3 id="examples">Examples</h3>
+<section id="examples" class="slide level2">
+<h2>Examples</h2>
 <div class="columns">
 <div class="column">
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df.cov()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<table>
+<div id="01d73b3f" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>df[[<span class="st">'income'</span>,<span class="st">'education'</span>,<span class="st">'prestige'</span>]].cov()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
 <thead>
-<tr class="header">
-<th></th>
-<th>income</th>
-<th>education</th>
-<th>prestige</th>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">education</th>
+<th data-quarto-table-cell-role="th">prestige</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>income</td>
+<td data-quarto-table-cell-role="th">income</td>
 <td>597.072727</td>
 <td>526.871212</td>
 <td>645.071212</td>
 </tr>
 <tr class="even">
-<td>education</td>
+<td data-quarto-table-cell-role="th">education</td>
 <td>526.871212</td>
 <td>885.707071</td>
 <td>798.904040</td>
 </tr>
 <tr class="odd">
-<td>prestige</td>
+<td data-quarto-table-cell-role="th">prestige</td>
 <td>645.071212</td>
 <td>798.904040</td>
 <td>992.901010</td>
 </tr>
 </tbody>
 </table>
+
+</div>
+</div>
+</div>
 </div><div class="column">
 <div class="fragment">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<table>
+<div id="cf80d8e7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>df[[<span class="st">'income'</span>,<span class="st">'education'</span>,<span class="st">'prestige'</span>]].corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
 <thead>
-<tr class="header">
-<th></th>
-<th>income</th>
-<th>education</th>
-<th>prestige</th>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">education</th>
+<th data-quarto-table-cell-role="th">prestige</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>income</td>
+<td data-quarto-table-cell-role="th">income</td>
 <td>1.000000</td>
 <td>0.724512</td>
 <td>0.837801</td>
 </tr>
 <tr class="even">
-<td>education</td>
+<td data-quarto-table-cell-role="th">education</td>
 <td>0.724512</td>
 <td>1.000000</td>
 <td>0.851916</td>
 </tr>
 <tr class="odd">
-<td>prestige</td>
+<td data-quarto-table-cell-role="th">prestige</td>
 <td>0.837801</td>
 <td>0.851916</td>
 <td>1.000000</td>
 </tr>
 </tbody>
 </table>
+
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Can we visualize correlations?</p>
+</div>
+</section>
+<section id="quick" class="slide level2">
+<h2>Quick</h2>
+<div class="columns">
+<div class="column">
+<div id="5e7650c8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a></a>plt.plot(df[<span class="st">'education'</span>],df[<span class="st">'income'</span>],<span class="st">'o'</span>)</span>
+<span id="cb5-3"><a></a>plt.grid()</span>
+<span id="cb5-4"><a></a>plt.xlabel(<span class="st">"Education"</span>)</span>
+<span id="cb5-5"><a></a>plt.ylabel(<span class="st">"Income"</span>)</span>
+<span id="cb5-6"><a></a>plt.savefig(<span class="st">"data_description.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/cell-6-output-1.png" width="808" height="429"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div id="11778581" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb6-2"><a></a>plt.plot(df[<span class="st">'education'</span>],df[<span class="st">'prestige'</span>],<span class="st">'o'</span>)</span>
+<span id="cb6-3"><a></a>plt.grid()</span>
+<span id="cb6-4"><a></a>plt.xlabel(<span class="st">"Education"</span>)</span>
+<span id="cb6-5"><a></a>plt.ylabel(<span class="st">"Prestige"</span>)</span>
+<span id="cb6-6"><a></a>plt.savefig(<span class="st">"data_description.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/cell-7-output-1.png" width="816" height="429"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="quick-look-1" class="slide level2">
+<h2>Quick look</h2>
+<p>Using <a href="https://matplotlib.org/">matplotlib</a> (3d)</p>
+<div id="72a0c4e8" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/cell-8-output-1.png" width="758" height="758"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="quick-look-2" class="slide level2">
+<h2>Quick look</h2>
+<div id="f1d2e85e" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb7-2"><a></a>sns.pairplot(df[[<span class="st">'education'</span>, <span class="st">'prestige'</span>, <span class="st">'income'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/cell-9-output-1.png" width="710" height="709"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The pairplot made with <a href="https://seaborn.pydata.org/index.html">seaborn</a> gives a simple sense of correlations as well as information about the distribution of each variable.</p>
 </section></section>
 <section>
 <section id="fitting-the-data" class="title-slide slide level1 center">
@@ -673,17 +834,16 @@ no interpretation!</li>
 <section id="a-linear-model" class="slide level2">
 <h2>A Linear Model</h2>
 <div class="columns">
-<div class="column">
-<ul>
-<li>Consider the line: <span class="math display">\[y = α + β x\]</span></li>
-<li><!-- .element class="fragment" data-fragment-index="2" -->
-Several possibilities.</li>
-<li><!-- .element class="fragment" data-fragment-index="3" -->
-Which one do we choose to represent the model?</li>
-<li><!-- .element class="fragment" data-fragment-index="4" -->
-Need some criterium.</li>
-</ul>
-</div><div class="column">
+<div class="column" style="width:30%;">
+<p>Now we want to build a model to represent the data:</p>
+<p>Consider the line: <span class="math display">\[y = α + β x\]</span></p>
+<div class="fragment" data-fragment-index="2,3,4,5">
+<p>Several possibilities. Which one do we choose to represent the model?</p>
+</div>
+<div class="fragment" data-fragment-index="5">
+<p>We need some criterium.</p>
+</div>
+</div><div class="column" style="width:70%;">
 <div class="r-stack">
 <p><img data-src="graphs/which_line_1.png" class="fragment current-visible" data-fragment-index="2"></p>
 <p><img data-src="graphs/which_line_2.png" class="fragment current-visible" data-fragment-index="3"></p>
@@ -695,33 +855,17 @@ Need some criterium.</li>
 <section id="least-square-criterium" class="slide level2">
 <h2>Least Square Criterium</h2>
 <div class="columns">
-<div class="column">
+<div class="column" style="width:30%;">
 <ul>
-<li><!-- .element class="fragment" data-fragment-index="1" -->
-Compare the model to the data: <span class="math display">\[y_i = \alpha + \beta x_i + \underbrace{e_i}_{\text{prediction error}}\]</span> -<!-- .element class="fragment" data-fragment-index="2" --> Square Errors <span class="math display">\[{e_i}^2 = (y_i-\alpha-\beta x_i)^2\]</span></li>
-<li><!-- .element class="fragment" data-fragment-index="3" -->
-Loss Function: sum of squares <span class="math display">\[L(\alpha,\beta) = \sum_{i=1}^N (e_i)^2\]</span></li>
+<li>Compare the model to the data: <span class="math display">\[y_i = \alpha + \beta x_i + \underbrace{e_i}_{\text{prediction error}}\]</span></li>
+<li>Square Errors <span class="math display">\[{e_i}^2 = (y_i-\alpha-\beta x_i)^2\]</span></li>
+<li>Loss Function: sum of squares <span class="math display">\[L(\alpha,\beta) = \sum_{i=1}^N (e_i)^2\]</span></li>
 </ul>
-</div><div class="column">
+</div><div class="column" style="width:60%;">
 <div class="r-stack">
-<div class="quarto-figure quarto-figure-center">
-<figure>
 <p><img data-src="graphs/errors_0.png" class="fragment visible-current" data-fragment-index="1"></p>
-<figcaption>Graph 1</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
 <p><img data-src="graphs/errors_1.png" class="fragment visible-current" data-fragment-index="2"></p>
-<figcaption>Graph 1</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
 <p><img data-src="graphs/errors_2.png" class="fragment visible-current" data-fragment-index="3"></p>
-<figcaption>Graph 1</figcaption>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -729,7 +873,7 @@ Loss Function: sum of squares <span class="math display">\[L(\alpha,\beta) = \su
 <section id="minimizing-least-squares" class="slide level2">
 <h2>Minimizing Least Squares</h2>
 <div class="columns">
-<div class="column">
+<div class="column" style="width:30%;">
 <ul>
 <li><!-- .element class="fragment" data-fragment-index="1" -->
 Try to chose <span class="math inline">\(\alpha, \beta\)</span> so as to minimize the sum of the squares <span class="math inline">\(L(α, β)\)</span></li>
@@ -738,7 +882,7 @@ It is a convex minimization problem: unique solution</li>
 <li><!-- .element class="fragment" data-fragment-index="3" -->
 This direct iterative procedure is used in machine learning</li>
 </ul>
-</div><div class="column">
+</div><div class="column" style="width:70%;">
 <div class="r-stack">
 <p><img data-src="graphs/errors_2.png" class="fragment visible-current" data-fragment-index="2"></p>
 <p><img data-src="graphs/errors_3.png" class="fragment visible-current" data-fragment-index="3"></p>
@@ -750,10 +894,7 @@ This direct iterative procedure is used in machine learning</li>
 <section id="ordinary-least-squares-1" class="slide level2">
 <h2>Ordinary Least Squares (1)</h2>
 <ul>
-<li><p>The mathematical problem <span class="math inline">\(\min_{\alpha,\beta} L(\alpha,\beta)\)</span> has one unique solution</p>
-<ul>
-<li>proof not important here</li>
-</ul></li>
+<li><p>The mathematical problem <span class="math inline">\(\min_{\alpha,\beta} L(\alpha,\beta)\)</span> has one unique solution<sup>1</sup></p></li>
 <li><p>Solution is given by the explicit formula: <span class="math display">\[\hat{\alpha} = \overline{y} - \hat{\beta} \overline{x}\]</span> <span class="math display">\[\hat{\beta} = \frac{Cov({x,y})}{Var(x)} = Cor(x,y) \frac{\sigma(y)}{\sigma({x})}\]</span></p></li>
 <li><p><span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span> are <em>estimators</em>.</p>
 <ul>
@@ -761,19 +902,22 @@ This direct iterative procedure is used in machine learning</li>
 <li>More on that later.</li>
 </ul></li>
 </ul>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Proof not important here.</p></li></ol></aside></section>
 <section id="concrete-example" class="slide level2">
 <h2>Concrete Example</h2>
+<p>In our example we get the result: <span class="math display">\[\underbrace{y}_{\text{income}} = 10 + 0.59 \underbrace{x}_{education}\]</span></p>
+<p>We can say:</p>
 <ul>
-<li><p>In our example: <span class="math display">\[\underbrace{y}_{\text{income}} = 10 + 0.59 \underbrace{x}_{education}\]</span></p></li>
-<li><p>We can say that income and education are positively <em>correlated</em></p></li>
-<li><p>We can say that a unit increase in education is associated with a 0.59 increase in income</p></li>
-<li><p>We can say that a unit increase in education <em>explains</em> a 0.59 increase in income</p></li>
-<li><p>But:</p>
+<li>income and education are positively <em>correlated</em></li>
+<li>a unit increase in education is associated with a 0.59 increase in income</li>
+<li>a unit increase in education <em>explains</em> a 0.59 increase in income</li>
+</ul>
+<div class="fragment">
+<p>But:</p>
 <ul>
 <li>here <em>explains</em> does <strong>not</strong> mean <em>cause</em></li>
-</ul></li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="explained-variance" class="title-slide slide level1 center">
@@ -782,17 +926,19 @@ This direct iterative procedure is used in machine learning</li>
 </section>
 <section id="predictions" class="slide level2">
 <h2>Predictions</h2>
-<ul>
-<li>It is possible to make <em>predictions</em> with the model:
+<p>It is possible to make <em>predictions</em> with the model:</p>
 <ul>
 <li>How much would an occupation which hires 60% high schoolers fare salary-wise?</li>
-</ul></li>
 </ul>
 
-<img src="graphs/prediction.png" class="r-stretch"><ul>
+<img src="graphs/prediction.png" class="r-stretch"><div class="fragment">
+<ul>
 <li>Prediction: salary measure is <span class="math inline">\(45.4\)</span></li>
-<li>OK, but that seems noisy, how much do I really predict ? Can I get a sense of the precision of my prediction ?</li>
 </ul>
+</div>
+<div class="fragment">
+<p>OK, but that seems noisy, how much do I really predict ? Can I get a sense of the precision of my prediction ?</p>
+</div>
 </section>
 <section id="look-at-the-residuals" class="slide level2">
 <h2>Look at the residuals</h2>
@@ -832,24 +978,28 @@ This direct iterative procedure is used in machine learning</li>
 <div class="columns">
 <div class="column">
 <ul>
-<li>What is the share of the total variance explained by the variance of my prediction? <span class="math display">\[R^2 = \frac{\overbrace{Var(\alpha + \beta x_i)}^{ \text{MSS} } } {\underbrace{Var(y_i)}_{ \text{TSS} } } = \frac{MSS}{TSS} = (Cor(x,y))^2\]</span> <span class="math display">\[R^2 = 1-\frac{\overbrace{Var(y_i - \alpha + \beta x_i)}^{\text{RSS}} } { \underbrace{Var(y_i)}_{ {\text{TSS}  }}} = 1 - \frac{RSS}{TSS} \]</span>
+<li>What is the share of the total variance explained by the variance of my prediction? <span class="math display">\[R^2 = \frac{\overbrace{Var(\hat{\alpha} + \hat{\beta} x_i)}^{ \text{MSS} } } {\underbrace{Var(y_i)}_{ \text{TSS} } } = \frac{MSS}{TSS} = (Cor(x,y))^2\]</span> <span class="math display">\[R^2 = 1-\frac{\overbrace{Var(y_i - \hat{\alpha} + \hat{\beta} x_i)}^{\text{RSS}} } { \underbrace{Var(y_i)}_{ {\text{TSS}  }}} = 1 - \frac{RSS}{TSS} \]</span></li>
+</ul>
+</div><div class="column">
+<div class="r-stack">
+<div class="fragment current-visible">
 <ul>
 <li>MSS: model sum of squares, explained variance</li>
 <li>RSS: residual sum of square, unexplained variance</li>
 <li>TSS: total sum of squares, total variance</li>
-</ul></li>
 </ul>
-</div><div class="column">
+</div>
+<div class="fragment current-visible">
 <ul>
-<li><!-- .element: class="fragment" -->
-Coefficient of determination is a measure of the explanatory power of a regression
+<li>Coefficient of determination is a measure of the explanatory power of a regression
 <ul>
 <li>but not of the <em>significance</em> of a coefficient</li>
 <li>we’ll get back to it when we see multivariate regressions</li>
 </ul></li>
-<li><!-- .element: class="fragment" -->
-In one-dimensional case, it is possible to have small R2, yet a very precise regression coefficient.</li>
+<li>In one-dimensional case, it is possible to have small R2, yet a very precise regression coefficient.</li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -866,25 +1016,31 @@ In one-dimensional case, it is possible to have small R2, yet a very precise reg
 <h2>Statistical model</h2>
 <div class="columns">
 <div class="column">
-<ul>
-<li><p>Imagine the true model is: <span class="math display">\[y = α + β x + \epsilon\]</span> <span class="math display">\[\epsilon_i  \sim \mathcal{N}\left({0,\sigma^{2}}\right)\]</span></p>
+<div class="r-stack">
+<div class="fragment current-visible" data-fragment-index="1">
+<p>Imagine the true model is: <span class="math display">\[y = α + β x + \epsilon\]</span> <span class="math display">\[\epsilon_i  \sim \mathcal{N}\left({0,\sigma^{2}}\right)\]</span></p>
 <ul>
 <li>errors are independent …</li>
 <li>and normallly distributed …</li>
 <li>with constant variance (homoscedastic)</li>
-</ul></li>
-<li><p>Using this data-generation process, I have drawns randomly <span class="math inline">\(N\)</span> data points (a.k.a. gathered the data)</p>
+</ul>
+</div>
+<div class="fragment current-visible" data-fragment-index="2,3">
+<p>Using this data-generation process, I have drawn randomly <span class="math inline">\(N\)</span> data points (a.k.a. gathered the data)</p>
 <ul>
 <li>maybe an acual <em>sample</em> (for instance <span class="math inline">\(N\)</span> patients)</li>
 <li>an abstract sample otherwise</li>
-</ul></li>
-<li><p>Then computed my estimate <span class="math inline">\(\hat{α}\)</span>, <span class="math inline">\(\hat{β}\)</span></p></li>
-<li><p>How confident am I in these estimates ?</p>
+</ul>
+</div>
+<div class="fragment current-visible" data-fragment-index="3">
+<p>Then computed my estimate <span class="math inline">\(\hat{α}\)</span>, <span class="math inline">\(\hat{β}\)</span></p>
+<p>How confident am I in these estimates ?</p>
 <ul>
 <li>I could have gotten a completely different one…</li>
 <li>clearly, the bigger <span class="math inline">\(N\)</span>, the more confident I am…</li>
-</ul></li>
 </ul>
+</div>
+</div>
 </div><div class="column">
 <div class="r-stack">
 <p><img data-src="graphs/regression_uncertainty_1.png" class="fragment current-visible" style="width:100.0%" data-fragment-index="1"></p>
@@ -898,13 +1054,19 @@ In one-dimensional case, it is possible to have small R2, yet a very precise reg
 <h2>Statistical inference (2)</h2>
 <div class="columns">
 <div class="column">
+<div class="r-stack">
+<div class="fragment current-visible" data-fragment-index="2">
 <ul>
 <li>Assume we have computed <span class="math inline">\(\hat{\alpha}\)</span>, <span class="math inline">\(\hat{\beta}\)</span> from the data. Let’s make a thought experiment instead.</li>
 <li>Imagine the actual data generating process was given by <span class="math inline">\(\hat{α} + \hat{\beta} x + \epsilon\)</span> where <span class="math inline">\(\epsilon \sim \mathcal{N}(0,Var({e_i}))\)</span></li>
+</ul>
+</div>
+<div class="fragment current-visible" data-fragment-index="3,4,5,6,7,8,9,10,11,12">
+<ul>
 <li>If I draw randomly <span class="math inline">\(N\)</span> points using this D.G.P. I get new estimates.</li>
 <li>And if I make randomly many draws, I get a <strong>distribution</strong> for my estimate.
 <ul>
-<li>I get an estimated <span class="math inline">\(\hat{\sigma}(\beta)\)</span></li>
+<li>I get an estimated <span class="math inline">\(\hat{\sigma}(\hat{\beta})\)</span></li>
 <li>were my initial estimates very likely ?</li>
 <li>or could they have taken any value with another draw from the data ?</li>
 <li>in the example, we see that estimates around of 0.7 or 0.9, would be compatible with the data</li>
@@ -914,6 +1076,8 @@ In one-dimensional case, it is possible to have small R2, yet a very precise reg
 <li>Statistical tests.</li>
 </ul></li>
 </ul>
+</div>
+</div>
 </div><div class="column">
 <div class="r-stack">
 <p><img data-src="graphs/random_estimates_1.png" class="fragment current-visible" data-fragment-index="2"></p>
@@ -933,28 +1097,24 @@ In one-dimensional case, it is possible to have small R2, yet a very precise reg
 </section>
 <section id="first-estimates" class="slide level2">
 <h2>First estimates</h2>
+<div>
 <ul>
-<li><!-- .element class="fragment" -->
-<p>Given the true model, <strong>all estimators are random variables</strong> of the data generating process</p></li>
-<li><!-- .element class="fragment" -->
-<p>Given the values <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\sigma\)</span> of the true model, we can model the distribution of the estimates.</p></li>
-<li><!-- .element class="fragment" -->
-<p>Some closed forms:</p>
+<li class="fragment"><p>Given the true model, <strong>all estimators are random variables</strong> of the data generating process</p></li>
+<li class="fragment"><p>Given the values <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\sigma\)</span> of the true model, we can model the distribution of the estimates.</p></li>
+<li class="fragment"><p>Some closed forms:</p>
 <ul>
-<li><span class="math inline">\(\hat{\sigma}^2 = Var(y_i - \alpha -\beta x_i)\)</span> estimated variance of the residuals</li>
-<li><span class="math inline">\(mean(\hat{\beta}) = \beta\)</span> (<strong>unbiased</strong>)</li>
-<li><span class="math inline">\(\sigma(\hat{\beta}) = \frac{\sigma^2}{Var(x_i)}\)</span></li>
+<li class="fragment"><span class="math inline">\(\hat{\sigma}^2 = Var(y_i - \alpha -\beta x_i)\)</span> estimated variance of the residuals</li>
+<li class="fragment"><span class="math inline">\(mean(\hat{\beta}) = \beta\)</span> (<strong>unbiased</strong>)</li>
+<li class="fragment"><span class="math inline">\(\sigma(\hat{\beta}) =  \frac{\sigma^2}{Var(x_i)}\)</span></li>
 </ul></li>
-<li><!-- .element class="fragment" -->
-<p>These statististics or any functon of them can be computed exactly, *given the data().</p></li>
-<li><!-- .element class="fragment" -->
-<p>Their distribution depends, on the data-generating process</p></li>
-<li><!-- .element class="fragment" -->
-<p>Can we produce statistics whose distribution is known given mild assumptions on the data-generating process?</p>
+<li class="fragment"><p>These statististics or any function of them can be computed exactly, <em>given the data</em>.</p></li>
+<li class="fragment"><p>Their distribution depends, on the data-generating process</p></li>
+<li class="fragment"><p>Can we produce statistics whose distribution is known given mild assumptions on the data-generating process?</p>
 <ul>
-<li>if so, we can assess how likely are our observations</li>
+<li class="fragment">if so, we can assess how likely are our observations</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="fisher-statistic" class="slide level2">
 <h2>Fisher-Statistic</h2>
@@ -962,34 +1122,37 @@ In one-dimensional case, it is possible to have small R2, yet a very precise reg
 <div class="column">
 <div class="r-stack">
 <div class="fragment current-visible">
+<p>Test</p>
 <ul>
-<li>Test
+<li>Hypothesis H0:
 <ul>
-<li>Hypothesis H0: <span class="math inline">\(α=β=0\)</span> (model explains nothing)</li>
-<li>Hypothesis H1: (model explains something)</li>
-<li>Fisher Statistics: <span class="math inline">\(\boxed{F=\frac{Explained Variance}{Unexplained Variance}}\)</span></li>
+<li><span class="math inline">\(α=β=0\)</span></li>
+<li>model explains nothing, i.e.&nbsp;<span class="math inline">\(R^2=0\)</span></li>
+</ul></li>
+<li>Hypothesis H1: (model explains something)
+<ul>
+<li>model explains something, i.e.&nbsp;<span class="math inline">\(R^2&gt;0\)</span></li>
 </ul></li>
 </ul>
+<p>Fisher Statistics: <span class="math display">\[\boxed{F=\frac{Explained Variance}{Unexplained Variance}}\]</span></p>
 </div>
 <div class="fragment current-visible">
-<ul>
-<li>Distribution of <span class="math inline">\(F\)</span> is known theoretically.
+<p>Distribution of <span class="math inline">\(F\)</span> is known theoretically.</p>
 <ul>
 <li>Assuming the model is actually linear and the shocks normal.</li>
 <li>It depends on the number of degrees of Freedom. (Here <span class="math inline">\(N-2=18\)</span>)</li>
 <li>Not on the actual parameters of the model.</li>
-</ul></li>
 </ul>
 </div>
 <div class="fragment current-visible">
-<ul>
-<li>In our case, <span class="math inline">\(Fstat=40.48\)</span>. What was the probability it was that big, under the <span class="math inline">\(H0\)</span> hypothesis?
+<p>In our case, <span class="math inline">\(Fstat=40.48\)</span>.</p>
+<p>What was the probability it was that big, under the <span class="math inline">\(H0\)</span> hypothesis?</p>
 <ul>
 <li>extremely small: <span class="math inline">\(Prob(F&gt;Fstat|H0)=5.41e-6\)</span></li>
 <li>we can reject <span class="math inline">\(H0\)</span> with <span class="math inline">\(p-value=5e-6\)</span></li>
-</ul></li>
-<li>In social science, typical required p-value is 5%.</li>
 </ul>
+<p>In social science, typical required p-value is 5%.</p>
+<p><em>In practice, we abstract from the precise calculation of the Fisher statistics, and look only at the p-value.</em></p>
 </div>
 </div>
 </div><div class="column">
@@ -1000,7 +1163,7 @@ In one-dimensional case, it is possible to have small R2, yet a very precise reg
 <section id="student-test" class="slide level2">
 <h2>Student test</h2>
 <ul>
-<li>So our estimate is <span class="math inline">\(y = \underbrace{0.121}\_{\tilde{\alpha}} + \underbrace{0.794}\_{\tilde{\beta}} x\)</span>.
+<li>So our estimate is <span class="math inline">\(y = \underbrace{0.121}_{\tilde{\alpha}} + \underbrace{0.794}_{\tilde{\beta}} x\)</span>.
 <ul>
 <li>we know <span class="math inline">\(\tilde{\beta}\)</span> is a bit random (it’s an estimator)</li>
 <li>are we even sure <span class="math inline">\(\tilde{\beta}\)</span> could not have been zero?</li>
@@ -1028,21 +1191,28 @@ In one-dimensional case, it is possible to have small R2, yet a very precise reg
 <img data-src="graphs/student_table.png" style="width:60.0%" class="r-stretch"></section>
 <section id="confidence-intervals" class="slide level2">
 <h2>Confidence intervals</h2>
+<p>The student test can also be used to construct confidence intervals.</p>
 <ul>
-<li><p>The student test can also be used to construct confidence intervals.</p></li>
 <li><p>Given estimate, <span class="math inline">\(\hat{\beta}\)</span> with standard deviation <span class="math inline">\(\sigma(\hat{\beta})\)</span></p></li>
 <li><p>Given a probability threshold <span class="math inline">\(\alpha\)</span> (for instance <span class="math inline">\(\alpha=0.05\)</span>) we can compute <span class="math inline">\(t^{\star}\)</span> such that <span class="math inline">\(P(|t|&gt;t*)=\alpha\)</span></p></li>
 <li><p>We construct the <strong>confidence interval</strong>:</p></li>
 </ul>
 <p><span class="math display">\[I^{\alpha} = [\hat{\beta}-t\sigma(\hat{\beta}), \hat{\beta}+t\sigma(\hat{\beta})]\]</span></p>
+<div class="fragment">
+<p>Interpretation:</p>
 <ul>
-<li>Interpretation: given the estimated value, one is 95 % sure (<span class="math inline">\(1-\alpha\)</span>) the estimated parameter falls in this interval</li>
+<li>if the true value was outside of the confidence interval, the probability of obtaining the value that we got would be less than 5%.</li>
+<li>we can say the true value is within the interval with 95% confidence level</li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
+</div>
+</div>
 </section></section>
+
     </div>
   </div>
 

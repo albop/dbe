@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.487">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,6 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -143,6 +144,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Linear Regression</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_4/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple Regression</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -155,7 +162,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#scientific-stack" id="toc-scientific-stack" class="nav-link active" data-scroll-target="#scientific-stack">Scientific stack</a>
+  <li><a href="#numerical-python" id="toc-numerical-python" class="nav-link active" data-scroll-target="#numerical-python">Numerical Python</a>
+  <ul class="collapse">
+  <li><a href="#scientific-stack" id="toc-scientific-stack" class="nav-link" data-scroll-target="#scientific-stack">Scientific stack</a>
   <ul class="collapse">
   <li><a href="#numpyscipymatplotlib" id="toc-numpyscipymatplotlib" class="nav-link" data-scroll-target="#numpyscipymatplotlib">Numpy/scipy/matplotlib</a></li>
   <li><a href="#importing-the-libraries" id="toc-importing-the-libraries" class="nav-link" data-scroll-target="#importing-the-libraries">Importing the libraries</a></li>
@@ -185,6 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#alternatives-to-matplotlib" id="toc-alternatives-to-matplotlib" class="nav-link" data-scroll-target="#alternatives-to-matplotlib">Alternatives to matplotlib</a></li>
   </ul></li>
   <li><a href="#next" id="toc-next" class="nav-link" data-scroll-target="#next">Next</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -210,6 +220,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="numerical-python" class="level1">
+<h1>Numerical Python</h1>
 <section id="scientific-stack" class="level2">
 <h2 class="anchored" data-anchor-id="scientific-stack">Scientific stack</h2>
 <section id="numpyscipymatplotlib" class="level3">
@@ -229,12 +241,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="importing-the-libraries" class="level3">
 <h3 class="anchored" data-anchor-id="importing-the-libraries">Importing the libraries</h3>
 <p>It is standard to import the libraries as <code>np</code>, and <code>plt</code>. We’ll follow this convention here.</p>
-<div id="cell-6" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="2">
+<div id="cell-5" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># these lines need to be run only once per program</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="3">
+<div id="cell-6" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Numpy version </span><span class="sc">{</span>np<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Matplotlib version </span><span class="sc">{</span>plt<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -252,21 +264,21 @@ Matplotlib version3.3.3</code></pre>
 <li>Vectors and matrices are created with the <code>np.array(...)</code> function.</li>
 <li>Special vectors can be created with <code>np.zeros</code>, <code>np.ones</code>, <code>np.linspace</code></li>
 </ul>
-<div id="cell-10" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="7">
+<div id="cell-9" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># an array can be created from a list of numbers</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>np.array( [<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>] )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>array([1., 2., 3.])</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="54">
+<div id="cell-10" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or initialized by specifying the length of the array</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>np.zeros(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>array([0., 0., 0., 0., 0.])</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="9">
+<div id="cell-11" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 regularly spaced points between 0 and 1</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -281,7 +293,7 @@ Matplotlib version3.3.3</code></pre>
 <li>Function <code>np.matrix()</code> has been deprecated: do not use it.</li>
 <li>There are functions to create specific matrices: <code>np.eye</code>, <code>np.diag</code>, …</li>
 </ul>
-<div id="cell-14" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="11">
+<div id="cell-13" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># an array can be created from a list of (equal size) lists</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>np.array([</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>],</span>
@@ -292,7 +304,7 @@ Matplotlib version3.3.3</code></pre>
        [4., 5., 6.]])</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="12">
+<div id="cell-14" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize an empty matrix with the dimensions as a tuple</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.zeros( (<span class="dv">2</span>, <span class="dv">3</span>) )</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -301,7 +313,7 @@ Matplotlib version3.3.3</code></pre>
        [0., 0., 0.]])</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="13">
+<div id="cell-15" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix dimensions are contained in the shape attribute</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>A.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -312,7 +324,7 @@ Matplotlib version3.3.3</code></pre>
 <section id="linear-algebra" class="level3">
 <h3 class="anchored" data-anchor-id="linear-algebra">Linear Algebra</h3>
 <p><em>Vector multiplications</em> and <em>Matrix multiplications</em> can be performed using special sign <code>@</code></p>
-<div id="cell-18" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="14">
+<div id="cell-17" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="fl">1.0</span>, <span class="fl">2.0</span>], [<span class="dv">2</span>,<span class="dv">4</span>]])</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -320,20 +332,20 @@ Matplotlib version3.3.3</code></pre>
        [2., 4.]])</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="15">
+<div id="cell-18" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">2.0</span>])</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>array([1., 2.])</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="16">
+<div id="cell-19" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>A<span class="op">@</span>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>array([ 5., 10.])</code></pre>
 </div>
 </div>
-<div id="cell-21" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="17">
+<div id="cell-20" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>A<span class="op">@</span>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>array([[ 5., 10.],
@@ -344,13 +356,13 @@ Matplotlib version3.3.3</code></pre>
 <section id="scalar-types" class="level3">
 <h3 class="anchored" data-anchor-id="scalar-types">Scalar types</h3>
 <p>Numpy arrays can contain data of several <em>scalar</em> types.</p>
-<div id="cell-23" class="cell" data-execution_count="18">
+<div id="cell-22" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>[<span class="va">True</span>, <span class="va">False</span>, <span class="va">True</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>[True, False, True]</code></pre>
 </div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="19">
+<div id="cell-23" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of boolean</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>boolean_vector <span class="op">=</span> np.array( [<span class="va">True</span>, <span class="va">False</span>, <span class="va">True</span>] )</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"type of scalar '</span><span class="sc">{</span>boolean_vector<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">'"</span>)</span>
@@ -362,7 +374,7 @@ Matplotlib version3.3.3</code></pre>
 <pre><code>array([ True, False,  True])</code></pre>
 </div>
 </div>
-<div id="cell-25" class="cell" data-execution_count="23">
+<div id="cell-24" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of integers</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>int_vector <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>])</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"type of scalar '</span><span class="sc">{</span>int_vector<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">'"</span>)</span>
@@ -383,14 +395,14 @@ Matplotlib version3.3.3</code></pre>
 <li>Remember that indexing starts at 0.</li>
 </ul></li>
 </ul>
-<div id="cell-27" class="cell" data-execution_count="24">
+<div id="cell-26" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.array([<span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">3.</span>, <span class="fl">4.</span>])</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>display(V[<span class="dv">1</span>])  <span class="co"># second element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>1.0</code></pre>
 </div>
 </div>
-<div id="cell-28" class="cell" data-execution_count="25">
+<div id="cell-27" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.array([<span class="fl">0.</span>, <span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">3.</span>, <span class="fl">4.</span>])</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>display(V[<span class="dv">1</span>:<span class="dv">3</span>])  <span class="co"># second, third and fourth element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -403,7 +415,7 @@ Matplotlib version3.3.3</code></pre>
 <ul>
 <li>Elements and suvectors, can be assigned to new values, as long as they have the right dimensions.</li>
 </ul>
-<div id="cell-30" class="cell" data-execution_count="27">
+<div id="cell-29" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.array([<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">4.</span>, <span class="fl">5.</span>, <span class="fl">8.</span>, <span class="fl">13.</span>])</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>V[<span class="dv">3</span>] <span class="op">=</span> <span class="fl">3.0</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>V</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -411,7 +423,7 @@ Matplotlib version3.3.3</code></pre>
 <pre><code>array([ 1.,  1.,  2.,  3.,  5.,  8., 13.])</code></pre>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="30">
+<div id="cell-30" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> np.array([<span class="fl">1.</span>, <span class="fl">1.</span>, <span class="fl">2.</span>, <span class="fl">4.</span>, <span class="fl">5.</span>, <span class="fl">8.</span>, <span class="fl">13.</span>])</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># V[1:4] = [1,2,3,4] # this doesn't work</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>V[<span class="dv">1</span>:<span class="dv">4</span>] <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>] <span class="co"># this works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -424,7 +436,7 @@ Matplotlib version3.3.3</code></pre>
 <li>One can extract a row, or a column (a slice) with <code>M[i,:]</code> or <code>M[:,i]</code></li>
 <li>A submatrix is defining with two intervals: <code>M[i:j, k:l]</code> or <code>M[i:j, :]</code>, …</li>
 </ul>
-<div id="cell-33" class="cell" data-execution_count="31">
+<div id="cell-32" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],[<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]])</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
@@ -433,25 +445,25 @@ Matplotlib version3.3.3</code></pre>
        [7, 8, 9]])</code></pre>
 </div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="58">
+<div id="cell-33" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">0</span>,<span class="dv">1</span>] <span class="co"># access element (1,2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="cell-35" class="cell" data-execution_count="32">
+<div id="cell-34" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">2</span>,:] <span class="co"># third row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>array([7, 8, 9])</code></pre>
 </div>
 </div>
-<div id="cell-36" class="cell" data-execution_count="34">
+<div id="cell-35" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>M[:,<span class="dv">1</span>] <span class="co"># second column     # M[i,1] for any i</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>array([2, 5, 8])</code></pre>
 </div>
 </div>
-<div id="cell-37" class="cell" data-execution_count="35">
+<div id="cell-36" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">1</span>:<span class="dv">3</span>, :] <span class="co"># lines from 1 (included) to 3 (excluded) ; all columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>array([[4, 5, 6],
@@ -461,7 +473,7 @@ Matplotlib version3.3.3</code></pre>
 </section>
 <section id="modifying-matrix-content" class="level3">
 <h3 class="anchored" data-anchor-id="modifying-matrix-content">Modifying matrix content</h3>
-<div id="cell-39" class="cell" data-execution_count="36">
+<div id="cell-38" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],[<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]])</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
@@ -470,7 +482,7 @@ Matplotlib version3.3.3</code></pre>
        [7, 8, 9]])</code></pre>
 </div>
 </div>
-<div id="cell-40" class="cell" data-execution_count="37">
+<div id="cell-39" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">0</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
@@ -479,7 +491,7 @@ Matplotlib version3.3.3</code></pre>
        [7, 8, 9]])</code></pre>
 </div>
 </div>
-<div id="cell-41" class="cell" data-execution_count="38">
+<div id="cell-40" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">1</span>:<span class="dv">3</span>] <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">0</span>]]) <span class="co"># dimensions must match</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
@@ -496,7 +508,7 @@ Matplotlib version3.3.3</code></pre>
 <li>Comparisons operators (<code>&lt;</code>,<code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>) are defined are return boolean arrays.</li>
 <li>They operate element by element.</li>
 </ul>
-<div id="cell-43" class="cell" data-execution_count="41">
+<div id="cell-42" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>])</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>])</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>A<span class="op">+</span>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -504,13 +516,13 @@ Matplotlib version3.3.3</code></pre>
 <pre><code>array([5, 5, 5, 5])</code></pre>
 </div>
 </div>
-<div id="cell-44" class="cell" data-execution_count="42">
+<div id="cell-43" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>A<span class="op">*</span>B    <span class="co"># note the difference with A@B</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>array([4, 6, 6, 4])</code></pre>
 </div>
 </div>
-<div id="cell-45" class="cell" data-execution_count="44">
+<div id="cell-44" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>A<span class="op">&gt;</span>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>array([False, False,  True,  True])</code></pre>
@@ -522,23 +534,23 @@ Matplotlib version3.3.3</code></pre>
 <ul>
 <li>The following logical operations are defined element-wise on arrays: <code>&amp;</code> (and), <code>|</code> (or), <code>~</code> (not)</li>
 </ul>
-<div id="cell-47" class="cell" data-execution_count="46">
+<div id="cell-46" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([<span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>, <span class="va">True</span>])</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([<span class="va">False</span>, <span class="va">True</span>, <span class="va">False</span>, <span class="va">True</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-48" class="cell" data-execution_count="47">
+<div id="cell-47" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="op">~</span>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>array([ True,  True, False, False])</code></pre>
 </div>
 </div>
-<div id="cell-49" class="cell" data-execution_count="48">
+<div id="cell-48" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">|</span> B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>array([False,  True,  True,  True])</code></pre>
 </div>
 </div>
-<div id="cell-50" class="cell" data-execution_count="49">
+<div id="cell-49" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">&amp;</span> B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>array([False, False, False,  True])</code></pre>
@@ -551,21 +563,21 @@ Matplotlib version3.3.3</code></pre>
 <li>Arrays can be indexed by boolean arrays instead of ranges.</li>
 <li>Only elements corresponding to true are retrieved</li>
 </ul>
-<div id="cell-52" class="cell" data-execution_count="51">
+<div id="cell-51" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">6</span>)</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>array([0. , 0.2, 0.4, 0.6, 0.8, 1. ])</code></pre>
 </div>
 </div>
-<div id="cell-53" class="cell" data-execution_count="52">
+<div id="cell-52" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># indexes such that (x^2) &gt; (x/2)</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">**</span><span class="dv">2</span> <span class="op">&gt;</span> (x<span class="op">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>array([False, False, False,  True,  True,  True])</code></pre>
 </div>
 </div>
-<div id="cell-54" class="cell" data-execution_count="54">
+<div id="cell-53" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>cond <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">&gt;</span> (x<span class="op">/</span><span class="dv">2</span>)</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>x[ cond ] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
@@ -579,7 +591,7 @@ Matplotlib version3.3.3</code></pre>
 <li>Numpy library has defined very consistent conventions, to match inconsistent dimensions.</li>
 <li>Ignore them for now…</li>
 </ul>
-<div id="cell-56" class="cell" data-execution_count="70">
+<div id="cell-55" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.eye(<span class="dv">4</span>)</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
@@ -589,7 +601,7 @@ Matplotlib version3.3.3</code></pre>
        [0., 0., 0., 1.]])</code></pre>
 </div>
 </div>
-<div id="cell-57" class="cell" data-execution_count="72">
+<div id="cell-56" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">2</span>:<span class="dv">4</span>, <span class="dv">2</span>:<span class="dv">4</span>] <span class="op">=</span> <span class="fl">0.5</span> <span class="co"># float</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
@@ -599,7 +611,7 @@ Matplotlib version3.3.3</code></pre>
        [0. , 0. , 0.5, 0.5]])</code></pre>
 </div>
 </div>
-<div id="cell-58" class="cell" data-execution_count="73">
+<div id="cell-57" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>M[:,:<span class="dv">2</span>] <span class="op">=</span> np.array([[<span class="fl">0.1</span>, <span class="fl">0.2</span>]])  <span class="co"># 1x2 array</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
@@ -634,29 +646,33 @@ Matplotlib version3.3.3</code></pre>
 <li><strong>lots</strong> of optional arguments</li>
 </ul></li>
 </ul>
-<div id="cell-62" class="cell" data-execution_count="56">
+<div id="cell-61" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
-<div id="cell-64" class="cell" data-execution_count="65">
+<div id="cell-63" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-65" class="cell" data-execution_count="66">
+<div id="cell-64" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)<span class="op">/</span>x <span class="co"># sinus cardinal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-66" class="cell" data-execution_count="69">
+<div id="cell-65" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y,<span class="st">'o'</span>)</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Numerical Python_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="Numerical Python_files/figure-html/cell-45-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="example-2" class="level3">
 <h3 class="anchored" data-anchor-id="example-2">Example (2)</h3>
-<div id="cell-68" class="cell" data-execution_count="79">
+<div id="cell-67" class="cell" data-execution_count="79">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure() <span class="co"># keep a figure open to draw on it</span></span>
@@ -668,13 +684,17 @@ Matplotlib version3.3.3</code></pre>
 <span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Looking for the right hat."</span>)</span>
 <span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">"upper right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Numerical Python_files/figure-html/cell-46-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="Numerical Python_files/figure-html/cell-46-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="example-3" class="level3">
 <h3 class="anchored" data-anchor-id="example-3">Example (3)</h3>
-<div id="cell-70" class="cell" data-execution_count="82">
+<div id="cell-69" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
@@ -689,7 +709,11 @@ Matplotlib version3.3.3</code></pre>
 <span id="cb85-12"><a href="#cb85-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb85-13"><a href="#cb85-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout() <span class="co"># save some space</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="Numerical Python_files/figure-html/cell-47-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="Numerical Python_files/figure-html/cell-47-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -710,6 +734,7 @@ Matplotlib version3.3.3</code></pre>
 <p><a href="../../slides/session_2/DataFrames.html">DataFrames and pandas</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -841,38 +866,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -881,8 +896,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
