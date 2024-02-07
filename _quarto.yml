@@ -11,6 +11,8 @@ website:
           contents:
             - slides/session_1/index.qmd
             - slides/session_2/index.qmd
+            - slides/session_3/index.qmd
+
         # - section: tutorials
         #   contents:
         #     - tutorials/session_1/Exercises.ipynb
