@@ -1,0 +1,695 @@
+---
+title: "Linear Regression"
+date: 2024/01/31
+subtitle: Data-Based Economics, ESCP, 2023-2024
+author: Pablo Winant
+format:
+  revealjs:
+    toc: true
+    toc-depth: 1
+    menu:
+      side: left
+      width: normal
+    width: 1920
+    height: 1080
+    filters:
+    - shinylive
+  html:
+    output-file: index_handout.html
+jupyter: escp
+execute:
+  echo: true
+  enabled: true
+---
+
+# Descriptive Statistics
+
+## A Simple Dataset
+
+Duncan's Occupational Prestige Data
+- Many *occupations* in 1950.
+- Education and prestige associated to each occupation
+
+- $x$: education
+  - Percentage of occupational incumbents in 1950 who were high school graduates
+- $y$: income
+  - Percentage of occupational incumbents in the 1950 US Census who earned $3,500 or more per year
+- $z$: Percentage of respondents in a social survey who rated the occupation as “good” or better in prestige 
+
+## Quick look
+
+Import the data from statsmodels'  dataset:
+
+```{python}
+import statsmodels.api as sm
+dataset = sm.datasets.get_rdataset("Duncan", "carData")
+df = dataset.data
+df.head()
+```
+
+
+
+## Descriptive Statistics
+
+
+::: columns
+
+:::: column
+
+For any variable $v$ with $N$ observations:
+
+- mean: $\overline{v} = \frac{1}{N} \sum_{i=1}^N v_i$
+- variance $V({v}) = \frac{1}{N} \sum_{i=1}^N \left(v_i - \overline{v} \right)^2$
+- standard deviation : $\sigma(v)=\sqrt{V(v)}$
+
+::::
+
+:::: column
+
+::::: {.fragment}
+
+```{python}
+df.describe()
+```
+
+:::::
+
+::::
+
+:::
+
+
+##  Relation between variables
+
+::: {.fragment}
+
+- How do we measure relations between two variables (with $N$ observations)
+  - Covariance: $Cov(x,y) = \frac{1}{N}\sum_i (x_i-\overline{x})(y_i-\overline{y})$
+  - Correlation: $Cor(x,y) = \frac{Cov(x,y)}{\sigma(x)\sigma(y)}$
+
+- By construction, $Cor(x,y)\in[-1,1]$
+  - if $Cor(x,y)>0$, x and y are __positively correlated__
+  - if $Cor(x,y)<0$, x and y are __negatively correlated__
+
+- Interpretation: 
+  - no interpretation!
+  - correlation is not causality
+  - also: data can be correlated by pure chance (spurious [correlation](https://www.tylervigen.com/spurious-correlations))
+
+:::
+
+
+## Examples
+
+::: columns
+
+:::: column
+
+```{python}
+#| echo: true
+
+df[['income','education','prestige']].cov()
+```
+
+::::
+
+:::: column
+
+::::: {.fragment}
+
+```{python}
+#| echo: true
+
+df[['income','education','prestige']].corr()
+```
+
+:::::
+
+::::
+
+:::
+
+. . .
+
+Can we visualize correlations?
+
+
+## Quick
+
+::: columns
+
+:::: column
+
+```{python}
+from matplotlib import pyplot as plt
+plt.plot(df['education'],df['income'],'o')
+plt.grid()
+plt.xlabel("Education")
+plt.ylabel("Income")
+plt.savefig("data_description.png")
+```
+
+::::
+
+:::: column
+
+```{python}
+from matplotlib import pyplot as plt
+plt.plot(df['education'],df['prestige'],'o')
+plt.grid()
+plt.xlabel("Education")
+plt.ylabel("Prestige")
+plt.savefig("data_description.png")
+```
+
+::::
+
+:::
+
+
+## Quick look
+
+Using [matplotlib](https://matplotlib.org/) (3d)
+
+```{python}
+#| echo: false
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig = plt.figure(figsize=(10,10))
+ax = fig.add_subplot(projection='3d')
+
+ax.scatter(df['education'], df['prestige'], df['income'])
+
+ax.set_xlabel('education')
+ax.set_ylabel('prestige')
+ax.set_zlabel('income');
+```
+
+
+
+## Quick look
+
+```{python}
+import seaborn as sns
+sns.pairplot(df[['education', 'prestige', 'income']])
+```
+
+
+The pairplot made with [seaborn](https://seaborn.pydata.org/index.html) gives a simple sense of correlations as well as information about the distribution of each variable.
+
+
+
+# Fitting the data
+
+
+## A Linear Model
+
+
+::: columns
+
+:::: {.column width=30%}
+
+Now we want to build a model to represent the data:
+
+Consider the line: $$y = α + β x$$
+
+::::: {.fragment data-fragment-index=2,3,4,5}
+Several possibilities. 
+Which one do we choose to represent the model?
+:::::
+
+::::: {.fragment data-fragment-index=5}
+
+We need some criterium.
+
+:::::
+
+::::
+
+:::: {.column width=70%}
+
+::::: {.r-stack}
+
+![](graphs/which_line_1.png){.fragment .current-visible data-fragment-index=2}
+
+![](graphs/which_line_2.png){.fragment .current-visible data-fragment-index=3}
+
+![](graphs/which_line_3.png){.fragment .current-visible data-fragment-index=4}
+
+:::::
+
+::::
+
+:::
+
+
+## Least Square Criterium
+
+
+::: columns
+
+:::: {.column width=30%}
+
+- Compare the model to the data:
+$$y_i = \alpha + \beta x_i + \underbrace{e_i}_{\text{prediction error}}$$
+- Square Errors
+$${e_i}^2 = (y_i-\alpha-\beta x_i)^2$$
+- Loss Function: sum of squares
+$$L(\alpha,\beta) = \sum_{i=1}^N (e_i)^2$$
+
+::::
+
+:::: {.column width=60%}
+
+::::: {.r-stack}
+
+![](graphs/errors_0.png){.fragment .visible-current data-fragment-index=1}
+
+![](graphs/errors_1.png){.fragment .visible-current data-fragment-index=2}
+
+![](graphs/errors_2.png){.fragment .visible-current data-fragment-index=3}
+
+:::::
+
+::::
+
+:::
+
+
+## Minimizing Least Squares
+
+
+::: columns
+
+:::: {.column width=30%}
+
+- <!-- .element class="fragment" data-fragment-index="1" -->Try to chose $\alpha, \beta$ so as to minimize the sum of the squares $L(α, β)$
+- <!-- .element class="fragment" data-fragment-index="2" -->It is a convex minimization problem: unique solution
+- <!-- .element class="fragment" data-fragment-index="3" -->This direct iterative procedure is used in machine learning
+
+::::
+
+::::  {.column width=70%}
+
+::::: {.r-stack}
+
+![](graphs/errors_2.png){.fragment .visible-current data-fragment-index="2"}
+
+![](graphs/errors_3.png){.fragment .visible-current data-fragment-index="3"}
+
+![](graphs/errors_4.png){.fragment .visible-current data-fragment-index="4"}
+
+:::::
+
+::::
+
+:::
+
+
+## Ordinary Least Squares (1)
+
+- The mathematical problem $\min_{\alpha,\beta} L(\alpha,\beta)$ has one unique solution[^proof]
+
+- Solution is given by the explicit formula:
+$$\hat{\alpha} = \overline{y} - \hat{\beta} \overline{x}$$
+$$\hat{\beta} = \frac{Cov({x,y})}{Var(x)} = Cor(x,y) \frac{\sigma(y)}{\sigma({x})}$$
+
+- $\hat{\alpha}$ and $\hat{\beta}$ are *estimators*.
+
+  - Hence the hats.
+  - More on that later.
+
+[^proof]: Proof not important here.
+
+
+## Concrete Example
+
+In our example we get the result:
+$$\underbrace{y}_{\text{income}} = 10 + 0.59 \underbrace{x}_{education}$$
+
+We can say:
+
+- income and education are positively *correlated*
+- a unit increase in education is associated with a 0.59 increase in income
+- a unit increase in education *explains* a 0.59 increase in income
+
+. . .
+
+But:
+
+- here *explains* does __not__ mean *cause*
+
+
+# Explained Variance
+
+## Predictions
+
+It is possible to make *predictions* with the model:
+
+- How much would an occupation which hires 60% high schoolers fare salary-wise?
+
+<img src="graphs/prediction.png">
+
+. . .
+
+- Prediction: salary measure is $45.4$
+
+. . .
+
+OK, but that seems noisy, how much do I really predict ? Can I get a sense of the precision of my prediction ?
+
+## Look at the residuals
+
+::: columns
+
+:::: column
+
+- Plot the residuals: 
+<img src="graphs/residuals.png">
+
+::::
+:::: column
+
+- Any abnormal observation?
+- Theory requires residuals to be:
+  - zero-mean
+  - non-correlated
+  - normally distributed
+- That looks like a normal distribution
+    - standard deviation is $\sigma(e_i) = 16.84$
+- A more honnest prediction would be $45.6 ± 16.84$
+
+::::
+
+:::
+
+
+## What could go wrong?
+
+![](graphs/residuals_circus.png)
+
+- a well specified model, residuals must look like *white noise* (i.i.d.: independent and identically distributed)
+- when residuals are clearly abnormal, the model must be changed
+
+
+## Explained Variance
+
+::: columns
+
+:::: column
+
+- What is the share of the total variance explained by the variance of my prediction?
+    $$R^2 = \frac{\overbrace{Var(\hat{\alpha} + \hat{\beta} x_i)}^{ \text{MSS} } } {\underbrace{Var(y_i)}_{ \text{TSS} } } = \frac{MSS}{TSS} = (Cor(x,y))^2$$
+    $$R^2 = 1-\frac{\overbrace{Var(y_i - \hat{\alpha} + \hat{\beta} x_i)}^{\text{RSS}} } { \underbrace{Var(y_i)}_{ {\text{TSS}  }}} = 1 - \frac{RSS}{TSS} $$
+
+  
+::::
+
+:::: column
+
+::::: r-stack
+
+:::::: {.fragment .current-visible}
+
+- MSS: model sum of squares, explained variance
+- RSS: residual sum of square, unexplained variance
+- TSS: total sum of squares, total variance
+
+::::::
+:::::: {.fragment  .current-visible}
+
+- Coefficient of determination is a measure of the explanatory power of a regression
+  - but not of the *significance* of a coefficient
+  - we'll get back to it when we see multivariate regressions
+
+- In one-dimensional case, it is possible to have small R2, yet a very precise regression coefficient.
+
+::::::
+
+:::::
+
+::::
+
+:::
+
+
+## Graphical Representation 
+
+![](graphs/r-squared.png){width=60%}
+
+
+
+# Statistical inference
+
+
+## Statistical model
+
+::: columns
+
+:::: column
+
+::::: r-stack
+
+:::::: {.fragment .current-visible data-fragment-index=1}
+
+Imagine the true model is:
+$$y = α + β x + \epsilon$$
+$$\epsilon_i  \sim \mathcal{N}\left({0,\sigma^{2}}\right)$$
+
+- errors are independent ...
+- and normallly distributed ...
+- with constant variance (homoscedastic)
+
+::::::
+
+:::::: {.fragment .current-visible data-fragment-index=2,3}
+
+
+Using this data-generation process, I have drawn randomly $N$ data points (a.k.a. gathered the data) 
+
+- maybe an acual *sample* (for instance $N$ patients)
+- an abstract sample otherwise
+
+::::::
+
+:::::: {.fragment .current-visible data-fragment-index=3}
+
+
+Then computed my estimate $\hat{α}$, $\hat{β}$
+
+
+How confident am I in these estimates ?
+
+- I could have gotten a completely different one...
+- clearly, the bigger $N$, the more confident I am...
+
+::::::
+
+:::::
+
+::::
+
+:::: column
+
+::::: {.r-stack}
+
+![](graphs/regression_uncertainty_1.png){.fragment .current-visible data-fragment-index=1 width=100%}
+
+![](graphs/regression_uncertainty_2.png){.fragment .current-visible data-fragment-index=2 width=100%}
+
+![](graphs/regression_uncertainty_3.png){.fragment .current-visible data-fragment-index=3 width=100%}
+
+:::::
+
+::::
+
+:::
+
+
+## Statistical inference (2)
+
+::: columns
+
+:::: column
+
+::::: r-stack
+       
+:::::: {.fragment .current-visible data-fragment-index=2}
+
+- Assume we have computed $\hat{\alpha}$, $\hat{\beta}$ from the data. Let's make a thought experiment instead.
+- Imagine the actual data generating process was given by $\hat{α} + \hat{\beta} x + \epsilon$ where $\epsilon \sim \mathcal{N}(0,Var({e_i}))$
+
+::::::
+
+:::::: {.fragment .current-visible data-fragment-index=3,4,5,6,7,8,9,10,11,12}
+
+- If I draw randomly $N$ points using this D.G.P. I get new estimates.
+- And if I make randomly many draws, I get a <strong>distribution</strong> for my estimate.
+    - I get an estimated $\hat{\sigma}(\hat{\beta})$
+    - were my initial estimates very likely ?
+    - or could they have taken any value with another draw from the data ?
+    - in the example, we see that estimates around of 0.7 or 0.9, would be compatible with the data
+- How do we formalize these ideas?
+  - Statistical tests.
+
+::::::
+
+:::::
+
+::::
+
+:::: column
+
+::::: r-stack
+
+![](graphs/random_estimates_1.png){.fragment .current-visible data-fragment-index=2}
+
+![](graphs/random_estimates_2.png){.fragment .current-visible data-fragment-index=3}
+
+![](graphs/random_estimates_3.png){.fragment .current-visible data-fragment-index=4}
+
+![](graphs/random_estimates_4.png){.fragment .current-visible data-fragment-index=5}
+
+![](graphs/random_estimates_5.png){.fragment .current-visible data-fragment-index=6}
+
+![](graphs/random_estimates_6.png){.fragment .current-visible data-fragment-index=7}
+
+![](graphs/random_estimates_7.png){.fragment .current-visible data-fragment-index=8}
+
+![](graphs/random_estimates_8.png){.fragment .current-visible data-fragment-index=9}
+
+![](graphs/random_estimates_9.png){.fragment .current-visible data-fragment-index=10}
+
+![](graphs/random_estimates_10.png){.fragment .current-visible data-fragment-index=11}
+
+![](graphs/random_estimates_100.png){.fragment .current-visible data-fragment-index=12}
+
+:::::
+
+::::
+
+:::
+
+## First estimates
+
+::: {.incremental}
+
+- Given the true model, <strong>all estimators are random variables</strong> of the data generating process
+
+- Given the values $\alpha$, $\beta$, $\sigma$ of the true model, we can model the distribution of the estimates.
+- Some closed forms:
+    - $\hat{\sigma}^2 = Var(y_i - \alpha -\beta x_i)$ estimated variance of the residuals
+    - $mean(\hat{\beta}) = \beta$ (__unbiased__)
+    - $\sigma(\hat{\beta}) =  \frac{\sigma^2}{Var(x_i)}$
+
+- These statististics or any function of them can be computed exactly, *given the data*.
+- Their distribution depends, on the data-generating process
+- Can we produce statistics whose distribution is known given mild assumptions on the data-generating process?
+  - if so, we can assess how likely are our observations
+
+:::
+
+## Fisher-Statistic
+
+::: columns
+
+:::: column
+
+::::: r-stack
+
+:::::: {.fragment .current-visible}
+
+Test
+
+  - Hypothesis H0:
+    - $α=β=0$ 
+    - model explains nothing, i.e. $R^2=0$
+  - Hypothesis H1: (model explains something)
+    - model explains something, i.e. $R^2>0$
+
+
+Fisher Statistics: $$\boxed{F=\frac{Explained Variance}{Unexplained Variance}}$$
+
+::::::
+:::::: {.fragment .current-visible}
+
+Distribution of $F$ is known theoretically.
+
+- Assuming the model is actually linear and the shocks normal.
+- It depends on the number of degrees of Freedom. (Here $N-2=18$)
+- Not on the actual parameters of the model.
+
+::::::
+:::::: {.fragment .current-visible}
+
+In our case, $Fstat=40.48$. 
+
+What was the probability it was that big, under the $H0$ hypothesis? 
+
+- extremely small: $Prob(F>Fstat|H0)=5.41e-6$
+- we can reject $H0$ with $p-value=5e-6$
+
+In social science, typical required p-value is 5%.
+
+*In practice, we abstract from the precise calculation of the Fisher statistics, and look only at the p-value.*
+
+::::::
+
+:::::
+
+::::
+
+:::: column
+
+![](graphs/fisher.png){.fragment data-fragment-index=2}
+
+::::
+
+:::
+
+
+## Student test
+
+
+- So our estimate is $y = \underbrace{0.121}_{\tilde{\alpha}} + \underbrace{0.794}_{\tilde{\beta}} x$.
+    - we know $\tilde{\beta}$ is a bit random (it's an estimator)
+    - are we even sure $\tilde{\beta}$ could not have been zero?
+
+- Student Test:
+  - H0: $\beta=0$
+  - H1: $\beta \neq 0$
+  - Statistics: $t=\frac{\hat{\beta}}{\sigma(\hat{\beta})}$
+    - intuitively: compare mean of estimator to its standard deviation
+    - also a function of degrees of freedom
+
+- Significance levels (read in a table or use software):
+  - for 18 degrees of freedom, $P(|t|>t^{\star})=0.05$  with $t^{\star}=1.734$
+  - if $t>t^{\star}$ we are $95%$ confident the coefficient is *significant*
+
+
+## Student tables
+
+![](graphs/student_table.png){width=60%}
+
+
+## Confidence intervals
+
+The student test can also be used to construct confidence intervals.
+
+- Given estimate, $\hat{\beta}$ with standard deviation $\sigma(\hat{\beta})$
+
+- Given a probability threshold $\alpha$ (for instance $\alpha=0.05$) we can compute $t^{\star}$ such that $P(|t|>t*)=\alpha$
+
+- We construct the __confidence interval__:
+
+$$I^{\alpha} = [\hat{\beta}-t\sigma(\hat{\beta}), \hat{\beta}+t\sigma(\hat{\beta})]$$
+
+. . .
+
+
+Interpretation:
+
+- if the true value was outside of the confidence interval, the probability of obtaining the value that we got would be less than 5%.
+- we can say the true value is within the interval with 95% confidence level
