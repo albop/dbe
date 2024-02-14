@@ -3422,291 +3422,291 @@
     "text": "Sklearn includes the Winsconsin breast cancer database. It associates medical outcomes for tumor observation, with several characteristics. Can a machine learn how to predict whether a cancer is benign or malignant ?\nImport the Breast Cancer Dataset from sklearn. Describe it.\nProperly train a linear logistic regression to predict cancer morbidity. (bonus: use k-fold validation)\nTry with other classifiers. Which one is best?"
   },
   {
-    "objectID": "slides/session_5/slides.html#data",
-    "href": "slides/session_5/slides.html#data",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Data",
-    "text": "Data\nOur multilinear regression: \\[y = \\alpha + \\beta x_1 + \\cdots + \\beta x_n\\]\nSo far, we have only considered real variables: (\\(x_i \\in \\mathbb{R}\\)).\nLike: \\[x_{\\text{gdp}} = \\alpha + \\beta_1 x_{\\text{unemployment}} + \\beta_2 x_{\\text{inflation}}\\]"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#data-1",
-    "href": "slides/session_5/slides.html#data-1",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Data",
-    "text": "Data\nHow do we deal with the following cases?\n\nbinary variable: \\(x\\in \\{0,1\\}\\) (or \\(\\{True, False\\}\\))\n\nex: \\(\\text{gonetowar}\\), \\(\\text{hasdegree}\\)\n\ncategorical variable:\n\nex: survey result (0: I don’t know, 1: I strongly disagree, 2: I disagree, 3: I agree, 4: I strongly agree)\nthere is no ranking of answers\nwhen there is ranking: hierarchical index\n\nnonnumerical variables:\n\nex: (flower type: \\(x\\in \\text{myosotis}, \\text{rose}, ...\\))"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#binary-variable",
-    "href": "slides/session_5/slides.html#binary-variable",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Binary variable",
-    "text": "Binary variable\n\nNothing to be done: just make sure variables take values 0 or 1. \\[y_\\text{salary} = \\alpha + \\beta x_{\\text{gonetowar}}\\]\nInterpretation:\n\nhaving gone to war is associated with a \\(\\beta\\) increase (or decrease?) in salary (still no causality)"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#categorical-variable",
-    "href": "slides/session_5/slides.html#categorical-variable",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Categorical variable",
-    "text": "Categorical variable\nLook at the model: \\[y_{\\text{CO2 emission}} = \\alpha + \\beta x_{\\text{banish cars}} \\]\nwhere \\(y_{\\text{CO2 emission}}\\) is an individual’s CO2 emissions and \\(x_{\\text{yellow vest support}}\\) is the response the the question Do you suport the banishment of petrol cars?.\n\n\nResponse is coded up as:\n\n0: Strongly disagree\n1: Disagree\n2: Neutral\n3: Agree\n4: Strongly agree\n\n\nIf the variable was used directly, how would you intepret the coefficient \\(\\beta\\) ?\n\nindex is hierarchical\nbut the distances between 1 and 2 or 2 and 3 are not comparable…"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#hierarchical-index",
-    "href": "slides/session_5/slides.html#hierarchical-index",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Hierarchical index",
-    "text": "Hierarchical index\nWe use one dummy variable per possible answer.\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{Strongly Disagree}}\\)\n\\(D_{\\text{Disagree}}\\)\n\\(D_{\\text{Neutral}}\\)\n\\(D_{\\text{Agree}}\\)\n\\(D_{\\text{Strongly Agree}}\\)\n\n\n\n\n1\n0\n0\n0\n0\n\n\n0\n1\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n1\n0\n\n\n0\n0\n0\n0\n1"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#hierarchical-index-1",
-    "href": "slides/session_5/slides.html#hierarchical-index-1",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Hierarchical index",
-    "text": "Hierarchical index\n\nValues are linked by the specific dummy coding.\n\nthe choice of the reference group (with 0) is not completely neutral\n\nfor linear regressions, we can ignore its implications\n\nit must be frequent enough in the data\n\nNote that hierarchy is lost. The same treatment can be applied to non-hierachical variables\nNow our variables are perfectly colinear:\n\nwe can deduce one from all the others\nwe drop one from the regression: the reference group TODO"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#hierarchical-index-2",
-    "href": "slides/session_5/slides.html#hierarchical-index-2",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Hierarchical index (2)",
-    "text": "Hierarchical index (2)\n\\[y_{\\text{CO2 emission}} = \\alpha + \\beta_1 x_{\\text{strdis}} + \\beta_2 x_{\\text{dis}} + \\beta_3 x_{\\text{agr}} + \\beta_4 x_{\\text{stragr}}\\]\n\nInterpretation:\n\nbeing in the group which strongly agrees to the yellow vest’s claim is associated with an additional \\(\\beta_4\\) increase in CO2 consumption compared with members of the neutral group"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#nonnumerical-variables",
-    "href": "slides/session_5/slides.html#nonnumerical-variables",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Nonnumerical variables",
-    "text": "Nonnumerical variables\n\n\n\n\nWhat about nonnumerical variables?\n\nWhen variables take nonnumerical variables, we convert them to numerical variables.\n\nExample:\n\n\n\n\nactivity\ncode\n\n\n\n\nmassage therapist\n1\n\n\nmortician\n2\n\n\narcheologist\n3\n\n\nfinancial clerks\n4\n\n\n\n\n\n\n\nThen we convert to dummy variables exactly like hierarchical indices\n\nhere \\(\\text{massage therapist}\\) is taken as reference\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{mortician}}\\)\n\\(D_{\\text{archeologist}}\\)\n\\(D_{\\text{financial clerks}}\\)\n\n\n\n\n1\n0\n0\n\n\n0\n1\n0\n\n\n0\n0\n1"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#hands-on",
-    "href": "slides/session_5/slides.html#hands-on",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Hands-on",
-    "text": "Hands-on\nUse statsmodels/linearmodels to create dummy variables with formula API.\n\nReplace\n\nsalary ~ activity\n\nby:\n\nsalary ~ C(activity)\nThere is an options to choose the reference group\nsalary ~ C(activity, Treatment(reference=\"archeologist\"))"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#what-is-causality",
-    "href": "slides/session_5/slides.html#what-is-causality",
-    "title": "Introduction to Instrumental Variables",
-    "section": "What is causality?",
-    "text": "What is causality?\n\n\n\n\nGroucho Marx\n\n\nClear? Huh! Why a four-year-old child could understand this report! Run out and find me a four-year-old child, I can’t make head or tail of it."
-  },
-  {
-    "objectID": "slides/session_5/slides.html#spurious-correlation",
-    "href": "slides/session_5/slides.html#spurious-correlation",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Spurious correlation",
-    "text": "Spurious correlation\n\nSpurious Correlation\nWe have seen spurious correlation before\n\nit happens when two series comove without being actually correlated\n\nAlso, two series might be correlated without one causing the other\n\nex: countries eating more chocolate have more nobel prices…"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#definitions",
-    "href": "slides/session_5/slides.html#definitions",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Definitions?",
-    "text": "Definitions?\nBut how do we define\n\ncorrelation\ncausality\n\n?\n\nBoth concepts are actually hard to define:\n\nin statistics (and econometrices) they refer to the generating process\nif the data was generated again, would you observe the same relations?\n\nFor instance correlation between \\(X\\) and \\(Y\\) is just the average correlation taken over many draws \\(\\omega\\) of the data: \\[E_{\\omega}\\left[ (X-E[X])(Y-E[Y])\\right]\\]"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#how-do-we-define-causality-1",
-    "href": "slides/session_5/slides.html#how-do-we-define-causality-1",
-    "title": "Introduction to Instrumental Variables",
-    "section": "How do we define causality (1)",
-    "text": "How do we define causality (1)\n\nIn math, we have implication: \\(A \\implies B\\)\n\napplies to statements that can be either true or false\ngiven \\(A\\) and \\(B\\), \\(A\\) implies \\(B\\) unless \\(A\\) is true and \\(B\\) is false\nparadox of the drinker: at any time, there exists a person such that: if this person drinks, then everybody drinks\n\nIn a mathematical universe taking values \\(\\omega\\), we can define causality between statement \\(A(\\omega)\\) and \\(B(\\omega)\\) as : \\[\\forall \\omega, A(\\omega) \\implies B(\\omega)\\]"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#how-do-we-define-causality-2",
-    "href": "slides/session_5/slides.html#how-do-we-define-causality-2",
-    "title": "Introduction to Instrumental Variables",
-    "section": "How do we define causality (2)",
-    "text": "How do we define causality (2)\nBut causality in the real world is problematic\nUsually, we observe \\(A(\\omega)\\) only once…\n\n\n\nExample:\n\nstate of the world \\(\\omega\\): 2008, big financial crisis, …\nA: Ben Bernanke chairman of the Fed\nB: successful economic interventions\nWas Ben Bernanke a good central banker?\nImpossible to say.\n\n\n\n\n\n\n\n\nThen there is the uncertain concept of time… But let’s take it as granted to not overcomplicate…"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#causality-in-statistics",
-    "href": "slides/session_5/slides.html#causality-in-statistics",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Causality in Statistics",
-    "text": "Causality in Statistics\n\n\n\n\n\n\nStatistical definition of causality\n\n\nVariable \\(A\\) causes \\(B\\) in a statistical sense if\n\n\\(A\\) and \\(B\\) are correlated\n\\(A\\) is known before \\(B\\)\ncorrelation between \\(A\\) and \\(B\\) is unaffected by other variables\n\n\n\n\n\nThere are other related statistical definitions:\n\nlike Granger causality…\n… but not for this course"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#factual-and-counterfactual",
-    "href": "slides/session_5/slides.html#factual-and-counterfactual",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Factual and counterfactual",
-    "text": "Factual and counterfactual\n\n\n \n\n\n\n\n\n\n\nSuppose we observe an event A\n\nA: a patient is administered a drug, government closes all schools during Covid\n\nWe observe a another event B\n\nB: the patient recovers, virus circulation decreases\n\n\n\n\n\nTo interpret B as a consequence of A, we would like to consider the counter-factual:\n\na patient is not administered a drug, government doesn’t close schools\npatient does not recover, virus circulation is stable\n\n\n\n\n\n\nAn important task in econometrics is to construct a counter-factual\n\nas the name suggests is it sometimes never observed!"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#scientific-experiment",
-    "href": "slides/session_5/slides.html#scientific-experiment",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Scientific Experiment",
-    "text": "Scientific Experiment\n\n\n\nIn science we establish causality by performing experiments\n\nand create the counterfactual\n\nA good experiment is reproducible\n\nsame variables\nsame state of the world (other variables)\nreproduce several times (in case output is noisy or random)\n\nChange one factor at a time\n\nto create a counter-factual"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#measuring-effect-of-treatment",
-    "href": "slides/session_5/slides.html#measuring-effect-of-treatment",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Measuring effect of treatment",
-    "text": "Measuring effect of treatment\n\n\n\n\n\n\n\n\n\n\n\nAssume we have discovered two medications: R and B\n\n\n\n\nGive one of them (R) to a patient and observe the outcome\n\n\n\n\nWould would have been the effect of (B) on the same patient?\n\n????\n\n\n\n\n\nWhat if we had many patients and let them choose the medication?\n\n\n\n\n\nMaybe the effect would be the consequence of the choice of patients rather than of the medication?"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#an-exmple-from-behavioural-economics",
-    "href": "slides/session_5/slides.html#an-exmple-from-behavioural-economics",
-    "title": "Introduction to Instrumental Variables",
-    "section": "An exmple from behavioural economics",
-    "text": "An exmple from behavioural economics\n\n\nExample: cognitive dissonance\n\nExperiment in GATE Lab (ENS Lyon)\nVolunteers play an investment game.\nThey are asked beforehand whether they support OM, PSG, or none.\n\n\n\n\nExperiment 1:\n\nBefore the experiment, randomly selected volunteers are given a football shirt of their preferred team (treatment 1)\nOther volunteers receive nothing (treatment 0)\n\nResult:\n\nhaving a football shirt seems to boost investment performance…\n\n\n\n\n\nExperiment 2: subjects are given randomly a shirt of either Olympique de Marseille or PSG.\nResult:\n\nHaving the good shirt improves performance.\nHaving the wrong one deteriorates it badly.\n\n\n\n\n\nHow would you code up this experiment?\nCan we conclude on some form of causality?"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#formalisation-of-the-problem",
-    "href": "slides/session_5/slides.html#formalisation-of-the-problem",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Formalisation of the problem",
-    "text": "Formalisation of the problem\n\n\n\n\n\n\nCause (A): two groups of people\n\nthose given a shirt (treatment 1)\nthose not given a shirt (treatment 0)\n\nPossible consequence (B): performance\nTake a given agent Alice: she performs well with a PSG shirt.\n\nmaybe she is a good investor?\nor maybe she is playing for her team?\n\nLet’s try to have her play again without the football shirt\n\nnow the experiment has changed: she has gained experience, is more tired, misses the shirt…\nit is impossible to get a perfect counterfactual (i.e. where only A changes)\n\n\n\n\nLet’s take somebody else then? Bob was really bad without a PSG shirt.\n\nhe might be a bad investor? or he didn’t understand the rules?\nsome other variables have changed, not only the treatment\n\nHow to make a perfect experiment?\n\nChoose randomly whether assigning a shirt or not\nby construction the treatment will not be correlated with other variables"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#randomized-control-trial",
-    "href": "slides/session_5/slides.html#randomized-control-trial",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Randomized Control Trial",
-    "text": "Randomized Control Trial\n\n\n\n\n\n\nRandomized Control Trial (RCT)\n\n\nThe best way to ensure that treatment is independent from other factors is to randomize it.\n\n\n\n\n\nIn medecine\n\nsome patients receive the treatment (red pill)\nsome other receive the control treatment (blue pill / placebo)\n\nIn economics:\n\nrandomized field experiments\nrandomized phase-ins for new policies\n\nvery useful for policy evaluation\n\n\n\n\n\n\nEsther Duflo\n\n\n\n\n\n\nIt is common in economics, instead of assigning treatments randomly, we often say that we assign individuals randomly to the treatment and to the control group. It is equivalent."
-  },
-  {
-    "objectID": "slides/session_5/slides.html#natural-experiment",
-    "href": "slides/session_5/slides.html#natural-experiment",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Natural experiment",
-    "text": "Natural experiment\n\n\n\n\n\n\nNatural Experiment\n\n\nA natural experiment satisfies conditions that treatment is assigned randomly\n\nwithout interference by the econometrician\n\n\n\n\nAn exemple of a Natural Experiment:\n\ngender bias in french local elections (jean-pierre eymeoud, paul vertier) link\nare women discriminated against by voters in local elections?\n\n\nResult: yes, they get 1.5% less votes by right-wing voters\n\n\nWhat was the natural experiment?"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#example",
-    "href": "slides/session_5/slides.html#example",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Example",
-    "text": "Example\nLifetime Earnings and the Vietnam Era Draft Lottery, by JD Angrist\n\n\nFact:\n\nveterans of the vietnam war (55-75) earn (in the 80s) an income that is 15% less in average than those who didn’t go to the war.\nWhat can we conclude?\nHard to say: maybe those sent to the war came back with lower productivity (because of PTSD, public stigma, …)? maybe they were not the most productive in the first place (unobserved selection bias)?\n\nProblem (for the economist):\n\nwe didn’t send people to war randomly\n\n\nGenius idea:\n\nhere is a variable which randomly affected whether people were sent: the Draft\n\n\nbetween 1947, and 1973, a lottery was run to determine who would go to war\n\nthe draft number was determined, based on date of birth, and first letters of name\n\nand was correlated with the probability that a given person would go to war\nand it was so to say random or at least independent from anything relevant to the problem\n\n\n\n\nCan we use the Draft to generate randomness ?"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#problem",
-    "href": "slides/session_5/slides.html#problem",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Problem",
-    "text": "Problem\n\n\nTake the linear regression: \\[y = \\alpha + \\beta x + \\epsilon\\]\n\n\\(y\\): salary\n\\(x\\): went to war\n\nWe want to establish causality from x to y\n\nwe would like to interpret \\(x\\) as the “treatment”\n\nBut there can be unobserved confounding factors:\n\nvariable \\(z\\) which causes both x and y\nexemple: socio-economic background, IQ, …\n\nIf we could identify \\(z\\) we could control for it: \\[y = \\alpha + \\beta_1 x + \\beta_2 z + \\epsilon\\]\n\nwe would get a better predictor of \\(y\\) but more uncertainty about \\(\\beta_1\\) (\\(x\\) and \\(z\\) are correlated)"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#reformulate-the-problem",
-    "href": "slides/session_5/slides.html#reformulate-the-problem",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Reformulate the problem",
-    "text": "Reformulate the problem\n\n\n\nLet’s assume treatment \\(x\\) is a binary variable \\(\\in{0,1}\\)\nWe want to estimate \\[y = \\alpha + \\beta x + z + \\epsilon\\] where \\(z\\) is potentially correlated to \\(x\\) and \\(y\\)\nThere are two groups:\n\nthose who receive the treatment \\[y = \\alpha + \\beta + z_{T=1} + \\epsilon\\]\nthe others \\[y = \\alpha + 0 +  z_{T=0} + \\epsilon\\]\n\n\n\n\nProblem:\n\nif \\(z\\) is higher in the treatment group, its effect can’t be separated from the treatment effect.\n\nIntuition: what if we make groups differently?\n\ncompletely independent from \\(z\\) (and \\(\\epsilon\\))\nnot independently from \\(x\\) so that one group will receive more treatment than the other\n\nTo make this group we need a new variable \\(q\\) that is:\n\ncorrelated with \\(x\\) so that it will correspond to some treatment effect\nuncorrelated to \\(z\\) or \\(\\epsilon\\) (exogenous)"
-  },
-  {
-    "objectID": "slides/session_5/slides.html#two-stage-regression",
-    "href": "slides/session_5/slides.html#two-stage-regression",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Two stage regression",
-    "text": "Two stage regression\n\n\n\nWe would like to redo the treatment groups in a way that is independent from \\(z\\) (and everything contained in \\(\\epsilon\\))\n\n\\(q\\) is a binary variable: drafted or not\n\n\nFirst stage: regress group assignment on the instrument: \\[x = \\alpha_0 + \\beta_0 q + \\eta\\]\n\nwe can now predict group assignment in a way that is independent from \\(z\\) (and everything in \\(\\epsilon\\)) \\[\\tilde{x} = \\alpha_0 + \\beta_0 q\\]\n\n\nSecond stage: use the predicted value instead of the original one \\[y = \\alpha + \\beta_1 \\tilde{x} + z + \\epsilon\\]\n\n\n\n\nResult:\n\nIf \\(\\beta_1\\) is significantly nonzero, there is a causal effect between \\(x\\) and \\(y\\).\nNote that \\(\\tilde{x}\\) is imperfectly correlated with the treatment: \\(\\beta_1\\) can’t be interpreted directly\nThe actual effect will be \\(\\frac{\\beta_1}{\\beta_0}\\) (in 1d)\n\n\nWe say that we instrument \\(x\\) by \\(q\\)."
-  },
-  {
-    "objectID": "slides/session_5/slides.html#choosing-a-good-instrument",
-    "href": "slides/session_5/slides.html#choosing-a-good-instrument",
-    "title": "Introduction to Instrumental Variables",
-    "section": "Choosing a good instrument",
-    "text": "Choosing a good instrument\n\n\n\n\n\n\n\nChoosing an instrumental variable\n\n\nA good instrument when trying to explain y by x, is a variable that is correlated to the treatment (x) but does not have any effect on the outcome of interest (y), appart from its effect through x.\nIn particular, it should be uncorrelated from any potential confounding factor (whether observed or unobserved)."
-  },
-  {
-    "objectID": "slides/session_5/slides.html#in-practice",
-    "href": "slides/session_5/slides.html#in-practice",
-    "title": "Introduction to Instrumental Variables",
-    "section": "In practice",
-    "text": "In practice\n\nBoth statsmodels and linearmodels support instrumental variables\n\nlibrary (look for IV2SLS)\n\nLibrary linearmodels has a handy formula syntax: salary ~ 1 + [war ~ draft]\n\nAPI is similar but not exactly identical to statsmodels\n\nExample from the doc\n\nformula = (\n    \"np.log(drugexp) ~ 1 + totchr + age + linc + blhisp + [hi_empunion ~ ssiratio]\"\n)\nols = IV2SLS.from_formula(formula, data)\nols_res = ols.fit(cov_type=\"robust\")\nprint(ols_res)"
-  },
-  {
-    "objectID": "slides/session_5/index.html",
-    "href": "slides/session_5/index.html",
+    "objectID": "slides/session_5/index_handout.html",
+    "href": "slides/session_5/index_handout.html",
     "title": "Introduction to Instrumental Variables",
     "section": "",
     "text": "Our multilinear regression: \\[y = \\alpha + \\beta x_1 + \\cdots + \\beta x_n\\]\nSo far, we have only considered real variables: (\\(x_i \\in \\mathbb{R}\\)).\nLike: \\[x_{\\text{gdp}} = \\alpha + \\beta_1 x_{\\text{unemployment}} + \\beta_2 x_{\\text{inflation}}\\]\n\n\n\nHow do we deal with the following cases?\n\nbinary variable: \\(x\\in \\{0,1\\}\\) (or \\(\\{True, False\\}\\))\n\nex: \\(\\text{gonetowar}\\), \\(\\text{hasdegree}\\)\n\ncategorical variable:\n\nex: survey result (0: I don’t know, 1: I strongly disagree, 2: I disagree, 3: I agree, 4: I strongly agree)\nthere is no ranking of answers\nwhen there is ranking: hierarchical index\n\nnonnumerical variables:\n\nex: (flower type: \\(x\\in \\text{myosotis}, \\text{rose}, ...\\))\n\n\n\n\n\n\nNothing to be done: just make sure variables take values 0 or 1. \\[y_\\text{salary} = \\alpha + \\beta x_{\\text{gonetowar}}\\]\nInterpretation:\n\nhaving gone to war is associated with a \\(\\beta\\) increase (or decrease?) in salary (still no causality)\n\n\n\n\n\nLook at the model: \\[y_{\\text{CO2 emission}} = \\alpha + \\beta x_{\\text{banish cars}} \\]\nwhere \\(y_{\\text{CO2 emission}}\\) is an individual’s CO2 emissions and \\(x_{\\text{yellow vest support}}\\) is the response the the question Do you suport the banishment of petrol cars?.\n\n\nResponse is coded up as:\n\n0: Strongly disagree\n1: Disagree\n2: Neutral\n3: Agree\n4: Strongly agree\n\n\nIf the variable was used directly, how would you intepret the coefficient \\(\\beta\\) ?\n\nindex is hierarchical\nbut the distances between 1 and 2 or 2 and 3 are not comparable…\n\n\n\n\n\n\nWe use one dummy variable per possible answer.\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{Strongly Disagree}}\\)\n\\(D_{\\text{Disagree}}\\)\n\\(D_{\\text{Neutral}}\\)\n\\(D_{\\text{Agree}}\\)\n\\(D_{\\text{Strongly Agree}}\\)\n\n\n\n\n1\n0\n0\n0\n0\n\n\n0\n1\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n1\n0\n\n\n0\n0\n0\n0\n1\n\n\n\n\n\n\n\nValues are linked by the specific dummy coding.\n\nthe choice of the reference group (with 0) is not completely neutral\n\nfor linear regressions, we can ignore its implications\n\nit must be frequent enough in the data\n\nNote that hierarchy is lost. The same treatment can be applied to non-hierachical variables\nNow our variables are perfectly colinear:\n\nwe can deduce one from all the others\nwe drop one from the regression: the reference group TODO\n\n\n\n\n\n\\[y_{\\text{CO2 emission}} = \\alpha + \\beta_1 x_{\\text{strdis}} + \\beta_2 x_{\\text{dis}} + \\beta_3 x_{\\text{agr}} + \\beta_4 x_{\\text{stragr}}\\]\n\nInterpretation:\n\nbeing in the group which strongly agrees to the yellow vest’s claim is associated with an additional \\(\\beta_4\\) increase in CO2 consumption compared with members of the neutral group\n\n\n\n\n\n\n\n\n\nWhat about nonnumerical variables?\n\nWhen variables take nonnumerical variables, we convert them to numerical variables.\n\nExample:\n\n\n\n\nactivity\ncode\n\n\n\n\nmassage therapist\n1\n\n\nmortician\n2\n\n\narcheologist\n3\n\n\nfinancial clerks\n4\n\n\n\n\n\n\n\nThen we convert to dummy variables exactly like hierarchical indices\n\nhere \\(\\text{massage therapist}\\) is taken as reference\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{mortician}}\\)\n\\(D_{\\text{archeologist}}\\)\n\\(D_{\\text{financial clerks}}\\)\n\n\n\n\n1\n0\n0\n\n\n0\n1\n0\n\n\n0\n0\n1\n\n\n\n\n\n\n\n\n\nUse statsmodels/linearmodels to create dummy variables with formula API.\n\nReplace\n\nsalary ~ activity\n\nby:\n\nsalary ~ C(activity)\nThere is an options to choose the reference group\nsalary ~ C(activity, Treatment(reference=\"archeologist\"))"
   },
   {
-    "objectID": "slides/session_5/index.html#data",
-    "href": "slides/session_5/index.html#data",
+    "objectID": "slides/session_5/index_handout.html#data",
+    "href": "slides/session_5/index_handout.html#data",
     "title": "Introduction to Instrumental Variables",
     "section": "",
     "text": "Our multilinear regression: \\[y = \\alpha + \\beta x_1 + \\cdots + \\beta x_n\\]\nSo far, we have only considered real variables: (\\(x_i \\in \\mathbb{R}\\)).\nLike: \\[x_{\\text{gdp}} = \\alpha + \\beta_1 x_{\\text{unemployment}} + \\beta_2 x_{\\text{inflation}}\\]"
   },
   {
-    "objectID": "slides/session_5/index.html#data-1",
-    "href": "slides/session_5/index.html#data-1",
+    "objectID": "slides/session_5/index_handout.html#data-1",
+    "href": "slides/session_5/index_handout.html#data-1",
     "title": "Introduction to Instrumental Variables",
     "section": "",
     "text": "How do we deal with the following cases?\n\nbinary variable: \\(x\\in \\{0,1\\}\\) (or \\(\\{True, False\\}\\))\n\nex: \\(\\text{gonetowar}\\), \\(\\text{hasdegree}\\)\n\ncategorical variable:\n\nex: survey result (0: I don’t know, 1: I strongly disagree, 2: I disagree, 3: I agree, 4: I strongly agree)\nthere is no ranking of answers\nwhen there is ranking: hierarchical index\n\nnonnumerical variables:\n\nex: (flower type: \\(x\\in \\text{myosotis}, \\text{rose}, ...\\))"
   },
   {
-    "objectID": "slides/session_5/index.html#binary-variable",
-    "href": "slides/session_5/index.html#binary-variable",
+    "objectID": "slides/session_5/index_handout.html#binary-variable",
+    "href": "slides/session_5/index_handout.html#binary-variable",
     "title": "Introduction to Instrumental Variables",
     "section": "",
     "text": "Nothing to be done: just make sure variables take values 0 or 1. \\[y_\\text{salary} = \\alpha + \\beta x_{\\text{gonetowar}}\\]\nInterpretation:\n\nhaving gone to war is associated with a \\(\\beta\\) increase (or decrease?) in salary (still no causality)"
   },
   {
-    "objectID": "slides/session_5/index.html#categorical-variable",
-    "href": "slides/session_5/index.html#categorical-variable",
+    "objectID": "slides/session_5/index_handout.html#categorical-variable",
+    "href": "slides/session_5/index_handout.html#categorical-variable",
     "title": "Introduction to Instrumental Variables",
     "section": "",
     "text": "Look at the model: \\[y_{\\text{CO2 emission}} = \\alpha + \\beta x_{\\text{banish cars}} \\]\nwhere \\(y_{\\text{CO2 emission}}\\) is an individual’s CO2 emissions and \\(x_{\\text{yellow vest support}}\\) is the response the the question Do you suport the banishment of petrol cars?.\n\n\nResponse is coded up as:\n\n0: Strongly disagree\n1: Disagree\n2: Neutral\n3: Agree\n4: Strongly agree\n\n\nIf the variable was used directly, how would you intepret the coefficient \\(\\beta\\) ?\n\nindex is hierarchical\nbut the distances between 1 and 2 or 2 and 3 are not comparable…"
   },
   {
-    "objectID": "slides/session_5/index.html#hierarchical-index",
-    "href": "slides/session_5/index.html#hierarchical-index",
+    "objectID": "slides/session_5/index_handout.html#hierarchical-index",
+    "href": "slides/session_5/index_handout.html#hierarchical-index",
     "title": "Introduction to Instrumental Variables",
     "section": "",
     "text": "We use one dummy variable per possible answer.\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{Strongly Disagree}}\\)\n\\(D_{\\text{Disagree}}\\)\n\\(D_{\\text{Neutral}}\\)\n\\(D_{\\text{Agree}}\\)\n\\(D_{\\text{Strongly Agree}}\\)\n\n\n\n\n1\n0\n0\n0\n0\n\n\n0\n1\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n1\n0\n\n\n0\n0\n0\n0\n1"
   },
   {
-    "objectID": "slides/session_5/index.html#hierarchical-index-1",
-    "href": "slides/session_5/index.html#hierarchical-index-1",
+    "objectID": "slides/session_5/index_handout.html#hierarchical-index-1",
+    "href": "slides/session_5/index_handout.html#hierarchical-index-1",
     "title": "Introduction to Instrumental Variables",
     "section": "",
     "text": "Values are linked by the specific dummy coding.\n\nthe choice of the reference group (with 0) is not completely neutral\n\nfor linear regressions, we can ignore its implications\n\nit must be frequent enough in the data\n\nNote that hierarchy is lost. The same treatment can be applied to non-hierachical variables\nNow our variables are perfectly colinear:\n\nwe can deduce one from all the others\nwe drop one from the regression: the reference group TODO"
   },
   {
-    "objectID": "slides/session_5/index.html#hierarchical-index-2",
-    "href": "slides/session_5/index.html#hierarchical-index-2",
+    "objectID": "slides/session_5/index_handout.html#hierarchical-index-2",
+    "href": "slides/session_5/index_handout.html#hierarchical-index-2",
     "title": "Introduction to Instrumental Variables",
     "section": "",
     "text": "\\[y_{\\text{CO2 emission}} = \\alpha + \\beta_1 x_{\\text{strdis}} + \\beta_2 x_{\\text{dis}} + \\beta_3 x_{\\text{agr}} + \\beta_4 x_{\\text{stragr}}\\]\n\nInterpretation:\n\nbeing in the group which strongly agrees to the yellow vest’s claim is associated with an additional \\(\\beta_4\\) increase in CO2 consumption compared with members of the neutral group"
   },
   {
-    "objectID": "slides/session_5/index.html#nonnumerical-variables",
-    "href": "slides/session_5/index.html#nonnumerical-variables",
+    "objectID": "slides/session_5/index_handout.html#nonnumerical-variables",
+    "href": "slides/session_5/index_handout.html#nonnumerical-variables",
     "title": "Introduction to Instrumental Variables",
     "section": "",
     "text": "What about nonnumerical variables?\n\nWhen variables take nonnumerical variables, we convert them to numerical variables.\n\nExample:\n\n\n\n\nactivity\ncode\n\n\n\n\nmassage therapist\n1\n\n\nmortician\n2\n\n\narcheologist\n3\n\n\nfinancial clerks\n4\n\n\n\n\n\n\n\nThen we convert to dummy variables exactly like hierarchical indices\n\nhere \\(\\text{massage therapist}\\) is taken as reference\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{mortician}}\\)\n\\(D_{\\text{archeologist}}\\)\n\\(D_{\\text{financial clerks}}\\)\n\n\n\n\n1\n0\n0\n\n\n0\n1\n0\n\n\n0\n0\n1"
   },
   {
-    "objectID": "slides/session_5/index.html#hands-on",
-    "href": "slides/session_5/index.html#hands-on",
+    "objectID": "slides/session_5/index_handout.html#hands-on",
+    "href": "slides/session_5/index_handout.html#hands-on",
     "title": "Introduction to Instrumental Variables",
     "section": "",
     "text": "Use statsmodels/linearmodels to create dummy variables with formula API.\n\nReplace\n\nsalary ~ activity\n\nby:\n\nsalary ~ C(activity)\nThere is an options to choose the reference group\nsalary ~ C(activity, Treatment(reference=\"archeologist\"))"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#what-is-causality",
+    "href": "slides/session_5/index_handout.html#what-is-causality",
+    "title": "Introduction to Instrumental Variables",
+    "section": "What is causality?",
+    "text": "What is causality?\n. . .\n\n\n\nGroucho Marx\n\n\nClear? Huh! Why a four-year-old child could understand this report! Run out and find me a four-year-old child, I can’t make head or tail of it."
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#spurious-correlation",
+    "href": "slides/session_5/index_handout.html#spurious-correlation",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Spurious correlation",
+    "text": "Spurious correlation\n\n\n\nSpurious Correlation\n\n\n\nWe have seen spurious correlation before\n\nit happens when two series comove without being actually correlated\n\nAlso, two series might be correlated without one causing the other\n\nex: countries eating more chocolate have more nobel prices…"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#definitions",
+    "href": "slides/session_5/index_handout.html#definitions",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Definitions?",
+    "text": "Definitions?\nBut how do we define\n\ncorrelation\ncausality\n\n?\n. . .\nBoth concepts are actually hard to define:\n\nin statistics (and econometrices) they refer to the generating process\nif the data was generated again, would you observe the same relations?\n\nFor instance correlation between \\(X\\) and \\(Y\\) is just the average correlation taken over many draws \\(\\omega\\) of the data: \\[E_{\\omega}\\left[ (X-E[X])(Y-E[Y])\\right]\\]"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#how-do-we-define-causality-1",
+    "href": "slides/session_5/index_handout.html#how-do-we-define-causality-1",
+    "title": "Introduction to Instrumental Variables",
+    "section": "How do we define causality (1)",
+    "text": "How do we define causality (1)\n\nIn math, we have implication: \\(A \\implies B\\)\n\napplies to statements that can be either true or false\ngiven \\(A\\) and \\(B\\), \\(A\\) implies \\(B\\) unless \\(A\\) is true and \\(B\\) is false\nparadox of the drinker: at any time, there exists a person such that: if this person drinks, then everybody drinks\n\nIn a mathematical universe taking values \\(\\omega\\), we can define causality between statement \\(A(\\omega)\\) and \\(B(\\omega)\\) as : \\[\\forall \\omega, A(\\omega) \\implies B(\\omega)\\]"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#how-do-we-define-causality-2",
+    "href": "slides/session_5/index_handout.html#how-do-we-define-causality-2",
+    "title": "Introduction to Instrumental Variables",
+    "section": "How do we define causality (2)",
+    "text": "How do we define causality (2)\nBut causality in the real world is problematic\nUsually, we observe \\(A(\\omega)\\) only once…\n. . .\n\n\nExample:\n\nstate of the world \\(\\omega\\): 2008, big financial crisis, …\nA: Ben Bernanke chairman of the Fed\nB: successful economic interventions\nWas Ben Bernanke a good central banker?\nImpossible to say.\n\n\n\n\n\n\n\nThen there is the uncertain concept of time… But let’s take it as granted to not overcomplicate…"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#causality-in-statistics",
+    "href": "slides/session_5/index_handout.html#causality-in-statistics",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Causality in Statistics",
+    "text": "Causality in Statistics\n\n\n\n\n\n\nStatistical definition of causality\n\n\n\nVariable \\(A\\) causes \\(B\\) in a statistical sense if\n\n\\(A\\) and \\(B\\) are correlated\n\\(A\\) is known before \\(B\\)\ncorrelation between \\(A\\) and \\(B\\) is unaffected by other variables\n\n\n\n\nThere are other related statistical definitions:\n\nlike Granger causality…\n… but not for this course"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#factual-and-counterfactual",
+    "href": "slides/session_5/index_handout.html#factual-and-counterfactual",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Factual and counterfactual",
+    "text": "Factual and counterfactual\n\n\n \n\n\n\n\n\n\n\nSuppose we observe an event A\n\nA: a patient is administered a drug, government closes all schools during Covid\n\nWe observe a another event B\n\nB: the patient recovers, virus circulation decreases\n\n\n\n\n\nTo interpret B as a consequence of A, we would like to consider the counter-factual:\n\na patient is not administered a drug, government doesn’t close schools\npatient does not recover, virus circulation is stable\n\n\n\n\n\n. . .\nAn important task in econometrics is to construct a counter-factual\n\nas the name suggests is it sometimes never observed!"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#scientific-experiment",
+    "href": "slides/session_5/index_handout.html#scientific-experiment",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Scientific Experiment",
+    "text": "Scientific Experiment\n\n\n\nIn science we establish causality by performing experiments\n\nand create the counterfactual\n\nA good experiment is reproducible\n\nsame variables\nsame state of the world (other variables)\nreproduce several times (in case output is noisy or random)\n\nChange one factor at a time\n\nto create a counter-factual"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#measuring-effect-of-treatment",
+    "href": "slides/session_5/index_handout.html#measuring-effect-of-treatment",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Measuring effect of treatment",
+    "text": "Measuring effect of treatment\n\n\n\n\n\n\n\n\n\n\n\nAssume we have discovered two medications: R and B\n\n\n\n\nGive one of them (R) to a patient and observe the outcome\n\n\n\n\nWould would have been the effect of (B) on the same patient?\n\n????\n\n\n\n\n\nWhat if we had many patients and let them choose the medication?\n\n\n\n\n. . .\nMaybe the effect would be the consequence of the choice of patients rather than of the medication?"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#an-exmple-from-behavioural-economics",
+    "href": "slides/session_5/index_handout.html#an-exmple-from-behavioural-economics",
+    "title": "Introduction to Instrumental Variables",
+    "section": "An exmple from behavioural economics",
+    "text": "An exmple from behavioural economics\n\n\nExample: cognitive dissonance\n\nExperiment in GATE Lab (ENS Lyon)\nVolunteers play an investment game.\nThey are asked beforehand whether they support OM, PSG, or none.\n\n\n\n\nExperiment 1:\n\nBefore the experiment, randomly selected volunteers are given a football shirt of their preferred team (treatment 1)\nOther volunteers receive nothing (treatment 0)\n\nResult:\n\nhaving a football shirt seems to boost investment performance…\n\n\n\n\n\nExperiment 2: subjects are given randomly a shirt of either Olympique de Marseille or PSG.\nResult:\n\nHaving the good shirt improves performance.\nHaving the wrong one deteriorates it badly.\n\n\n\n\n\nHow would you code up this experiment?\nCan we conclude on some form of causality?"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#formalisation-of-the-problem",
+    "href": "slides/session_5/index_handout.html#formalisation-of-the-problem",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Formalisation of the problem",
+    "text": "Formalisation of the problem\n\n\n\n\n\n\nCause (A): two groups of people\n\nthose given a shirt (treatment 1)\nthose not given a shirt (treatment 0)\n\nPossible consequence (B): performance\nTake a given agent Alice: she performs well with a PSG shirt.\n\nmaybe she is a good investor?\nor maybe she is playing for her team?\n\nLet’s try to have her play again without the football shirt\n\nnow the experiment has changed: she has gained experience, is more tired, misses the shirt…\nit is impossible to get a perfect counterfactual (i.e. where only A changes)\n\n\n\n\nLet’s take somebody else then? Bob was really bad without a PSG shirt.\n\nhe might be a bad investor? or he didn’t understand the rules?\nsome other variables have changed, not only the treatment\n\nHow to make a perfect experiment?\n\nChoose randomly whether assigning a shirt or not\nby construction the treatment will not be correlated with other variables"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#randomized-control-trial",
+    "href": "slides/session_5/index_handout.html#randomized-control-trial",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Randomized Control Trial",
+    "text": "Randomized Control Trial\n\n\n\n\n\n\nRandomized Control Trial (RCT)\n\n\n\nThe best way to ensure that treatment is independent from other factors is to randomize it.\n\n\n\n\nIn medecine\n\nsome patients receive the treatment (red pill)\nsome other receive the control treatment (blue pill / placebo)\n\nIn economics:\n\nrandomized field experiments\nrandomized phase-ins for new policies\n\nvery useful for policy evaluation\n\n\n\n\n\n\nEsther Duflo\n\n\n\n\n\n\nIt is common in economics, instead of assigning treatments randomly, we often say that we assign individuals randomly to the treatment and to the control group. It is equivalent."
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#natural-experiment",
+    "href": "slides/session_5/index_handout.html#natural-experiment",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Natural experiment",
+    "text": "Natural experiment\n\n\n\n\n\n\nNatural Experiment\n\n\n\nA natural experiment satisfies conditions that treatment is assigned randomly\n\nwithout interference by the econometrician\n\n\n\nAn exemple of a Natural Experiment:\n\ngender bias in french local elections (jean-pierre eymeoud, paul vertier) link\nare women discriminated against by voters in local elections?\n\n. . .\nResult: yes, they get 1.5% less votes by right-wing voters\n. . .\nWhat was the natural experiment?"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#example",
+    "href": "slides/session_5/index_handout.html#example",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Example",
+    "text": "Example\nLifetime Earnings and the Vietnam Era Draft Lottery, by JD Angrist\n\n\nFact:\n\nveterans of the vietnam war (55-75) earn (in the 80s) an income that is 15% less in average than those who didn’t go to the war.\nWhat can we conclude?\nHard to say: maybe those sent to the war came back with lower productivity (because of PTSD, public stigma, …)? maybe they were not the most productive in the first place (unobserved selection bias)?\n\nProblem (for the economist):\n\nwe didn’t send people to war randomly\n\n\nGenius idea:\n\nhere is a variable which randomly affected whether people were sent: the Draft\n\n\nbetween 1947, and 1973, a lottery was run to determine who would go to war\n\nthe draft number was determined, based on date of birth, and first letters of name\n\nand was correlated with the probability that a given person would go to war\nand it was so to say random or at least independent from anything relevant to the problem\n\n\n\n. . .\nCan we use the Draft to generate randomness ?"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#problem",
+    "href": "slides/session_5/index_handout.html#problem",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Problem",
+    "text": "Problem\n\n\nTake the linear regression: \\[y = \\alpha + \\beta x + \\epsilon\\]\n\n\\(y\\): salary\n\\(x\\): went to war\n\nWe want to establish causality from x to y\n\nwe would like to interpret \\(x\\) as the “treatment”\n\nBut there can be unobserved confounding factors:\n\nvariable \\(z\\) which causes both x and y\nexemple: socio-economic background, IQ, …\n\nIf we could identify \\(z\\) we could control for it: \\[y = \\alpha + \\beta_1 x + \\beta_2 z + \\epsilon\\]\n\nwe would get a better predictor of \\(y\\) but more uncertainty about \\(\\beta_1\\) (\\(x\\) and \\(z\\) are correlated)"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#reformulate-the-problem",
+    "href": "slides/session_5/index_handout.html#reformulate-the-problem",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Reformulate the problem",
+    "text": "Reformulate the problem\n\n\n\nLet’s assume treatment \\(x\\) is a binary variable \\(\\in{0,1}\\)\nWe want to estimate \\[y = \\alpha + \\beta x + z + \\epsilon\\] where \\(z\\) is potentially correlated to \\(x\\) and \\(y\\)\nThere are two groups:\n\nthose who receive the treatment \\[y = \\alpha + \\beta + z_{T=1} + \\epsilon\\]\nthe others \\[y = \\alpha + 0 +  z_{T=0} + \\epsilon\\]\n\n\n\n\nProblem:\n\nif \\(z\\) is higher in the treatment group, its effect can’t be separated from the treatment effect.\n\nIntuition: what if we make groups differently?\n\ncompletely independent from \\(z\\) (and \\(\\epsilon\\))\nnot independently from \\(x\\) so that one group will receive more treatment than the other\n\nTo make this group we need a new variable \\(q\\) that is:\n\ncorrelated with \\(x\\) so that it will correspond to some treatment effect\nuncorrelated to \\(z\\) or \\(\\epsilon\\) (exogenous)"
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#two-stage-regression",
+    "href": "slides/session_5/index_handout.html#two-stage-regression",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Two stage regression",
+    "text": "Two stage regression\n\n\n\nWe would like to redo the treatment groups in a way that is independent from \\(z\\) (and everything contained in \\(\\epsilon\\))\n\n\\(q\\) is a binary variable: drafted or not\n\n\nFirst stage: regress group assignment on the instrument: \\[x = \\alpha_0 + \\beta_0 q + \\eta\\]\n\nwe can now predict group assignment in a way that is independent from \\(z\\) (and everything in \\(\\epsilon\\)) \\[\\tilde{x} = \\alpha_0 + \\beta_0 q\\]\n\n\nSecond stage: use the predicted value instead of the original one \\[y = \\alpha + \\beta_1 \\tilde{x} + z + \\epsilon\\]\n\n\n\n\nResult:\n\nIf \\(\\beta_1\\) is significantly nonzero, there is a causal effect between \\(x\\) and \\(y\\).\nNote that \\(\\tilde{x}\\) is imperfectly correlated with the treatment: \\(\\beta_1\\) can’t be interpreted directly\nThe actual effect will be \\(\\frac{\\beta_1}{\\beta_0}\\) (in 1d)\n\n\nWe say that we instrument \\(x\\) by \\(q\\)."
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#choosing-a-good-instrument",
+    "href": "slides/session_5/index_handout.html#choosing-a-good-instrument",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Choosing a good instrument",
+    "text": "Choosing a good instrument\n\n\n\n\n\n\n\nChoosing an instrumental variable\n\n\n\nA good instrument when trying to explain y by x, is a variable that is correlated to the treatment (x) but does not have any effect on the outcome of interest (y), appart from its effect through x.\nIn particular, it should be uncorrelated from any potential confounding factor (whether observed or unobserved)."
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#in-practice",
+    "href": "slides/session_5/index_handout.html#in-practice",
+    "title": "Introduction to Instrumental Variables",
+    "section": "In practice",
+    "text": "In practice\n\nBoth statsmodels and linearmodels support instrumental variables\n\nlibrary (look for IV2SLS)\n\nLibrary linearmodels has a handy formula syntax: salary ~ 1 + [war ~ draft]\n\nAPI is similar but not exactly identical to statsmodels\n\nExample from the doc\n\nformula = (\n    \"np.log(drugexp) ~ 1 + totchr + age + linc + blhisp + [hi_empunion ~ ssiratio]\"\n)\nols = IV2SLS.from_formula(formula, data)\nols_res = ols.fit(cov_type=\"robust\")\nprint(ols_res)"
+  },
+  {
+    "objectID": "slides/session_5/index.html#data",
+    "href": "slides/session_5/index.html#data",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Data",
+    "text": "Data\nOur multilinear regression: \\[y = \\alpha + \\beta x_1 + \\cdots + \\beta x_n\\]\nSo far, we have only considered real variables: (\\(x_i \\in \\mathbb{R}\\)).\nLike: \\[x_{\\text{gdp}} = \\alpha + \\beta_1 x_{\\text{unemployment}} + \\beta_2 x_{\\text{inflation}}\\]"
+  },
+  {
+    "objectID": "slides/session_5/index.html#data-1",
+    "href": "slides/session_5/index.html#data-1",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Data",
+    "text": "Data\nHow do we deal with the following cases?\n\nbinary variable: \\(x\\in \\{0,1\\}\\) (or \\(\\{True, False\\}\\))\n\nex: \\(\\text{gonetowar}\\), \\(\\text{hasdegree}\\)\n\ncategorical variable:\n\nex: survey result (0: I don’t know, 1: I strongly disagree, 2: I disagree, 3: I agree, 4: I strongly agree)\nthere is no ranking of answers\nwhen there is ranking: hierarchical index\n\nnonnumerical variables:\n\nex: (flower type: \\(x\\in \\text{myosotis}, \\text{rose}, ...\\))"
+  },
+  {
+    "objectID": "slides/session_5/index.html#binary-variable",
+    "href": "slides/session_5/index.html#binary-variable",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Binary variable",
+    "text": "Binary variable\n\nNothing to be done: just make sure variables take values 0 or 1. \\[y_\\text{salary} = \\alpha + \\beta x_{\\text{gonetowar}}\\]\nInterpretation:\n\nhaving gone to war is associated with a \\(\\beta\\) increase (or decrease?) in salary (still no causality)"
+  },
+  {
+    "objectID": "slides/session_5/index.html#categorical-variable",
+    "href": "slides/session_5/index.html#categorical-variable",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Categorical variable",
+    "text": "Categorical variable\nLook at the model: \\[y_{\\text{CO2 emission}} = \\alpha + \\beta x_{\\text{banish cars}} \\]\nwhere \\(y_{\\text{CO2 emission}}\\) is an individual’s CO2 emissions and \\(x_{\\text{yellow vest support}}\\) is the response the the question Do you suport the banishment of petrol cars?.\n\n\nResponse is coded up as:\n\n0: Strongly disagree\n1: Disagree\n2: Neutral\n3: Agree\n4: Strongly agree\n\n\nIf the variable was used directly, how would you intepret the coefficient \\(\\beta\\) ?\n\nindex is hierarchical\nbut the distances between 1 and 2 or 2 and 3 are not comparable…"
+  },
+  {
+    "objectID": "slides/session_5/index.html#hierarchical-index",
+    "href": "slides/session_5/index.html#hierarchical-index",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Hierarchical index",
+    "text": "Hierarchical index\nWe use one dummy variable per possible answer.\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{Strongly Disagree}}\\)\n\\(D_{\\text{Disagree}}\\)\n\\(D_{\\text{Neutral}}\\)\n\\(D_{\\text{Agree}}\\)\n\\(D_{\\text{Strongly Agree}}\\)\n\n\n\n\n1\n0\n0\n0\n0\n\n\n0\n1\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n1\n0\n\n\n0\n0\n0\n0\n1"
+  },
+  {
+    "objectID": "slides/session_5/index.html#hierarchical-index-1",
+    "href": "slides/session_5/index.html#hierarchical-index-1",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Hierarchical index",
+    "text": "Hierarchical index\n\nValues are linked by the specific dummy coding.\n\nthe choice of the reference group (with 0) is not completely neutral\n\nfor linear regressions, we can ignore its implications\n\nit must be frequent enough in the data\n\nNote that hierarchy is lost. The same treatment can be applied to non-hierachical variables\nNow our variables are perfectly colinear:\n\nwe can deduce one from all the others\nwe drop one from the regression: the reference group TODO"
+  },
+  {
+    "objectID": "slides/session_5/index.html#hierarchical-index-2",
+    "href": "slides/session_5/index.html#hierarchical-index-2",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Hierarchical index (2)",
+    "text": "Hierarchical index (2)\n\\[y_{\\text{CO2 emission}} = \\alpha + \\beta_1 x_{\\text{strdis}} + \\beta_2 x_{\\text{dis}} + \\beta_3 x_{\\text{agr}} + \\beta_4 x_{\\text{stragr}}\\]\n\nInterpretation:\n\nbeing in the group which strongly agrees to the yellow vest’s claim is associated with an additional \\(\\beta_4\\) increase in CO2 consumption compared with members of the neutral group"
+  },
+  {
+    "objectID": "slides/session_5/index.html#nonnumerical-variables",
+    "href": "slides/session_5/index.html#nonnumerical-variables",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Nonnumerical variables",
+    "text": "Nonnumerical variables\n\n\n\n\nWhat about nonnumerical variables?\n\nWhen variables take nonnumerical variables, we convert them to numerical variables.\n\nExample:\n\n\n\n\nactivity\ncode\n\n\n\n\nmassage therapist\n1\n\n\nmortician\n2\n\n\narcheologist\n3\n\n\nfinancial clerks\n4\n\n\n\n\n\n\n\nThen we convert to dummy variables exactly like hierarchical indices\n\nhere \\(\\text{massage therapist}\\) is taken as reference\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{mortician}}\\)\n\\(D_{\\text{archeologist}}\\)\n\\(D_{\\text{financial clerks}}\\)\n\n\n\n\n1\n0\n0\n\n\n0\n1\n0\n\n\n0\n0\n1"
+  },
+  {
+    "objectID": "slides/session_5/index.html#hands-on",
+    "href": "slides/session_5/index.html#hands-on",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Hands-on",
+    "text": "Hands-on\nUse statsmodels/linearmodels to create dummy variables with formula API.\n\nReplace\n\nsalary ~ activity\n\nby:\n\nsalary ~ C(activity)\nThere is an options to choose the reference group\nsalary ~ C(activity, Treatment(reference=\"archeologist\"))"
   },
   {
     "objectID": "slides/session_5/index.html#what-is-causality",
     "href": "slides/session_5/index.html#what-is-causality",
     "title": "Introduction to Instrumental Variables",
     "section": "What is causality?",
-    "text": "What is causality?\n. . .\n\n\n\nGroucho Marx\n\n\nClear? Huh! Why a four-year-old child could understand this report! Run out and find me a four-year-old child, I can’t make head or tail of it."
+    "text": "What is causality?\n\n\n\n\nGroucho Marx\n\n\nClear? Huh! Why a four-year-old child could understand this report! Run out and find me a four-year-old child, I can’t make head or tail of it."
   },
   {
     "objectID": "slides/session_5/index.html#spurious-correlation",
     "href": "slides/session_5/index.html#spurious-correlation",
     "title": "Introduction to Instrumental Variables",
     "section": "Spurious correlation",
-    "text": "Spurious correlation\n\n\n\nSpurious Correlation\n\n\n\nWe have seen spurious correlation before\n\nit happens when two series comove without being actually correlated\n\nAlso, two series might be correlated without one causing the other\n\nex: countries eating more chocolate have more nobel prices…"
+    "text": "Spurious correlation\n\nSpurious Correlation\nWe have seen spurious correlation before\n\nit happens when two series comove without being actually correlated\n\nAlso, two series might be correlated without one causing the other\n\nex: countries eating more chocolate have more nobel prices…"
   },
   {
     "objectID": "slides/session_5/index.html#definitions",
     "href": "slides/session_5/index.html#definitions",
     "title": "Introduction to Instrumental Variables",
     "section": "Definitions?",
-    "text": "Definitions?\nBut how do we define\n\ncorrelation\ncausality\n\n?\n. . .\nBoth concepts are actually hard to define:\n\nin statistics (and econometrices) they refer to the generating process\nif the data was generated again, would you observe the same relations?\n\nFor instance correlation between \\(X\\) and \\(Y\\) is just the average correlation taken over many draws \\(\\omega\\) of the data: \\[E_{\\omega}\\left[ (X-E[X])(Y-E[Y])\\right]\\]"
+    "text": "Definitions?\nBut how do we define\n\ncorrelation\ncausality\n\n?\n\nBoth concepts are actually hard to define:\n\nin statistics (and econometrices) they refer to the generating process\nif the data was generated again, would you observe the same relations?\n\nFor instance correlation between \\(X\\) and \\(Y\\) is just the average correlation taken over many draws \\(\\omega\\) of the data: \\[E_{\\omega}\\left[ (X-E[X])(Y-E[Y])\\right]\\]"
   },
   {
     "objectID": "slides/session_5/index.html#how-do-we-define-causality-1",
@@ -3720,21 +3720,21 @@
     "href": "slides/session_5/index.html#how-do-we-define-causality-2",
     "title": "Introduction to Instrumental Variables",
     "section": "How do we define causality (2)",
-    "text": "How do we define causality (2)\nBut causality in the real world is problematic\nUsually, we observe \\(A(\\omega)\\) only once…\n. . .\n\n\nExample:\n\nstate of the world \\(\\omega\\): 2008, big financial crisis, …\nA: Ben Bernanke chairman of the Fed\nB: successful economic interventions\nWas Ben Bernanke a good central banker?\nImpossible to say.\n\n\n\n\n\n\n\nThen there is the uncertain concept of time… But let’s take it as granted to not overcomplicate…"
+    "text": "How do we define causality (2)\nBut causality in the real world is problematic\nUsually, we observe \\(A(\\omega)\\) only once…\n\n\n\nExample:\n\nstate of the world \\(\\omega\\): 2008, big financial crisis, …\nA: Ben Bernanke chairman of the Fed\nB: successful economic interventions\nWas Ben Bernanke a good central banker?\nImpossible to say.\n\n\n\n\n\n\n\n\nThen there is the uncertain concept of time… But let’s take it as granted to not overcomplicate…"
   },
   {
     "objectID": "slides/session_5/index.html#causality-in-statistics",
     "href": "slides/session_5/index.html#causality-in-statistics",
     "title": "Introduction to Instrumental Variables",
     "section": "Causality in Statistics",
-    "text": "Causality in Statistics\n\n\n\n\n\n\nStatistical definition of causality\n\n\n\nVariable \\(A\\) causes \\(B\\) in a statistical sense if\n\n\\(A\\) and \\(B\\) are correlated\n\\(A\\) is known before \\(B\\)\ncorrelation between \\(A\\) and \\(B\\) is unaffected by other variables\n\n\n\n\nThere are other related statistical definitions:\n\nlike Granger causality…\n… but not for this course"
+    "text": "Causality in Statistics\n\n\n\n\n\n\nStatistical definition of causality\n\n\nVariable \\(A\\) causes \\(B\\) in a statistical sense if\n\n\\(A\\) and \\(B\\) are correlated\n\\(A\\) is known before \\(B\\)\ncorrelation between \\(A\\) and \\(B\\) is unaffected by other variables\n\n\n\n\n\nThere are other related statistical definitions:\n\nlike Granger causality…\n… but not for this course"
   },
   {
     "objectID": "slides/session_5/index.html#factual-and-counterfactual",
     "href": "slides/session_5/index.html#factual-and-counterfactual",
     "title": "Introduction to Instrumental Variables",
     "section": "Factual and counterfactual",
-    "text": "Factual and counterfactual\n\n\n \n\n\n\n\n\n\n\nSuppose we observe an event A\n\nA: a patient is administered a drug, government closes all schools during Covid\n\nWe observe a another event B\n\nB: the patient recovers, virus circulation decreases\n\n\n\n\n\nTo interpret B as a consequence of A, we would like to consider the counter-factual:\n\na patient is not administered a drug, government doesn’t close schools\npatient does not recover, virus circulation is stable\n\n\n\n\n\n. . .\nAn important task in econometrics is to construct a counter-factual\n\nas the name suggests is it sometimes never observed!"
+    "text": "Factual and counterfactual\n\n\n \n\n\n\n\n\n\n\nSuppose we observe an event A\n\nA: a patient is administered a drug, government closes all schools during Covid\n\nWe observe a another event B\n\nB: the patient recovers, virus circulation decreases\n\n\n\n\n\nTo interpret B as a consequence of A, we would like to consider the counter-factual:\n\na patient is not administered a drug, government doesn’t close schools\npatient does not recover, virus circulation is stable\n\n\n\n\n\n\nAn important task in econometrics is to construct a counter-factual\n\nas the name suggests is it sometimes never observed!"
   },
   {
     "objectID": "slides/session_5/index.html#scientific-experiment",
@@ -3748,7 +3748,7 @@
     "href": "slides/session_5/index.html#measuring-effect-of-treatment",
     "title": "Introduction to Instrumental Variables",
     "section": "Measuring effect of treatment",
-    "text": "Measuring effect of treatment\n\n\n\n\n\n\n\n\n\n\n\nAssume we have discovered two medications: R and B\n\n\n\n\nGive one of them (R) to a patient and observe the outcome\n\n\n\n\nWould would have been the effect of (B) on the same patient?\n\n????\n\n\n\n\n\nWhat if we had many patients and let them choose the medication?\n\n\n\n\n. . .\nMaybe the effect would be the consequence of the choice of patients rather than of the medication?"
+    "text": "Measuring effect of treatment\n\n\n\n\n\n\n\n\n\n\n\nAssume we have discovered two medications: R and B\n\n\n\n\nGive one of them (R) to a patient and observe the outcome\n\n\n\n\nWould would have been the effect of (B) on the same patient?\n\n????\n\n\n\n\n\nWhat if we had many patients and let them choose the medication?\n\n\n\n\n\nMaybe the effect would be the consequence of the choice of patients rather than of the medication?"
   },
   {
     "objectID": "slides/session_5/index.html#an-exmple-from-behavioural-economics",
@@ -3769,21 +3769,21 @@
     "href": "slides/session_5/index.html#randomized-control-trial",
     "title": "Introduction to Instrumental Variables",
     "section": "Randomized Control Trial",
-    "text": "Randomized Control Trial\n\n\n\n\n\n\nRandomized Control Trial (RCT)\n\n\n\nThe best way to ensure that treatment is independent from other factors is to randomize it.\n\n\n\n\nIn medecine\n\nsome patients receive the treatment (red pill)\nsome other receive the control treatment (blue pill / placebo)\n\nIn economics:\n\nrandomized field experiments\nrandomized phase-ins for new policies\n\nvery useful for policy evaluation\n\n\n\n\n\n\nEsther Duflo\n\n\n\n\n\n\nIt is common in economics, instead of assigning treatments randomly, we often say that we assign individuals randomly to the treatment and to the control group. It is equivalent."
+    "text": "Randomized Control Trial\n\n\n\n\n\n\nRandomized Control Trial (RCT)\n\n\nThe best way to ensure that treatment is independent from other factors is to randomize it.\n\n\n\n\n\nIn medecine\n\nsome patients receive the treatment (red pill)\nsome other receive the control treatment (blue pill / placebo)\n\nIn economics:\n\nrandomized field experiments\nrandomized phase-ins for new policies\n\nvery useful for policy evaluation\n\n\n\n\n\n\nEsther Duflo\n\n\n\n\n\n\nIt is common in economics, instead of assigning treatments randomly, we often say that we assign individuals randomly to the treatment and to the control group. It is equivalent."
   },
   {
     "objectID": "slides/session_5/index.html#natural-experiment",
     "href": "slides/session_5/index.html#natural-experiment",
     "title": "Introduction to Instrumental Variables",
     "section": "Natural experiment",
-    "text": "Natural experiment\n\n\n\n\n\n\nNatural Experiment\n\n\n\nA natural experiment satisfies conditions that treatment is assigned randomly\n\nwithout interference by the econometrician\n\n\n\nAn exemple of a Natural Experiment:\n\ngender bias in french local elections (jean-pierre eymeoud, paul vertier) link\nare women discriminated against by voters in local elections?\n\n. . .\nResult: yes, they get 1.5% less votes by right-wing voters\n. . .\nWhat was the natural experiment?"
+    "text": "Natural experiment\n\n\n\n\n\n\nNatural Experiment\n\n\nA natural experiment satisfies conditions that treatment is assigned randomly\n\nwithout interference by the econometrician\n\n\n\n\nAn exemple of a Natural Experiment:\n\ngender bias in french local elections (jean-pierre eymeoud, paul vertier) link\nare women discriminated against by voters in local elections?\n\n\nResult: yes, they get 1.5% less votes by right-wing voters\n\n\nWhat was the natural experiment?"
   },
   {
     "objectID": "slides/session_5/index.html#example",
     "href": "slides/session_5/index.html#example",
     "title": "Introduction to Instrumental Variables",
     "section": "Example",
-    "text": "Example\nLifetime Earnings and the Vietnam Era Draft Lottery, by JD Angrist\n\n\nFact:\n\nveterans of the vietnam war (55-75) earn (in the 80s) an income that is 15% less in average than those who didn’t go to the war.\nWhat can we conclude?\nHard to say: maybe those sent to the war came back with lower productivity (because of PTSD, public stigma, …)? maybe they were not the most productive in the first place (unobserved selection bias)?\n\nProblem (for the economist):\n\nwe didn’t send people to war randomly\n\n\nGenius idea:\n\nhere is a variable which randomly affected whether people were sent: the Draft\n\n\nbetween 1947, and 1973, a lottery was run to determine who would go to war\n\nthe draft number was determined, based on date of birth, and first letters of name\n\nand was correlated with the probability that a given person would go to war\nand it was so to say random or at least independent from anything relevant to the problem\n\n\n\n. . .\nCan we use the Draft to generate randomness ?"
+    "text": "Example\nLifetime Earnings and the Vietnam Era Draft Lottery, by JD Angrist\n\n\nFact:\n\nveterans of the vietnam war (55-75) earn (in the 80s) an income that is 15% less in average than those who didn’t go to the war.\nWhat can we conclude?\nHard to say: maybe those sent to the war came back with lower productivity (because of PTSD, public stigma, …)? maybe they were not the most productive in the first place (unobserved selection bias)?\n\nProblem (for the economist):\n\nwe didn’t send people to war randomly\n\n\nGenius idea:\n\nhere is a variable which randomly affected whether people were sent: the Draft\n\n\nbetween 1947, and 1973, a lottery was run to determine who would go to war\n\nthe draft number was determined, based on date of birth, and first letters of name\n\nand was correlated with the probability that a given person would go to war\nand it was so to say random or at least independent from anything relevant to the problem\n\n\n\n\nCan we use the Draft to generate randomness ?"
   },
   {
     "objectID": "slides/session_5/index.html#problem",
@@ -3811,7 +3811,7 @@
     "href": "slides/session_5/index.html#choosing-a-good-instrument",
     "title": "Introduction to Instrumental Variables",
     "section": "Choosing a good instrument",
-    "text": "Choosing a good instrument\n\n\n\n\n\n\n\nChoosing an instrumental variable\n\n\n\nA good instrument when trying to explain y by x, is a variable that is correlated to the treatment (x) but does not have any effect on the outcome of interest (y), appart from its effect through x.\nIn particular, it should be uncorrelated from any potential confounding factor (whether observed or unobserved)."
+    "text": "Choosing a good instrument\n\n\n\n\n\n\n\nChoosing an instrumental variable\n\n\nA good instrument when trying to explain y by x, is a variable that is correlated to the treatment (x) but does not have any effect on the outcome of interest (y), appart from its effect through x.\nIn particular, it should be uncorrelated from any potential confounding factor (whether observed or unobserved)."
   },
   {
     "objectID": "slides/session_5/index.html#in-practice",
@@ -4077,7 +4077,7 @@
     "href": "index.html",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 17, 2024\n\n\nIntroduction\n\n\n\n\nJan 24, 2024\n\n\nDataframes\n\n\n\n\nJan 31, 2024\n\n\nLinear Regression\n\n\n\n\nFeb 7, 2024\n\n\nMultiple Regression\n\n\n\n\nFeb 28, 2024\n\n\nMachine Learning\n\n\n\n\nMar 5, 2024\n\n\nText Analysis\n\n\n\n\nMar 18, 2024\n\n\nLarge Language Models\n\n\n\n\nMar 25, 2024\n\n\nWrap-Up\n\n\n\n\nApr 1, 2024\n\n\nFinal Exam ☠\n\n\n\n\n \n\n\nIntroduction to Instrumental Variables\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 17, 2024\n\n\nIntroduction\n\n\n\n\nJan 24, 2024\n\n\nDataframes\n\n\n\n\nJan 31, 2024\n\n\nLinear Regression\n\n\n\n\nFeb 7, 2024\n\n\nMultiple Regression\n\n\n\n\nFeb 7, 2024\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 28, 2024\n\n\nMachine Learning\n\n\n\n\nMar 5, 2024\n\n\nText Analysis\n\n\n\n\nMar 18, 2024\n\n\nLarge Language Models\n\n\n\n\nMar 25, 2024\n\n\nWrap-Up\n\n\n\n\nApr 1, 2024\n\n\nFinal Exam ☠\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "tutorials/session_5/happiness_regression.html",
