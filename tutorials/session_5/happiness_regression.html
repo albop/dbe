@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data-Based Economics</title>
+<title>Data-Based Economics - More Regressions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,23 +20,55 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -52,67 +84,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-sample-listings .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-sample-listings'] = new List('listing-sample-listings', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -138,7 +112,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data-Based Economics</a> 
+      <a href="../../">Data-Based Economics</a> 
     </div>
       </div>
     <div class="sidebar-menu-container"> 
@@ -154,25 +128,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/session_1/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/session_2/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dataframes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/session_3/index_handout.html" class="sidebar-item-text sidebar-link">
+  <a href="../../slides/session_3/index_handout.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/session_4/index_handout.html" class="sidebar-item-text sidebar-link">
+  <a href="../../slides/session_4/index_handout.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multiple Regression</span></a>
   </div>
 </li>
@@ -184,14 +158,29 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#more-regressions" id="toc-more-regressions" class="nav-link active" data-scroll-target="#more-regressions">More Regressions</a>
+  <ul class="collapse">
+  <li><a href="#the-world-happiness-report." id="toc-the-world-happiness-report." class="nav-link" data-scroll-target="#the-world-happiness-report.">The World Happiness Report.</a>
+  <ul class="collapse">
+  <li><a href="#i-data-exploration" id="toc-i-data-exploration" class="nav-link" data-scroll-target="#i-data-exploration">I) Data exploration</a></li>
+  </ul></li>
+  <li><a href="#ii-linear-regression" id="toc-ii-linear-regression" class="nav-link" data-scroll-target="#ii-linear-regression">II) Linear regression</a></li>
+  <li><a href="#a-simple-linear-regression" id="toc-a-simple-linear-regression" class="nav-link" data-scroll-target="#a-simple-linear-regression">A) Simple linear regression</a></li>
+  <li><a href="#b-multiple-linear-regression" id="toc-b-multiple-linear-regression" class="nav-link" data-scroll-target="#b-multiple-linear-regression">B) Multiple linear regression</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data-Based Economics</h1>
+<h1 class="title">More Regressions</h1>
 </div>
 
 
@@ -208,109 +197,56 @@ window.Quarto = {
 </header>
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-sample-listings">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1705446000000" data-listing-file-modified-sort="1705478604157" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="963" data-listing-title-sort="Introduction" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 17, 2024</span>
-</td>
-<td>
-<a href="./slides/session_1/index.html" class="title listing-title">Introduction</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1706050800000" data-listing-file-modified-sort="1706082390605" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="35" data-listing-word-count-sort="6909" data-listing-title-sort="Dataframes" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 24, 2024</span>
-</td>
-<td>
-<a href="./slides/session_2/index.html" class="title listing-title">Dataframes</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1706655600000" data-listing-file-modified-sort="1707291074998" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1543" data-listing-title-sort="Linear Regression" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 31, 2024</span>
-</td>
-<td>
-<a href="./slides/session_3/index_handout.html" class="title listing-title">Linear Regression</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1707260400000" data-listing-file-modified-sort="1707292319794" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3323" data-listing-title-sort="Multiple Regression" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 7, 2024</span>
-</td>
-<td>
-<a href="./slides/session_4/index_handout.html" class="title listing-title">Multiple Regression</a>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1709074800000" data-listing-file-modified-sort="1706650022375" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Machine Learning" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 28, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_6/index_handout.html" class="title listing-title">Machine Learning</a>
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="1709593200000" data-listing-file-modified-sort="1706650017819" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Text Analysis" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 5, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_7/index_handout.html" class="title listing-title">Text Analysis</a>
-</td>
-</tr>
-<tr data-index="6" data-listing-date-sort="1710716400000" data-listing-file-modified-sort="1706080464800" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Large Language Models" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 18, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_8/index_handout.html" class="title listing-title">Large Language Models</a>
-</td>
-</tr>
-<tr data-index="7" data-listing-date-sort="1711321200000" data-listing-file-modified-sort="1706080845772" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Wrap-Up" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 25, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_9/index_handout.html" class="title listing-title">Wrap-Up</a>
-</td>
-</tr>
-<tr data-index="8" data-listing-date-sort="1711922400000" data-listing-file-modified-sort="1706080277111" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3" data-listing-title-sort="Final Exam ☠" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 1, 2024</span>
-</td>
-<td>
-<a href="./slides/prep_10/index_handout.html" class="title listing-title">Final Exam ☠</a>
-</td>
-</tr>
-<tr data-index="9" data-listing-file-modified-sort="1707897447632" data-listing-reading-time-sort="17" data-listing-word-count-sort="3287" data-listing-title-sort="Introduction to Instrumental Variables" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">&nbsp;</span>
-</td>
-<td>
-<a href="./slides/session_5/index.html" class="title listing-title">Introduction to Instrumental Variables</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<section id="more-regressions" class="level1">
+<h1>More Regressions</h1>
+<section id="the-world-happiness-report." class="level2">
+<h2 class="anchored" data-anchor-id="the-world-happiness-report.">The World Happiness Report.</h2>
+<p>We will analyse those data to find relationships between the happiness score and economy, family, health, freedom, trust, perception of corruption, generosity…</p>
+<p>The dataset contains the following variables:</p>
+<ul>
+<li>Country : Country name</li>
+<li>Overall rank : Country ranking based on happiness score</li>
+<li>Score : Individual personal happiness rating from 0 to 10.</li>
+<li>GDP per capita : GDP per capita of each country in terms of purchasing power parity (PPP) (in USD)</li>
+<li>Social support : Individual rating that determines whether, when you have problems, your family or friends would help you. Binary responses (0 or 1).</li>
+<li>Healthy life expectancy : Healthy life expectancy at birth is based on data from the World Health Organization (WHO)</li>
+<li>Freedom to make life choices : Individual rating that determines whether you are atisfied or dissatisfied with your freedom to choose hat you do with your life. Binary responses (0 or 1).</li>
+<li>Generosity : Generosity is the residual from the regression of the national mean of responses to the question “Have you donated money to a charity in the last month?” on GDP per capita.</li>
+<li>Perceptions of corruption : Average of binary responses to two GWP questions: corruption in government and corruption in business.</li>
+</ul>
+<section id="i-data-exploration" class="level3">
+<h3 class="anchored" data-anchor-id="i-data-exploration">I) Data exploration</h3>
+<div id="e61a3a36-edfd-4592-b14c-3ee805b245be" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula <span class="im">import</span> api <span class="im">as</span> smf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div></main> <!-- /main -->
+<p>Open the csv “happiness_index_2019”</p>
+<p>Explore the dataset by using head function.</p>
+<p>Compute descriptive statistics using a Pandas function</p>
+<p>Plot variables that may have a positive correlation using matplotlib</p>
+<p>Plot the correlation matrix of the main variables using heatmap function of Seaborn package. It should already be installed on your Nuvolos instance (use escpython kernel).</p>
+<p>Comment?</p>
+</section>
+</section>
+<section id="ii-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="ii-linear-regression">II) Linear regression</h2>
+</section>
+<section id="a-simple-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="a-simple-linear-regression">A) Simple linear regression</h2>
+<p>Perform various linear regressions to predict the Happiness score using one of the variables available in the dataset.</p>
+</section>
+<section id="b-multiple-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="b-multiple-linear-regression">B) Multiple linear regression</h2>
+<p>Perform various linear regressions to predict the Happiness score using several of the variables available in the dataset.</p>
+<p>What would be the best model?</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.487">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Year 2022-2023">
+<meta name="author" content="Year 2023-2024">
 
 <title>Data-Based Economics - Introduction to Instrumental Variables</title>
 <style>
@@ -79,6 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -87,6 +88,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -140,6 +168,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Dataframes</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_3/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_4/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple Regression</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -155,10 +195,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#categorical-variables" id="toc-categorical-variables" class="nav-link active" data-scroll-target="#categorical-variables">Categorical Variables</a>
   <ul class="collapse">
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#data-1" id="toc-data-1" class="nav-link" data-scroll-target="#data-1">Data</a></li>
   <li><a href="#binary-variable" id="toc-binary-variable" class="nav-link" data-scroll-target="#binary-variable">Binary variable</a></li>
   <li><a href="#categorical-variable" id="toc-categorical-variable" class="nav-link" data-scroll-target="#categorical-variable">Categorical variable</a></li>
-  <li><a href="#hierarchical-index-2" id="toc-hierarchical-index-2" class="nav-link" data-scroll-target="#hierarchical-index-2">Hierarchical index (2):</a></li>
-  <li><a href="#hierarchical-index-3" id="toc-hierarchical-index-3" class="nav-link" data-scroll-target="#hierarchical-index-3">Hierarchical index (3)</a></li>
+  <li><a href="#hierarchical-index" id="toc-hierarchical-index" class="nav-link" data-scroll-target="#hierarchical-index">Hierarchical index</a></li>
+  <li><a href="#hierarchical-index-1" id="toc-hierarchical-index-1" class="nav-link" data-scroll-target="#hierarchical-index-1">Hierarchical index</a></li>
+  <li><a href="#hierarchical-index-2" id="toc-hierarchical-index-2" class="nav-link" data-scroll-target="#hierarchical-index-2">Hierarchical index (2)</a></li>
   <li><a href="#nonnumerical-variables" id="toc-nonnumerical-variables" class="nav-link" data-scroll-target="#nonnumerical-variables">Nonnumerical variables</a></li>
   <li><a href="#hands-on" id="toc-hands-on" class="nav-link" data-scroll-target="#hands-on">Hands-on</a></li>
   </ul></li>
@@ -183,9 +225,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#instrumental-variables" id="toc-instrumental-variables" class="nav-link" data-scroll-target="#instrumental-variables">Instrumental variables</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
   <li><a href="#reformulate-the-problem" id="toc-reformulate-the-problem" class="nav-link" data-scroll-target="#reformulate-the-problem">Reformulate the problem</a></li>
   <li><a href="#two-stage-regression" id="toc-two-stage-regression" class="nav-link" data-scroll-target="#two-stage-regression">Two stage regression</a></li>
@@ -211,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Year 2022-2023 </p>
+             <p>Year 2023-2024 </p>
           </div>
   </div>
     
@@ -228,15 +269,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Categorical Variables</h1>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>Our multilinear regression: <span class="math display">\[y = \alpha + \beta x_1 + \cdots + \beta x_n\]</span></p>
+<p>So far, we have only considered real variables: (<span class="math inline">\(x_i \in \mathbb{R}\)</span>).</p>
+<p>Like: <span class="math display">\[x_{\text{gdp}} = \alpha + \beta_1 x_{\text{unemployment}} + \beta_2 x_{\text{inflation}}\]</span></p>
+</section>
+<section id="data-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-1">Data</h2>
+<p>How do we deal with the following cases?</p>
 <ul>
-<li><p>Our multilinear regression: <span class="math display">\[y = \alpha + \beta x_1 + \cdots + \beta x_n\]</span></p></li>
-<li><p>So far, we have only considered real variables: (<span class="math inline">\(x_i \in \mathbb{R}\)</span>).</p>
-<ul>
-<li>ex: <span class="math inline">\(x_{\text{gdp}} = \alpha + \beta_1 x_{\text{unemployment}} + \beta_2 x_{\text{inflation}}\)</span></li>
-</ul></li>
-<li><p>How do we deal with the following cases?</p>
-<ul>
-<li><strong>binary variable</strong>: <span class="math inline">\(x\in \{0,1\}\)</span> (or <span class="math inline">\(\{True, False}\)</span>)
+<li><strong>binary variable</strong>: <span class="math inline">\(x\in \{0,1\}\)</span> (or <span class="math inline">\(\{True, False\}\)</span>)
 <ul>
 <li>ex: <span class="math inline">\(\text{gonetowar}\)</span>, <span class="math inline">\(\text{hasdegree}\)</span></li>
 </ul></li>
@@ -249,7 +290,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>nonnumerical variables</strong>:
 <ul>
 <li>ex: (flower type: <span class="math inline">\(x\in \text{myosotis}, \text{rose}, ...\)</span>)</li>
-</ul></li>
 </ul></li>
 </ul>
 </section>
@@ -265,29 +305,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="categorical-variable" class="level2">
 <h2 class="anchored" data-anchor-id="categorical-variable">Categorical variable</h2>
-<ul>
-<li><p>Look at the model: <span class="math display">\[y_{\text{CO2 emission}} = \alpha + \beta x_{\text{yellow vest support}} \]</span></p></li>
-<li><p>Where <span class="math inline">\(y_{\text{CO2 emission}}\)</span> is an individual’s CO2 emissions and <span class="math inline">\(x_{\text{yellow vest support}}\)</span> is the response the the question <em>Are you in agreement with the yellow vests demands?</em>.</p></li>
-<li><p>Response is coded up as:</p>
+<p>Look at the model: <span class="math display">\[y_{\text{CO2 emission}} = \alpha + \beta x_{\text{banish cars}} \]</span></p>
+<p>where <span class="math inline">\(y_{\text{CO2 emission}}\)</span> is an individual’s CO2 emissions and <span class="math inline">\(x_{\text{yellow vest support}}\)</span> is the response the the question <em>Do you suport the banishment of petrol cars?</em>.</p>
+<div class="columns">
+<div class="column">
+<p>Response is coded up as:</p>
 <ul>
 <li>0: Strongly disagree</li>
 <li>1: Disagree</li>
 <li>2: Neutral</li>
 <li>3: Agree</li>
 <li>4: Strongly agree</li>
-</ul></li>
-<li><p>If the variable was used directly, how would you intepret the coefficient <span class="math inline">\(\beta\)</span> ?</p>
+</ul>
+</div><div class="column">
+<p>If the variable was used directly, how would you intepret the coefficient <span class="math inline">\(\beta\)</span> ?</p>
 <ul>
 <li>index is hierarchical</li>
 <li>but the distances between 1 and 2 or 2 and 3 are not comparable…</li>
-</ul></li>
 </ul>
+</div>
+</div>
 </section>
-<section id="hierarchical-index-2" class="level2">
-<h2 class="anchored" data-anchor-id="hierarchical-index-2">Hierarchical index (2):</h2>
-<ul>
-<li>We use one <strong>dummy variable</strong> per possible answer.</li>
-</ul>
+<section id="hierarchical-index" class="level2">
+<h2 class="anchored" data-anchor-id="hierarchical-index">Hierarchical index</h2>
+<p>We use one <strong>dummy variable</strong> per possible answer.</p>
 <table class="table">
 <colgroup>
 <col style="width: 25%">
@@ -343,6 +384,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</section>
+<section id="hierarchical-index-1" class="level2">
+<h2 class="anchored" data-anchor-id="hierarchical-index-1">Hierarchical index</h2>
 <ul>
 <li>Values are linked by the specific <strong>dummy coding</strong>.
 <ul>
@@ -351,7 +395,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>for linear regressions, we can ignore its implications</li>
 </ul></li>
 <li>it must be frequent enough in the data</li>
-<li><strong>effects</strong> coding: reference group takes -1 instead of 0</li>
 </ul></li>
 <li>Note that hierarchy is lost. The same treatment can be applied to non-hierachical variables</li>
 <li>Now our variables are perfectly <strong>colinear</strong>:
@@ -361,8 +404,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 </section>
-<section id="hierarchical-index-3" class="level2">
-<h2 class="anchored" data-anchor-id="hierarchical-index-3">Hierarchical index (3)</h2>
+<section id="hierarchical-index-2" class="level2">
+<h2 class="anchored" data-anchor-id="hierarchical-index-2">Hierarchical index (2)</h2>
 <p><span class="math display">\[y_{\text{CO2 emission}} = \alpha + \beta_1 x_{\text{strdis}} + \beta_2 x_{\text{dis}} + \beta_3 x_{\text{agr}} + \beta_4 x_{\text{stragr}}\]</span></p>
 <ul>
 <li>Interpretation:
@@ -410,6 +453,7 @@ Example:</li>
 </tbody>
 </table>
 </div><div class="column">
+<div class="fragment">
 <ul>
 <li><!-- .element class="fragment" -->
 Then we convert to dummy variables exactly like hierarchical indices
@@ -450,10 +494,11 @@ Then we convert to dummy variables exactly like hierarchical indices
 </table>
 </div>
 </div>
+</div>
 </section>
 <section id="hands-on" class="level2">
 <h2 class="anchored" data-anchor-id="hands-on">Hands-on</h2>
-<p>Use <code>statsmodels</code> to create dummy variables with formula API.</p>
+<p>Use <code>statsmodels</code>/<code>linearmodels</code> to create dummy variables with formula API.</p>
 <ul>
 <li>Replace</li>
 </ul>
@@ -506,6 +551,7 @@ Then we convert to dummy variables exactly like hierarchical indices
 <li>causality</li>
 </ul>
 <p>?</p>
+<p>. . .</p>
 <p>Both concepts are actually hard to define:</p>
 <ul>
 <li>in statistics (and econometrices) they refer to the <strong>generating process</strong></li>
@@ -545,7 +591,7 @@ Then we convert to dummy variables exactly like hierarchical indices
 </div>
 </div>
 
-<div class="no-row-height column-margin column-container"><div class="">
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>Then there is the uncertain concept of time… But let’s take it as granted to not overcomplicate…</p>
 </div></div></section>
 <section id="causality-in-statistics" class="level2">
@@ -560,7 +606,12 @@ Statistical definition of causality
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Variable <span class="math inline">\(A\)</span> causes <span class="math inline">\(B\)</span> in a statistical sense if - <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are correlated - <span class="math inline">\(A\)</span> is known before <span class="math inline">\(B\)</span> - correlation between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is unaffected by other variables</p>
+<p>Variable <span class="math inline">\(A\)</span> causes <span class="math inline">\(B\)</span> in a statistical sense if</p>
+<ul>
+<li><span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are correlated</li>
+<li><span class="math inline">\(A\)</span> is known before <span class="math inline">\(B\)</span></li>
+<li>correlation between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is unaffected by other variables</li>
+</ul>
 </div>
 </div>
 <ul>
@@ -615,12 +666,8 @@ Statistical definition of causality
 </section>
 <section id="scientific-experiment" class="level2">
 <h2 class="anchored" data-anchor-id="scientific-experiment">Scientific Experiment</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/lab_experiment.jpg" class="img-fluid figure-img"></p>
-<figcaption>&nbsp;</figcaption>
-</figure>
-</div>
+<div class="columns">
+<div class="column">
 <ul>
 <li>In science we establish causality by performing experiments
 <ul>
@@ -637,6 +684,15 @@ Statistical definition of causality
 <li>to create a counter-factual</li>
 </ul></li>
 </ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/lab_experiment.jpg" class="img-fluid figure-img"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <hr>
 </section>
 <section id="measuring-effect-of-treatment" class="level2">
@@ -683,13 +739,11 @@ Statistical definition of causality
 <h2 class="anchored" data-anchor-id="an-exmple-from-behavioural-economics">An exmple from behavioural economics</h2>
 <div class="columns">
 <div class="column">
+<p>Example: cognitive dissonance</p>
 <ul>
-<li>Example: cognitive dissonance
-<ul>
-<li>Experiment in GATE Lab</li>
+<li>Experiment in GATE Lab (ENS Lyon)</li>
 <li>Volunteers play an investment game.</li>
 <li>They are asked beforehand whether they support OM, PSG, or none.</li>
-</ul></li>
 </ul>
 <div class="r-stack">
 <div class="fragment current-visible" data-fragment-index="2">
@@ -787,19 +841,17 @@ Randomized Control Trial (RCT)
 </div>
 <div class="columns">
 <div class="column">
-<ul>
-<li>In medecine
+<p>In medecine</p>
 <ul>
 <li>some patients receive the treatment (red pill)</li>
 <li>some other receive the control treatment (blue pill / placebo)</li>
-</ul></li>
-<li>In economics:
+</ul>
+<p>In economics:</p>
 <ul>
 <li>randomized field experiments</li>
 <li>randomized phase-ins for new policies
 <ul>
 <li>very useful for policy evaluation</li>
-</ul></li>
 </ul></li>
 </ul>
 </div><div class="column">
@@ -812,7 +864,7 @@ Randomized Control Trial (RCT)
 </div>
 </div>
 
-<div class="no-row-height column-margin column-container"><div class="">
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>It is common in economics, instead of assigning treatments randomly, we often say that we assign individuals randomly to the treatment and to the control group. It is equivalent.</p>
 </div></div></section>
 <section id="natural-experiment" class="level2">
@@ -833,49 +885,36 @@ Natural Experiment
 </ul>
 </div>
 </div>
-<ul>
-<li>An exemple of a Natural Experiment:
+<p>An exemple of a Natural Experiment:</p>
 <ul>
 <li><em>gender bias in french local elections</em> (jean-pierre eymeoud, paul vertier) <a href="https://spire.sciencespo.fr/hdl:/2441/3k0m7r593p8gs9njjtpupmlknu/resources/wp-78-eymeoud-vertier.pdf">link</a></li>
 <li>are women discriminated against by voters in local elections?</li>
-</ul></li>
 </ul>
 <p>. . .</p>
-<ul>
-<li>Result: yes, they get 1.5% less votes by right-wing voters</li>
-</ul>
+<p>Result: yes, they get 1.5% less votes by right-wing voters</p>
 <p>. . .</p>
-<ul>
-<li>What was the natural experiment</li>
-</ul>
+<p>What was the natural experiment?</p>
 </section>
 </section>
 <section id="instrumental-variables" class="level1">
 <h1>Instrumental variables</h1>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/g0TuQGpMvjM" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</section>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p><em>Lifetime Earnings and the Vietnam Era Draft Lottery</em>, by JD Angrist</p>
 <div class="columns">
 <div class="column">
-<ul>
-<li>Fact:
+<p>Fact:</p>
 <ul>
 <li>veterans of the vietnam war (55-75) earn (in the 80s) an income that is 15% less in average than those who didn’t go to the war.</li>
 <li>What can we conclude?</li>
-<li>Hard to say: maybe those sent to the war came back with lower productivity (because of PTSD, public stigma, …)? maybe they were not the most productive in the first place (<em>selection bias</em>)?</li>
-</ul></li>
-<li>Problem (for the economist):
+<li>Hard to say: maybe those sent to the war came back with lower productivity (because of PTSD, public stigma, …)? maybe they were not the most productive in the first place (unobserved <em>selection bias</em>)?</li>
+</ul>
+<p>Problem (for the economist):</p>
 <ul>
-<li>we didn’t sent people to war randomly</li>
-</ul></li>
+<li>we didn’t send people to war randomly</li>
 </ul>
 </div><div class="column">
-<ul>
-<li>Genius idea:
+<p>Genius idea:</p>
 <ul>
 <li>here is a variable which randomly affected whether people were sent: the Draft<br>
 </li>
@@ -886,39 +925,40 @@ the draft number was determined, based on date of birth, and first letters of na
 <li><!-- .element class="fragment" -->
 and was correlated with the probability that a given person would go to war</li>
 <li>and it was so to say random or at least independent from anything relevant to the problem</li>
-</ul></li>
 </ul>
 </div>
 </div>
 <p>. . .</p>
 <p>Can we use the Draft to generate randomness ?</p>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1"></h2>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 <p><img src="assets/nobel.jpeg" class="img-fluid"></p>
 </section>
 <section id="problem" class="level2">
 <h2 class="anchored" data-anchor-id="problem">Problem</h2>
-<ul>
+<div class="incremental">
+<ul class="incremental">
 <li>Take the linear regression: <span class="math display">\[y = \alpha + \beta x + \epsilon\]</span>
-<ul>
+<ul class="incremental">
 <li><span class="math inline">\(y\)</span>: salary</li>
 <li><span class="math inline">\(x\)</span>: went to war</li>
 </ul></li>
 <li>We want to establish causality from x to y
-<ul>
+<ul class="incremental">
 <li>we would like to interpret <span class="math inline">\(x\)</span> as the “treatment”</li>
 </ul></li>
-<li>But there can be <em>confounding factors</em>:
-<ul>
+<li>But there can be unobserved <em>confounding factors</em>:
+<ul class="incremental">
 <li>variable <span class="math inline">\(z\)</span> which causes both x and y</li>
 <li>exemple: socio-economic background, IQ, …</li>
 </ul></li>
 <li>If we could identify <span class="math inline">\(z\)</span> we could <em>control</em> for it: <span class="math display">\[y = \alpha + \beta_1 x + \beta_2 z + \epsilon\]</span>
-<ul>
+<ul class="incremental">
 <li>we would get a better predictor of <span class="math inline">\(y\)</span> but more uncertainty about <span class="math inline">\(\beta_1\)</span> (<span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> are correlated)</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="reformulate-the-problem" class="level2">
 <h2 class="anchored" data-anchor-id="reformulate-the-problem">Reformulate the problem</h2>
@@ -999,6 +1039,7 @@ Choosing an instrumental variable
 </div>
 <div class="callout-body-container callout-body">
 <p>A good instrument when trying to explain y by x, is a variable that is correlated to the treatment (x) but does not have any effect on the outcome of interest (y), appart from its effect through x.</p>
+<p>In particular, it should be uncorrelated from any potential confounding factor (whether observed or unobserved).</p>
 </div>
 </div>
 </section>
@@ -1012,7 +1053,6 @@ Choosing an instrumental variable
 <li>Library <code>linearmodels</code> has a handy formula syntax: <code>salary ~ 1 + [war ~ draft]</code>
 <ul>
 <li>API is similar but not exactly identical to statsmodels</li>
-<li>for instance <code>linearmodels</code> does not include constants by default</li>
 </ul></li>
 <li>Example from the doc</li>
 </ul>
@@ -1156,38 +1196,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -1196,8 +1226,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

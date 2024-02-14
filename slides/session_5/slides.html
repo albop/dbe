@@ -8,9 +8,9 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.487">
+  <meta name="generator" content="quarto-1.4.549">
 
-  <meta name="author" content="Year 2022-2023">
+  <meta name="author" content="Year 2023-2024">
   <title>Data-Based Economics - Introduction to Instrumental Variables</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -397,7 +397,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Year 2022-2023 
+Year 2023-2024 
 </div>
 </div>
 </div>
@@ -420,15 +420,15 @@ Year 2022-2023
 </section>
 <section id="data" class="slide level2">
 <h2>Data</h2>
+<p>Our multilinear regression: <span class="math display">\[y = \alpha + \beta x_1 + \cdots + \beta x_n\]</span></p>
+<p>So far, we have only considered real variables: (<span class="math inline">\(x_i \in \mathbb{R}\)</span>).</p>
+<p>Like: <span class="math display">\[x_{\text{gdp}} = \alpha + \beta_1 x_{\text{unemployment}} + \beta_2 x_{\text{inflation}}\]</span></p>
+</section>
+<section id="data-1" class="slide level2">
+<h2>Data</h2>
+<p>How do we deal with the following cases?</p>
 <ul>
-<li><p>Our multilinear regression: <span class="math display">\[y = \alpha + \beta x_1 + \cdots + \beta x_n\]</span></p></li>
-<li><p>So far, we have only considered real variables: (<span class="math inline">\(x_i \in \mathbb{R}\)</span>).</p>
-<ul>
-<li>ex: <span class="math inline">\(x_{\text{gdp}} = \alpha + \beta_1 x_{\text{unemployment}} + \beta_2 x_{\text{inflation}}\)</span></li>
-</ul></li>
-<li><p>How do we deal with the following cases?</p>
-<ul>
-<li><strong>binary variable</strong>: <span class="math inline">\(x\in \{0,1\}\)</span> (or <span class="math inline">\(\{True, False}\)</span>)
+<li><strong>binary variable</strong>: <span class="math inline">\(x\in \{0,1\}\)</span> (or <span class="math inline">\(\{True, False\}\)</span>)
 <ul>
 <li>ex: <span class="math inline">\(\text{gonetowar}\)</span>, <span class="math inline">\(\text{hasdegree}\)</span></li>
 </ul></li>
@@ -441,7 +441,6 @@ Year 2022-2023
 <li><strong>nonnumerical variables</strong>:
 <ul>
 <li>ex: (flower type: <span class="math inline">\(x\in \text{myosotis}, \text{rose}, ...\)</span>)</li>
-</ul></li>
 </ul></li>
 </ul>
 </section>
@@ -457,29 +456,30 @@ Year 2022-2023
 </section>
 <section id="categorical-variable" class="slide level2">
 <h2>Categorical variable</h2>
-<ul>
-<li><p>Look at the model: <span class="math display">\[y_{\text{CO2 emission}} = \alpha + \beta x_{\text{yellow vest support}} \]</span></p></li>
-<li><p>Where <span class="math inline">\(y_{\text{CO2 emission}}\)</span> is an individual’s CO2 emissions and <span class="math inline">\(x_{\text{yellow vest support}}\)</span> is the response the the question <em>Are you in agreement with the yellow vests demands?</em>.</p></li>
-<li><p>Response is coded up as:</p>
+<p>Look at the model: <span class="math display">\[y_{\text{CO2 emission}} = \alpha + \beta x_{\text{banish cars}} \]</span></p>
+<p>where <span class="math inline">\(y_{\text{CO2 emission}}\)</span> is an individual’s CO2 emissions and <span class="math inline">\(x_{\text{yellow vest support}}\)</span> is the response the the question <em>Do you suport the banishment of petrol cars?</em>.</p>
+<div class="columns">
+<div class="column">
+<p>Response is coded up as:</p>
 <ul>
 <li>0: Strongly disagree</li>
 <li>1: Disagree</li>
 <li>2: Neutral</li>
 <li>3: Agree</li>
 <li>4: Strongly agree</li>
-</ul></li>
-<li><p>If the variable was used directly, how would you intepret the coefficient <span class="math inline">\(\beta\)</span> ?</p>
+</ul>
+</div><div class="column">
+<p>If the variable was used directly, how would you intepret the coefficient <span class="math inline">\(\beta\)</span> ?</p>
 <ul>
 <li>index is hierarchical</li>
 <li>but the distances between 1 and 2 or 2 and 3 are not comparable…</li>
-</ul></li>
 </ul>
+</div>
+</div>
 </section>
-<section id="hierarchical-index-2" class="slide level2">
-<h2>Hierarchical index (2):</h2>
-<ul>
-<li>We use one <strong>dummy variable</strong> per possible answer.</li>
-</ul>
+<section id="hierarchical-index" class="slide level2">
+<h2>Hierarchical index</h2>
+<p>We use one <strong>dummy variable</strong> per possible answer.</p>
 <table>
 <colgroup>
 <col style="width: 25%">
@@ -535,6 +535,9 @@ Year 2022-2023
 </tr>
 </tbody>
 </table>
+</section>
+<section id="hierarchical-index-1" class="slide level2">
+<h2>Hierarchical index</h2>
 <ul>
 <li>Values are linked by the specific <strong>dummy coding</strong>.
 <ul>
@@ -543,7 +546,6 @@ Year 2022-2023
 <li>for linear regressions, we can ignore its implications</li>
 </ul></li>
 <li>it must be frequent enough in the data</li>
-<li><strong>effects</strong> coding: reference group takes -1 instead of 0</li>
 </ul></li>
 <li>Note that hierarchy is lost. The same treatment can be applied to non-hierachical variables</li>
 <li>Now our variables are perfectly <strong>colinear</strong>:
@@ -553,8 +555,8 @@ Year 2022-2023
 </ul></li>
 </ul>
 </section>
-<section id="hierarchical-index-3" class="slide level2">
-<h2>Hierarchical index (3)</h2>
+<section id="hierarchical-index-2" class="slide level2">
+<h2>Hierarchical index (2)</h2>
 <p><span class="math display">\[y_{\text{CO2 emission}} = \alpha + \beta_1 x_{\text{strdis}} + \beta_2 x_{\text{dis}} + \beta_3 x_{\text{agr}} + \beta_4 x_{\text{stragr}}\]</span></p>
 <ul>
 <li>Interpretation:
@@ -602,6 +604,7 @@ Example:</li>
 </tbody>
 </table>
 </div><div class="column">
+<div class="fragment">
 <ul>
 <li><!-- .element class="fragment" -->
 Then we convert to dummy variables exactly like hierarchical indices
@@ -642,20 +645,21 @@ Then we convert to dummy variables exactly like hierarchical indices
 </table>
 </div>
 </div>
+</div>
 </section>
 <section id="hands-on" class="slide level2">
 <h2>Hands-on</h2>
-<p>Use <code>statsmodels</code> to create dummy variables with formula API.</p>
+<p>Use <code>statsmodels</code>/<code>linearmodels</code> to create dummy variables with formula API.</p>
 <ul>
 <li>Replace</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>salary <span class="op">~</span> activity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>salary <span class="op">~</span> activity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>by:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>salary <span class="op">~</span> C(activity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>salary <span class="op">~</span> C(activity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>There is an options to choose the reference group</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>salary <span class="op">~</span> C(activity, Treatment(reference<span class="op">=</span><span class="st">"archeologist"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>salary <span class="op">~</span> C(activity, Treatment(reference<span class="op">=</span><span class="st">"archeologist"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="causality" class="title-slide slide level1 center">
@@ -696,12 +700,14 @@ Then we convert to dummy variables exactly like hierarchical indices
 <li>causality</li>
 </ul>
 <p>?</p>
+<div class="fragment">
 <p>Both concepts are actually hard to define:</p>
 <ul>
 <li>in statistics (and econometrices) they refer to the <strong>generating process</strong></li>
 <li>if the data was generated again, would you observe the same relations?</li>
 </ul>
 <p>For instance correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is just the average correlation taken over many draws <span class="math inline">\(\omega\)</span> of the data: <span class="math display">\[E_{\omega}\left[ (X-E[X])(Y-E[Y])\right]\]</span></p>
+</div>
 </section>
 <section id="how-do-we-define-causality-1" class="slide level2">
 <h2>How do we define causality (1)</h2>
@@ -750,7 +756,12 @@ Then we convert to dummy variables exactly like hierarchical indices
 <p><strong>Statistical definition of causality</strong></p>
 </div>
 <div class="callout-content">
-<p>Variable <span class="math inline">\(A\)</span> causes <span class="math inline">\(B\)</span> in a statistical sense if - <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are correlated - <span class="math inline">\(A\)</span> is known before <span class="math inline">\(B\)</span> - correlation between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is unaffected by other variables</p>
+<p>Variable <span class="math inline">\(A\)</span> causes <span class="math inline">\(B\)</span> in a statistical sense if</p>
+<ul>
+<li><span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are correlated</li>
+<li><span class="math inline">\(A\)</span> is known before <span class="math inline">\(B\)</span></li>
+<li>correlation between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is unaffected by other variables</li>
+</ul>
 </div>
 </div>
 </div>
@@ -809,8 +820,9 @@ Then we convert to dummy variables exactly like hierarchical indices
 </section>
 <section id="scientific-experiment" class="slide level2">
 <h2>Scientific Experiment</h2>
-
-<img data-src="assets/lab_experiment.jpg" class="r-stretch quarto-figure-center"><p class="caption">&nbsp;</p><ul>
+<div class="columns">
+<div class="column">
+<ul>
 <li>In science we establish causality by performing experiments
 <ul>
 <li>and create the counterfactual</li>
@@ -826,6 +838,15 @@ Then we convert to dummy variables exactly like hierarchical indices
 <li>to create a counter-factual</li>
 </ul></li>
 </ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/lab_experiment.jpg"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="measuring-effect-of-treatment" class="slide level2">
 <h2>Measuring effect of treatment</h2>
@@ -871,13 +892,11 @@ Then we convert to dummy variables exactly like hierarchical indices
 <h2>An exmple from behavioural economics</h2>
 <div class="columns">
 <div class="column">
+<p>Example: cognitive dissonance</p>
 <ul>
-<li>Example: cognitive dissonance
-<ul>
-<li>Experiment in GATE Lab</li>
+<li>Experiment in GATE Lab (ENS Lyon)</li>
 <li>Volunteers play an investment game.</li>
 <li>They are asked beforehand whether they support OM, PSG, or none.</li>
-</ul></li>
 </ul>
 <div class="r-stack">
 <div class="fragment current-visible" data-fragment-index="2">
@@ -974,19 +993,17 @@ Then we convert to dummy variables exactly like hierarchical indices
 </div>
 <div class="columns">
 <div class="column">
-<ul>
-<li>In medecine
+<p>In medecine</p>
 <ul>
 <li>some patients receive the treatment (red pill)</li>
 <li>some other receive the control treatment (blue pill / placebo)</li>
-</ul></li>
-<li>In economics:
+</ul>
+<p>In economics:</p>
 <ul>
 <li>randomized field experiments</li>
 <li>randomized phase-ins for new policies
 <ul>
 <li>very useful for policy evaluation</li>
-</ul></li>
 </ul></li>
 </ul>
 </div><div class="column">
@@ -1020,22 +1037,16 @@ Then we convert to dummy variables exactly like hierarchical indices
 </div>
 </div>
 </div>
-<ul>
-<li>An exemple of a Natural Experiment:
+<p>An exemple of a Natural Experiment:</p>
 <ul>
 <li><em>gender bias in french local elections</em> (jean-pierre eymeoud, paul vertier) <a href="https://spire.sciencespo.fr/hdl:/2441/3k0m7r593p8gs9njjtpupmlknu/resources/wp-78-eymeoud-vertier.pdf">link</a></li>
 <li>are women discriminated against by voters in local elections?</li>
-</ul></li>
 </ul>
 <div class="fragment">
-<ul>
-<li>Result: yes, they get 1.5% less votes by right-wing voters</li>
-</ul>
+<p>Result: yes, they get 1.5% less votes by right-wing voters</p>
 </div>
 <div class="fragment">
-<ul>
-<li>What was the natural experiment</li>
-</ul>
+<p>What was the natural experiment?</p>
 </div>
 </section></section>
 <section>
@@ -1043,30 +1054,23 @@ Then we convert to dummy variables exactly like hierarchical indices
 <h1>Instrumental variables</h1>
 
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<iframe data-external="1" src="https://www.youtube.com/embed/g0TuQGpMvjM" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-</section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
 <p><em>Lifetime Earnings and the Vietnam Era Draft Lottery</em>, by JD Angrist</p>
 <div class="columns">
 <div class="column">
-<ul>
-<li>Fact:
+<p>Fact:</p>
 <ul>
 <li>veterans of the vietnam war (55-75) earn (in the 80s) an income that is 15% less in average than those who didn’t go to the war.</li>
 <li>What can we conclude?</li>
-<li>Hard to say: maybe those sent to the war came back with lower productivity (because of PTSD, public stigma, …)? maybe they were not the most productive in the first place (<em>selection bias</em>)?</li>
-</ul></li>
-<li>Problem (for the economist):
+<li>Hard to say: maybe those sent to the war came back with lower productivity (because of PTSD, public stigma, …)? maybe they were not the most productive in the first place (unobserved <em>selection bias</em>)?</li>
+</ul>
+<p>Problem (for the economist):</p>
 <ul>
-<li>we didn’t sent people to war randomly</li>
-</ul></li>
+<li>we didn’t send people to war randomly</li>
 </ul>
 </div><div class="column">
-<ul>
-<li>Genius idea:
+<p>Genius idea:</p>
 <ul>
 <li>here is a variable which randomly affected whether people were sent: the Draft<br>
 </li>
@@ -1077,7 +1081,6 @@ the draft number was determined, based on date of birth, and first letters of na
 <li><!-- .element class="fragment" -->
 and was correlated with the probability that a given person would go to war</li>
 <li>and it was so to say random or at least independent from anything relevant to the problem</li>
-</ul></li>
 </ul>
 </div>
 </div>
@@ -1085,32 +1088,34 @@ and was correlated with the probability that a given person would go to war</li>
 <p>Can we use the Draft to generate randomness ?</p>
 </div>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section" class="slide level2">
 <h2></h2>
 
 <img data-src="assets/nobel.jpeg" class="r-stretch"></section>
 <section id="problem" class="slide level2">
 <h2>Problem</h2>
+<div>
 <ul>
-<li>Take the linear regression: <span class="math display">\[y = \alpha + \beta x + \epsilon\]</span>
+<li class="fragment">Take the linear regression: <span class="math display">\[y = \alpha + \beta x + \epsilon\]</span>
 <ul>
-<li><span class="math inline">\(y\)</span>: salary</li>
-<li><span class="math inline">\(x\)</span>: went to war</li>
+<li class="fragment"><span class="math inline">\(y\)</span>: salary</li>
+<li class="fragment"><span class="math inline">\(x\)</span>: went to war</li>
 </ul></li>
-<li>We want to establish causality from x to y
+<li class="fragment">We want to establish causality from x to y
 <ul>
-<li>we would like to interpret <span class="math inline">\(x\)</span> as the “treatment”</li>
+<li class="fragment">we would like to interpret <span class="math inline">\(x\)</span> as the “treatment”</li>
 </ul></li>
-<li>But there can be <em>confounding factors</em>:
+<li class="fragment">But there can be unobserved <em>confounding factors</em>:
 <ul>
-<li>variable <span class="math inline">\(z\)</span> which causes both x and y</li>
-<li>exemple: socio-economic background, IQ, …</li>
+<li class="fragment">variable <span class="math inline">\(z\)</span> which causes both x and y</li>
+<li class="fragment">exemple: socio-economic background, IQ, …</li>
 </ul></li>
-<li>If we could identify <span class="math inline">\(z\)</span> we could <em>control</em> for it: <span class="math display">\[y = \alpha + \beta_1 x + \beta_2 z + \epsilon\]</span>
+<li class="fragment">If we could identify <span class="math inline">\(z\)</span> we could <em>control</em> for it: <span class="math display">\[y = \alpha + \beta_1 x + \beta_2 z + \epsilon\]</span>
 <ul>
-<li>we would get a better predictor of <span class="math inline">\(y\)</span> but more uncertainty about <span class="math inline">\(\beta_1\)</span> (<span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> are correlated)</li>
+<li class="fragment">we would get a better predictor of <span class="math inline">\(y\)</span> but more uncertainty about <span class="math inline">\(\beta_1\)</span> (<span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> are correlated)</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="reformulate-the-problem" class="slide level2">
 <h2>Reformulate the problem</h2>
@@ -1190,6 +1195,7 @@ We say that we <strong>instrument</strong> <span class="math inline">\(x\)</span
 </div>
 <div class="callout-content">
 <p>A good instrument when trying to explain y by x, is a variable that is correlated to the treatment (x) but does not have any effect on the outcome of interest (y), appart from its effect through x.</p>
+<p>In particular, it should be uncorrelated from any potential confounding factor (whether observed or unobserved).</p>
 </div>
 </div>
 </div>
@@ -1204,19 +1210,20 @@ We say that we <strong>instrument</strong> <span class="math inline">\(x\)</span
 <li>Library <code>linearmodels</code> has a handy formula syntax: <code>salary ~ 1 + [war ~ draft]</code>
 <ul>
 <li>API is similar but not exactly identical to statsmodels</li>
-<li>for instance <code>linearmodels</code> does not include constants by default</li>
 </ul></li>
 <li>Example from the doc</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>formula <span class="op">=</span> (</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="st">"np.log(drugexp) ~ 1 + totchr + age + linc + blhisp + [hi_empunion ~ ssiratio]"</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>ols <span class="op">=</span> IV2SLS.from_formula(formula, data)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>ols_res <span class="op">=</span> ols.fit(cov_type<span class="op">=</span><span class="st">"robust"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="bu">print</span>(ols_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>formula <span class="op">=</span> (</span>
+<span id="cb4-2"><a></a>    <span class="st">"np.log(drugexp) ~ 1 + totchr + age + linc + blhisp + [hi_empunion ~ ssiratio]"</span></span>
+<span id="cb4-3"><a></a>)</span>
+<span id="cb4-4"><a></a>ols <span class="op">=</span> IV2SLS.from_formula(formula, data)</span>
+<span id="cb4-5"><a></a>ols_res <span class="op">=</span> ols.fit(cov_type<span class="op">=</span><span class="st">"robust"</span>)</span>
+<span id="cb4-6"><a></a><span class="bu">print</span>(ols_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>
