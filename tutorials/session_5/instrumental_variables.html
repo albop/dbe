@@ -182,6 +182,41 @@ window.Quarto = {
  <span class="menu-text">Multiple Regression</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_5/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Instrumental Variables</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">tutorials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorials/session_3/Phillips_curve_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizing the Philips Curve</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorials/session_4/Regressions_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">(Multiple) Regressions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorials/session_5/instrumental_variables_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instrumental variables</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -200,7 +235,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#constructing-the-dataset" id="toc-constructing-the-dataset" class="nav-link" data-scroll-target="#constructing-the-dataset">Constructing the dataset</a></li>
   <li><a href="#ols-regression" id="toc-ols-regression" class="nav-link" data-scroll-target="#ols-regression">OLS Regression</a></li>
-  <li><a href="#regress-again-y-on-x-this-time-controling-for-missing-variable-z." id="toc-regress-again-y-on-x-this-time-controling-for-missing-variable-z." class="nav-link" data-scroll-target="#regress-again-y-on-x-this-time-controling-for-missing-variable-z.">Regress again <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span>, this time controling for missing variable <span class="math inline">\(z\)</span>.</a></li>
   <li><a href="#instrumental-variable" id="toc-instrumental-variable" class="nav-link" data-scroll-target="#instrumental-variable">Instrumental variable</a></li>
   </ul></li>
   <li><a href="#return-on-education" id="toc-return-on-education" class="nav-link" data-scroll-target="#return-on-education">Return on Education</a></li>
@@ -251,24 +285,26 @@ window.Quarto = {
 </ol>
 <p>A problem arises when the confounding factor <span class="math inline">\(z\)</span> is not observed. In that case, we can estimate the direct effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span> by using <span class="math inline">\(q\)</span> as an instrument.</p>
 <p>Run the follwing code to create a mock dataset.</p>
-<div id="c68b9b9d" class="cell" data-execution_count="40">
+<div id="c68b9b9d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="77df8dbb" class="cell" data-execution_count="41">
+<div id="77df8dbb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100000</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ϵ_z <span class="op">=</span> np.random.randn(N)<span class="op">*</span><span class="fl">0.1</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ϵ_x <span class="op">=</span> np.random.randn(N)<span class="op">*</span><span class="fl">0.1</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ϵ_q <span class="op">=</span> np.random.randn(N)<span class="op">*</span><span class="fl">0.01</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ϵ_y <span class="op">=</span> np.random.randn(N)<span class="op">*</span><span class="fl">0.01</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d069ef85" class="cell" data-execution_count="54">
+<div id="d069ef85" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="fl">0.1</span> <span class="op">+</span> ϵ_z</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span> <span class="op">+</span> z <span class="op">+</span> ϵ_x</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.1234</span><span class="op">*</span>ϵ_x <span class="op">+</span> ϵ_q</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>y  <span class="op">=</span> <span class="fl">1.0</span> <span class="op">+</span> <span class="fl">0.9</span><span class="op">*</span>x <span class="op">+</span> <span class="fl">0.4</span><span class="op">*</span>z <span class="op">+</span> ϵ_y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.1234</span><span class="op">*</span>ϵ_x <span class="op">+</span> ϵ_q</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># here we must change the definition so that q affects x:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># x = 0.1 + z + ϵ_x</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">0.1</span> <span class="op">+</span> z <span class="op">+</span> q <span class="op">+</span> ϵ_x</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>y  <span class="op">=</span> <span class="fl">1.0</span> <span class="op">+</span> <span class="fl">0.9</span><span class="op">*</span>x <span class="op">+</span> <span class="fl">0.4</span><span class="op">*</span>z <span class="op">+</span> ϵ_y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="6907c0e7" class="cell" data-execution_count="55">
+<div id="6907c0e7" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"x"</span>: x,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"y"</span>: y,</span>
@@ -277,18 +313,206 @@ window.Quarto = {
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Describe the dataframe. Compute the correlations between the variables. Are they compatible with the hypotheses for IV?</strong></p>
+<div id="5ef812b7" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">z</th>
+<th data-quarto-table-cell-role="th">q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.458958</td>
+<td>1.428012</td>
+<td>-0.006158</td>
+<td>0.489963</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.536544</td>
+<td>1.535235</td>
+<td>0.119739</td>
+<td>0.484211</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.550795</td>
+<td>1.561178</td>
+<td>0.149119</td>
+<td>0.470899</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.774870</td>
+<td>1.773310</td>
+<td>0.184079</td>
+<td>0.501838</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.761371</td>
+<td>1.769818</td>
+<td>0.197662</td>
+<td>0.501622</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="23dfaf78-3749-4fc9-a603-de45970f9a12" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">z</th>
+<th data-quarto-table-cell-role="th">q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>100000.000000</td>
+<td>100000.000000</td>
+<td>100000.000000</td>
+<td>100000.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>0.699704</td>
+<td>1.669716</td>
+<td>0.099930</td>
+<td>0.499973</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>0.150261</td>
+<td>0.164733</td>
+<td>0.099805</td>
+<td>0.015818</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>-0.037950</td>
+<td>0.874772</td>
+<td>-0.301234</td>
+<td>0.429432</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>0.598491</td>
+<td>1.558824</td>
+<td>0.032560</td>
+<td>0.489285</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>0.699121</td>
+<td>1.669068</td>
+<td>0.099462</td>
+<td>0.499978</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>0.800179</td>
+<td>1.780555</td>
+<td>0.167347</td>
+<td>0.510695</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>1.329398</td>
+<td>2.349659</td>
+<td>0.522942</td>
+<td>0.567387</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="04ca06a0-5ce8-4ad2-a57d-a5e5fa8cdc26" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">z</th>
+<th data-quarto-table-cell-role="th">q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">x</td>
+<td>1.000000</td>
+<td>0.981526</td>
+<td>0.662762</td>
+<td>0.618551</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">y</td>
+<td>0.981526</td>
+<td>1.000000</td>
+<td>0.786408</td>
+<td>0.507140</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">z</td>
+<td>0.662762</td>
+<td>0.786408</td>
+<td>1.000000</td>
+<td>-0.002547</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">q</td>
+<td>0.618551</td>
+<td>0.507140</td>
+<td>-0.002547</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </section>
 <section id="ols-regression" class="level3">
 <h3 class="anchored" data-anchor-id="ols-regression">OLS Regression</h3>
 <p>Use <code>linearmodels</code> to run a regression estimating the effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span> (note the slight API change w.r.t. <code>statsmodels</code>). Comment.</p>
-<div id="b1d35704" class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> OLS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b1d35704" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> OLS, IV2SLS</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="7e081a25" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> OLS.from_formula(<span class="st">"y ~ x"</span>, df)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> model.fit()</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>res.summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="59">
+<div id="7e081a25" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> OLS.from_formula(<span class="st">"y ~ x"</span>, df)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> model.fit()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>res      <span class="co"># in statsmodels would be res.summary()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Estimation Summary</caption>
 <tbody>
@@ -296,29 +520,29 @@ window.Quarto = {
 <td data-quarto-table-cell-role="th">Dep. Variable:</td>
 <td>y</td>
 <td data-quarto-table-cell-role="th">R-squared:</td>
-<td>0.9643</td>
+<td>0.9634</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Estimator:</td>
 <td>OLS</td>
 <td data-quarto-table-cell-role="th">Adj. R-squared:</td>
-<td>0.9643</td>
+<td>0.9634</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">No. Observations:</td>
 <td>100000</td>
 <td data-quarto-table-cell-role="th">F-statistic:</td>
-<td>2.677e+06</td>
+<td>2.637e+06</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
-<td>Tue, Feb 13 2024</td>
+<td>Wed, Feb 21 2024</td>
 <td data-quarto-table-cell-role="th">P-value (F-stat)</td>
 <td>0.0000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>22:35:15</td>
+<td>15:08:54</td>
 <td data-quarto-table-cell-role="th">Distribution:</td>
 <td>chi2(1)</td>
 </tr>
@@ -350,45 +574,35 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Intercept</td>
-<td>0.9998</td>
-<td>0.0002</td>
-<td>6088.5</td>
+<td>0.9168</td>
+<td>0.0005</td>
+<td>1932.5</td>
 <td>0.0000</td>
-<td>0.9995</td>
-<td>1.0001</td>
+<td>0.9159</td>
+<td>0.9177</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">x</td>
-<td>1.1003</td>
+<td>1.0761</td>
 <td>0.0007</td>
-<td>1636.2</td>
+<td>1624.0</td>
 <td>0.0000</td>
-<td>1.0990</td>
-<td>1.1016</td>
+<td>1.0748</td>
+<td>1.0774</td>
 </tr>
 </tbody>
 </table>
+<br>id: 0x7f79702b7c50
 </div>
 </div>
-<blockquote class="blockquote">
-<p>your comment</p>
-</blockquote>
+<p>The regression is globally very significant (p-value &lt; 1.e-5). The predictive power is very high (R^2=0.96).</p>
+<p>Constants and coefficients are both statistically very significant (p-values&lt;1e-5 for both) and the confidence intervals are very small.</p>
 <p><strong>Assume briefly that <code>z</code> is known and control the regression by <code>z</code>. What happens?</strong></p>
-<div id="1519fb03" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="regress-again-y-on-x-this-time-controling-for-missing-variable-z." class="level3">
-<h3 class="anchored" data-anchor-id="regress-again-y-on-x-this-time-controling-for-missing-variable-z.">Regress again <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span>, this time controling for missing variable <span class="math inline">\(z\)</span>.</h3>
-<div id="94d9248b" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> IV2SLS</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>formula <span class="op">=</span> (</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># your formula</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> IV2SLS.from_formula(formula, df)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div id="1519fb03" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> OLS.from_formula(<span class="st">"y ~ x + z"</span>, df)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> model.fit()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>res  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Estimation Summary</caption>
 <tbody>
@@ -396,29 +610,29 @@ window.Quarto = {
 <td data-quarto-table-cell-role="th">Dep. Variable:</td>
 <td>y</td>
 <td data-quarto-table-cell-role="th">R-squared:</td>
-<td>0.6068</td>
+<td>0.9963</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Estimator:</td>
 <td>OLS</td>
 <td data-quarto-table-cell-role="th">Adj. R-squared:</td>
-<td>0.6067</td>
+<td>0.9963</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">No. Observations:</td>
 <td>100000</td>
 <td data-quarto-table-cell-role="th">F-statistic:</td>
-<td>1.518e+05</td>
+<td>2.713e+07</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
-<td>Mon, Mar 27 2023</td>
+<td>Wed, Feb 21 2024</td>
 <td data-quarto-table-cell-role="th">P-value (F-stat)</td>
 <td>0.0000</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>21:54:44</td>
+<td>15:08:59</td>
 <td data-quarto-table-cell-role="th">Distribution:</td>
 <td>chi2(2)</td>
 </tr>
@@ -450,52 +664,131 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Intercept</td>
-<td>0.9997</td>
-<td>0.0005</td>
-<td>1818.9</td>
+<td>1.0000</td>
+<td>0.0002</td>
+<td>5752.0</td>
 <td>0.0000</td>
-<td>0.9987</td>
-<td>1.0008</td>
+<td>0.9997</td>
+<td>1.0004</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">x</td>
-<td>0.9007</td>
-<td>0.0032</td>
-<td>283.90</td>
+<td>0.9000</td>
+<td>0.0003</td>
+<td>3213.3</td>
 <td>0.0000</td>
-<td>0.8945</td>
-<td>0.9069</td>
+<td>0.8994</td>
+<td>0.9005</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">z</td>
-<td>0.3993</td>
-<td>0.0035</td>
-<td>113.00</td>
+<td>0.4000</td>
+<td>0.0004</td>
+<td>944.90</td>
 <td>0.0000</td>
-<td>0.3924</td>
-<td>0.4062</td>
+<td>0.3992</td>
+<td>0.4008</td>
 </tr>
 </tbody>
 </table>
-<br>id: 0x7f5788c9ea10
+<br>id: 0x7f79702eb020
 </div>
-</div>
-<div id="141a2dc3" class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="instrumental-variable" class="level3">
 <h3 class="anchored" data-anchor-id="instrumental-variable">Instrumental variable</h3>
 <p>Make a causality graph, summarizing what you know from the equations.</p>
 <p>Use <span class="math inline">\(q\)</span> to instrument the effect of x on y. Comment.</p>
-<div id="adb6c80f" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> IV2SLS</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>formula <span class="op">=</span> (</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># your formula</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> IV2SLS.from_formula(formula, df)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="adb6c80f" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> IV2SLS</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>formula <span class="op">=</span> (</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"y ~ 1 + [x~q]"</span>   <span class="co"># IV2SLS has no intercept by default</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> IV2SLS.from_formula(formula, df)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>IV-2SLS Estimation Summary</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
+<td>y</td>
+<td data-quarto-table-cell-role="th">R-squared:</td>
+<td>0.9389</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Estimator:</td>
+<td>IV-2SLS</td>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
+<td>0.9389</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">No. Observations:</td>
+<td>100000</td>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
+<td>4.316e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Date:</td>
+<td>Wed, Feb 14 2024</td>
+<td data-quarto-table-cell-role="th">P-value (F-stat)</td>
+<td>0.0000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Time:</td>
+<td>11:30:43</td>
+<td data-quarto-table-cell-role="th">Distribution:</td>
+<td>chi2(1)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Cov. Estimator:</td>
+<td>robust</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Parameter Estimates</caption>
+<tbody>
+<tr class="odd">
+<td></td>
+<td data-quarto-table-cell-role="th">Parameter</td>
+<td data-quarto-table-cell-role="th">Std. Err.</td>
+<td data-quarto-table-cell-role="th">T-stat</td>
+<td data-quarto-table-cell-role="th">P-value</td>
+<td data-quarto-table-cell-role="th">Lower CI</td>
+<td data-quarto-table-cell-role="th">Upper CI</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Intercept</td>
+<td>1.0383</td>
+<td>0.0010</td>
+<td>1071.1</td>
+<td>0.0000</td>
+<td>1.0364</td>
+<td>1.0402</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">x</td>
+<td>0.9022</td>
+<td>0.0014</td>
+<td>656.96</td>
+<td>0.0000</td>
+<td>0.8995</td>
+<td>0.9048</td>
+</tr>
+</tbody>
+</table>
+<br><br>Endogenous: x<br>Instruments: q<br>Robust Covariance (Heteroskedastic)<br>Debiased: False<br>id: 0x7fcf7dd34d10
+</div>
 </div>
 <blockquote class="blockquote">
 <p>comment</p>
@@ -508,27 +801,880 @@ window.Quarto = {
 <p>The goal is to measure the effect of schooling on earnings, while correcting the endogeneity bias by using distance to college as an instrument.</p>
 <p><strong>Download the college distance dataset with <code>statsmodels</code>. Describe the dataset and extract the dataframe.</strong></p>
 <p>https://vincentarelbundock.github.io/Rdatasets/datasets.html</p>
-<div id="0f2d34a5" class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"CollegeDistance"</span>, <span class="st">"AER"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0f2d34a5" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"CollegeDistance"</span>, <span class="st">"AER"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="81f66644" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># describe dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a30cb202-ac42-4880-bc32-f91ca94e2095" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ds?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Type:</span>            Dataset
+<span class="ansi-red-fg">String form:</span>     &lt;class 'statsmodels.datasets.utils.Dataset'&gt;
+<span class="ansi-red-fg">Length:</span>          5
+<span class="ansi-red-fg">File:</span>            ~/.local/opt/micromamba/envs/escp/lib/python3.12/site-packages/statsmodels/datasets/utils.py
+<span class="ansi-red-fg">Docstring:</span>      
+.. container::
+=============== ===============
+CollegeDistance R Documentation
+=============== ===============
+.. rubric:: College Distance Data
+   :name: CollegeDistance
+.. rubric:: Description
+   :name: description
+Cross-section data from the High School and Beyond survey conducted
+by the Department of Education in 1980, with a follow-up in 1986. The
+survey included students from approximately 1,100 high schools.
+.. rubric:: Usage
+   :name: usage
+.. code:: R
+   data("CollegeDistance")
+.. rubric:: Format
+   :name: format
+A data frame containing 4,739 observations on 14 variables.
+gender
+   factor indicating gender.
+ethnicity
+   factor indicating ethnicity (African-American, Hispanic or other).
+score
+   base year composite test score. These are achievement tests given
+   to high school seniors in the sample.
+fcollege
+   factor. Is the father a college graduate?
+mcollege
+   factor. Is the mother a college graduate?
+home
+   factor. Does the family own their home?
+urban
+   factor. Is the school in an urban area?
+unemp
+   county unemployment rate in 1980.
+wage
+   state hourly wage in manufacturing in 1980.
+distance
+   distance from 4-year college (in 10 miles).
+tuition
+   average state 4-year college tuition (in 1000 USD).
+education
+   number of years of education.
+income
+   factor. Is the family income above USD 25,000 per year?
+region
+   factor indicating region (West or other).
+.. rubric:: Details
+   :name: details
+Rouse (1995) computed years of education by assigning 12 years to all
+members of the senior class. Each additional year of secondary
+education counted as a one year. Students with vocational degrees
+were assigned 13 years, AA degrees were assigned 14 years, BA degrees
+were assigned 16 years, those with some graduate education were
+assigned 17 years, and those with a graduate degree were assigned 18
+years.
+Stock and Watson (2007) provide separate data files for the students
+from Western states and the remaining students. ``CollegeDistance``
+includes both data sets, subsets are easily obtained (see also
+examples).
+.. rubric:: Source
+   :name: source
+Online complements to Stock and Watson (2007).
+.. rubric:: References
+   :name: references
+Rouse, C.E. (1995). Democratization or Diversion? The Effect of
+Community Colleges on Educational Attainment. *Journal of Business &amp;
+Economic Statistics*, **12**, 217–224.
+Stock, J.H. and Watson, M.W. (2007). *Introduction to Econometrics*,
+2nd ed. Boston: Addison Wesley.
+.. rubric:: See Also
+   :name: see-also
+``StockWatson2007``
+.. rubric:: Examples
+   :name: examples
+.. code:: R
+   ## exclude students from Western states
+   data("CollegeDistance")
+   cd &lt;- subset(CollegeDistance, region != "west")
+   summary(cd)
+<span class="ansi-red-fg">Class docstring:</span>
+dict() -&gt; new empty dictionary
+dict(mapping) -&gt; new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -&gt; new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)</pre>
 </div>
-<div id="8f22ccba" class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> ds.data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="5555df62" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># describe dataframe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>How is <code>education</code> encoded? Create a binary variable <code>education_binary</code> to replace it.</strong></p>
+<div id="81f66644" class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># describe dataset</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print(ds.__doc__)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="8f22ccba" class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> ds.data <span class="co"># dataframe attached to dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5555df62" class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># describe dataframe</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">ethnicity</th>
+<th data-quarto-table-cell-role="th">score</th>
+<th data-quarto-table-cell-role="th">fcollege</th>
+<th data-quarto-table-cell-role="th">mcollege</th>
+<th data-quarto-table-cell-role="th">home</th>
+<th data-quarto-table-cell-role="th">urban</th>
+<th data-quarto-table-cell-role="th">unemp</th>
+<th data-quarto-table-cell-role="th">wage</th>
+<th data-quarto-table-cell-role="th">distance</th>
+<th data-quarto-table-cell-role="th">tuition</th>
+<th data-quarto-table-cell-role="th">education</th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">region</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">rownames</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>male</td>
+<td>other</td>
+<td>39.150002</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>6.2</td>
+<td>8.09</td>
+<td>0.2</td>
+<td>0.88915</td>
+<td>12</td>
+<td>high</td>
+<td>other</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>female</td>
+<td>other</td>
+<td>48.869999</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>6.2</td>
+<td>8.09</td>
+<td>0.2</td>
+<td>0.88915</td>
+<td>12</td>
+<td>low</td>
+<td>other</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>male</td>
+<td>other</td>
+<td>48.740002</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>6.2</td>
+<td>8.09</td>
+<td>0.2</td>
+<td>0.88915</td>
+<td>12</td>
+<td>low</td>
+<td>other</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>male</td>
+<td>afam</td>
+<td>40.400002</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>6.2</td>
+<td>8.09</td>
+<td>0.2</td>
+<td>0.88915</td>
+<td>12</td>
+<td>low</td>
+<td>other</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>female</td>
+<td>other</td>
+<td>40.480000</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>5.6</td>
+<td>8.09</td>
+<td>0.4</td>
+<td>0.88915</td>
+<td>13</td>
+<td>low</td>
+<td>other</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>How is <code>income</code> encoded? Create a binary variable <code>income_binary</code> to replace it.</strong></p>
+<div id="4cbb2a92-6862-42fa-b8a1-c5de45e102cb" class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'income'</span>] <span class="co"># takes two values `high` an `low`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<pre><code>rownames
+1       high
+2        low
+3        low
+4        low
+5        low
+        ... 
+9391    high
+9401    high
+9411    high
+9421    high
+9431    high
+Name: income, Length: 4739, dtype: object</code></pre>
+</div>
+</div>
+<div id="2da0e016-a12b-4abc-a046-7811cd7758c1" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'income'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="78">
+<pre><code>array(['high', 'low'], dtype=object)</code></pre>
+</div>
+</div>
+<div id="4ebfd1da" class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define a binary variable `income_binary` : 0 if income is low, 1 otherwise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d6fb9bd2-f0f7-419c-9545-f6e4b48c0aab" class="cell" data-execution_count="87">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'income_binary'</span>] <span class="op">=</span> (df[<span class="st">'income'</span>] <span class="op">==</span> <span class="st">'high'</span>)<span class="op">*</span><span class="fl">1.0</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># multiply by 1.0 to convert booleans into binary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="16805dc8-d264-45c0-9120-4b646f612c9b" class="cell" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'income_binary'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="88">
+<pre><code>rownames
+1       1.0
+2       0.0
+3       0.0
+4       0.0
+5       0.0
+       ... 
+9391    1.0
+9401    1.0
+9411    1.0
+9421    1.0
+9431    1.0
+Name: income_binary, Length: 4739, dtype: float64</code></pre>
+</div>
+</div>
 <p><strong>Plot an histogram of distance to college.</strong></p>
+<div id="29926567" class="cell" data-execution_count="91">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'distance'</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="91">
+<pre><code>count    4739.000000
+mean        1.802870
+std         2.297128
+min         0.000000
+25%         0.400000
+50%         1.000000
+75%         2.500000
+max        20.000000
+Name: distance, dtype: float64</code></pre>
+</div>
+</div>
+<div id="ff10ac8a-3bfb-4ce6-94b7-4c08b871e2ee" class="cell" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'distance'</span>].hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="instrumental_variables_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="f2983376-261b-4834-91b3-5e66770867b8" class="cell" data-execution_count="94">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># other ways to do a histogram</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b095b516-2066-4ffd-95cf-fb272d11965d" class="cell" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.hist(df['distance']) # same graph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="aa8dfbd5-a202-42fc-9a88-c95ac2f6d812" class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use seaborn</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">'distance'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="instrumental_variables_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p><strong>Run the naive regression <span class="math inline">\(income_{binary}=\beta_0 + \beta_1 \text{education} + u\)</span>.</strong></p>
+<div id="7c51f0b4" class="cell" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> IV2SLS</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>formula <span class="op">=</span> (</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"income_binary ~ 1 + education"</span>   <span class="co"># IV2SLS has no intercept by default</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> IV2SLS.from_formula(formula, df)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="100">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>OLS Estimation Summary</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
+<td>income_binary</td>
+<td data-quarto-table-cell-role="th">R-squared:</td>
+<td>0.0480</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Estimator:</td>
+<td>OLS</td>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
+<td>0.0478</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">No. Observations:</td>
+<td>4739</td>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
+<td>227.43</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Date:</td>
+<td>Wed, Feb 14 2024</td>
+<td data-quarto-table-cell-role="th">P-value (F-stat)</td>
+<td>0.0000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Time:</td>
+<td>11:57:29</td>
+<td data-quarto-table-cell-role="th">Distribution:</td>
+<td>chi2(1)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Cov. Estimator:</td>
+<td>robust</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Parameter Estimates</caption>
+<tbody>
+<tr class="odd">
+<td></td>
+<td data-quarto-table-cell-role="th">Parameter</td>
+<td data-quarto-table-cell-role="th">Std. Err.</td>
+<td data-quarto-table-cell-role="th">T-stat</td>
+<td data-quarto-table-cell-role="th">P-value</td>
+<td data-quarto-table-cell-role="th">Lower CI</td>
+<td data-quarto-table-cell-role="th">Upper CI</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Intercept</td>
+<td>-0.4780</td>
+<td>0.0499</td>
+<td>-9.5702</td>
+<td>0.0000</td>
+<td>-0.5759</td>
+<td>-0.3801</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">education</td>
+<td>0.0555</td>
+<td>0.0037</td>
+<td>15.081</td>
+<td>0.0000</td>
+<td>0.0483</td>
+<td>0.0627</td>
+</tr>
+</tbody>
+</table>
+<br>id: 0x7fcf62b1dc40
+</div>
+</div>
 <p><strong>Augment the regression with <code>unemp</code>, <code>hispanic</code>, <code>af-am</code>, <code>female</code> and <code>urban</code>. Notice that categorical variables are encoded automatically. What are the treatment values? Change it using the syntax (<code>C(var,Treatment='ref')</code>)</strong></p>
+<div id="9ff06000-876d-421f-8526-60cd1e8f4ed4" class="cell" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="102">
+<pre><code>Index(['gender', 'ethnicity', 'score', 'fcollege', 'mcollege', 'home', 'urban',
+       'unemp', 'wage', 'distance', 'tuition', 'education', 'income', 'region',
+       'income_binary'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<div id="8621b397" class="cell" data-execution_count="104">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> IV2SLS</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>formula <span class="op">=</span> (</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"income_binary ~ 1 + education + gender + ethnicity + urban + unemp"</span>   <span class="co"># IV2SLS has no intercept by default</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> IV2SLS.from_formula(formula, df)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="104">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>OLS Estimation Summary</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
+<td>income_binary</td>
+<td data-quarto-table-cell-role="th">R-squared:</td>
+<td>0.0830</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Estimator:</td>
+<td>OLS</td>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
+<td>0.0818</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">No. Observations:</td>
+<td>4739</td>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
+<td>456.93</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Date:</td>
+<td>Wed, Feb 14 2024</td>
+<td data-quarto-table-cell-role="th">P-value (F-stat)</td>
+<td>0.0000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Time:</td>
+<td>12:02:32</td>
+<td data-quarto-table-cell-role="th">Distribution:</td>
+<td>chi2(6)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Cov. Estimator:</td>
+<td>robust</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Parameter Estimates</caption>
+<tbody>
+<tr class="odd">
+<td></td>
+<td data-quarto-table-cell-role="th">Parameter</td>
+<td data-quarto-table-cell-role="th">Std. Err.</td>
+<td data-quarto-table-cell-role="th">T-stat</td>
+<td data-quarto-table-cell-role="th">P-value</td>
+<td data-quarto-table-cell-role="th">Lower CI</td>
+<td data-quarto-table-cell-role="th">Upper CI</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Intercept</td>
+<td>-0.4159</td>
+<td>0.0538</td>
+<td>-7.7362</td>
+<td>0.0000</td>
+<td>-0.5212</td>
+<td>-0.3105</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">education</td>
+<td>0.0511</td>
+<td>0.0036</td>
+<td>14.030</td>
+<td>0.0000</td>
+<td>0.0440</td>
+<td>0.0583</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">gender[T.male]</td>
+<td>0.0490</td>
+<td>0.0128</td>
+<td>3.8341</td>
+<td>0.0001</td>
+<td>0.0239</td>
+<td>0.0740</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ethnicity[T.hispanic]</td>
+<td>-0.0296</td>
+<td>0.0185</td>
+<td>-1.6006</td>
+<td>0.1095</td>
+<td>-0.0660</td>
+<td>0.0067</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ethnicity[T.other]</td>
+<td>0.1235</td>
+<td>0.0167</td>
+<td>7.3992</td>
+<td>0.0000</td>
+<td>0.0908</td>
+<td>0.1563</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">urban[T.yes]</td>
+<td>-0.0470</td>
+<td>0.0149</td>
+<td>-3.1556</td>
+<td>0.0016</td>
+<td>-0.0763</td>
+<td>-0.0178</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">unemp</td>
+<td>-0.0115</td>
+<td>0.0023</td>
+<td>-5.0997</td>
+<td>0.0000</td>
+<td>-0.0159</td>
+<td>-0.0071</td>
+</tr>
+</tbody>
+</table>
+<br>id: 0x7fcf62a4b4d0
+</div>
+</div>
+<div id="9cc0742d-d18c-4070-8647-e8315650ebb8" class="cell" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'ethnicity'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="106">
+<pre><code>array(['other', 'afam', 'hispanic'], dtype=object)</code></pre>
+</div>
+</div>
+<p>The library has created automatically dummy variable for categories. For the <code>ethnicity</code> variable, it has used <code>afam</code> as reference value. Let’s use <code>other</code> as reference value.</p>
+<div id="ad31390c-af03-45d7-a4d6-bccade54da25" class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># C(ethnicity) -&gt; flags ethnicity as categorical variable</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>$ C(ethnicity, Treatment(reference<span class="op">=</span><span class="st">'other'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9d196a88-d86c-4db2-98b1-4c428ed6253a" class="cell" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> IV2SLS</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>formula <span class="op">=</span> (</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"income_binary ~ 1 + education + gender + C(ethnicity, Treatment(reference='other')) + urban + unemp"</span>   <span class="co"># IV2SLS has no intercept by default</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> IV2SLS.from_formula(formula, df)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="107">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>OLS Estimation Summary</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
+<td>income_binary</td>
+<td data-quarto-table-cell-role="th">R-squared:</td>
+<td>0.0830</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Estimator:</td>
+<td>OLS</td>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
+<td>0.0818</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">No. Observations:</td>
+<td>4739</td>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
+<td>456.93</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Date:</td>
+<td>Wed, Feb 14 2024</td>
+<td data-quarto-table-cell-role="th">P-value (F-stat)</td>
+<td>0.0000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Time:</td>
+<td>12:10:11</td>
+<td data-quarto-table-cell-role="th">Distribution:</td>
+<td>chi2(6)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Cov. Estimator:</td>
+<td>robust</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Parameter Estimates</caption>
+<tbody>
+<tr class="odd">
+<td></td>
+<td data-quarto-table-cell-role="th">Parameter</td>
+<td data-quarto-table-cell-role="th">Std. Err.</td>
+<td data-quarto-table-cell-role="th">T-stat</td>
+<td data-quarto-table-cell-role="th">P-value</td>
+<td data-quarto-table-cell-role="th">Lower CI</td>
+<td data-quarto-table-cell-role="th">Upper CI</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Intercept</td>
+<td>-0.2923</td>
+<td>0.0541</td>
+<td>-5.4047</td>
+<td>0.0000</td>
+<td>-0.3983</td>
+<td>-0.1863</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">education</td>
+<td>0.0511</td>
+<td>0.0036</td>
+<td>14.030</td>
+<td>0.0000</td>
+<td>0.0440</td>
+<td>0.0583</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">gender[T.male]</td>
+<td>0.0490</td>
+<td>0.0128</td>
+<td>3.8341</td>
+<td>0.0001</td>
+<td>0.0239</td>
+<td>0.0740</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C(ethnicity, Treatment(reference='other'))[T.afam]</td>
+<td>-0.1235</td>
+<td>0.0167</td>
+<td>-7.3992</td>
+<td>0.0000</td>
+<td>-0.1563</td>
+<td>-0.0908</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">C(ethnicity, Treatment(reference='other'))[T.hispanic]</td>
+<td>-0.1532</td>
+<td>0.0151</td>
+<td>-10.127</td>
+<td>0.0000</td>
+<td>-0.1828</td>
+<td>-0.1235</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">urban[T.yes]</td>
+<td>-0.0470</td>
+<td>0.0149</td>
+<td>-3.1556</td>
+<td>0.0016</td>
+<td>-0.0763</td>
+<td>-0.0178</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">unemp</td>
+<td>-0.0115</td>
+<td>0.0023</td>
+<td>-5.0997</td>
+<td>0.0000</td>
+<td>-0.0159</td>
+<td>-0.0071</td>
+</tr>
+</tbody>
+</table>
+<br>id: 0x7fcf62b1c5c0
+</div>
+</div>
+<p>The regression is highly significant (R^2&gt;0 with p-value &lt; 1e.-5). The predictive power is low, with only 8% of total variance explained by education.</p>
+<p>All coefficients are significant at a 2% confidence level.</p>
+<p>According to the results:</p>
 <p><strong>Comment the results and explain the selection problem</strong></p>
 <p><strong>Explain why distance to college might be used to instrument the effect of schooling.</strong></p>
 <p><strong>Run an IV regression, where <code>distance</code> is used to instrument schooling.</strong></p>
 <p>look at: https://bashtage.github.io/linearmodels/ (two-stage least squares)</p>
+<div id="c813c2cc" class="cell" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> IV2SLS</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>formula <span class="op">=</span> (</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"income_binary ~ 1 + [education~distance] + gender + C(ethnicity, Treatment(reference='other')) + urban + unemp"</span>   <span class="co"># IV2SLS has no intercept by default</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> IV2SLS.from_formula(formula, df)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="108">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>IV-2SLS Estimation Summary</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
+<td>income_binary</td>
+<td data-quarto-table-cell-role="th">R-squared:</td>
+<td>-0.2734</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Estimator:</td>
+<td>IV-2SLS</td>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
+<td>-0.2750</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">No. Observations:</td>
+<td>4739</td>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
+<td>213.68</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Date:</td>
+<td>Wed, Feb 14 2024</td>
+<td data-quarto-table-cell-role="th">P-value (F-stat)</td>
+<td>0.0000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Time:</td>
+<td>12:16:16</td>
+<td data-quarto-table-cell-role="th">Distribution:</td>
+<td>chi2(6)</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Cov. Estimator:</td>
+<td>robust</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Parameter Estimates</caption>
+<tbody>
+<tr class="odd">
+<td></td>
+<td data-quarto-table-cell-role="th">Parameter</td>
+<td data-quarto-table-cell-role="th">Std. Err.</td>
+<td data-quarto-table-cell-role="th">T-stat</td>
+<td data-quarto-table-cell-role="th">P-value</td>
+<td data-quarto-table-cell-role="th">Lower CI</td>
+<td data-quarto-table-cell-role="th">Upper CI</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Intercept</td>
+<td>-2.4218</td>
+<td>0.5313</td>
+<td>-4.5582</td>
+<td>0.0000</td>
+<td>-3.4631</td>
+<td>-1.3805</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">gender[T.male]</td>
+<td>0.0456</td>
+<td>0.0150</td>
+<td>3.0301</td>
+<td>0.0024</td>
+<td>0.0161</td>
+<td>0.0750</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">C(ethnicity, Treatment(reference='other'))[T.afam]</td>
+<td>-0.0456</td>
+<td>0.0283</td>
+<td>-1.6123</td>
+<td>0.1069</td>
+<td>-0.1011</td>
+<td>0.0098</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C(ethnicity, Treatment(reference='other'))[T.hispanic]</td>
+<td>-0.1075</td>
+<td>0.0223</td>
+<td>-4.8322</td>
+<td>0.0000</td>
+<td>-0.1511</td>
+<td>-0.0639</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">urban[T.yes]</td>
+<td>-0.0527</td>
+<td>0.0182</td>
+<td>-2.8947</td>
+<td>0.0038</td>
+<td>-0.0884</td>
+<td>-0.0170</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">unemp</td>
+<td>-0.0101</td>
+<td>0.0027</td>
+<td>-3.7771</td>
+<td>0.0002</td>
+<td>-0.0153</td>
+<td>-0.0048</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">education</td>
+<td>0.2032</td>
+<td>0.0378</td>
+<td>5.3800</td>
+<td>0.0000</td>
+<td>0.1292</td>
+<td>0.2773</td>
+</tr>
+</tbody>
+</table>
+<br><br>Endogenous: education<br>Instruments: distance<br>Robust Covariance (Heteroskedastic)<br>Debiased: False<br>id: 0x7fcf624aa3f0
+</div>
+</div>
 <p><strong>Comment the results. Compare with the R tutorials.</strong></p>
 
 
