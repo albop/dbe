@@ -1,18 +1,19 @@
 ---
 title: Introduction to Instrumental Variables
-subtitle: Data-Based Economics
 author: Year 2023-2024
+date: 2024/02/07
+subtitle: Data-Based Economics, ESCP, 2023-2024
 format:
-  html: default
   revealjs:
     toc: true
     toc-depth: 1
-    toc-title: Plan
-    navigation: grid
     width: 1920
     height: 1080
-    output-file: slides.html
-aspectratio: 169
+    menu:
+      side: left
+      width: normal
+  html:
+    output-file: index_handout.html
 ---
 
 
@@ -21,14 +22,18 @@ aspectratio: 169
 
 ## Data
 
-- Our multilinear regression: 
+Our multilinear regression: 
 $$y = \alpha + \beta x_1 + \cdots + \beta x_n$$
 
-- So far, we have only considered real variables: ($x_i \in \mathbb{R}$).
-  - ex: $x_{\text{gdp}} = \alpha + \beta_1 x_{\text{unemployment}} + \beta_2 x_{\text{inflation}}$
+So far, we have only considered real variables: ($x_i \in \mathbb{R}$).
 
-- How do we deal with the following cases?
-  - __binary variable__: $x\in \{0,1\}$ (or $\{True, False}$)
+Like: $$x_{\text{gdp}} = \alpha + \beta_1 x_{\text{unemployment}} + \beta_2 x_{\text{inflation}}$$
+
+## Data
+
+How do we deal with the following cases?
+
+  - __binary variable__: $x\in \{0,1\}$ (or $\{True, False\}$)
     - ex: $\text{gonetowar}$, $\text{hasdegree}$
   - __categorical variable__: 
     - ex: survey result (0: I don't know, 1: I strongly disagree, 2: I disagree, 3: I agree, 4: I strongly agree)
@@ -50,25 +55,37 @@ $$y_\text{salary} = \alpha + \beta x_{\text{gonetowar}}$$
 
 ## Categorical variable 
 
-- Look at the model:
-$$y_{\text{CO2 emission}} = \alpha + \beta x_{\text{yellow vest support}} $$
-- Where $y_{\text{CO2 emission}}$ is an individual's CO2 emissions and $x_{\text{yellow vest support}}$ is the response the the question *Are you in agreement with the yellow vests demands?*.
+Look at the model:
+$$y_{\text{CO2 emission}} = \alpha + \beta x_{\text{banish cars}} $$
 
-- Response is coded up as:
-  - 0: Strongly disagree
-  - 1: Disagree
-  - 2: Neutral
-  - 3: Agree
-  - 4: Strongly agree
+where $y_{\text{CO2 emission}}$ is an individual's CO2 emissions and $x_{\text{yellow vest support}}$ is the response the the question *Do you suport the banishment of petrol cars?*.
 
-- If the variable was used directly, how would you intepret the coefficient $\beta$ ?
-  - index is hierarchical
-  - but the distances between 1 and 2 or 2 and 3 are not comparable...
+::: columns
 
+:::: column
 
-## Hierarchical index (2):
+Response is coded up as:
 
-- We use one __dummy variable__ per possible answer.
+- 0: Strongly disagree
+- 1: Disagree
+- 2: Neutral
+- 3: Agree
+- 4: Strongly agree
+
+::::
+:::: column
+
+If the variable was used directly, how would you intepret the coefficient $\beta$ ?
+
+- index is hierarchical
+- but the distances between 1 and 2 or 2 and 3 are not comparable...
+
+::::
+:::
+
+## Hierarchical index
+
+We use one __dummy variable__ per possible answer.
 
 | $D_{\text{Strongly Disagree}}$ | $D_{\text{Disagree}}$ | $D_{\text{Neutral}}$ | $D_{\text{Agree}}$ | $D_{\text{Strongly Agree}}$ |
 | ------------------------------ | --------------------- | -------------------- | ------------------ | --------------------------- |
@@ -78,18 +95,19 @@ $$y_{\text{CO2 emission}} = \alpha + \beta x_{\text{yellow vest support}} $$
 | 0                              | 0                     | 0                    | 1                  | 0                           |
 | 0                              | 0                     | 0                    | 0                  | 1                           |
 
+## Hierarchical index
+
 - Values are linked by the specific __dummy coding__.
   - the choice of the reference group (with 0) is not completely neutral 
     - for linear regressions, we can ignore its implications
   - it must be frequent enough in the data
-  - __effects__ coding: reference group takes -1 instead of 0
 - Note that hierarchy is lost. The same treatment can be applied to non-hierachical variables
 - Now our variables are perfectly __colinear__:
   - we can deduce one from all the others
   - we drop one from the regression: the reference group TODO
 
 
-## Hierarchical index (3)
+## Hierarchical index (2)
 
 $$y_{\text{CO2 emission}} = \alpha + \beta_1 x_{\text{strdis}} + \beta_2 x_{\text{dis}} + \beta_3 x_{\text{agr}} + \beta_4 x_{\text{stragr}}$$
 
@@ -117,6 +135,8 @@ $$y_{\text{CO2 emission}} = \alpha + \beta_1 x_{\text{strdis}} + \beta_2 x_{\tex
 ::::
 :::: column
 
+::::: fragment
+
 - <!-- .element class="fragment" -->Then we convert to dummy variables exactly like hierarchical indices
   - here $\text{massage therapist}$ is taken as reference
 
@@ -126,13 +146,15 @@ $$y_{\text{CO2 emission}} = \alpha + \beta_1 x_{\text{strdis}} + \beta_2 x_{\tex
 |           0             |            1               |              0                 |
 |           0             |             0              |              1                 |
 
+:::::
+
 ::::
 :::
 
 
 ## Hands-on
 
-Use `statsmodels` to create dummy variables with formula API.
+Use `statsmodels`/`linearmodels`  to create dummy variables with formula API.
 
 - Replace
 ```python
@@ -178,6 +200,8 @@ But how do we define
 - causality
 
 ?
+
+. . .
 
 Both concepts are actually hard to define:
 
@@ -237,6 +261,7 @@ Then there is the uncertain concept of time... But let's take it as granted to n
 ### Statistical definition of causality
 
 Variable $A$ causes $B$ in a statistical sense if
+
 - $A$ and $B$ are correlated
 - $A$ is known before $B$
 - correlation between $A$ and $B$ is unaffected by other variables
@@ -301,7 +326,9 @@ An important task in econometrics is to construct a counter-factual
 
 ## Scientific Experiment
 
-![\ ](assets/lab_experiment.jpg)
+::: columns
+
+:::: column
 
 - In science we establish causality by performing experiments
   - and create the counterfactual
@@ -312,6 +339,14 @@ An important task in econometrics is to construct a counter-factual
 - Change one factor at a time
   - to create a counter-factual
 
+::::
+:::: column
+
+![\ ](assets/lab_experiment.jpg)
+
+
+::::
+:::
 ----
 
 ## Measuring effect of treatment
@@ -367,10 +402,11 @@ Maybe the effect would be the consequence of the choice of patients rather than 
 
 :::: column
 
-- Example: cognitive dissonance
-  - Experiment in GATE Lab
-  - Volunteers play an investment game.
-  - They are asked beforehand whether they support OM, PSG, or none.
+Example: cognitive dissonance
+
+- Experiment in GATE Lab (ENS Lyon)
+- Volunteers play an investment game.
+- They are asked beforehand whether they support OM, PSG, or none.
 
 <div class="r-stack">
 
@@ -482,14 +518,16 @@ is to *randomize* it.
 :::: column
 
 
-- In medecine
-  - some patients receive the treatment (red pill) 
-  - some other receive the control treatment (blue pill / placebo)
+In medecine
 
-- In economics: 
-  - randomized field experiments
-  - randomized phase-ins for new policies
-    - very useful for policy evaluation
+- some patients receive the treatment (red pill) 
+- some other receive the control treatment (blue pill / placebo)
+
+In economics: 
+
+- randomized field experiments
+- randomized phase-ins for new policies
+  - very useful for policy evaluation
 
 ::::
 
@@ -522,20 +560,20 @@ A natural experiment satisfies conditions that treatment is assigned randomly
 :::
 
 
-[TODO]: recheck
 
-- An exemple of a Natural Experiment:
+An exemple of a Natural Experiment:
+
   - *gender bias in french local elections*
 (jean-pierre eymeoud, paul vertier) [link](https://spire.sciencespo.fr/hdl:/2441/3k0m7r593p8gs9njjtpupmlknu/resources/wp-78-eymeoud-vertier.pdf)
   - are women discriminated against by voters in local elections?
 
 . . .
 
-- Result: yes, they get 1.5% less votes by right-wing voters
+Result: yes, they get 1.5% less votes by right-wing voters
 
 . . .
 
-- What was the natural experiment
+What was the natural experiment?
 
 
 
@@ -543,11 +581,6 @@ A natural experiment satisfies conditions that treatment is assigned randomly
 
 
 # Instrumental variables
-
-## 
-
-
-{{< video https://youtu.be/g0TuQGpMvjM >}}
 
 
 
@@ -561,23 +594,27 @@ A natural experiment satisfies conditions that treatment is assigned randomly
 
 :::: column
 
-- Fact: 
-  - veterans of the vietnam war (55-75) earn (in the 80s) an income that is 15% less in average than those who didn't go to the war.
-  - What can we conclude?
-  - Hard to say: maybe those sent to the war came back with lower productivity (because of PTSD, public stigma, ...)? maybe they were not the most productive in the first place (*selection bias*)?
+Fact: 
 
-- Problem (for the economist):
-  - we didn't sent people to war randomly
+- veterans of the vietnam war (55-75) earn (in the 80s) an income that is 15% less in average than those who didn't go to the war.
+- What can we conclude?
+- Hard to say: maybe those sent to the war came back with lower productivity (because of PTSD, public stigma, ...)? maybe they were not the most productive in the first place (unobserved *selection bias*)?
+
+Problem (for the economist):
+
+- we didn't send people to war randomly
+
 ::::
 
 :::: column
 
-- Genius idea: 
-  - here is a variable which randomly affected whether people were sent: the Draft  
-  - <!-- .element class="fragment" -->between 1947, and 1973, a lottery was run to determine who would go to war
-  - <!-- .element class="fragment" -->the draft number was determined, based on date of birth, and first letters of name
-  - <!-- .element class="fragment" -->and was correlated with the probability that a given person would go to war
-  - and it was so to say random or at least independent from anything relevant to the problem
+Genius idea: 
+
+- here is a variable which randomly affected whether people were sent: the Draft  
+- <!-- .element class="fragment" -->between 1947, and 1973, a lottery was run to determine who would go to war
+- <!-- .element class="fragment" -->the draft number was determined, based on date of birth, and first letters of name
+- <!-- .element class="fragment" -->and was correlated with the probability that a given person would go to war
+- and it was so to say random or at least independent from anything relevant to the problem
 
 
 ::::
@@ -595,19 +632,23 @@ Can we use the Draft to generate randomness ?
 
 ## Problem
 
+::: {.incremental}
+
 - Take the linear regression:
 $$y = \alpha + \beta x + \epsilon$$
   - $y$: salary
   - $x$: went to war
 - We want to establish causality from x to y
   - we would like to interpret $x$ as the "treatment"
-- But there can be *confounding factors*:
+- But there can be unobserved *confounding factors*:
   - variable $z$ which causes both x and y
   - exemple: socio-economic background, IQ, ...
 
 - If we could identify $z$ we could *control* for it:
 $$y = \alpha + \beta_1 x + \beta_2 z + \epsilon$$
   - we would get a better predictor of $y$ but more uncertainty about $\beta_1$ ($x$ and $z$ are correlated)
+
+:::
 
 ## Reformulate the problem
 
@@ -677,6 +718,8 @@ $$y = \alpha + \beta_1 \tilde{x} + z + \epsilon$$
 
 A good instrument when trying to explain y by x, is a variable that is correlated to the treatment (x) but does not have any effect on the outcome of interest (y), appart from its effect through x.
 
+In particular, it should be uncorrelated from any potential confounding factor (whether observed or unobserved).
+
 
 :::
 
@@ -688,8 +731,6 @@ A good instrument when trying to explain y by x, is a variable that is correlate
 
 - Library `linearmodels` has a handy formula syntax: `salary ~ 1 + [war ~ draft]`
   - API is similar but not exactly identical to statsmodels
-  - for instance `linearmodels` does not include constants by default
-
 
 - Example from the doc
 ```python
