@@ -15,8 +15,9 @@ website:
             - slides/session_4/index.qmd
 
 
-        # - section: tutorials
-        #   contents:
+        - section: corrections
+          contents:
+            - tutorials/session_3/Philips_curve_correction.ipynb
         #     - tutorials/session_1/Exercises.ipynb
         #     - tutorials/session_1/Python_basics.ipynb
 
