@@ -13,11 +13,14 @@ website:
             - slides/session_2/index.qmd
             - slides/session_3/index.qmd
             - slides/session_4/index.qmd
+            - slides/session_5/index.qmd
 
 
-        - section: corrections
+        - section: tutorials
           contents:
-            - tutorials/session_3/Philips_curve_correction.ipynb
+            - tutorials/session_3/Phillips_curve_correction.ipynb
+            - tutorials/session_4/Regressions_correction.ipynb
+            - tutorials/session_5/instrumental_variables_correction.ipynb
         #     - tutorials/session_1/Exercises.ipynb
         #     - tutorials/session_1/Python_basics.ipynb
 
