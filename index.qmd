@@ -12,3 +12,16 @@ listing:
   fields: [date, title]
 ---
 
+## Schedule
+
+::: {#sample-listings}
+
+:::
+
+## Evaluation
+
+- Coursework (50%)
+  - a little replication exercise to do in small groups (2/3 students max)
+- Final exam (in-class and on computers) (50%)
+  - an MCQ part about the theory
+  - simple coding exercises

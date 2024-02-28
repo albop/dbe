@@ -23,6 +23,10 @@ website:
             - tutorials/session_5/instrumental_variables_correction.ipynb
         #     - tutorials/session_1/Exercises.ipynb
         #     - tutorials/session_1/Python_basics.ipynb
+      
+        - section: pushups
+          contents:
+            - pushups/pushups_1_correction.ipynb
 
 format:
   html:
