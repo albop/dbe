@@ -2,72 +2,112 @@
   {
     "objectID": "pushups/pushups_1_correction.html",
     "href": "pushups/pushups_1_correction.html",
-    "title": "Problem Set 1",
+    "title": "Basics and Collections",
     "section": "",
-    "text": "See “Check Your Understanding” from Basics and Collections\n\n\nBelow this cell, add\n\nA Markdown cell with\n\n\n\ntwo levels of headings;\n\na numbered list (We ask for a list in Markdown, not a Python list object);\n\nan unnumbered list (again not a Python list object);\n\ntext with a * and a - sign (hint: look at this cell and escape characters)\n\nbackticked code (see https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)\n\n\n\nA Markdown cell with\n\n\n\nthe quadratic formula embedded in the cell using LaTeX\n\nresponse:"
+    "text": "See “Check Your Understanding” from Basics and Collections\n\n\nBelow this cell, add\n\nA Markdown cell with\n\n\n\ntwo levels of headings;\n\na numbered list (We ask for a list in Markdown, not a Python list object);\n\nan unnumbered list (again not a Python list object);\n\ntext with a * and a - sign (hint: look at this cell and escape characters)\n\nbackticked code (see https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)\n\n\n\nA Markdown cell with\n\n\n\nthe quadratic formula embedded in the cell using LaTeX\n\nresponse:",
+    "crumbs": [
+      "pushups",
+      "Basics and Collections"
+    ]
   },
   {
     "objectID": "pushups/pushups_1_correction.html#question-1",
     "href": "pushups/pushups_1_correction.html#question-1",
-    "title": "Problem Set 1",
+    "title": "Basics and Collections",
     "section": "",
-    "text": "Below this cell, add\n\nA Markdown cell with\n\n\n\ntwo levels of headings;\n\na numbered list (We ask for a list in Markdown, not a Python list object);\n\nan unnumbered list (again not a Python list object);\n\ntext with a * and a - sign (hint: look at this cell and escape characters)\n\nbackticked code (see https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)\n\n\n\nA Markdown cell with\n\n\n\nthe quadratic formula embedded in the cell using LaTeX\n\nresponse:"
+    "text": "Below this cell, add\n\nA Markdown cell with\n\n\n\ntwo levels of headings;\n\na numbered list (We ask for a list in Markdown, not a Python list object);\n\nan unnumbered list (again not a Python list object);\n\ntext with a * and a - sign (hint: look at this cell and escape characters)\n\nbackticked code (see https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)\n\n\n\nA Markdown cell with\n\n\n\nthe quadratic formula embedded in the cell using LaTeX\n\nresponse:",
+    "crumbs": [
+      "pushups",
+      "Basics and Collections"
+    ]
   },
   {
     "objectID": "pushups/pushups_1_correction.html#is-a-rose",
     "href": "pushups/pushups_1_correction.html#is-a-rose",
-    "title": "Problem Set 1",
+    "title": "Basics and Collections",
     "section": "is a rose",
-    "text": "is a rose\n\nis a rose\n\nbrexit\nis brexit\nis brexit\n\nHere is nice quadratic formula: \\[\nx=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}\n\\]"
+    "text": "is a rose\n\nis a rose\n\nbrexit\nis brexit\nis brexit\n\nHere is nice quadratic formula: \\[\nx=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}\n\\]",
+    "crumbs": [
+      "pushups",
+      "Basics and Collections"
+    ]
   },
   {
     "objectID": "pushups/pushups_1_correction.html#question-2",
     "href": "pushups/pushups_1_correction.html#question-2",
-    "title": "Problem Set 1",
+    "title": "Basics and Collections",
     "section": "Question 2",
-    "text": "Question 2\nComplete the following code, which sets up variables a, b, and c, to find the roots using the quadratic formula.\n\\[\nx=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}\n\\]\nNote: because there are two roots, you will need to calculate two values of x\n\na = 1.0\nb = 2.0\nc = 1.0\n# we need the square root function\nfrom math import sqrt\n\nx1 = -b+sqrt(b**2-4*a*c)/(2*a)\nx2 = -b-sqrt(b**2-4*a*c)/(2*a)\n\nprint(f\"The two roots are {x1} and {x2}\")\n\nThe two roots are -2.0 and -2.0"
+    "text": "Question 2\nComplete the following code, which sets up variables a, b, and c, to find the roots using the quadratic formula.\n\\[\nx=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}\n\\]\nNote: because there are two roots, you will need to calculate two values of x\n\na = 1.0\nb = 2.0\nc = 1.0\n# we need the square root function\nfrom math import sqrt\n\nx1 = -b+sqrt(b**2-4*a*c)/(2*a)\nx2 = -b-sqrt(b**2-4*a*c)/(2*a)\n\nprint(f\"The two roots are {x1} and {x2}\")\n\nThe two roots are -2.0 and -2.0",
+    "crumbs": [
+      "pushups",
+      "Basics and Collections"
+    ]
   },
   {
     "objectID": "pushups/pushups_1_correction.html#question-3",
     "href": "pushups/pushups_1_correction.html#question-3",
-    "title": "Problem Set 1",
+    "title": "Basics and Collections",
     "section": "Question 3",
-    "text": "Question 3\nIn the cell below, use tab completion to find a function from the time module that displays the local time.\nUse time.FUNC_NAME? (where FUNC_NAME is replaced with the name of the function you found) to see information about that function, then call the function. (Hint: look for something involving the word local).\n\nimport time\n# Your code goes here\n# time. # uncomment and hit &lt;TAB&gt; to see functions\n\ntime.localtime()\n\ntime.struct_time(tm_year=2023, tm_mon=2, tm_mday=7, tm_hour=23, tm_min=15, tm_sec=33, tm_wday=1, tm_yday=38, tm_isdst=0)\n\n\nHint: if you are using an online jupyter server, the time will be based on the server settings. If it doesn’t match your location, don’t worry about it."
+    "text": "Question 3\nIn the cell below, use tab completion to find a function from the time module that displays the local time.\nUse time.FUNC_NAME? (where FUNC_NAME is replaced with the name of the function you found) to see information about that function, then call the function. (Hint: look for something involving the word local).\n\nimport time\n# Your code goes here\n# time. # uncomment and hit &lt;TAB&gt; to see functions\n\ntime.localtime()\n\ntime.struct_time(tm_year=2023, tm_mon=2, tm_mday=7, tm_hour=23, tm_min=15, tm_sec=33, tm_wday=1, tm_yday=38, tm_isdst=0)\n\n\nHint: if you are using an online jupyter server, the time will be based on the server settings. If it doesn’t match your location, don’t worry about it.",
+    "crumbs": [
+      "pushups",
+      "Basics and Collections"
+    ]
   },
   {
     "objectID": "pushups/pushups_1_correction.html#question-4",
     "href": "pushups/pushups_1_correction.html#question-4",
-    "title": "Problem Set 1",
+    "title": "Basics and Collections",
     "section": "Question 4",
-    "text": "Question 4\nCreate the following variables:\n\nD: A floating point number with the value 10,000\n\nr: A floating point number with the value 0.025\n\nT: An integer with the value 30\n\nCompute the present discounted value of a payment (D) made in T years, assuming an interest rate of 2.5%. Save this value to a new variable called PDV and print your output.\nHint: The formula is\n\\[\n\\text{PDV} = \\frac{D}{(1 + r)^T}\n\\]\n\n# Your code goes here\nD = 10.0\nr = 0.025\nT = 30\n\nPDV = D/(1+r)**T\n\nf\"Present discount factor is: {PDV: .2f}\"   # the .2f is an instruction to limit the number of float numbers\n\n'Present discount factor is:  4.77'"
+    "text": "Question 4\nCreate the following variables:\n\nD: A floating point number with the value 10,000\n\nr: A floating point number with the value 0.025\n\nT: An integer with the value 30\n\nCompute the present discounted value of a payment (D) made in T years, assuming an interest rate of 2.5%. Save this value to a new variable called PDV and print your output.\nHint: The formula is\n\\[\n\\text{PDV} = \\frac{D}{(1 + r)^T}\n\\]\n\n# Your code goes here\nD = 10.0\nr = 0.025\nT = 30\n\nPDV = D/(1+r)**T\n\nf\"Present discount factor is: {PDV: .2f}\"   # the .2f is an instruction to limit the number of float numbers\n\n'Present discount factor is:  4.77'",
+    "crumbs": [
+      "pushups",
+      "Basics and Collections"
+    ]
   },
   {
     "objectID": "pushups/pushups_1_correction.html#question-5",
     "href": "pushups/pushups_1_correction.html#question-5",
-    "title": "Problem Set 1",
+    "title": "Basics and Collections",
     "section": "Question 5",
-    "text": "Question 5\nHow could you use the variables x and y to create the sentence Hello World ?\nHint: Think about how to represent a space as a string.\n\nx = \"Hello\"\ny = \"World\"\n# Your code goes here\n\nx+\" \"+y\n\n'Hello World'"
+    "text": "Question 5\nHow could you use the variables x and y to create the sentence Hello World ?\nHint: Think about how to represent a space as a string.\n\nx = \"Hello\"\ny = \"World\"\n# Your code goes here\n\nx+\" \"+y\n\n'Hello World'",
+    "crumbs": [
+      "pushups",
+      "Basics and Collections"
+    ]
   },
   {
     "objectID": "pushups/pushups_1_correction.html#question-6",
     "href": "pushups/pushups_1_correction.html#question-6",
-    "title": "Problem Set 1",
+    "title": "Basics and Collections",
     "section": "Question 6",
-    "text": "Question 6\nSuppose you are working with price data and come across the value \"€6.50\".\nWhen Python tries to interpret this value, it sees the value as the string \"€6.50\" instead of the number 6.50. (Quiz: why is this a problem? Think about the examples above.)\nIn this exercise, your task is to convert the variable price below into a number.\nHint: Once the string is in a suitable format, you can call float(clean_price) to make it a number.\n\nprice = \"€6.50\"\n# Your code goes here\n\n# remove the euro symbol\nprice[1:]\ns = price.strip(\"€\")\n\nfloat(s)\n\n6.5"
+    "text": "Question 6\nSuppose you are working with price data and come across the value \"€6.50\".\nWhen Python tries to interpret this value, it sees the value as the string \"€6.50\" instead of the number 6.50. (Quiz: why is this a problem? Think about the examples above.)\nIn this exercise, your task is to convert the variable price below into a number.\nHint: Once the string is in a suitable format, you can call float(clean_price) to make it a number.\n\nprice = \"€6.50\"\n# Your code goes here\n\n# remove the euro symbol\nprice[1:]\ns = price.strip(\"€\")\n\nfloat(s)\n\n6.5",
+    "crumbs": [
+      "pushups",
+      "Basics and Collections"
+    ]
   },
   {
     "objectID": "pushups/pushups_1_correction.html#question-7",
     "href": "pushups/pushups_1_correction.html#question-7",
-    "title": "Problem Set 1",
+    "title": "Basics and Collections",
     "section": "Question 7",
-    "text": "Question 7\nUse Python formatting (e.g. print(f\"text {somecode}\") where somecode is a valid expression or variable name) to produce the following output.\nThe 1st quarter revenue was $110M\nThe 2nd quarter revenue was $95M\nThe 3rd quarter revenue was $100M\nThe 4th quarter revenue was $130M\n\nns = [110, 95, 100, 130]\nqs = [\"1st\", \"2nd\", \"3rd\", \"4th\"]\n\n\nfor i in [0, 1, 2, 3]:\n    q = qs[i]\n    n = ns[i]\n    s = f\"The {q} quarter revenue was {n}M\"\n    print(s)\n\nThe 1st quarter revenue was 110M\nThe 2nd quarter revenue was 95M\nThe 3rd quarter revenue was 100M\nThe 4th quarter revenue was 130M"
+    "text": "Question 7\nUse Python formatting (e.g. print(f\"text {somecode}\") where somecode is a valid expression or variable name) to produce the following output.\nThe 1st quarter revenue was $110M\nThe 2nd quarter revenue was $95M\nThe 3rd quarter revenue was $100M\nThe 4th quarter revenue was $130M\n\nns = [110, 95, 100, 130]\nqs = [\"1st\", \"2nd\", \"3rd\", \"4th\"]\n\n\nfor i in [0, 1, 2, 3]:\n    q = qs[i]\n    n = ns[i]\n    s = f\"The {q} quarter revenue was {n}M\"\n    print(s)\n\nThe 1st quarter revenue was 110M\nThe 2nd quarter revenue was 95M\nThe 3rd quarter revenue was 100M\nThe 4th quarter revenue was 130M",
+    "crumbs": [
+      "pushups",
+      "Basics and Collections"
+    ]
   },
   {
     "objectID": "pushups/pushups_1_correction.html#question-8",
     "href": "pushups/pushups_1_correction.html#question-8",
-    "title": "Problem Set 1",
+    "title": "Basics and Collections",
     "section": "Question 8",
-    "text": "Question 8\nDefine two lists y and z.\nThey can contain anything you want.\nCheck what happens when you do y + z. When you have finished that, try 2 * x and x * 2 where x represents the object you created from y + z.\nBriefly explain.\n\ny = [1,2,3,4,5] # fill me in!\nz = [\"once\", \"I\", \"caught\", \"a\", \"fish\", \"alive\"] # fill me in!\n# Your code goes here\n\n[1, 2, 3, 4, 5, 'once', 'I', 'caught', 'a', 'fish', 'alive']\n\n\n\nx = y+z # concatenates the two strings\nx\n\n[1, 2, 3, 4, 5, 'once', 'I', 'caught', 'a', 'fish', 'alive']\n\n\n\n2*x # repeats the list twice\n\n[1,\n 2,\n 3,\n 4,\n 5,\n 'once',\n 'I',\n 'caught',\n 'a',\n 'fish',\n 'alive',\n 1,\n 2,\n 3,\n 4,\n 5,\n 'once',\n 'I',\n 'caught',\n 'a',\n 'fish',\n 'alive']"
+    "text": "Question 8\nDefine two lists y and z.\nThey can contain anything you want.\nCheck what happens when you do y + z. When you have finished that, try 2 * x and x * 2 where x represents the object you created from y + z.\nBriefly explain.\n\ny = [1,2,3,4,5] # fill me in!\nz = [\"once\", \"I\", \"caught\", \"a\", \"fish\", \"alive\"] # fill me in!\n# Your code goes here\n\n[1, 2, 3, 4, 5, 'once', 'I', 'caught', 'a', 'fish', 'alive']\n\n\n\nx = y+z # concatenates the two strings\nx\n\n[1, 2, 3, 4, 5, 'once', 'I', 'caught', 'a', 'fish', 'alive']\n\n\n\n2*x # repeats the list twice\n\n[1,\n 2,\n 3,\n 4,\n 5,\n 'once',\n 'I',\n 'caught',\n 'a',\n 'fish',\n 'alive',\n 1,\n 2,\n 3,\n 4,\n 5,\n 'once',\n 'I',\n 'caught',\n 'a',\n 'fish',\n 'alive']",
+    "crumbs": [
+      "pushups",
+      "Basics and Collections"
+    ]
   },
   {
     "objectID": "pushups/pushups_1.html",
@@ -159,6 +199,27 @@
     "title": "Sklearn: sparse regression",
     "section": "",
     "text": "Sklearn includes the Winsconsin breast cancer database. It associates medical outcomes for tumor observation, with several characteristics. Can a machine learn how to predict whether a cancer is benign or malignant ?\nImport the Breast Cancer Dataset from sklearn. Describe it.\nProperly train a linear logistic regression to predict cancer morbidity.\nUse k-fold validation to validate the model\nTry with other classifiers. Which one is best?"
+  },
+  {
+    "objectID": "tutorials/session_6/machine_learning_regressions_correction.html",
+    "href": "tutorials/session_6/machine_learning_regressions_correction.html",
+    "title": "Machine learning: regressions",
+    "section": "",
+    "text": "Objectives:\n\ncreate a training set and a validation set\ntrain a model with sklearn\nperform a validation test\n\n\n\nImport the diabetes dataset from sklearn. Describe it.\n\nimport sklearn\nimport sklearn.datasets\n\ndataset = sklearn.datasets.load_diabetes()\n# the result is a dictionary:\n# 'data': features\n# 'target' labels\n# 'feature_names': names of the features\n# `DESCR`: description\n\n\nprint( dataset['DESCR'] )\n\n.. _diabetes_dataset:\n\nDiabetes dataset\n----------------\n\nTen baseline variables, age, sex, body mass index, average blood\npressure, and six blood serum measurements were obtained for each of n =\n442 diabetes patients, as well as the response of interest, a\nquantitative measure of disease progression one year after baseline.\n\n**Data Set Characteristics:**\n\n  :Number of Instances: 442\n\n  :Number of Attributes: First 10 columns are numeric predictive values\n\n  :Target: Column 11 is a quantitative measure of disease progression one year after baseline\n\n  :Attribute Information:\n      - age     age in years\n      - sex\n      - bmi     body mass index\n      - bp      average blood pressure\n      - s1      tc, total serum cholesterol\n      - s2      ldl, low-density lipoproteins\n      - s3      hdl, high-density lipoproteins\n      - s4      tch, total cholesterol / HDL\n      - s5      ltg, possibly log of serum triglycerides level\n      - s6      glu, blood sugar level\n\nNote: Each of these 10 feature variables have been mean centered and scaled by the standard deviation times the square root of `n_samples` (i.e. the sum of squares of each column totals 1).\n\nSource URL:\nhttps://www4.stat.ncsu.edu/~boos/var.select/diabetes.html\n\nFor more information see:\nBradley Efron, Trevor Hastie, Iain Johnstone and Robert Tibshirani (2004) \"Least Angle Regression,\" Annals of Statistics (with discussion), 407-499.\n(https://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf)\n\n\n\n\n# create a dataframe\nimport pandas\n\ndf = pandas.DataFrame(dataset['data'], columns=dataset['feature_names'])\n\ndf['disease_progression'] = dataset['target']\n\n\ndf.describe()\n# we observe that mean of varaibles  is zero\n# standard deviations are the same for all variables\n# model has been normalized already:\n\n\n\n\n\n\n\n\nage\nsex\nbmi\nbp\ns1\ns2\ns3\ns4\ns5\ns6\ndisease_progression\n\n\n\n\ncount\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n442.000000\n\n\nmean\n-2.511817e-19\n1.230790e-17\n-2.245564e-16\n-4.797570e-17\n-1.381499e-17\n3.918434e-17\n-5.777179e-18\n-9.042540e-18\n9.293722e-17\n1.130318e-17\n152.133484\n\n\nstd\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n77.093005\n\n\nmin\n-1.072256e-01\n-4.464164e-02\n-9.027530e-02\n-1.123988e-01\n-1.267807e-01\n-1.156131e-01\n-1.023071e-01\n-7.639450e-02\n-1.260971e-01\n-1.377672e-01\n25.000000\n\n\n25%\n-3.729927e-02\n-4.464164e-02\n-3.422907e-02\n-3.665608e-02\n-3.424784e-02\n-3.035840e-02\n-3.511716e-02\n-3.949338e-02\n-3.324559e-02\n-3.317903e-02\n87.000000\n\n\n50%\n5.383060e-03\n-4.464164e-02\n-7.283766e-03\n-5.670422e-03\n-4.320866e-03\n-3.819065e-03\n-6.584468e-03\n-2.592262e-03\n-1.947171e-03\n-1.077698e-03\n140.500000\n\n\n75%\n3.807591e-02\n5.068012e-02\n3.124802e-02\n3.564379e-02\n2.835801e-02\n2.984439e-02\n2.931150e-02\n3.430886e-02\n3.243232e-02\n2.791705e-02\n211.500000\n\n\nmax\n1.107267e-01\n5.068012e-02\n1.705552e-01\n1.320436e-01\n1.539137e-01\n1.987880e-01\n1.811791e-01\n1.852344e-01\n1.335973e-01\n1.356118e-01\n346.000000\n\n\n\n\n\n\n\n\nimport seaborn\n\n\nseaborn.pairplot(df)\n\n\n\n\n\n\n\n\nSplit the dataset into a training set (70%) and a test set (30%)\n\nfrom sklearn.model_selection import train_test_split\n\n\n# features: dataset['data']\n# dataset['data'].shape # one line per observation, one column per feature (variable)\n\n\n# labels: dataset['target'] what we are trying to predict\ndataset['target'].shape\n\n(442,)\n\n\n\nX_train, X_test, y_train, y_test = train_test_split(dataset['data'], dataset['target'], test_size=0.3, random_state=56)\n# the choice of a random_state initializes a random seed so that every time it is run the notebook\n# returns exactly the same results\n\nTrain a linear model (with intercept) on the training set\n\n# since the model is already normalized, we can create the model directly\nfrom sklearn.linear_model import LinearRegression\n\nmodel = LinearRegression()   # don't forget the round bracket to get a model object\nmodel.fit(X_train, y_train)\n\nLinearRegression()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.LinearRegressionLinearRegression()\n\n\n\n# visualize model predictions:\n\n# from matplotlib import pyplot as plt\n\n# plt.plot(  )\n# plt.plot( model.predict(X_train) )\n\n\nmodel.intercept_ # a\n\n152.82810842206453\n\n\n\nmodel.coef_ # b_1, b_2, .... b_10|\n\narray([   3.04174075, -209.76813682,  501.77871853,  286.88207011,\n       -991.92731799,  603.10838272,  228.80501285,  226.30296964,\n        905.67772303,   92.55739263])\n\n\nCompute the fitting score on the test set. (Bonus: compare with your own computation of \\(R^2\\))\n\nmodel.score(X_test, y_test)\n\n0.43965636272283437\n\n\n\n# compare with the training set:\nmodel.score(X_train, y_train)\n\n0.541861476456197\n\n\nShould we adjust the size of the test set? What would be the problem?\n\n#### WARNING\n####\n#### very bad approach\n\n\n# let's try different sizes\n\nsizes = [0.01, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]\nscores = []\nfor s in sizes:\n    X_train, X_test, y_train, y_test = train_test_split(dataset['data'], dataset['target'], test_size=0.3)\n\n    model = LinearRegression()   # don't forget the round bracket to get a model object\n    model.fit(X_train, y_train)\n    score = model.score(X_test, y_test) # score with x% test set\n\n    scores.append(score)\n\n\nfrom matplotlib import pyplot as plt\nplt.plot(sizes, scores)\n\n\n\n\n\n\n\n\nImplement \\(k\\)-fold model with \\(k=3\\).\n\nX = dataset['data']\ny = dataset['target']\n\n\n# to keep the scores\nscores = []\n\n\nfrom sklearn.model_selection import KFold\nkf = KFold(n_splits=3)\n\nfor train_index, test_index in kf.split(X):\n    \n    X_train, X_test = X[train_index], X[test_index]\n    y_train, y_test = y[train_index], y[test_index]\n\n    ## train a model in X_train, y_train\n    ## test it on X_test, y_test\n    model = LinearRegression()   # don't forget the round bracket to get a model object\n    model.fit(X_train, y_train)\n    score = model.score(X_test, y_test) # score with x% test set\n\n    scores.append(score)\n\n\nscores\n\n[0.46930417754348197, 0.4872526062543143, 0.5095496056127979]\n\n\n\n# it gives us a sense of the predictive power of the regression\n\n\nregresults.summary() # econometric estimation of R^2 is 0.51\n\n\nOLS Regression Results\n\n\nDep. Variable:\ndisease_progression\nR-squared:\n0.518\n\n\nModel:\nOLS\nAdj. R-squared:\n0.507\n\n\nMethod:\nLeast Squares\nF-statistic:\n46.27\n\n\nDate:\nMon, 27 Mar 2023\nProb (F-statistic):\n3.83e-62\n\n\nTime:\n21:46:43\nLog-Likelihood:\n-2386.0\n\n\nNo. Observations:\n442\nAIC:\n4794.\n\n\nDf Residuals:\n431\nBIC:\n4839.\n\n\nDf Model:\n10\n\n\n\n\nCovariance Type:\nnonrobust\n\n\n\n\n\n\n\n\n\ncoef\nstd err\nt\nP&gt;|t|\n[0.025\n0.975]\n\n\nIntercept\n152.1335\n2.576\n59.061\n0.000\n147.071\n157.196\n\n\nage\n-10.0099\n59.749\n-0.168\n0.867\n-127.446\n107.426\n\n\nsex\n-239.8156\n61.222\n-3.917\n0.000\n-360.147\n-119.484\n\n\nbmi\n519.8459\n66.533\n7.813\n0.000\n389.076\n650.616\n\n\nbp\n324.3846\n65.422\n4.958\n0.000\n195.799\n452.970\n\n\ns1\n-792.1756\n416.680\n-1.901\n0.058\n-1611.153\n26.802\n\n\ns2\n476.7390\n339.030\n1.406\n0.160\n-189.620\n1143.098\n\n\ns3\n101.0433\n212.531\n0.475\n0.635\n-316.684\n518.770\n\n\ns4\n177.0632\n161.476\n1.097\n0.273\n-140.315\n494.441\n\n\ns5\n751.2737\n171.900\n4.370\n0.000\n413.407\n1089.140\n\n\ns6\n67.6267\n65.984\n1.025\n0.306\n-62.064\n197.318\n\n\n\n\n\n\nOmnibus:\n1.506\nDurbin-Watson:\n2.029\n\n\nProb(Omnibus):\n0.471\nJarque-Bera (JB):\n1.404\n\n\nSkew:\n0.017\nProb(JB):\n0.496\n\n\nKurtosis:\n2.726\nCond. No.\n227.\n\n\n\nNotes:[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n\n\nTo use lasso regression:\n\nfrom sklearn.linear_model import Lasso\n\n\nX_train, X_test, y_train, y_test = train_test_split(dataset['data'], dataset['target'], test_size=0.3)\nmodel = Lasso()   # don't forget the round bracket to get a model object\nmodel.fit(X_train, y_train)\nscore = model.score(X_test, y_test) # s\n\n\n# on the test set, the fit of the lasso regression is worse than regular regression\n# the regularization parameter should be changed\n\n\n\n\nImport the Boston House Price Dataset from sklearn. Explore the data (description, correlations, histograms…)\n\n# dataset = sklearn.datasets.load_boston()\nfrom sklearn.datasets import fetch_california_housing \ndataset = fetch_california_housing()\n\n\nprint(dataset[\"DESCR\"])\n\n.. _california_housing_dataset:\n\nCalifornia Housing dataset\n--------------------------\n\n**Data Set Characteristics:**\n\n    :Number of Instances: 20640\n\n    :Number of Attributes: 8 numeric, predictive attributes and the target\n\n    :Attribute Information:\n        - MedInc        median income in block group\n        - HouseAge      median house age in block group\n        - AveRooms      average number of rooms per household\n        - AveBedrms     average number of bedrooms per household\n        - Population    block group population\n        - AveOccup      average number of household members\n        - Latitude      block group latitude\n        - Longitude     block group longitude\n\n    :Missing Attribute Values: None\n\nThis dataset was obtained from the StatLib repository.\nhttps://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html\n\nThe target variable is the median house value for California districts,\nexpressed in hundreds of thousands of dollars ($100,000).\n\nThis dataset was derived from the 1990 U.S. census, using one row per census\nblock group. A block group is the smallest geographical unit for which the U.S.\nCensus Bureau publishes sample data (a block group typically has a population\nof 600 to 3,000 people).\n\nAn household is a group of people residing within a home. Since the average\nnumber of rooms and bedrooms in this dataset are provided per household, these\ncolumns may take surpinsingly large values for block groups with few households\nand many empty houses, such as vacation resorts.\n\nIt can be downloaded/loaded using the\n:func:`sklearn.datasets.fetch_california_housing` function.\n\n.. topic:: References\n\n    - Pace, R. Kelley and Ronald Barry, Sparse Spatial Autoregressions,\n      Statistics and Probability Letters, 33 (1997) 291-297\n\n\n\n\n# dataset = sklearn.datasets.load_boston()\nfrom sklearn.datasets import fetch_california_housing \ndataset = fetch_california_housing()\n\nSplit the dataset into a training set (70%) and a test set (30%).\n\nX = dataset['data']\ny = dataset['target']\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.3, random_state=58)\n\nTrain a lasso model to predict house prices. Compute the score on the test set.\n\n# we should check that the data is normalized, or normalize it ourselves\n\n\nfrom sklearn.linear_model import Lasso\nmodel_lasso = Lasso()\nmodel_lasso.fit(X_train, y_train)\n\nLasso()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.LassoLasso()\n\n\n\nmodel_lasso.score(X_test, y_test)\n\n0.28204855993177635\n\n\nTrain a ridge model to predict house prices. Which one is better?\n\nfrom sklearn.linear_model import Ridge\nmodel_ridge = Ridge()\nmodel_ridge.fit(X_train, y_train)\n\nRidge()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.RidgeRidge()\n\n\n\nmodel_ridge.score(X_test, y_test)\n\n0.6060031802405054\n\n\nIt looks like the ridge model has a better fit (score). However, we should have left a test set appart and not used it at all during training phase. Here it has influenced the choice of the model (between ridge and lasso)."
+  },
+  {
+    "objectID": "tutorials/session_6/machine_learning_regressions_correction.html#diabetes-dataset-basic-regression",
+    "href": "tutorials/session_6/machine_learning_regressions_correction.html#diabetes-dataset-basic-regression",
+    "title": "Machine learning: regressions",
+    "section": "",
+    "text": "Import the diabetes dataset from sklearn. Describe it.\n\nimport sklearn\nimport sklearn.datasets\n\ndataset = sklearn.datasets.load_diabetes()\n# the result is a dictionary:\n# 'data': features\n# 'target' labels\n# 'feature_names': names of the features\n# `DESCR`: description\n\n\nprint( dataset['DESCR'] )\n\n.. _diabetes_dataset:\n\nDiabetes dataset\n----------------\n\nTen baseline variables, age, sex, body mass index, average blood\npressure, and six blood serum measurements were obtained for each of n =\n442 diabetes patients, as well as the response of interest, a\nquantitative measure of disease progression one year after baseline.\n\n**Data Set Characteristics:**\n\n  :Number of Instances: 442\n\n  :Number of Attributes: First 10 columns are numeric predictive values\n\n  :Target: Column 11 is a quantitative measure of disease progression one year after baseline\n\n  :Attribute Information:\n      - age     age in years\n      - sex\n      - bmi     body mass index\n      - bp      average blood pressure\n      - s1      tc, total serum cholesterol\n      - s2      ldl, low-density lipoproteins\n      - s3      hdl, high-density lipoproteins\n      - s4      tch, total cholesterol / HDL\n      - s5      ltg, possibly log of serum triglycerides level\n      - s6      glu, blood sugar level\n\nNote: Each of these 10 feature variables have been mean centered and scaled by the standard deviation times the square root of `n_samples` (i.e. the sum of squares of each column totals 1).\n\nSource URL:\nhttps://www4.stat.ncsu.edu/~boos/var.select/diabetes.html\n\nFor more information see:\nBradley Efron, Trevor Hastie, Iain Johnstone and Robert Tibshirani (2004) \"Least Angle Regression,\" Annals of Statistics (with discussion), 407-499.\n(https://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf)\n\n\n\n\n# create a dataframe\nimport pandas\n\ndf = pandas.DataFrame(dataset['data'], columns=dataset['feature_names'])\n\ndf['disease_progression'] = dataset['target']\n\n\ndf.describe()\n# we observe that mean of varaibles  is zero\n# standard deviations are the same for all variables\n# model has been normalized already:\n\n\n\n\n\n\n\n\nage\nsex\nbmi\nbp\ns1\ns2\ns3\ns4\ns5\ns6\ndisease_progression\n\n\n\n\ncount\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n4.420000e+02\n442.000000\n\n\nmean\n-2.511817e-19\n1.230790e-17\n-2.245564e-16\n-4.797570e-17\n-1.381499e-17\n3.918434e-17\n-5.777179e-18\n-9.042540e-18\n9.293722e-17\n1.130318e-17\n152.133484\n\n\nstd\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n4.761905e-02\n77.093005\n\n\nmin\n-1.072256e-01\n-4.464164e-02\n-9.027530e-02\n-1.123988e-01\n-1.267807e-01\n-1.156131e-01\n-1.023071e-01\n-7.639450e-02\n-1.260971e-01\n-1.377672e-01\n25.000000\n\n\n25%\n-3.729927e-02\n-4.464164e-02\n-3.422907e-02\n-3.665608e-02\n-3.424784e-02\n-3.035840e-02\n-3.511716e-02\n-3.949338e-02\n-3.324559e-02\n-3.317903e-02\n87.000000\n\n\n50%\n5.383060e-03\n-4.464164e-02\n-7.283766e-03\n-5.670422e-03\n-4.320866e-03\n-3.819065e-03\n-6.584468e-03\n-2.592262e-03\n-1.947171e-03\n-1.077698e-03\n140.500000\n\n\n75%\n3.807591e-02\n5.068012e-02\n3.124802e-02\n3.564379e-02\n2.835801e-02\n2.984439e-02\n2.931150e-02\n3.430886e-02\n3.243232e-02\n2.791705e-02\n211.500000\n\n\nmax\n1.107267e-01\n5.068012e-02\n1.705552e-01\n1.320436e-01\n1.539137e-01\n1.987880e-01\n1.811791e-01\n1.852344e-01\n1.335973e-01\n1.356118e-01\n346.000000\n\n\n\n\n\n\n\n\nimport seaborn\n\n\nseaborn.pairplot(df)\n\n\n\n\n\n\n\n\nSplit the dataset into a training set (70%) and a test set (30%)\n\nfrom sklearn.model_selection import train_test_split\n\n\n# features: dataset['data']\n# dataset['data'].shape # one line per observation, one column per feature (variable)\n\n\n# labels: dataset['target'] what we are trying to predict\ndataset['target'].shape\n\n(442,)\n\n\n\nX_train, X_test, y_train, y_test = train_test_split(dataset['data'], dataset['target'], test_size=0.3, random_state=56)\n# the choice of a random_state initializes a random seed so that every time it is run the notebook\n# returns exactly the same results\n\nTrain a linear model (with intercept) on the training set\n\n# since the model is already normalized, we can create the model directly\nfrom sklearn.linear_model import LinearRegression\n\nmodel = LinearRegression()   # don't forget the round bracket to get a model object\nmodel.fit(X_train, y_train)\n\nLinearRegression()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.LinearRegressionLinearRegression()\n\n\n\n# visualize model predictions:\n\n# from matplotlib import pyplot as plt\n\n# plt.plot(  )\n# plt.plot( model.predict(X_train) )\n\n\nmodel.intercept_ # a\n\n152.82810842206453\n\n\n\nmodel.coef_ # b_1, b_2, .... b_10|\n\narray([   3.04174075, -209.76813682,  501.77871853,  286.88207011,\n       -991.92731799,  603.10838272,  228.80501285,  226.30296964,\n        905.67772303,   92.55739263])\n\n\nCompute the fitting score on the test set. (Bonus: compare with your own computation of \\(R^2\\))\n\nmodel.score(X_test, y_test)\n\n0.43965636272283437\n\n\n\n# compare with the training set:\nmodel.score(X_train, y_train)\n\n0.541861476456197\n\n\nShould we adjust the size of the test set? What would be the problem?\n\n#### WARNING\n####\n#### very bad approach\n\n\n# let's try different sizes\n\nsizes = [0.01, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]\nscores = []\nfor s in sizes:\n    X_train, X_test, y_train, y_test = train_test_split(dataset['data'], dataset['target'], test_size=0.3)\n\n    model = LinearRegression()   # don't forget the round bracket to get a model object\n    model.fit(X_train, y_train)\n    score = model.score(X_test, y_test) # score with x% test set\n\n    scores.append(score)\n\n\nfrom matplotlib import pyplot as plt\nplt.plot(sizes, scores)\n\n\n\n\n\n\n\n\nImplement \\(k\\)-fold model with \\(k=3\\).\n\nX = dataset['data']\ny = dataset['target']\n\n\n# to keep the scores\nscores = []\n\n\nfrom sklearn.model_selection import KFold\nkf = KFold(n_splits=3)\n\nfor train_index, test_index in kf.split(X):\n    \n    X_train, X_test = X[train_index], X[test_index]\n    y_train, y_test = y[train_index], y[test_index]\n\n    ## train a model in X_train, y_train\n    ## test it on X_test, y_test\n    model = LinearRegression()   # don't forget the round bracket to get a model object\n    model.fit(X_train, y_train)\n    score = model.score(X_test, y_test) # score with x% test set\n\n    scores.append(score)\n\n\nscores\n\n[0.46930417754348197, 0.4872526062543143, 0.5095496056127979]\n\n\n\n# it gives us a sense of the predictive power of the regression\n\n\nregresults.summary() # econometric estimation of R^2 is 0.51\n\n\nOLS Regression Results\n\n\nDep. Variable:\ndisease_progression\nR-squared:\n0.518\n\n\nModel:\nOLS\nAdj. R-squared:\n0.507\n\n\nMethod:\nLeast Squares\nF-statistic:\n46.27\n\n\nDate:\nMon, 27 Mar 2023\nProb (F-statistic):\n3.83e-62\n\n\nTime:\n21:46:43\nLog-Likelihood:\n-2386.0\n\n\nNo. Observations:\n442\nAIC:\n4794.\n\n\nDf Residuals:\n431\nBIC:\n4839.\n\n\nDf Model:\n10\n\n\n\n\nCovariance Type:\nnonrobust\n\n\n\n\n\n\n\n\n\ncoef\nstd err\nt\nP&gt;|t|\n[0.025\n0.975]\n\n\nIntercept\n152.1335\n2.576\n59.061\n0.000\n147.071\n157.196\n\n\nage\n-10.0099\n59.749\n-0.168\n0.867\n-127.446\n107.426\n\n\nsex\n-239.8156\n61.222\n-3.917\n0.000\n-360.147\n-119.484\n\n\nbmi\n519.8459\n66.533\n7.813\n0.000\n389.076\n650.616\n\n\nbp\n324.3846\n65.422\n4.958\n0.000\n195.799\n452.970\n\n\ns1\n-792.1756\n416.680\n-1.901\n0.058\n-1611.153\n26.802\n\n\ns2\n476.7390\n339.030\n1.406\n0.160\n-189.620\n1143.098\n\n\ns3\n101.0433\n212.531\n0.475\n0.635\n-316.684\n518.770\n\n\ns4\n177.0632\n161.476\n1.097\n0.273\n-140.315\n494.441\n\n\ns5\n751.2737\n171.900\n4.370\n0.000\n413.407\n1089.140\n\n\ns6\n67.6267\n65.984\n1.025\n0.306\n-62.064\n197.318\n\n\n\n\n\n\nOmnibus:\n1.506\nDurbin-Watson:\n2.029\n\n\nProb(Omnibus):\n0.471\nJarque-Bera (JB):\n1.404\n\n\nSkew:\n0.017\nProb(JB):\n0.496\n\n\nKurtosis:\n2.726\nCond. No.\n227.\n\n\n\nNotes:[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n\n\nTo use lasso regression:\n\nfrom sklearn.linear_model import Lasso\n\n\nX_train, X_test, y_train, y_test = train_test_split(dataset['data'], dataset['target'], test_size=0.3)\nmodel = Lasso()   # don't forget the round bracket to get a model object\nmodel.fit(X_train, y_train)\nscore = model.score(X_test, y_test) # s\n\n\n# on the test set, the fit of the lasso regression is worse than regular regression\n# the regularization parameter should be changed"
+  },
+  {
+    "objectID": "tutorials/session_6/machine_learning_regressions_correction.html#sparse-regressions-on-the-boston-house-price-dataset",
+    "href": "tutorials/session_6/machine_learning_regressions_correction.html#sparse-regressions-on-the-boston-house-price-dataset",
+    "title": "Machine learning: regressions",
+    "section": "",
+    "text": "Import the Boston House Price Dataset from sklearn. Explore the data (description, correlations, histograms…)\n\n# dataset = sklearn.datasets.load_boston()\nfrom sklearn.datasets import fetch_california_housing \ndataset = fetch_california_housing()\n\n\nprint(dataset[\"DESCR\"])\n\n.. _california_housing_dataset:\n\nCalifornia Housing dataset\n--------------------------\n\n**Data Set Characteristics:**\n\n    :Number of Instances: 20640\n\n    :Number of Attributes: 8 numeric, predictive attributes and the target\n\n    :Attribute Information:\n        - MedInc        median income in block group\n        - HouseAge      median house age in block group\n        - AveRooms      average number of rooms per household\n        - AveBedrms     average number of bedrooms per household\n        - Population    block group population\n        - AveOccup      average number of household members\n        - Latitude      block group latitude\n        - Longitude     block group longitude\n\n    :Missing Attribute Values: None\n\nThis dataset was obtained from the StatLib repository.\nhttps://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html\n\nThe target variable is the median house value for California districts,\nexpressed in hundreds of thousands of dollars ($100,000).\n\nThis dataset was derived from the 1990 U.S. census, using one row per census\nblock group. A block group is the smallest geographical unit for which the U.S.\nCensus Bureau publishes sample data (a block group typically has a population\nof 600 to 3,000 people).\n\nAn household is a group of people residing within a home. Since the average\nnumber of rooms and bedrooms in this dataset are provided per household, these\ncolumns may take surpinsingly large values for block groups with few households\nand many empty houses, such as vacation resorts.\n\nIt can be downloaded/loaded using the\n:func:`sklearn.datasets.fetch_california_housing` function.\n\n.. topic:: References\n\n    - Pace, R. Kelley and Ronald Barry, Sparse Spatial Autoregressions,\n      Statistics and Probability Letters, 33 (1997) 291-297\n\n\n\n\n# dataset = sklearn.datasets.load_boston()\nfrom sklearn.datasets import fetch_california_housing \ndataset = fetch_california_housing()\n\nSplit the dataset into a training set (70%) and a test set (30%).\n\nX = dataset['data']\ny = dataset['target']\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.3, random_state=58)\n\nTrain a lasso model to predict house prices. Compute the score on the test set.\n\n# we should check that the data is normalized, or normalize it ourselves\n\n\nfrom sklearn.linear_model import Lasso\nmodel_lasso = Lasso()\nmodel_lasso.fit(X_train, y_train)\n\nLasso()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.LassoLasso()\n\n\n\nmodel_lasso.score(X_test, y_test)\n\n0.28204855993177635\n\n\nTrain a ridge model to predict house prices. Which one is better?\n\nfrom sklearn.linear_model import Ridge\nmodel_ridge = Ridge()\nmodel_ridge.fit(X_train, y_train)\n\nRidge()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.RidgeRidge()\n\n\n\nmodel_ridge.score(X_test, y_test)\n\n0.6060031802405054\n\n\nIt looks like the ridge model has a better fit (score). However, we should have left a test set appart and not used it at all during training phase. Here it has influenced the choice of the model (between ridge and lasso)."
   },
   {
     "objectID": "tutorials/session_1/qe_functions.html",
@@ -509,14 +570,14 @@
     "href": "index.html",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 17, 2024\n\n\nIntroduction\n\n\n\n\nJan 24, 2024\n\n\nDataframes\n\n\n\n\nJan 31, 2024\n\n\nLinear Regression\n\n\n\n\nFeb 7, 2024\n\n\nMultiple Regression\n\n\n\n\nFeb 7, 2024\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 28, 2024\n\n\nMachine Learning\n\n\n\n\nMar 12, 2024\n\n\nText Analysis\n\n\n\n\nMar 20, 2024\n\n\nLarge Language Models\n\n\n\n\nMar 26, 2024\n\n\nWrap-Up\n\n\n\n\nApr 2, 2024\n\n\nFinal Exam ☠\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 17, 2024\n\n\nIntroduction\n\n\n\n\nJan 24, 2024\n\n\nDataframes\n\n\n\n\nJan 31, 2024\n\n\nLinear Regression\n\n\n\n\nFeb 7, 2024\n\n\nMultiple Regression\n\n\n\n\nFeb 7, 2024\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 28, 2024\n\n\nIntroduction to Machine Learning\n\n\n\n\nFeb 28, 2024\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 12, 2024\n\n\nText Analysis\n\n\n\n\nMar 20, 2024\n\n\nLarge Language Models\n\n\n\n\nMar 26, 2024\n\n\nWrap-Up\n\n\n\n\nApr 2, 2024\n\n\nFinal Exam ☠\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#schedule",
     "href": "index.html#schedule",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 17, 2024\n\n\nIntroduction\n\n\n\n\nJan 24, 2024\n\n\nDataframes\n\n\n\n\nJan 31, 2024\n\n\nLinear Regression\n\n\n\n\nFeb 7, 2024\n\n\nMultiple Regression\n\n\n\n\nFeb 7, 2024\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 28, 2024\n\n\nMachine Learning\n\n\n\n\nMar 12, 2024\n\n\nText Analysis\n\n\n\n\nMar 20, 2024\n\n\nLarge Language Models\n\n\n\n\nMar 26, 2024\n\n\nWrap-Up\n\n\n\n\nApr 2, 2024\n\n\nFinal Exam ☠\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 17, 2024\n\n\nIntroduction\n\n\n\n\nJan 24, 2024\n\n\nDataframes\n\n\n\n\nJan 31, 2024\n\n\nLinear Regression\n\n\n\n\nFeb 7, 2024\n\n\nMultiple Regression\n\n\n\n\nFeb 7, 2024\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 28, 2024\n\n\nIntroduction to Machine Learning\n\n\n\n\nFeb 28, 2024\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 12, 2024\n\n\nText Analysis\n\n\n\n\nMar 20, 2024\n\n\nLarge Language Models\n\n\n\n\nMar 26, 2024\n\n\nWrap-Up\n\n\n\n\nApr 2, 2024\n\n\nFinal Exam ☠\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#evaluation",
@@ -524,6 +585,426 @@
     "title": "Data-Based Economics",
     "section": "Evaluation",
     "text": "Evaluation\n\nCoursework (50%)\n\na little replication exercise to do in small groups (2/3 students max)\n\nFinal exam (in-class and on computers) (50%)\n\nan MCQ part about the theory\nsimple coding exercises"
+  },
+  {
+    "objectID": "slides/session_6/index.html#regressions",
+    "href": "slides/session_6/index.html#regressions",
+    "title": "Introduction to Machine Learning",
+    "section": "Regressions",
+    "text": "Regressions"
+  },
+  {
+    "objectID": "slides/session_6/index.html#what-is-machine-learning-1",
+    "href": "slides/session_6/index.html#what-is-machine-learning-1",
+    "title": "Introduction to Machine Learning",
+    "section": "What is Machine learning?",
+    "text": "What is Machine learning?\nDefinition Candidates:\nArthur Samuel: Field of study that gives computers the ability to learn without being explicitly programmed\nTom Mitchell: A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E."
+  },
+  {
+    "objectID": "slides/session_6/index.html#what-about-artificial-intelligence",
+    "href": "slides/session_6/index.html#what-about-artificial-intelligence",
+    "title": "Introduction to Machine Learning",
+    "section": "What about artificial intelligence ?",
+    "text": "What about artificial intelligence ?\n\n\n\nAIs\n\nthink and learn\nmimmic human cognition"
+  },
+  {
+    "objectID": "slides/session_6/index.html#econometrics-vs-machine-learning",
+    "href": "slides/session_6/index.html#econometrics-vs-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "Econometrics vs Machine Learning",
+    "text": "Econometrics vs Machine Learning\n\nEconometrics is essentially a subfield of machine learning with a different jargon and a focus on:\n\nstudying properties and validity of results\n\ndata is scarce\ninference\n\nsingling out effects of specific explanatory variables\nestablishing causality\n\nMachine learning:\n\nstructure data\nmake predictions (interpolate data)"
+  },
+  {
+    "objectID": "slides/session_6/index.html#data-types",
+    "href": "slides/session_6/index.html#data-types",
+    "title": "Introduction to Machine Learning",
+    "section": "Data types",
+    "text": "Data types\n\nstructured:\n\ntabular\n\nlong\nwide\n\n\nunstructured:\n\nfiles\nnetworks\ntext, mails\nimages, sound"
+  },
+  {
+    "objectID": "slides/session_6/index.html#tabular-data",
+    "href": "slides/session_6/index.html#tabular-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Tabular Data",
+    "text": "Tabular Data\n\ntabular data"
+  },
+  {
+    "objectID": "slides/session_6/index.html#networks",
+    "href": "slides/session_6/index.html#networks",
+    "title": "Introduction to Machine Learning",
+    "section": "Networks",
+    "text": "Networks\n\nBanking networks\nProduction network"
+  },
+  {
+    "objectID": "slides/session_6/index.html#big-data-1",
+    "href": "slides/session_6/index.html#big-data-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Big Data",
+    "text": "Big Data\n\nBig data:\n\nwide data (K&gt;&gt;N)\nlong data (N&gt;&gt;K)\nheterogenous, unstructured data\n\nMight not even fit in memory\n\nout of core computations\nlearn from a subset of the data"
+  },
+  {
+    "objectID": "slides/session_6/index.html#big-subfields-of-machine-learning",
+    "href": "slides/session_6/index.html#big-subfields-of-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "Big Subfields of Machine Learning",
+    "text": "Big Subfields of Machine Learning\n\n\n\nTraditional classification\n\nsupervised (labelled data)\n\nregression: predict quantity\nclassification: predict index (categorical variable)\n\nunsupervised (no labels)\n\ndimension reduction\nclustering\n\nsemi-supervised / self-supervised\nreinforcement learning\n\nBazillions of different algorithms: https://scikit-learn.org/stable/user_guide.html\n\n\n\n\nsupervised: regression:\n\n\n\nAge\n\n\nActivity\n\n\nSalary\n\n\n\n\n23\n\n\nExplorer\n\n\n1200\n\n\n\n\n40\n\n\nMortician\n\n\n2000\n\n\n\n\n45\n\n\nMortician\n\n\n2500\n\n\n\n\n33\n\n\nMovie Star\n\n\n3000\n\n\n\n\n35\n\n\nExplorer\n\n\n???\n\n\n\n\n\nsupervised: regression:\n\nPredict: \\(y = f(x; \\theta)\\)\n\n\n\n\nsupervised: regression\n\n\n\n\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\n???\n\n\n\n\n\nsupervised: classification\n\nOutput is discrete\nRegular trick: \\(\\sigma(f(x; \\theta))\\) where \\(\\sigma(x)=\\frac{1}{1-e^{-x}}\\)\n\n\n\n\nclassification\n\n\n\n\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\n???\n\n\n\n\n\nunsupervised\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\nExplorer\n\n\n\n\n\nunsupervised\n\norganize data without labels\n\ndimension reduction: describe data with less parameters\nclustering: sort data into “similar groups” (exemple)\n\n\n\n\nunsupervised: clustering\n\n\n\nkmeansclustering\n\n\n\n\nunsupervised: clustering\nWomen buying dresses during the year:"
+  },
+  {
+    "objectID": "slides/session_6/index.html#difference-with-traditional-regression",
+    "href": "slides/session_6/index.html#difference-with-traditional-regression",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\\[\\underbrace{y}_{\\text{explained variable}} = a \\underbrace{x}_{\\text{explanatory variable}} + b\\]"
+  },
+  {
+    "objectID": "slides/session_6/index.html#difference-with-traditional-regression-1",
+    "href": "slides/session_6/index.html#difference-with-traditional-regression-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\\[\\underbrace{y}_{\\text{labels}} = a \\underbrace{x}_{\\text{features}} + b\\]\n\n\n\n\n\n\n\n\nEconometrics\nMachine learning\n\n\n\n\nRegressand / independent variable / explanatory variable\nFeatures\n\n\nRegressor / dependent variable / explained variable\nLabels\n\n\nRegression\nModel Training"
+  },
+  {
+    "objectID": "slides/session_6/index.html#difference-with-traditional-regression-2",
+    "href": "slides/session_6/index.html#difference-with-traditional-regression-2",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\nBig data requires other means to process the data:\n\ndata is long: so many observations \\(x\\) doesn’t fit in the memory\n\nneed to use incremental training method to use only a subsample at a time\n\ndata is wide: so many features, the model is crudely overspecified\n\nneed to build dimension reduction into the objective\n\ndata is nonlinear:\n\nuse nonlinear model (and nonlinear training)\n\ndata is not a simple vector…\n\nsame as nonlinear"
+  },
+  {
+    "objectID": "slides/session_6/index.html#long-data",
+    "href": "slides/session_6/index.html#long-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Long data",
+    "text": "Long data\nLong data is characterized by a high number of observations.\n\n\n\n\n\nModern society is gathering a lot of data.\n\nin doesn’t fit in the computer memory so we can’t run a basic regression\n\nIn some cases we would also like to update our model continuously:\n\nincremental regression\n\n\n\nWe need a way to fit a model on a subset of the data at a time."
+  },
+  {
+    "objectID": "slides/session_6/index.html#long-data-1",
+    "href": "slides/session_6/index.html#long-data-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Long data",
+    "text": "Long data\n\n\nTraditional regression:\n\nfull sample \\(X,Y=(x_i,y_i)_{i=1:N}\\)\nOLS: \\(\\min_{a,b} \\sum_{i=1}^N (a x_i + b - y_i)^2\\)\nclosed-form solution: \\(a = X^{\\prime}X Y\\) and \\(b= ...\\)\nhard to compute if \\(X\\) is very big\n\n\n\nIncremental learning:\n\ngiven initial \\(a_n\\), \\(b_n\\)\npick \\(N\\) random observations (the batch)\n\nregress them to get new estimate \\(a\\), \\(b\\)\nthis minimizes the square of errors\n\nupdate with learning rate \\(\\beta\\):\n\n\\(a_{n+1} \\leftarrow a_n (1-\\beta_n) + \\beta_n a\\)\n\\(b_{n+1} \\leftarrow b_n (1-\\beta_n) + \\beta_n b\\)\n\nprocess is not biased (that is \\(a\\) converges to the true value) as long as one decreases \\(\\beta\\) sufficiently fast over time (ex: \\(\\beta_n=\\frac{1}{n}\\))"
+  },
+  {
+    "objectID": "slides/session_6/index.html#formalisation-a-typical-machine-learning-task",
+    "href": "slides/session_6/index.html#formalisation-a-typical-machine-learning-task",
+    "title": "Introduction to Machine Learning",
+    "section": "Formalisation: a typical machine learning task",
+    "text": "Formalisation: a typical machine learning task\n\nvector of unknowns: \\(\\theta=(a,b)\\)\ndataset \\(X,Y=(x_i,y_i)_{i=1:N}\\)\nfor a random draw \\(\\omega = (a_{\\sigma(i)}, b_{\\sigma(i)})_{i=[1,N]} \\subset (X,Y)\\)\n\n\\(\\omega\\) is just a random batch of size \\(N\\)\n\ndefine the empirical risk (or empirical cost) \\[\\xi(\\theta, \\omega) = \\sum_{(x,y) \\in \\omega} (y - (a x + b))^2\\]\nwe want to minimize theoretical risk: \\[\\Xi(\\theta) = \\mathbb{E} \\left[ \\xi(\\theta, \\omega)\\right]\\]"
+  },
+  {
+    "objectID": "slides/session_6/index.html#training-gradient-descent",
+    "href": "slides/session_6/index.html#training-gradient-descent",
+    "title": "Introduction to Machine Learning",
+    "section": "Training: Gradient Descent",
+    "text": "Training: Gradient Descent\n\n\n\nHow do we minimize a function \\(f(a,b)\\)?\nGradient descent:\n\n\\(a_k, b_k\\) given\ncompute the gradient (slope) \\(\\nabla_{a,b} f = \\begin{bmatrix} \\frac{\\partial f}{\\partial a} \\\\\\\\ \\frac{\\partial f}{\\partial b}\\end{bmatrix}\\)\nfollow the steepest slope: (Newton Algorithm)\n\n\\[ \\begin{bmatrix} a_{k+1} \\\\\\\\ b_{k+1} \\end{bmatrix} \\leftarrow  \\begin{bmatrix} a_k \\\\\\\\ b_k \\end{bmatrix} - \\nabla_{a,b} f\\]\n\nbut not too fast: use learning rate \\(\\lambda\\): \\[ \\begin{bmatrix} a_{k+1} \\\\\\\\ b_{k+1} \\end{bmatrix} \\leftarrow  (1-\\lambda) \\begin{bmatrix} a_k \\\\\\\\ b_k \\end{bmatrix} + \\lambda (- \\nabla_{a,b} f )\\]"
+  },
+  {
+    "objectID": "slides/session_6/index.html#some-possible-issues",
+    "href": "slides/session_6/index.html#some-possible-issues",
+    "title": "Introduction to Machine Learning",
+    "section": "Some possible issues",
+    "text": "Some possible issues\n \n\nIn practice, choosing the right learning rate \\(\\lambda\\) is crucial\n\\(\\lambda\\) is a metaparameter of the model training."
+  },
+  {
+    "objectID": "slides/session_6/index.html#wide-data",
+    "href": "slides/session_6/index.html#wide-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Wide data",
+    "text": "Wide data\n\nWide Data is characterized by a high number of features compared to the number of observations.\n\n\nProblem:\n\nwith many independent variables \\(x_1, ... x_K\\), \\(K&gt;&gt;N\\) and one dependent variable \\(y\\) the regression \\[y = a_1 x_1 + a_2 x_2 + \\cdots + a_N x_N + b\\] is grossly overidentified."
+  },
+  {
+    "objectID": "slides/session_6/index.html#wide-data-regression",
+    "href": "slides/session_6/index.html#wide-data-regression",
+    "title": "Introduction to Machine Learning",
+    "section": "Wide data regression",
+    "text": "Wide data regression\nMain Idea: penalize non-zero coefficients to encourage scarcity\n\n\n\n\n\nRidge: \\[\\Xi(a,b) = \\min_{a,b} \\sum_{i=1}^N ( \\sum_j a_j x_j + b - y_i)^2 + \\mu \\sum_i |a_i|^2\\]\n\nshrinks parameters towards zero\nclosed form\n\nLasso: \\[\\Xi(a,b) = \\min_{a,b} \\sum_{i=1}^N (\\sum_j a_j x_j + b - y_i)^2 + \\mu \\sum_i |a_i|\\]\n\neliminates zero coefficients\n\nElastic: Ridge + Lasso\n\n\n\n\nRemarks:\n\n\\(\\mu\\) is called a regularization term.\nit is a hyperparameter\n\\(\\mu \\uparrow\\), bias increases, variance decreases"
+  },
+  {
+    "objectID": "slides/session_6/index.html#training",
+    "href": "slides/session_6/index.html#training",
+    "title": "Introduction to Machine Learning",
+    "section": "Training",
+    "text": "Training\nTo perform Lasso and ridge regression:\n\nAI approach:\n\nminimize objective \\(\\Xi(a,b)\\) directly.\napproach is known as (stochastic) Gradient Descent\n\nUse special algorithms"
+  },
+  {
+    "objectID": "slides/session_6/index.html#example-imf-challenge",
+    "href": "slides/session_6/index.html#example-imf-challenge",
+    "title": "Introduction to Machine Learning",
+    "section": "Example: IMF challenge",
+    "text": "Example: IMF challenge\n\nAn internal IMF challenge to predict crises in countries\nLots of different approaches\nLots of data:\n\nwhich one is relevant\nmachine must select relevant informations\n\nExample: Lasso Regressions and Forecasting Models in Applied Stress Testing by Jorge A. Chan-Lau\n\nin a given developing country\ntries to predict probability of default in various sectors"
+  },
+  {
+    "objectID": "slides/session_6/index.html#nonlinear-regression-1",
+    "href": "slides/session_6/index.html#nonlinear-regression-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Nonlinear Regression",
+    "text": "Nonlinear Regression\n\nSo far, we have assumed,\n\n\\(y_i = a + b x_i\\)\n\\(y_i = a + b x_i + μ_1 (a^2 + b^2) + μ_2 (|a| + |b|)\\)\ndefined \\(\\Xi(a,b)\\) and tried to minimize it\n\nSame approach works for fully nonlinear models\n\n\\(y_i = a x_i + a^2 x_i^2 + c\\)\n\\(y_i = \\varphi(x; \\theta)\\) ()\n\nSpecial case: neural network:\n\nprimer tensor playground"
+  },
+  {
+    "objectID": "slides/session_6/index.html#how-to-evaluate-the-machine-learning",
+    "href": "slides/session_6/index.html#how-to-evaluate-the-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "how to evaluate the machine learning",
+    "text": "how to evaluate the machine learning\nIn machine learning we can’t perform statistical inference easily. How do we assess the validity of a model?\n\nBasic idea (independent of how complex the algorithm is)\n\nseparate data in\n\ntraining set (in-sample)\ntest set (out of sample)\n\ntrain using only the training set\nevaluate performance on the test set\n\n\n\nPerformance can be:\n\nfitness, number of classification errors (false positive, false negative)"
+  },
+  {
+    "objectID": "slides/session_6/index.html#how-to-evaluate-the-machine-learning-1",
+    "href": "slides/session_6/index.html#how-to-evaluate-the-machine-learning-1",
+    "title": "Introduction to Machine Learning",
+    "section": "how to evaluate the machine learning",
+    "text": "how to evaluate the machine learning\nIn case the training method depends itself on many parameters (the hyperparameters) we make three samples instead:\n\ntraining set (in-sample)\nvalidation set (to update hyperparameters)\ntest set (out of sample)\n\nGolden Rule: the test set should not be used to estimate the model, and should not affect the choice any training parameter (hyperparameter)."
+  },
+  {
+    "objectID": "slides/session_6/index.html#section",
+    "href": "slides/session_6/index.html#section",
+    "title": "Introduction to Machine Learning",
+    "section": "",
+    "text": "Traintest\nThe test set reveals that orange model is overfitting."
+  },
+  {
+    "objectID": "slides/session_6/index.html#how-to-choose-the-validation-set",
+    "href": "slides/session_6/index.html#how-to-choose-the-validation-set",
+    "title": "Introduction to Machine Learning",
+    "section": "How to choose the validation set?",
+    "text": "How to choose the validation set?\nHoldout validation approach:\n\nkeeps x% of the data for the training, (100-x)% for the test\n\n\nHow to choose the sizes of the subsets?\n\nsmall dataset: 90-10\nbig data set: 70-30 (we can afford to waste more training data for the test)\n\n\n\n\nProblem:\n\nare we sure the validation size is correct? Are the results determined by an (un-) lucky draw?\na problem for smaller datasets"
+  },
+  {
+    "objectID": "slides/session_6/index.html#how-to-choose-the-validation-set-1",
+    "href": "slides/session_6/index.html#how-to-choose-the-validation-set-1",
+    "title": "Introduction to Machine Learning",
+    "section": "How to choose the validation set?",
+    "text": "How to choose the validation set?\nA more robust solution: \\(k\\)-fold validation\n\n\n\nsplit dataset randomly in \\(K\\) subsets of equal size \\(S_1, ... S_K\\)\nuse subset \\(S_i\\) as test set, the rest as training set, compute the score\ncompare the scores obtained for all \\(i\\in[1,K]\\)\n\nthey should be similar (compute standard deviation)\n\naverage them"
+  },
+  {
+    "objectID": "slides/session_6/index.html#another-library-to-perform-regressions",
+    "href": "slides/session_6/index.html#another-library-to-perform-regressions",
+    "title": "Introduction to Machine Learning",
+    "section": "Another library to perform regressions",
+    "text": "Another library to perform regressions\n\nstatsmodels:\n\nexplanatory analysis\nstatistical tests\nformula interface for many estimation algorithms\n\nstateless approach (model.fit() returns another object)\n\n\nlinearmodels\n\nextends statsmodels (very similar interface)\n\n(panel models, IV, systems…)\n\n\nsklearn:\n\nprediction\nfaster for big datasets\ncommon interface for several machine learning tasks\n\nstateful approach (model is modified by .fit operation)\n\ndefacto standard for machine learning"
+  },
+  {
+    "objectID": "slides/session_6/index.html#in-practice",
+    "href": "slides/session_6/index.html#in-practice",
+    "title": "Introduction to Machine Learning",
+    "section": "In practice",
+    "text": "In practice\n\n\nBasic sklearn workflow:\n\n\nimport data\n\nfeatures: a matrix X (2d numpy array)\nlabels: a vector y (1d numpy array)\n\nsplit the data, between training and test datasets\n\nsplit needs to be random to avoid any bias\n\nnormalize the data\n\nmost ML algorithm are sensitive to scale\n\ncreate a model (independent from data)\ntrain the model on training dataset\nevaluate accuracy on test dataset (here \\(R^2\\))\nuse the model to make predictions\n\n\n\n\nfrom sklearn.datasets import load_diabetes\ndataset = load_diabetes()\nX = dataset['data']\ny = dataset['target']\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.1)\n\n#Feature Scaling\nfrom sklearn.preprocessing import StandardScaler\nsc = StandardScaler()\nX_train = sc.fit_transform(X_train)\nX_test = sc.transform(X_test)\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\n\nmodel.score(X_test, y_test)\nmodel.predict(X_new)\n\n\nThe workflow is always the same, no matter what the model is\n\ntry sklearn.linear_model.Lasso instead of LinearRegression"
+  },
+  {
+    "objectID": "slides/session_6/index.html#k-fold-validation-with-sklearn",
+    "href": "slides/session_6/index.html#k-fold-validation-with-sklearn",
+    "title": "Introduction to Machine Learning",
+    "section": "\\(k\\)-fold validation with sklearn",
+    "text": "\\(k\\)-fold validation with sklearn\nfrom sklearn.model_selection import KFold\nkf = KFold(n_splits=10)\n\nfor train_index, test_index in kf.split(X):\n   X_train, X_test = X[train_index], X[test_index]\n   y_train, y_test = y[train_index], y[test_index]\n\n   ## train a model in X_train, y_train\n   ## test it on X_test, y_test"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#what-is-machine-learning-1",
+    "href": "slides/session_6/index_handout.html#what-is-machine-learning-1",
+    "title": "Introduction to Machine Learning",
+    "section": "What is Machine learning?",
+    "text": "What is Machine learning?\nDefinition Candidates:\nArthur Samuel: Field of study that gives computers the ability to learn without being explicitly programmed\nTom Mitchell: A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E."
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#what-about-artificial-intelligence",
+    "href": "slides/session_6/index_handout.html#what-about-artificial-intelligence",
+    "title": "Introduction to Machine Learning",
+    "section": "What about artificial intelligence ?",
+    "text": "What about artificial intelligence ?\n\n\n\nAIs\n\nthink and learn\nmimmic human cognition"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#econometrics-vs-machine-learning",
+    "href": "slides/session_6/index_handout.html#econometrics-vs-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "Econometrics vs Machine Learning",
+    "text": "Econometrics vs Machine Learning\n\nEconometrics is essentially a subfield of machine learning with a different jargon and a focus on:\n\nstudying properties and validity of results\n\ndata is scarce\ninference\n\nsingling out effects of specific explanatory variables\nestablishing causality\n\nMachine learning:\n\nstructure data\nmake predictions (interpolate data)"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#data-types",
+    "href": "slides/session_6/index_handout.html#data-types",
+    "title": "Introduction to Machine Learning",
+    "section": "Data types",
+    "text": "Data types\n\nstructured:\n\ntabular\n\nlong\nwide\n\n\nunstructured:\n\nfiles\nnetworks\ntext, mails\nimages, sound"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#tabular-data",
+    "href": "slides/session_6/index_handout.html#tabular-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Tabular Data",
+    "text": "Tabular Data\n\n\n\ntabular data"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#networks",
+    "href": "slides/session_6/index_handout.html#networks",
+    "title": "Introduction to Machine Learning",
+    "section": "Networks",
+    "text": "Networks\n\nBanking networks\nProduction network"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#big-data-1",
+    "href": "slides/session_6/index_handout.html#big-data-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Big Data",
+    "text": "Big Data\n\nBig data:\n\nwide data (K&gt;&gt;N)\nlong data (N&gt;&gt;K)\nheterogenous, unstructured data\n\nMight not even fit in memory\n\nout of core computations\nlearn from a subset of the data"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#big-subfields-of-machine-learning",
+    "href": "slides/session_6/index_handout.html#big-subfields-of-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "Big Subfields of Machine Learning",
+    "text": "Big Subfields of Machine Learning\n\n\n\nTraditional classification\n\nsupervised (labelled data)\n\nregression: predict quantity\nclassification: predict index (categorical variable)\n\nunsupervised (no labels)\n\ndimension reduction\nclustering\n\nsemi-supervised / self-supervised\nreinforcement learning\n\nBazillions of different algorithms: https://scikit-learn.org/stable/user_guide.html\n\n\n\n\nsupervised: regression:\n\n\n\nAge\n\n\nActivity\n\n\nSalary\n\n\n\n\n23\n\n\nExplorer\n\n\n1200\n\n\n\n\n40\n\n\nMortician\n\n\n2000\n\n\n\n\n45\n\n\nMortician\n\n\n2500\n\n\n\n\n33\n\n\nMovie Star\n\n\n3000\n\n\n\n\n35\n\n\nExplorer\n\n\n???\n\n\n\n\n\nsupervised: regression:\n\nPredict: \\(y = f(x; \\theta)\\)\n\n\n\n\nsupervised: regression\n\n\n\n\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\n???\n\n\n\n\n\nsupervised: classification\n\nOutput is discrete\nRegular trick: \\(\\sigma(f(x; \\theta))\\) where \\(\\sigma(x)=\\frac{1}{1-e^{-x}}\\)\n\n\n\n\nclassification\n\n\n\n\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\n???\n\n\n\n\n\nunsupervised\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\nExplorer\n\n\n\n\n\nunsupervised\n\norganize data without labels\n\ndimension reduction: describe data with less parameters\nclustering: sort data into “similar groups” (exemple)\n\n\n\n\nunsupervised: clustering\n\n\n\nkmeansclustering\n\n\n\n\nunsupervised: clustering\nWomen buying dresses during the year:"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#difference-with-traditional-regression",
+    "href": "slides/session_6/index_handout.html#difference-with-traditional-regression",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\\[\\underbrace{y}_{\\text{explained variable}} = a \\underbrace{x}_{\\text{explanatory variable}} + b\\]"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#difference-with-traditional-regression-1",
+    "href": "slides/session_6/index_handout.html#difference-with-traditional-regression-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\\[\\underbrace{y}_{\\text{labels}} = a \\underbrace{x}_{\\text{features}} + b\\]\n. . .\n\n\n\n\n\n\n\nEconometrics\nMachine learning\n\n\n\n\nRegressand / independent variable / explanatory variable\nFeatures\n\n\nRegressor / dependent variable / explained variable\nLabels\n\n\nRegression\nModel Training"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#difference-with-traditional-regression-2",
+    "href": "slides/session_6/index_handout.html#difference-with-traditional-regression-2",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\nBig data requires other means to process the data:\n\ndata is long: so many observations \\(x\\) doesn’t fit in the memory\n\nneed to use incremental training method to use only a subsample at a time\n\ndata is wide: so many features, the model is crudely overspecified\n\nneed to build dimension reduction into the objective\n\ndata is nonlinear:\n\nuse nonlinear model (and nonlinear training)\n\ndata is not a simple vector…\n\nsame as nonlinear"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#long-data",
+    "href": "slides/session_6/index_handout.html#long-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Long data",
+    "text": "Long data\nLong data is characterized by a high number of observations.\n\n\n\n\n\nModern society is gathering a lot of data.\n\nin doesn’t fit in the computer memory so we can’t run a basic regression\n\nIn some cases we would also like to update our model continuously:\n\nincremental regression\n\n\n\nWe need a way to fit a model on a subset of the data at a time."
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#long-data-1",
+    "href": "slides/session_6/index_handout.html#long-data-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Long data",
+    "text": "Long data\n\n\nTraditional regression:\n\nfull sample \\(X,Y=(x_i,y_i)_{i=1:N}\\)\nOLS: \\(\\min_{a,b} \\sum_{i=1}^N (a x_i + b - y_i)^2\\)\nclosed-form solution: \\(a = X^{\\prime}X Y\\) and \\(b= ...\\)\nhard to compute if \\(X\\) is very big\n\n\n\nIncremental learning:\n\ngiven initial \\(a_n\\), \\(b_n\\)\npick \\(N\\) random observations (the batch)\n\nregress them to get new estimate \\(a\\), \\(b\\)\nthis minimizes the square of errors\n\nupdate with learning rate \\(\\beta\\):\n\n\\(a_{n+1} \\leftarrow a_n (1-\\beta_n) + \\beta_n a\\)\n\\(b_{n+1} \\leftarrow b_n (1-\\beta_n) + \\beta_n b\\)\n\nprocess is not biased (that is \\(a\\) converges to the true value) as long as one decreases \\(\\beta\\) sufficiently fast over time (ex: \\(\\beta_n=\\frac{1}{n}\\))"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#formalisation-a-typical-machine-learning-task",
+    "href": "slides/session_6/index_handout.html#formalisation-a-typical-machine-learning-task",
+    "title": "Introduction to Machine Learning",
+    "section": "Formalisation: a typical machine learning task",
+    "text": "Formalisation: a typical machine learning task\n\nvector of unknowns: \\(\\theta=(a,b)\\)\ndataset \\(X,Y=(x_i,y_i)_{i=1:N}\\)\nfor a random draw \\(\\omega = (a_{\\sigma(i)}, b_{\\sigma(i)})_{i=[1,N]} \\subset (X,Y)\\)\n\n\\(\\omega\\) is just a random batch of size \\(N\\)\n\ndefine the empirical risk (or empirical cost) \\[\\xi(\\theta, \\omega) = \\sum_{(x,y) \\in \\omega} (y - (a x + b))^2\\]\nwe want to minimize theoretical risk: \\[\\Xi(\\theta) = \\mathbb{E} \\left[ \\xi(\\theta, \\omega)\\right]\\]"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#training-gradient-descent",
+    "href": "slides/session_6/index_handout.html#training-gradient-descent",
+    "title": "Introduction to Machine Learning",
+    "section": "Training: Gradient Descent",
+    "text": "Training: Gradient Descent\n\n\n\nHow do we minimize a function \\(f(a,b)\\)?\nGradient descent:\n\n\\(a_k, b_k\\) given\ncompute the gradient (slope) \\(\\nabla_{a,b} f = \\begin{bmatrix} \\frac{\\partial f}{\\partial a} \\\\\\\\ \\frac{\\partial f}{\\partial b}\\end{bmatrix}\\)\nfollow the steepest slope: (Newton Algorithm)\n\n\\[ \\begin{bmatrix} a_{k+1} \\\\\\\\ b_{k+1} \\end{bmatrix} \\leftarrow  \\begin{bmatrix} a_k \\\\\\\\ b_k \\end{bmatrix} - \\nabla_{a,b} f\\]\n\nbut not too fast: use learning rate \\(\\lambda\\): \\[ \\begin{bmatrix} a_{k+1} \\\\\\\\ b_{k+1} \\end{bmatrix} \\leftarrow  (1-\\lambda) \\begin{bmatrix} a_k \\\\\\\\ b_k \\end{bmatrix} + \\lambda (- \\nabla_{a,b} f )\\]"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#some-possible-issues",
+    "href": "slides/session_6/index_handout.html#some-possible-issues",
+    "title": "Introduction to Machine Learning",
+    "section": "Some possible issues",
+    "text": "Some possible issues\n \n\nIn practice, choosing the right learning rate \\(\\lambda\\) is crucial\n\\(\\lambda\\) is a metaparameter of the model training."
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#wide-data",
+    "href": "slides/session_6/index_handout.html#wide-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Wide data",
+    "text": "Wide data\n\nWide Data is characterized by a high number of features compared to the number of observations.\n\n. . .\nProblem:\n\nwith many independent variables \\(x_1, ... x_K\\), \\(K&gt;&gt;N\\) and one dependent variable \\(y\\) the regression \\[y = a_1 x_1 + a_2 x_2 + \\cdots + a_N x_N + b\\] is grossly overidentified."
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#wide-data-regression",
+    "href": "slides/session_6/index_handout.html#wide-data-regression",
+    "title": "Introduction to Machine Learning",
+    "section": "Wide data regression",
+    "text": "Wide data regression\nMain Idea: penalize non-zero coefficients to encourage scarcity\n. . .\n\n\n\n\nRidge: \\[\\Xi(a,b) = \\min_{a,b} \\sum_{i=1}^N ( \\sum_j a_j x_j + b - y_i)^2 + \\mu \\sum_i |a_i|^2\\]\n\nshrinks parameters towards zero\nclosed form\n\nLasso: \\[\\Xi(a,b) = \\min_{a,b} \\sum_{i=1}^N (\\sum_j a_j x_j + b - y_i)^2 + \\mu \\sum_i |a_i|\\]\n\neliminates zero coefficients\n\nElastic: Ridge + Lasso\n\n\n\n\nRemarks:\n\n\\(\\mu\\) is called a regularization term.\nit is a hyperparameter\n\\(\\mu \\uparrow\\), bias increases, variance decreases"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#training",
+    "href": "slides/session_6/index_handout.html#training",
+    "title": "Introduction to Machine Learning",
+    "section": "Training",
+    "text": "Training\nTo perform Lasso and ridge regression:\n\nAI approach:\n\nminimize objective \\(\\Xi(a,b)\\) directly.\napproach is known as (stochastic) Gradient Descent\n\nUse special algorithms"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#example-imf-challenge",
+    "href": "slides/session_6/index_handout.html#example-imf-challenge",
+    "title": "Introduction to Machine Learning",
+    "section": "Example: IMF challenge",
+    "text": "Example: IMF challenge\n\nAn internal IMF challenge to predict crises in countries\nLots of different approaches\nLots of data:\n\nwhich one is relevant\nmachine must select relevant informations\n\nExample: Lasso Regressions and Forecasting Models in Applied Stress Testing by Jorge A. Chan-Lau\n\nin a given developing country\ntries to predict probability of default in various sectors"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#nonlinear-regression-1",
+    "href": "slides/session_6/index_handout.html#nonlinear-regression-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Nonlinear Regression",
+    "text": "Nonlinear Regression\n\nSo far, we have assumed,\n\n\\(y_i = a + b x_i\\)\n\\(y_i = a + b x_i + μ_1 (a^2 + b^2) + μ_2 (|a| + |b|)\\)\ndefined \\(\\Xi(a,b)\\) and tried to minimize it\n\nSame approach works for fully nonlinear models\n\n\\(y_i = a x_i + a^2 x_i^2 + c\\)\n\\(y_i = \\varphi(x; \\theta)\\) ()\n\nSpecial case: neural network:\n\nprimer tensor playground"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#how-to-evaluate-the-machine-learning",
+    "href": "slides/session_6/index_handout.html#how-to-evaluate-the-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "how to evaluate the machine learning",
+    "text": "how to evaluate the machine learning\nIn machine learning we can’t perform statistical inference easily. How do we assess the validity of a model?\n. . .\nBasic idea (independent of how complex the algorithm is)\n\nseparate data in\n\ntraining set (in-sample)\ntest set (out of sample)\n\ntrain using only the training set\nevaluate performance on the test set\n\n. . .\nPerformance can be:\n\nfitness, number of classification errors (false positive, false negative)"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#how-to-evaluate-the-machine-learning-1",
+    "href": "slides/session_6/index_handout.html#how-to-evaluate-the-machine-learning-1",
+    "title": "Introduction to Machine Learning",
+    "section": "how to evaluate the machine learning",
+    "text": "how to evaluate the machine learning\nIn case the training method depends itself on many parameters (the hyperparameters) we make three samples instead:\n\ntraining set (in-sample)\nvalidation set (to update hyperparameters)\ntest set (out of sample)\n\nGolden Rule: the test set should not be used to estimate the model, and should not affect the choice any training parameter (hyperparameter)."
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#section",
+    "href": "slides/session_6/index_handout.html#section",
+    "title": "Introduction to Machine Learning",
+    "section": "",
+    "text": "Traintest\n\n\n. . .\nThe test set reveals that orange model is overfitting."
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#how-to-choose-the-validation-set",
+    "href": "slides/session_6/index_handout.html#how-to-choose-the-validation-set",
+    "title": "Introduction to Machine Learning",
+    "section": "How to choose the validation set?",
+    "text": "How to choose the validation set?\nHoldout validation approach:\n\nkeeps x% of the data for the training, (100-x)% for the test\n\n. . .\nHow to choose the sizes of the subsets?\n\nsmall dataset: 90-10\nbig data set: 70-30 (we can afford to waste more training data for the test)\n\n. . .\n\nProblem:\n\nare we sure the validation size is correct? Are the results determined by an (un-) lucky draw?\na problem for smaller datasets"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#how-to-choose-the-validation-set-1",
+    "href": "slides/session_6/index_handout.html#how-to-choose-the-validation-set-1",
+    "title": "Introduction to Machine Learning",
+    "section": "How to choose the validation set?",
+    "text": "How to choose the validation set?\nA more robust solution: \\(k\\)-fold validation\n\n\n\nsplit dataset randomly in \\(K\\) subsets of equal size \\(S_1, ... S_K\\)\nuse subset \\(S_i\\) as test set, the rest as training set, compute the score\ncompare the scores obtained for all \\(i\\in[1,K]\\)\n\nthey should be similar (compute standard deviation)\n\naverage them"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#another-library-to-perform-regressions",
+    "href": "slides/session_6/index_handout.html#another-library-to-perform-regressions",
+    "title": "Introduction to Machine Learning",
+    "section": "Another library to perform regressions",
+    "text": "Another library to perform regressions\n\nstatsmodels:\n\nexplanatory analysis\nstatistical tests\nformula interface for many estimation algorithms\n\nstateless approach (model.fit() returns another object)\n\n\nlinearmodels\n\nextends statsmodels (very similar interface)\n\n(panel models, IV, systems…)\n\n\nsklearn:\n\nprediction\nfaster for big datasets\ncommon interface for several machine learning tasks\n\nstateful approach (model is modified by .fit operation)\n\ndefacto standard for machine learning"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#in-practice",
+    "href": "slides/session_6/index_handout.html#in-practice",
+    "title": "Introduction to Machine Learning",
+    "section": "In practice",
+    "text": "In practice\n\n\nBasic sklearn workflow:\n\n\nimport data\n\nfeatures: a matrix X (2d numpy array)\nlabels: a vector y (1d numpy array)\n\nsplit the data, between training and test datasets\n\nsplit needs to be random to avoid any bias\n\nnormalize the data\n\nmost ML algorithm are sensitive to scale\n\ncreate a model (independent from data)\ntrain the model on training dataset\nevaluate accuracy on test dataset (here \\(R^2\\))\nuse the model to make predictions\n\n\n\n\nfrom sklearn.datasets import load_diabetes\ndataset = load_diabetes()\nX = dataset['data']\ny = dataset['target']\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.1)\n\n#Feature Scaling\nfrom sklearn.preprocessing import StandardScaler\nsc = StandardScaler()\nX_train = sc.fit_transform(X_train)\nX_test = sc.transform(X_test)\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\n\nmodel.score(X_test, y_test)\nmodel.predict(X_new)\n\n\nThe workflow is always the same, no matter what the model is\n\ntry sklearn.linear_model.Lasso instead of LinearRegression"
+  },
+  {
+    "objectID": "slides/session_6/index_handout.html#k-fold-validation-with-sklearn",
+    "href": "slides/session_6/index_handout.html#k-fold-validation-with-sklearn",
+    "title": "Introduction to Machine Learning",
+    "section": "\\(k\\)-fold validation with sklearn",
+    "text": "\\(k\\)-fold validation with sklearn\nfrom sklearn.model_selection import KFold\nkf = KFold(n_splits=10)\n\nfor train_index, test_index in kf.split(X):\n   X_train, X_test = X[train_index], X[test_index]\n   y_train, y_test = y[train_index], y[test_index]\n\n   ## train a model in X_train, y_train\n   ## test it on X_test, y_test"
+  },
+  {
+    "objectID": "slides/session_6/graphs/Untitled1.html",
+    "href": "slides/session_6/graphs/Untitled1.html",
+    "title": "Data-Based Economics",
+    "section": "",
+    "text": "from matplotlib import pyplot as plt\nimport numpy as np\nimport pandas as pd\n\n\nimport statsmodels.api as sm\n\n\ndf.describe()\n\n\n\n\n\n\n\n\nincome\neducation\nprestige\n\n\n\n\ncount\n45.000000\n45.000000\n45.000000\n\n\nmean\n41.866667\n52.555556\n47.688889\n\n\nstd\n24.435072\n29.760831\n31.510332\n\n\nmin\n7.000000\n7.000000\n3.000000\n\n\n25%\n21.000000\n26.000000\n16.000000\n\n\n50%\n42.000000\n45.000000\n41.000000\n\n\n75%\n64.000000\n84.000000\n81.000000\n\n\nmax\n81.000000\n100.000000\n97.000000\n\n\n\n\n\n\n\n\ndf.cov()\n\n\n\n\n\n\n\n\nincome\neducation\nprestige\n\n\n\n\nincome\n597.072727\n526.871212\n645.071212\n\n\neducation\n526.871212\n885.707071\n798.904040\n\n\nprestige\n645.071212\n798.904040\n992.901010\n\n\n\n\n\n\n\n\nfrom matplotlib import pyplot as plt\n\n\nplt.figure(figsize=(8,6))\nplt.plot(df['education'],df['income'],'o')\nplt.grid()\nplt.xlabel(\"x (Education)\")\nplt.ylabel(\"y (Income)\")\nplt.savefig(\"data_description.png\")\n\n\n\n\n\n\n\n\n\nfor i in [1,2,3]:\n    xvec = np.linspace(10,100)\n\n    plt.figure(figsize=(12,8))\n    plt.plot(df['education'],df['income'],'o')\n\n    plt.plot(xvec, xvec * 0 + 50)\n    if i&gt;=2:\n        plt.plot(xvec, xvec )\n    if i&gt;=3:\n        plt.plot(xvec,  90- 0.6*xvec )\n\n    plt.grid()\n    plt.xlabel(\"x (Education)\")\n    plt.ylabel(\"y (Income)\")\n    plt.savefig(f\"which_line_{i}.png\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfrom ipywidgets import interact\n\n\nimport matplotlib.patches as patches\n\n\na = 0.1\nb = 1.0\nind = 23\n\n\napprox =  a + b*xvec\n\n# Create figure and axes\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\nplt.plot(df['education'],df['income'],'o')\nplt.plot(xvec, approx, color='red')\n\nx, y = df['education'][ind], df['income'][ind]\nplt.plot(x, y, 'o', color='red' )\np = a+b*x\nplt.grid(True)\nh = abs(p-y)\nplt.vlines(x, y+h, y, color='red')\n\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.savefig(f\"error_0.png\")\n\n\n\n\n\n\n\n\n\nplt.vlines?\n\n\nSignature:\nplt.vlines(\n    x,\n    ymin,\n    ymax,\n    colors=None,\n    linestyles='solid',\n    label='',\n    *,\n    data=None,\n    **kwargs,\n)\nDocstring:\nPlot vertical lines.\nPlot vertical lines at each *x* from *ymin* to *ymax*.\nParameters\n----------\nx : float or array-like\n    x-indexes where to plot the lines.\nymin, ymax : float or array-like\n    Respective beginning and end of each line. If scalars are\n    provided, all lines will have same length.\ncolors : list of colors, default: :rc:`lines.color`\nlinestyles : {'solid', 'dashed', 'dashdot', 'dotted'}, optional\nlabel : str, default: ''\nReturns\n-------\n`~matplotlib.collections.LineCollection`\nOther Parameters\n----------------\n**kwargs : `~matplotlib.collections.LineCollection` properties.\nSee Also\n--------\nhlines : horizontal lines\naxvline: vertical line across the axes\nNotes\n-----\n.. note::\n    In addition to the above described arguments, this function can take\n    a *data* keyword argument. If such a *data* argument is given,\n    the following arguments can also be string ``s``, which is\n    interpreted as ``data[s]`` (unless this raises an exception):\n    *x*, *ymin*, *ymax*, *colors*.\n    Objects passed as **data** must support item access (``data[s]``) and\n    membership test (``s in data``).\nFile:      ~/.local/opt/miniconda/lib/python3.8/site-packages/matplotlib/pyplot.py\nType:      function\n\n\n\n\n\na = 0.1\nb = 1.0\nind = 23\n\n\napprox =  a + b*xvec\n\n# Create figure and axes\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\nplt.plot(df['education'],df['income'],'o')\nplt.plot(xvec, approx, color='red')\n\nx, y = df['education'][ind], df['income'][ind]\nplt.plot(x, y, 'o', color='red' )\np = a+b*x\nplt.grid(True)\nh = abs(p-y)\nif p-y&gt;0:\n    # Create a Rectangle patch\n    rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n    ax.add_patch(rect)\n    \nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.savefig(f\"errors_{1}.png\")\n\n\n\n\n\n\n\n\n\ndef L(a,b):\n    Δ = a + b*df['education'] - df['income']\n    return (Δ**2).sum()\n\n\na = 0.1\nb = 0.8\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red')\n\nplt.grid(True)\nfor ind in range(df.shape[0]):\n    \n    x, y = df['education'][ind], df['income'][ind]\n    p = a+b*x\n\n    h = abs(p-y)\n    if p-y&gt;0:\n        # Create a Rectangle patch\n        rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\n    else:\n        rect = patches.Rectangle((x,y-h),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"errors_2.png\")\n\n\n\n\n\n\n\n\n\na = 90\nb = -0.6\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red')\n\nplt.grid(True)\nfor ind in range(df.shape[0]):\n    \n    x, y = df['education'][ind], df['income'][ind]\n    p = a+b*x\n\n    h = abs(p-y)\n    if p-y&gt;0:\n        # Create a Rectangle patch\n        rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\n    else:\n        rect = patches.Rectangle((x,y-h),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"errors_3.png\")\n\n\n\n\n\n\n\n\n\nimport scipy.optimize\n\n\nscipy.optimize.minimize(lambda x: L(x[0], x[1]),np.array([0.5, 0.5]))\n\n      fun: 12480.970174488397\n hess_inv: array([[ 7.14169839e-09, -3.91281920e-09],\n       [-3.91281920e-09,  2.46663613e-09]])\n      jac: array([0.00024414, 0.00012207])\n  message: 'Desired error not necessarily achieved due to precision loss.'\n     nfev: 57\n      nit: 7\n     njev: 19\n   status: 2\n  success: False\n        x: array([10.60350224,  0.59485938])\n\n\n\na = 10\nb = 0.59\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red')\n\nplt.grid(True)\nfor ind in range(df.shape[0]):\n    \n    x, y = df['education'][ind], df['income'][ind]\n    p = a+b*x\n\n    h = abs(p-y)\n    if p-y&gt;0:\n        # Create a Rectangle patch\n        rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\n    else:\n        rect = patches.Rectangle((x,y-h),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"errors_4.png\")\n\n\n\n\n\n\n\n\n\na = 10\nb = 0.59\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red', alpha=0.5)\n\nplt.plot(60, a + b*60, 'o', color='red',)\n\nprint(a+b*60)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"prediction.png\")\n\n45.4\n\n\n\n\n\n\n\n\n\n\na = 10\nb = 0.59\n\napprox =  (a + b*df['education'] - df['income'])\n\nplt.figure(figsize=(12,6))\n\nplt.subplot(121)\nplt.plot(approx)\nplt.grid(False)\nplt.title(\"Residuals\")\n\n\nplt.subplot(122)\ndistplot(approx)\nplt.title(\"Distribution of residuals\")\nplt.grid()\n\nplt.savefig(\"residuals.png\")\n\n/home/pablo/.local/opt/miniconda/lib/python3.8/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).\n  warnings.warn(msg, FutureWarning)\n\n\n\n\n\n\n\n\n\n\n(a + b*df['education'] - df['income']).std()\n\n16.842782676352154\n\n\n\n\n\n/home/pablo/.local/opt/miniconda/lib/python3.8/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).\n  warnings.warn(msg, FutureWarning)\n\n\n\n\n\n\n\n\n\n\nfrom scipy.stats import f\n\n\nf(0.3)\n\nTypeError: _parse_args() missing 1 required positional argument: 'dfd'\n\n\n\nnp.rand\n\n\nK = 100\nxvec = np.linspace(0,1,K)\ne1 = np.random.randn(K)*0.1\nyvec = 0.1 + xvec*0.4 + e1\ne2 = np.random.randn(K)*0.05\nyvec2 = 0.1 + xvec*(xvec-1)/2 + e2\ne3 = np.random.randn(K)*xvec/2\nyvec3 = 0.1 + xvec + e3\n\nyvec4 = 0.1 + np.sin(xvec*6) + np.random.randn(K)*xvec/2\n\n\nfrom dolo.numeric.processes import VAR1\n\n\nsim = VAR1( ρ=0.8, Σ=0.001).simulate(N=1,T=100)\nyvec4 = 0.1 + xvec*0.4 + sim.ravel()\n\n\nplt.figure(figsize=(18,6))\nplt.subplot(241)\nplt.plot(xvec, yvec,'o')\nplt.plot(xvec, 0.1 + xvec*0.4 )\nplt.ylabel(\"Series\")\nplt.title(\"white noise\")\nplt.subplot(242)\nplt.plot(xvec, yvec2, 'o')\nplt.plot(xvec, yvec2*0)\nplt.title('nonlinear')\nplt.subplot(243)\nplt.plot(xvec, yvec3,'o')\nplt.plot(xvec, 0.1 + xvec)\nplt.title('heteroskedastic')\nplt.subplot(244)\nplt.plot(xvec, yvec4,'o')\nplt.plot(xvec, xvec*0.6)\n\nplt.title('correlated')\n\n\nplt.subplot(245)\nplt.plot(xvec, e1,'o')\nplt.ylabel(\"Residuals\")\nplt.subplot(246)\nplt.plot(xvec, yvec2-0.075, 'o')\n\nplt.subplot(247)\nplt.plot(xvec, e3,'o')\nplt.subplot(248)\nplt.plot(xvec, sim.ravel(),'o')\n\nplt.tight_layout()\n\nplt.savefig(\"residuals_circus.png\")"
   },
   {
     "objectID": "slides/prep_8/index_handout.html",
@@ -554,11 +1035,417 @@
     "text": "from matplotlib import pyplot as plt\nimport numpy as np\nimport pandas as pd\n\n\nimport statsmodels.api as sm\n\n\ndf.describe()\n\n\n\n\n\n\n\n\nincome\neducation\nprestige\n\n\n\n\ncount\n45.000000\n45.000000\n45.000000\n\n\nmean\n41.866667\n52.555556\n47.688889\n\n\nstd\n24.435072\n29.760831\n31.510332\n\n\nmin\n7.000000\n7.000000\n3.000000\n\n\n25%\n21.000000\n26.000000\n16.000000\n\n\n50%\n42.000000\n45.000000\n41.000000\n\n\n75%\n64.000000\n84.000000\n81.000000\n\n\nmax\n81.000000\n100.000000\n97.000000\n\n\n\n\n\n\n\n\ndf.cov()\n\n\n\n\n\n\n\n\nincome\neducation\nprestige\n\n\n\n\nincome\n597.072727\n526.871212\n645.071212\n\n\neducation\n526.871212\n885.707071\n798.904040\n\n\nprestige\n645.071212\n798.904040\n992.901010\n\n\n\n\n\n\n\n\nfrom matplotlib import pyplot as plt\n\n\nplt.figure(figsize=(8,6))\nplt.plot(df['education'],df['income'],'o')\nplt.grid()\nplt.xlabel(\"x (Education)\")\nplt.ylabel(\"y (Income)\")\nplt.savefig(\"data_description.png\")\n\n\n\n\n\n\n\n\n\nfor i in [1,2,3]:\n    xvec = np.linspace(10,100)\n\n    plt.figure(figsize=(12,8))\n    plt.plot(df['education'],df['income'],'o')\n\n    plt.plot(xvec, xvec * 0 + 50)\n    if i&gt;=2:\n        plt.plot(xvec, xvec )\n    if i&gt;=3:\n        plt.plot(xvec,  90- 0.6*xvec )\n\n    plt.grid()\n    plt.xlabel(\"x (Education)\")\n    plt.ylabel(\"y (Income)\")\n    plt.savefig(f\"which_line_{i}.png\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfrom ipywidgets import interact\n\n\nimport matplotlib.patches as patches\n\n\na = 0.1\nb = 1.0\nind = 23\n\n\napprox =  a + b*xvec\n\n# Create figure and axes\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\nplt.plot(df['education'],df['income'],'o')\nplt.plot(xvec, approx, color='red')\n\nx, y = df['education'][ind], df['income'][ind]\nplt.plot(x, y, 'o', color='red' )\np = a+b*x\nplt.grid(True)\nh = abs(p-y)\nplt.vlines(x, y+h, y, color='red')\n\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.savefig(f\"error_0.png\")\n\n\n\n\n\n\n\n\n\nplt.vlines?\n\n\nSignature:\nplt.vlines(\n    x,\n    ymin,\n    ymax,\n    colors=None,\n    linestyles='solid',\n    label='',\n    *,\n    data=None,\n    **kwargs,\n)\nDocstring:\nPlot vertical lines.\nPlot vertical lines at each *x* from *ymin* to *ymax*.\nParameters\n----------\nx : float or array-like\n    x-indexes where to plot the lines.\nymin, ymax : float or array-like\n    Respective beginning and end of each line. If scalars are\n    provided, all lines will have same length.\ncolors : list of colors, default: :rc:`lines.color`\nlinestyles : {'solid', 'dashed', 'dashdot', 'dotted'}, optional\nlabel : str, default: ''\nReturns\n-------\n`~matplotlib.collections.LineCollection`\nOther Parameters\n----------------\n**kwargs : `~matplotlib.collections.LineCollection` properties.\nSee Also\n--------\nhlines : horizontal lines\naxvline: vertical line across the axes\nNotes\n-----\n.. note::\n    In addition to the above described arguments, this function can take\n    a *data* keyword argument. If such a *data* argument is given,\n    the following arguments can also be string ``s``, which is\n    interpreted as ``data[s]`` (unless this raises an exception):\n    *x*, *ymin*, *ymax*, *colors*.\n    Objects passed as **data** must support item access (``data[s]``) and\n    membership test (``s in data``).\nFile:      ~/.local/opt/miniconda/lib/python3.8/site-packages/matplotlib/pyplot.py\nType:      function\n\n\n\n\n\na = 0.1\nb = 1.0\nind = 23\n\n\napprox =  a + b*xvec\n\n# Create figure and axes\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\nplt.plot(df['education'],df['income'],'o')\nplt.plot(xvec, approx, color='red')\n\nx, y = df['education'][ind], df['income'][ind]\nplt.plot(x, y, 'o', color='red' )\np = a+b*x\nplt.grid(True)\nh = abs(p-y)\nif p-y&gt;0:\n    # Create a Rectangle patch\n    rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n    ax.add_patch(rect)\n    \nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.savefig(f\"errors_{1}.png\")\n\n\n\n\n\n\n\n\n\ndef L(a,b):\n    Δ = a + b*df['education'] - df['income']\n    return (Δ**2).sum()\n\n\na = 0.1\nb = 0.8\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red')\n\nplt.grid(True)\nfor ind in range(df.shape[0]):\n    \n    x, y = df['education'][ind], df['income'][ind]\n    p = a+b*x\n\n    h = abs(p-y)\n    if p-y&gt;0:\n        # Create a Rectangle patch\n        rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\n    else:\n        rect = patches.Rectangle((x,y-h),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"errors_2.png\")\n\n\n\n\n\n\n\n\n\na = 90\nb = -0.6\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red')\n\nplt.grid(True)\nfor ind in range(df.shape[0]):\n    \n    x, y = df['education'][ind], df['income'][ind]\n    p = a+b*x\n\n    h = abs(p-y)\n    if p-y&gt;0:\n        # Create a Rectangle patch\n        rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\n    else:\n        rect = patches.Rectangle((x,y-h),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"errors_3.png\")\n\n\n\n\n\n\n\n\n\nimport scipy.optimize\n\n\nscipy.optimize.minimize(lambda x: L(x[0], x[1]),np.array([0.5, 0.5]))\n\n      fun: 12480.970174488397\n hess_inv: array([[ 7.14169839e-09, -3.91281920e-09],\n       [-3.91281920e-09,  2.46663613e-09]])\n      jac: array([0.00024414, 0.00012207])\n  message: 'Desired error not necessarily achieved due to precision loss.'\n     nfev: 57\n      nit: 7\n     njev: 19\n   status: 2\n  success: False\n        x: array([10.60350224,  0.59485938])\n\n\n\na = 10\nb = 0.59\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red')\n\nplt.grid(True)\nfor ind in range(df.shape[0]):\n    \n    x, y = df['education'][ind], df['income'][ind]\n    p = a+b*x\n\n    h = abs(p-y)\n    if p-y&gt;0:\n        # Create a Rectangle patch\n        rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\n    else:\n        rect = patches.Rectangle((x,y-h),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"errors_4.png\")\n\n\n\n\n\n\n\n\n\na = 10\nb = 0.59\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red', alpha=0.5)\n\nplt.plot(60, a + b*60, 'o', color='red',)\n\nprint(a+b*60)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"prediction.png\")\n\n45.4\n\n\n\n\n\n\n\n\n\n\na = 10\nb = 0.59\n\napprox =  (a + b*df['education'] - df['income'])\n\nplt.figure(figsize=(12,6))\n\nplt.subplot(121)\nplt.plot(approx)\nplt.grid(False)\nplt.title(\"Residuals\")\n\n\nplt.subplot(122)\ndistplot(approx)\nplt.title(\"Distribution of residuals\")\nplt.grid()\n\nplt.savefig(\"residuals.png\")\n\n/home/pablo/.local/opt/miniconda/lib/python3.8/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).\n  warnings.warn(msg, FutureWarning)\n\n\n\n\n\n\n\n\n\n\n(a + b*df['education'] - df['income']).std()\n\n16.842782676352154\n\n\n\n\n\n/home/pablo/.local/opt/miniconda/lib/python3.8/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).\n  warnings.warn(msg, FutureWarning)\n\n\n\n\n\n\n\n\n\n\nfrom scipy.stats import f\n\n\nf(0.3)\n\nTypeError: _parse_args() missing 1 required positional argument: 'dfd'\n\n\n\nnp.rand\n\n\nK = 100\nxvec = np.linspace(0,1,K)\ne1 = np.random.randn(K)*0.1\nyvec = 0.1 + xvec*0.4 + e1\ne2 = np.random.randn(K)*0.05\nyvec2 = 0.1 + xvec*(xvec-1)/2 + e2\ne3 = np.random.randn(K)*xvec/2\nyvec3 = 0.1 + xvec + e3\n\nyvec4 = 0.1 + np.sin(xvec*6) + np.random.randn(K)*xvec/2\n\n\nfrom dolo.numeric.processes import VAR1\n\n\nsim = VAR1( ρ=0.8, Σ=0.001).simulate(N=1,T=100)\nyvec4 = 0.1 + xvec*0.4 + sim.ravel()\n\n\nplt.figure(figsize=(18,6))\nplt.subplot(241)\nplt.plot(xvec, yvec,'o')\nplt.plot(xvec, 0.1 + xvec*0.4 )\nplt.ylabel(\"Series\")\nplt.title(\"white noise\")\nplt.subplot(242)\nplt.plot(xvec, yvec2, 'o')\nplt.plot(xvec, yvec2*0)\nplt.title('nonlinear')\nplt.subplot(243)\nplt.plot(xvec, yvec3,'o')\nplt.plot(xvec, 0.1 + xvec)\nplt.title('heteroskedastic')\nplt.subplot(244)\nplt.plot(xvec, yvec4,'o')\nplt.plot(xvec, xvec*0.6)\n\nplt.title('correlated')\n\n\nplt.subplot(245)\nplt.plot(xvec, e1,'o')\nplt.ylabel(\"Residuals\")\nplt.subplot(246)\nplt.plot(xvec, yvec2-0.075, 'o')\n\nplt.subplot(247)\nplt.plot(xvec, e3,'o')\nplt.subplot(248)\nplt.plot(xvec, sim.ravel(),'o')\n\nplt.tight_layout()\n\nplt.savefig(\"residuals_circus.png\")"
   },
   {
-    "objectID": "slides/prep_6/index_handout.html",
-    "href": "slides/prep_6/index_handout.html",
-    "title": "Machine Learning",
+    "objectID": "slides/prep_6/index.html#regressions",
+    "href": "slides/prep_6/index.html#regressions",
+    "title": "Introduction to Machine Learning",
+    "section": "Regressions",
+    "text": "Regressions"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#what-is-machine-learning-1",
+    "href": "slides/prep_6/index.html#what-is-machine-learning-1",
+    "title": "Introduction to Machine Learning",
+    "section": "What is Machine learning?",
+    "text": "What is Machine learning?\nDefinition Candidates:\nArthur Samuel: Field of study that gives computers the ability to learn without being explicitly programmed\nTom Mitchell: A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E."
+  },
+  {
+    "objectID": "slides/prep_6/index.html#what-about-artificial-intelligence",
+    "href": "slides/prep_6/index.html#what-about-artificial-intelligence",
+    "title": "Introduction to Machine Learning",
+    "section": "What about artificial intelligence ?",
+    "text": "What about artificial intelligence ?\n\n\n\nAIs\n\nthink and learn\nmimmic human cognition"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#econometrics-vs-machine-learning",
+    "href": "slides/prep_6/index.html#econometrics-vs-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "Econometrics vs Machine Learning",
+    "text": "Econometrics vs Machine Learning\n\nEconometrics is essentially a subfield of machine learning with a different jargon and a focus on:\n\nstudying properties and validity of results\n\ndata is scarce\ninference\n\nsingling out effects of specific explanatory variables\nestablishing causality\n\nMachine learning:\n\nstructure data\nmake predictions (interpolate data)"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#data-types",
+    "href": "slides/prep_6/index.html#data-types",
+    "title": "Introduction to Machine Learning",
+    "section": "Data types",
+    "text": "Data types\n\nstructured:\n\ntabular\n\nlong\nwide\n\n\nunstructured:\n\nfiles\nnetworks\ntext, mails\nimages, sound"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#tabular-data",
+    "href": "slides/prep_6/index.html#tabular-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Tabular Data",
+    "text": "Tabular Data\n\ntabular data"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#networks",
+    "href": "slides/prep_6/index.html#networks",
+    "title": "Introduction to Machine Learning",
+    "section": "Networks",
+    "text": "Networks\n\nBanking networks\nProduction network"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#big-data-1",
+    "href": "slides/prep_6/index.html#big-data-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Big Data",
+    "text": "Big Data\n\nBig data:\n\nwide data (K&gt;&gt;N)\nlong data (N&gt;&gt;K)\nheterogenous, unstructured data\n\nMight not even fit in memory\n\nout of core computations\nlearn from a subset of the data"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#big-subfields-of-machine-learning",
+    "href": "slides/prep_6/index.html#big-subfields-of-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "Big Subfields of Machine Learning",
+    "text": "Big Subfields of Machine Learning\n\n\n\nTraditional classification\n\nsupervised (labelled data)\n\nregression: predict quantity\nclassification: predict index (categorical variable)\n\nunsupervised (no labels)\n\ndimension reduction\nclustering\n\nsemi-supervised / self-supervised\nreinforcement learning\n\nBazillions of different algorithms: https://scikit-learn.org/stable/user_guide.html\n\n\n\n\nsupervised: regression:\n\n\n\nAge\n\n\nActivity\n\n\nSalary\n\n\n\n\n23\n\n\nExplorer\n\n\n1200\n\n\n\n\n40\n\n\nMortician\n\n\n2000\n\n\n\n\n45\n\n\nMortician\n\n\n2500\n\n\n\n\n33\n\n\nMovie Star\n\n\n3000\n\n\n\n\n35\n\n\nExplorer\n\n\n???\n\n\n\n\n\nsupervised: regression:\n\nPredict: \\(y = f(x; \\theta)\\)\n\n\n\n\nsupervised: regression\n\n\n\n\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\n???\n\n\n\n\n\nsupervised: classification\n\nOutput is discrete\nRegular trick: \\(\\sigma(f(x; \\theta))\\) where \\(\\sigma(x)=\\frac{1}{1-e^{-x}}\\)\n\n\n\n\nclassification\n\n\n\n\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\n???\n\n\n\n\n\nunsupervised\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\nExplorer\n\n\n\n\n\nunsupervised\n\norganize data without labels\n\ndimension reduction: describe data with less parameters\nclustering: sort data into “similar groups” (exemple)\n\n\n\n\nunsupervised: clustering\n\n\n\nkmeansclustering\n\n\n\n\nunsupervised: clustering\nWomen buying dresses during the year:"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#difference-with-traditional-regression",
+    "href": "slides/prep_6/index.html#difference-with-traditional-regression",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\\[\\underbrace{y}_{\\text{explained variable}} = a \\underbrace{x}_{\\text{explanatory variable}} + b\\]"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#difference-with-traditional-regression-1",
+    "href": "slides/prep_6/index.html#difference-with-traditional-regression-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\\[\\underbrace{y}_{\\text{labels}} = a \\underbrace{x}_{\\text{features}} + b\\]\n\n\n\n\n\n\n\n\nEconometrics\nMachine learning\n\n\n\n\nRegressand / independent variable / explanatory variable\nFeatures\n\n\nRegressor / dependent variable / explained variable\nLabels\n\n\nRegression\nModel Training"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#difference-with-traditional-regression-2",
+    "href": "slides/prep_6/index.html#difference-with-traditional-regression-2",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\nBig data requires other means to process the data:\n\ndata is long: so many observations \\(x\\) doesn’t fit in the memory\n\nneed to use incremental training method to use only a subsample at a time\n\ndata is wide: so many features, the model is crudely overspecified\n\nneed to build dimension reduction into the objective\n\ndata is nonlinear:\n\nuse nonlinear model (and nonlinear training)\n\ndata is not a simple vector…\n\nsame as nonlinear"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#long-data",
+    "href": "slides/prep_6/index.html#long-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Long data",
+    "text": "Long data\nLong data is characterized by a high number of observations.\n\n\n\n\n\nModern society is gathering a lot of data.\n\nin doesn’t fit in the computer memory so we can’t run a basic regression\n\nIn some cases we would also like to update our model continuously:\n\nincremental regression\n\n\n\nWe need a way to fit a model on a subset of the data at a time."
+  },
+  {
+    "objectID": "slides/prep_6/index.html#long-data-1",
+    "href": "slides/prep_6/index.html#long-data-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Long data",
+    "text": "Long data\n\n\nTraditional regression:\n\nfull sample \\(X,Y=(x_i,y_i)_{i=1:N}\\)\nOLS: \\(\\min_{a,b} \\sum_{i=1}^N (a x_i + b - y_i)^2\\)\nclosed-form solution: \\(a = X^{\\prime}X Y\\) and \\(b= ...\\)\nhard to compute if \\(X\\) is very big\n\n\n\nIncremental learning:\n\ngiven initial \\(a_n\\), \\(b_n\\)\npick \\(N\\) random observations (the batch)\n\nregress them to get new estimate \\(a\\), \\(b\\)\nthis minimizes the square of errors\n\nupdate with learning rate \\(\\beta\\):\n\n\\(a_{n+1} \\leftarrow a_n (1-\\beta_n) + \\beta_n a\\)\n\\(b_{n+1} \\leftarrow b_n (1-\\beta_n) + \\beta_n b\\)\n\nprocess is not biased (that is \\(a\\) converges to the true value) as long as one decreases \\(\\beta\\) sufficiently fast over time (ex: \\(\\beta_n=\\frac{1}{n}\\))"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#formalisation-a-typical-machine-learning-task",
+    "href": "slides/prep_6/index.html#formalisation-a-typical-machine-learning-task",
+    "title": "Introduction to Machine Learning",
+    "section": "Formalisation: a typical machine learning task",
+    "text": "Formalisation: a typical machine learning task\n\nvector of unknowns: \\(\\theta=(a,b)\\)\ndataset \\(X,Y=(x_i,y_i)_{i=1:N}\\)\nfor a random draw \\(\\omega = (a_{\\sigma(i)}, b_{\\sigma(i)})_{i=[1,N]} \\subset (X,Y)\\)\n\n\\(\\omega\\) is just a random batch of size \\(N\\)\n\ndefine the empirical risk (or empirical cost) \\[\\xi(\\theta, \\omega) = \\sum_{(x,y) \\in \\omega} (y - (a x + b))^2\\]\nwe want to minimize theoretical risk: \\[\\Xi(\\theta) = \\mathbb{E} \\left[ \\xi(\\theta, \\omega)\\right]\\]"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#training-gradient-descent",
+    "href": "slides/prep_6/index.html#training-gradient-descent",
+    "title": "Introduction to Machine Learning",
+    "section": "Training: Gradient Descent",
+    "text": "Training: Gradient Descent\n\n\n\nHow do we minimize a function \\(f(a,b)\\)?\nGradient descent:\n\n\\(a_k, b_k\\) given\ncompute the gradient (slope) \\(\\nabla_{a,b} f = \\begin{bmatrix} \\frac{\\partial f}{\\partial a} \\\\\\\\ \\frac{\\partial f}{\\partial b}\\end{bmatrix}\\)\nfollow the steepest slope: (Newton Algorithm)\n\n\\[ \\begin{bmatrix} a_{k+1} \\\\\\\\ b_{k+1} \\end{bmatrix} \\leftarrow  \\begin{bmatrix} a_k \\\\\\\\ b_k \\end{bmatrix} - \\nabla_{a,b} f\\]\n\nbut not too fast: use learning rate \\(\\lambda\\): \\[ \\begin{bmatrix} a_{k+1} \\\\\\\\ b_{k+1} \\end{bmatrix} \\leftarrow  (1-\\lambda) \\begin{bmatrix} a_k \\\\\\\\ b_k \\end{bmatrix} + \\lambda (- \\nabla_{a,b} f )\\]"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#some-possible-issues",
+    "href": "slides/prep_6/index.html#some-possible-issues",
+    "title": "Introduction to Machine Learning",
+    "section": "Some possible issues",
+    "text": "Some possible issues\n \n\nIn practice, choosing the right learning rate \\(\\lambda\\) is crucial\n\\(\\lambda\\) is a metaparameter of the model training."
+  },
+  {
+    "objectID": "slides/prep_6/index.html#wide-data",
+    "href": "slides/prep_6/index.html#wide-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Wide data",
+    "text": "Wide data\n\nWide Data is characterized by a high number of features compared to the number of observations.\n\n\nProblem:\n\nwith many independent variables \\(x_1, ... x_K\\), \\(K&gt;&gt;N\\) and one dependent variable \\(y\\) the regression \\[y = a_1 x_1 + a_2 x_2 + \\cdots + a_N x_N + b\\] is grossly overidentified."
+  },
+  {
+    "objectID": "slides/prep_6/index.html#wide-data-regression",
+    "href": "slides/prep_6/index.html#wide-data-regression",
+    "title": "Introduction to Machine Learning",
+    "section": "Wide data regression",
+    "text": "Wide data regression\nMain Idea: penalize non-zero coefficients to encourage scarcity\n\n\n\n\n\nRidge: \\[\\Xi(a,b) = \\min_{a,b} \\sum_{i=1}^N ( \\sum_j a_j x_j + b - y_i)^2 + \\mu \\sum_i |a_i|^2\\]\n\nshrinks parameters towards zero\nclosed form\n\nLasso: \\[\\Xi(a,b) = \\min_{a,b} \\sum_{i=1}^N (\\sum_j a_j x_j + b - y_i)^2 + \\mu \\sum_i |a_i|\\]\n\neliminates zero coefficients\n\nElastic: Ridge + Lasso\n\n\n\n\nRemarks:\n\n\\(\\mu\\) is called a regularization term.\nit is a hyperparameter\n\\(\\mu \\uparrow\\), bias increases, variance decreases"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#training",
+    "href": "slides/prep_6/index.html#training",
+    "title": "Introduction to Machine Learning",
+    "section": "Training",
+    "text": "Training\nTo perform Lasso and ridge regression:\n\nAI approach:\n\nminimize objective \\(\\Xi(a,b)\\) directly.\napproach is known as (stochastic) Gradient Descent\n\nUse special algorithms"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#example-imf-challenge",
+    "href": "slides/prep_6/index.html#example-imf-challenge",
+    "title": "Introduction to Machine Learning",
+    "section": "Example: IMF challenge",
+    "text": "Example: IMF challenge\n\nAn internal IMF challenge to predict crises in countries\nLots of different approaches\nLots of data:\n\nwhich one is relevant\nmachine must select relevant informations\n\nExample: Lasso Regressions and Forecasting Models in Applied Stress Testing by Jorge A. Chan-Lau\n\nin a given developing country\ntries to predict probability of default in various sectors"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#nonlinear-regression-1",
+    "href": "slides/prep_6/index.html#nonlinear-regression-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Nonlinear Regression",
+    "text": "Nonlinear Regression\n\nSo far, we have assumed,\n\n\\(y_i = a + b x_i\\)\n\\(y_i = a + b x_i + μ_1 (a^2 + b^2) + μ_2 (|a| + |b|)\\)\ndefined \\(\\Xi(a,b)\\) and tried to minimize it\n\nSame approach works for fully nonlinear models\n\n\\(y_i = a x_i + a^2 x_i^2 + c\\)\n\\(y_i = \\varphi(x; \\theta)\\) ()\n\nSpecial case: neural network:\n\nprimer tensor playground"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#how-to-evaluate-the-machine-learning",
+    "href": "slides/prep_6/index.html#how-to-evaluate-the-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "how to evaluate the machine learning",
+    "text": "how to evaluate the machine learning\nIn machine learning we can’t perform statistical inference easily. How do we assess the validity of a model?\n\nBasic idea (independent of how complex the algorithm is)\n\nseparate data in\n\ntraining set (in-sample)\ntest set (out of sample)\n\ntrain using only the training set\nevaluate performance on the test set\n\n\n\nPerformance can be:\n\nfitness, number of classification errors (false positive, false negative)"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#how-to-evaluate-the-machine-learning-1",
+    "href": "slides/prep_6/index.html#how-to-evaluate-the-machine-learning-1",
+    "title": "Introduction to Machine Learning",
+    "section": "how to evaluate the machine learning",
+    "text": "how to evaluate the machine learning\nIn case the training method depends itself on many parameters (the hyperparameters) we make three samples instead:\n\ntraining set (in-sample)\nvalidation set (to update hyperparameters)\ntest set (out of sample)\n\nGolden Rule: the test set should not be used to estimate the model, and should not affect the choice any training parameter (hyperparameter)."
+  },
+  {
+    "objectID": "slides/prep_6/index.html#section",
+    "href": "slides/prep_6/index.html#section",
+    "title": "Introduction to Machine Learning",
     "section": "",
-    "text": "Come back later!."
+    "text": "Traintest\nThe test set reveals that orange model is overfitting."
+  },
+  {
+    "objectID": "slides/prep_6/index.html#how-to-choose-the-validation-set",
+    "href": "slides/prep_6/index.html#how-to-choose-the-validation-set",
+    "title": "Introduction to Machine Learning",
+    "section": "How to choose the validation set?",
+    "text": "How to choose the validation set?\nHoldout validation approach:\n\nkeeps x% of the data for the training, (100-x)% for the test\n\n\nHow to choose the sizes of the subsets?\n\nsmall dataset: 90-10\nbig data set: 70-30 (we can afford to waste more training data for the test)\n\n\n\n\nProblem:\n\nare we sure the validation size is correct? Are the results determined by an (un-) lucky draw?\na problem for smaller datasets"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#how-to-choose-the-validation-set-1",
+    "href": "slides/prep_6/index.html#how-to-choose-the-validation-set-1",
+    "title": "Introduction to Machine Learning",
+    "section": "How to choose the validation set?",
+    "text": "How to choose the validation set?\nA more robust solution: \\(k\\)-fold validation\n\n\n\nsplit dataset randomly in \\(K\\) subsets of equal size \\(S_1, ... S_K\\)\nuse subset \\(S_i\\) as test set, the rest as training set, compute the score\ncompare the scores obtained for all \\(i\\in[1,K]\\)\n\nthey should be similar (compute standard deviation)\n\naverage them"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#another-library-to-perform-regressions",
+    "href": "slides/prep_6/index.html#another-library-to-perform-regressions",
+    "title": "Introduction to Machine Learning",
+    "section": "Another library to perform regressions",
+    "text": "Another library to perform regressions\n\nstatsmodels:\n\nexplanatory analysis\nstatistical tests\nformula interface for many estimation algorithms\n\nstateless approach (model.fit() returns another object)\n\n\nlinearmodels\n\nextends statsmodels (very similar interface)\n\n(panel models, IV, systems…)\n\n\nsklearn:\n\nprediction\nfaster for big datasets\ncommon interface for several machine learning tasks\n\nstateful approach (model is modified by .fit operation)\n\ndefacto standard for machine learning"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#in-practice",
+    "href": "slides/prep_6/index.html#in-practice",
+    "title": "Introduction to Machine Learning",
+    "section": "In practice",
+    "text": "In practice\n\n\nBasic sklearn workflow:\n\n\nimport data\n\nfeatures: a matrix X (2d numpy array)\nlabels: a vector y (1d numpy array)\n\nsplit the data, between training and test datasets\n\nsplit needs to be random to avoid any bias\n\nnormalize the data\n\nmost ML algorithm are sensitive to scale\n\ncreate a model (independent from data)\ntrain the model on training dataset\nevaluate accuracy on test dataset (here \\(R^2\\))\nuse the model to make predictions\n\n\n\n\nfrom sklearn.datasets import load_diabetes\ndataset = load_diabetes()\nX = dataset['data']\ny = dataset['target']\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.1)\n\n#Feature Scaling\nfrom sklearn.preprocessing import StandardScaler\nsc = StandardScaler()\nX_train = sc.fit_transform(X_train)\nX_test = sc.transform(X_test)\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\n\nmodel.score(X_test, y_test)\nmodel.predict(X_new)\n\n\nThe workflow is always the same, no matter what the model is\n\ntry sklearn.linear_model.Lasso instead of LinearRegression"
+  },
+  {
+    "objectID": "slides/prep_6/index.html#k-fold-validation-with-sklearn",
+    "href": "slides/prep_6/index.html#k-fold-validation-with-sklearn",
+    "title": "Introduction to Machine Learning",
+    "section": "\\(k\\)-fold validation with sklearn",
+    "text": "\\(k\\)-fold validation with sklearn\nfrom sklearn.model_selection import KFold\nkf = KFold(n_splits=10)\n\nfor train_index, test_index in kf.split(X):\n   X_train, X_test = X[train_index], X[test_index]\n   y_train, y_test = y[train_index], y[test_index]\n\n   ## train a model in X_train, y_train\n   ## test it on X_test, y_test"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#what-is-machine-learning-1",
+    "href": "slides/prep_6/index_handout.html#what-is-machine-learning-1",
+    "title": "Introduction to Machine Learning",
+    "section": "What is Machine learning?",
+    "text": "What is Machine learning?\nDefinition Candidates:\nArthur Samuel: Field of study that gives computers the ability to learn without being explicitly programmed\nTom Mitchell: A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E."
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#what-about-artificial-intelligence",
+    "href": "slides/prep_6/index_handout.html#what-about-artificial-intelligence",
+    "title": "Introduction to Machine Learning",
+    "section": "What about artificial intelligence ?",
+    "text": "What about artificial intelligence ?\n\n\n\nAIs\n\nthink and learn\nmimmic human cognition"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#econometrics-vs-machine-learning",
+    "href": "slides/prep_6/index_handout.html#econometrics-vs-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "Econometrics vs Machine Learning",
+    "text": "Econometrics vs Machine Learning\n\nEconometrics is essentially a subfield of machine learning with a different jargon and a focus on:\n\nstudying properties and validity of results\n\ndata is scarce\ninference\n\nsingling out effects of specific explanatory variables\nestablishing causality\n\nMachine learning:\n\nstructure data\nmake predictions (interpolate data)"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#data-types",
+    "href": "slides/prep_6/index_handout.html#data-types",
+    "title": "Introduction to Machine Learning",
+    "section": "Data types",
+    "text": "Data types\n\nstructured:\n\ntabular\n\nlong\nwide\n\n\nunstructured:\n\nfiles\nnetworks\ntext, mails\nimages, sound"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#tabular-data",
+    "href": "slides/prep_6/index_handout.html#tabular-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Tabular Data",
+    "text": "Tabular Data\n\n\n\ntabular data"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#networks",
+    "href": "slides/prep_6/index_handout.html#networks",
+    "title": "Introduction to Machine Learning",
+    "section": "Networks",
+    "text": "Networks\n\nBanking networks\nProduction network"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#big-data-1",
+    "href": "slides/prep_6/index_handout.html#big-data-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Big Data",
+    "text": "Big Data\n\nBig data:\n\nwide data (K&gt;&gt;N)\nlong data (N&gt;&gt;K)\nheterogenous, unstructured data\n\nMight not even fit in memory\n\nout of core computations\nlearn from a subset of the data"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#big-subfields-of-machine-learning",
+    "href": "slides/prep_6/index_handout.html#big-subfields-of-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "Big Subfields of Machine Learning",
+    "text": "Big Subfields of Machine Learning\n\n\n\nTraditional classification\n\nsupervised (labelled data)\n\nregression: predict quantity\nclassification: predict index (categorical variable)\n\nunsupervised (no labels)\n\ndimension reduction\nclustering\n\nsemi-supervised / self-supervised\nreinforcement learning\n\nBazillions of different algorithms: https://scikit-learn.org/stable/user_guide.html\n\n\n\n\nsupervised: regression:\n\n\n\nAge\n\n\nActivity\n\n\nSalary\n\n\n\n\n23\n\n\nExplorer\n\n\n1200\n\n\n\n\n40\n\n\nMortician\n\n\n2000\n\n\n\n\n45\n\n\nMortician\n\n\n2500\n\n\n\n\n33\n\n\nMovie Star\n\n\n3000\n\n\n\n\n35\n\n\nExplorer\n\n\n???\n\n\n\n\n\nsupervised: regression:\n\nPredict: \\(y = f(x; \\theta)\\)\n\n\n\n\nsupervised: regression\n\n\n\n\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\n???\n\n\n\n\n\nsupervised: classification\n\nOutput is discrete\nRegular trick: \\(\\sigma(f(x; \\theta))\\) where \\(\\sigma(x)=\\frac{1}{1-e^{-x}}\\)\n\n\n\n\nclassification\n\n\n\n\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\n???\n\n\n\n\n\nunsupervised\n\n\n\nAge\n\n\nSalary\n\n\nActivity\n\n\n\n\n23\n\n\n1200\n\n\nExplorer\n\n\n\n\n40\n\n\n2000\n\n\nMortician\n\n\n\n\n45\n\n\n2500\n\n\nMortician\n\n\n\n\n33\n\n\n3000\n\n\nMovie Star\n\n\n\n\n35\n\n\n3000\n\n\nExplorer\n\n\n\n\n\nunsupervised\n\norganize data without labels\n\ndimension reduction: describe data with less parameters\nclustering: sort data into “similar groups” (exemple)\n\n\n\n\nunsupervised: clustering\n\n\n\nkmeansclustering\n\n\n\n\nunsupervised: clustering\nWomen buying dresses during the year:"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#difference-with-traditional-regression",
+    "href": "slides/prep_6/index_handout.html#difference-with-traditional-regression",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\\[\\underbrace{y}_{\\text{explained variable}} = a \\underbrace{x}_{\\text{explanatory variable}} + b\\]"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#difference-with-traditional-regression-1",
+    "href": "slides/prep_6/index_handout.html#difference-with-traditional-regression-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\\[\\underbrace{y}_{\\text{labels}} = a \\underbrace{x}_{\\text{features}} + b\\]\n. . .\n\n\n\n\n\n\n\nEconometrics\nMachine learning\n\n\n\n\nRegressand / independent variable / explanatory variable\nFeatures\n\n\nRegressor / dependent variable / explained variable\nLabels\n\n\nRegression\nModel Training"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#difference-with-traditional-regression-2",
+    "href": "slides/prep_6/index_handout.html#difference-with-traditional-regression-2",
+    "title": "Introduction to Machine Learning",
+    "section": "Difference with traditional regression",
+    "text": "Difference with traditional regression\n\nBig data requires other means to process the data:\n\ndata is long: so many observations \\(x\\) doesn’t fit in the memory\n\nneed to use incremental training method to use only a subsample at a time\n\ndata is wide: so many features, the model is crudely overspecified\n\nneed to build dimension reduction into the objective\n\ndata is nonlinear:\n\nuse nonlinear model (and nonlinear training)\n\ndata is not a simple vector…\n\nsame as nonlinear"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#long-data",
+    "href": "slides/prep_6/index_handout.html#long-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Long data",
+    "text": "Long data\nLong data is characterized by a high number of observations.\n\n\n\n\n\nModern society is gathering a lot of data.\n\nin doesn’t fit in the computer memory so we can’t run a basic regression\n\nIn some cases we would also like to update our model continuously:\n\nincremental regression\n\n\n\nWe need a way to fit a model on a subset of the data at a time."
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#long-data-1",
+    "href": "slides/prep_6/index_handout.html#long-data-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Long data",
+    "text": "Long data\n\n\nTraditional regression:\n\nfull sample \\(X,Y=(x_i,y_i)_{i=1:N}\\)\nOLS: \\(\\min_{a,b} \\sum_{i=1}^N (a x_i + b - y_i)^2\\)\nclosed-form solution: \\(a = X^{\\prime}X Y\\) and \\(b= ...\\)\nhard to compute if \\(X\\) is very big\n\n\n\nIncremental learning:\n\ngiven initial \\(a_n\\), \\(b_n\\)\npick \\(N\\) random observations (the batch)\n\nregress them to get new estimate \\(a\\), \\(b\\)\nthis minimizes the square of errors\n\nupdate with learning rate \\(\\beta\\):\n\n\\(a_{n+1} \\leftarrow a_n (1-\\beta_n) + \\beta_n a\\)\n\\(b_{n+1} \\leftarrow b_n (1-\\beta_n) + \\beta_n b\\)\n\nprocess is not biased (that is \\(a\\) converges to the true value) as long as one decreases \\(\\beta\\) sufficiently fast over time (ex: \\(\\beta_n=\\frac{1}{n}\\))"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#formalisation-a-typical-machine-learning-task",
+    "href": "slides/prep_6/index_handout.html#formalisation-a-typical-machine-learning-task",
+    "title": "Introduction to Machine Learning",
+    "section": "Formalisation: a typical machine learning task",
+    "text": "Formalisation: a typical machine learning task\n\nvector of unknowns: \\(\\theta=(a,b)\\)\ndataset \\(X,Y=(x_i,y_i)_{i=1:N}\\)\nfor a random draw \\(\\omega = (a_{\\sigma(i)}, b_{\\sigma(i)})_{i=[1,N]} \\subset (X,Y)\\)\n\n\\(\\omega\\) is just a random batch of size \\(N\\)\n\ndefine the empirical risk (or empirical cost) \\[\\xi(\\theta, \\omega) = \\sum_{(x,y) \\in \\omega} (y - (a x + b))^2\\]\nwe want to minimize theoretical risk: \\[\\Xi(\\theta) = \\mathbb{E} \\left[ \\xi(\\theta, \\omega)\\right]\\]"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#training-gradient-descent",
+    "href": "slides/prep_6/index_handout.html#training-gradient-descent",
+    "title": "Introduction to Machine Learning",
+    "section": "Training: Gradient Descent",
+    "text": "Training: Gradient Descent\n\n\n\nHow do we minimize a function \\(f(a,b)\\)?\nGradient descent:\n\n\\(a_k, b_k\\) given\ncompute the gradient (slope) \\(\\nabla_{a,b} f = \\begin{bmatrix} \\frac{\\partial f}{\\partial a} \\\\\\\\ \\frac{\\partial f}{\\partial b}\\end{bmatrix}\\)\nfollow the steepest slope: (Newton Algorithm)\n\n\\[ \\begin{bmatrix} a_{k+1} \\\\\\\\ b_{k+1} \\end{bmatrix} \\leftarrow  \\begin{bmatrix} a_k \\\\\\\\ b_k \\end{bmatrix} - \\nabla_{a,b} f\\]\n\nbut not too fast: use learning rate \\(\\lambda\\): \\[ \\begin{bmatrix} a_{k+1} \\\\\\\\ b_{k+1} \\end{bmatrix} \\leftarrow  (1-\\lambda) \\begin{bmatrix} a_k \\\\\\\\ b_k \\end{bmatrix} + \\lambda (- \\nabla_{a,b} f )\\]"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#some-possible-issues",
+    "href": "slides/prep_6/index_handout.html#some-possible-issues",
+    "title": "Introduction to Machine Learning",
+    "section": "Some possible issues",
+    "text": "Some possible issues\n \n\nIn practice, choosing the right learning rate \\(\\lambda\\) is crucial\n\\(\\lambda\\) is a metaparameter of the model training."
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#wide-data",
+    "href": "slides/prep_6/index_handout.html#wide-data",
+    "title": "Introduction to Machine Learning",
+    "section": "Wide data",
+    "text": "Wide data\n\nWide Data is characterized by a high number of features compared to the number of observations.\n\n. . .\nProblem:\n\nwith many independent variables \\(x_1, ... x_K\\), \\(K&gt;&gt;N\\) and one dependent variable \\(y\\) the regression \\[y = a_1 x_1 + a_2 x_2 + \\cdots + a_N x_N + b\\] is grossly overidentified."
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#wide-data-regression",
+    "href": "slides/prep_6/index_handout.html#wide-data-regression",
+    "title": "Introduction to Machine Learning",
+    "section": "Wide data regression",
+    "text": "Wide data regression\nMain Idea: penalize non-zero coefficients to encourage scarcity\n. . .\n\n\n\n\nRidge: \\[\\Xi(a,b) = \\min_{a,b} \\sum_{i=1}^N ( \\sum_j a_j x_j + b - y_i)^2 + \\mu \\sum_i |a_i|^2\\]\n\nshrinks parameters towards zero\nclosed form\n\nLasso: \\[\\Xi(a,b) = \\min_{a,b} \\sum_{i=1}^N (\\sum_j a_j x_j + b - y_i)^2 + \\mu \\sum_i |a_i|\\]\n\neliminates zero coefficients\n\nElastic: Ridge + Lasso\n\n\n\n\nRemarks:\n\n\\(\\mu\\) is called a regularization term.\nit is a hyperparameter\n\\(\\mu \\uparrow\\), bias increases, variance decreases"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#training",
+    "href": "slides/prep_6/index_handout.html#training",
+    "title": "Introduction to Machine Learning",
+    "section": "Training",
+    "text": "Training\nTo perform Lasso and ridge regression:\n\nAI approach:\n\nminimize objective \\(\\Xi(a,b)\\) directly.\napproach is known as (stochastic) Gradient Descent\n\nUse special algorithms"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#example-imf-challenge",
+    "href": "slides/prep_6/index_handout.html#example-imf-challenge",
+    "title": "Introduction to Machine Learning",
+    "section": "Example: IMF challenge",
+    "text": "Example: IMF challenge\n\nAn internal IMF challenge to predict crises in countries\nLots of different approaches\nLots of data:\n\nwhich one is relevant\nmachine must select relevant informations\n\nExample: Lasso Regressions and Forecasting Models in Applied Stress Testing by Jorge A. Chan-Lau\n\nin a given developing country\ntries to predict probability of default in various sectors"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#nonlinear-regression-1",
+    "href": "slides/prep_6/index_handout.html#nonlinear-regression-1",
+    "title": "Introduction to Machine Learning",
+    "section": "Nonlinear Regression",
+    "text": "Nonlinear Regression\n\nSo far, we have assumed,\n\n\\(y_i = a + b x_i\\)\n\\(y_i = a + b x_i + μ_1 (a^2 + b^2) + μ_2 (|a| + |b|)\\)\ndefined \\(\\Xi(a,b)\\) and tried to minimize it\n\nSame approach works for fully nonlinear models\n\n\\(y_i = a x_i + a^2 x_i^2 + c\\)\n\\(y_i = \\varphi(x; \\theta)\\) ()\n\nSpecial case: neural network:\n\nprimer tensor playground"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#how-to-evaluate-the-machine-learning",
+    "href": "slides/prep_6/index_handout.html#how-to-evaluate-the-machine-learning",
+    "title": "Introduction to Machine Learning",
+    "section": "how to evaluate the machine learning",
+    "text": "how to evaluate the machine learning\nIn machine learning we can’t perform statistical inference easily. How do we assess the validity of a model?\n. . .\nBasic idea (independent of how complex the algorithm is)\n\nseparate data in\n\ntraining set (in-sample)\ntest set (out of sample)\n\ntrain using only the training set\nevaluate performance on the test set\n\n. . .\nPerformance can be:\n\nfitness, number of classification errors (false positive, false negative)"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#how-to-evaluate-the-machine-learning-1",
+    "href": "slides/prep_6/index_handout.html#how-to-evaluate-the-machine-learning-1",
+    "title": "Introduction to Machine Learning",
+    "section": "how to evaluate the machine learning",
+    "text": "how to evaluate the machine learning\nIn case the training method depends itself on many parameters (the hyperparameters) we make three samples instead:\n\ntraining set (in-sample)\nvalidation set (to update hyperparameters)\ntest set (out of sample)\n\nGolden Rule: the test set should not be used to estimate the model, and should not affect the choice any training parameter (hyperparameter)."
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#section",
+    "href": "slides/prep_6/index_handout.html#section",
+    "title": "Introduction to Machine Learning",
+    "section": "",
+    "text": "Traintest\n\n\n. . .\nThe test set reveals that orange model is overfitting."
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#how-to-choose-the-validation-set",
+    "href": "slides/prep_6/index_handout.html#how-to-choose-the-validation-set",
+    "title": "Introduction to Machine Learning",
+    "section": "How to choose the validation set?",
+    "text": "How to choose the validation set?\nHoldout validation approach:\n\nkeeps x% of the data for the training, (100-x)% for the test\n\n. . .\nHow to choose the sizes of the subsets?\n\nsmall dataset: 90-10\nbig data set: 70-30 (we can afford to waste more training data for the test)\n\n. . .\n\nProblem:\n\nare we sure the validation size is correct? Are the results determined by an (un-) lucky draw?\na problem for smaller datasets"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#how-to-choose-the-validation-set-1",
+    "href": "slides/prep_6/index_handout.html#how-to-choose-the-validation-set-1",
+    "title": "Introduction to Machine Learning",
+    "section": "How to choose the validation set?",
+    "text": "How to choose the validation set?\nA more robust solution: \\(k\\)-fold validation\n\n\n\nsplit dataset randomly in \\(K\\) subsets of equal size \\(S_1, ... S_K\\)\nuse subset \\(S_i\\) as test set, the rest as training set, compute the score\ncompare the scores obtained for all \\(i\\in[1,K]\\)\n\nthey should be similar (compute standard deviation)\n\naverage them"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#another-library-to-perform-regressions",
+    "href": "slides/prep_6/index_handout.html#another-library-to-perform-regressions",
+    "title": "Introduction to Machine Learning",
+    "section": "Another library to perform regressions",
+    "text": "Another library to perform regressions\n\nstatsmodels:\n\nexplanatory analysis\nstatistical tests\nformula interface for many estimation algorithms\n\nstateless approach (model.fit() returns another object)\n\n\nlinearmodels\n\nextends statsmodels (very similar interface)\n\n(panel models, IV, systems…)\n\n\nsklearn:\n\nprediction\nfaster for big datasets\ncommon interface for several machine learning tasks\n\nstateful approach (model is modified by .fit operation)\n\ndefacto standard for machine learning"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#in-practice",
+    "href": "slides/prep_6/index_handout.html#in-practice",
+    "title": "Introduction to Machine Learning",
+    "section": "In practice",
+    "text": "In practice\n\n\nBasic sklearn workflow:\n\n\nimport data\n\nfeatures: a matrix X (2d numpy array)\nlabels: a vector y (1d numpy array)\n\nsplit the data, between training and test datasets\n\nsplit needs to be random to avoid any bias\n\nnormalize the data\n\nmost ML algorithm are sensitive to scale\n\ncreate a model (independent from data)\ntrain the model on training dataset\nevaluate accuracy on test dataset (here \\(R^2\\))\nuse the model to make predictions\n\n\n\n\nfrom sklearn.datasets import load_diabetes\ndataset = load_diabetes()\nX = dataset['data']\ny = dataset['target']\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.1)\n\n#Feature Scaling\nfrom sklearn.preprocessing import StandardScaler\nsc = StandardScaler()\nX_train = sc.fit_transform(X_train)\nX_test = sc.transform(X_test)\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\n\nmodel.score(X_test, y_test)\nmodel.predict(X_new)\n\n\nThe workflow is always the same, no matter what the model is\n\ntry sklearn.linear_model.Lasso instead of LinearRegression"
+  },
+  {
+    "objectID": "slides/prep_6/index_handout.html#k-fold-validation-with-sklearn",
+    "href": "slides/prep_6/index_handout.html#k-fold-validation-with-sklearn",
+    "title": "Introduction to Machine Learning",
+    "section": "\\(k\\)-fold validation with sklearn",
+    "text": "\\(k\\)-fold validation with sklearn\nfrom sklearn.model_selection import KFold\nkf = KFold(n_splits=10)\n\nfor train_index, test_index in kf.split(X):\n   X_train, X_test = X[train_index], X[test_index]\n   y_train, y_test = y[train_index], y[test_index]\n\n   ## train a model in X_train, y_train\n   ## test it on X_test, y_test"
   },
   {
     "objectID": "slides/session_4/Regressions.html",
@@ -4239,6 +5126,13 @@
     ]
   },
   {
+    "objectID": "slides/session_6/graphs/inference.html",
+    "href": "slides/session_6/graphs/inference.html",
+    "title": "Data-Based Economics",
+    "section": "",
+    "text": "from matplotlib import pyplot as plt\nimport numpy as np\nimport pandas as pd\n\n\ndef generate_dataset(μ1, μ2, α, β, σ, N=10):\n    xvec = np.random.uniform(μ1, μ2, N)\n    yvec = α + β*xvec + np.random.normal(size=N)*σ\n    return pd.DataFrame({'x': xvec, 'y': yvec})\n\n\ndf = generate_dataset(0.0, 1.0, 0.1, 0.8, 0.1)\n\n\nplt.plot(df['x'], df['y'], 'o')\nplt.grid()\n\n\n\n\n\n\n\n\n\ndef plot_distribution(α, β, σ, N=100000, μ1=0.0, μ2=1.0):\n    xvec = np.random.uniform(μ1, μ2, N)\n    yvec = α + β*xvec + np.random.normal(size=N)*σ\n    plt.plot(xvec, yvec, '.r', alpha=0.005)\n    plt.plot(xvec, α + β*xvec, color='black')\n\n# missing ridge line\n\n\nimport statsmodels\n\n\nμ1 = 0\nμ2 = 1.0\nα = 0.1\nβ = 0.8\nσ = 0.2\nN = 20\nK = 1000\n\n\nimport statsmodels.formula.api as smf\n\n\ndf = generate_dataset(μ1, μ2, α, β, σ, N=N)\n\n\nres = smf.ols(formula='y ~ x + 1', data=df).fit()\nparams = res.params\nαhat = params['Intercept']\nβhat = params['x']\nσhat = res.resid.std()\n\n\nres.summary()\n\n\nOLS Regression Results\n\n\nDep. Variable:\ny\nR-squared:\n0.692\n\n\nModel:\nOLS\nAdj. R-squared:\n0.675\n\n\nMethod:\nLeast Squares\nF-statistic:\n40.48\n\n\nDate:\nTue, 26 Jan 2021\nProb (F-statistic):\n5.41e-06\n\n\nTime:\n04:02:36\nLog-Likelihood:\n7.6662\n\n\nNo. Observations:\n20\nAIC:\n-11.33\n\n\nDf Residuals:\n18\nBIC:\n-9.341\n\n\nDf Model:\n1\n\n\n\n\nCovariance Type:\nnonrobust\n\n\n\n\n\n\n\n\n\ncoef\nstd err\nt\nP&gt;|t|\n[0.025\n0.975]\n\n\nIntercept\n0.1210\n0.077\n1.565\n0.135\n-0.041\n0.283\n\n\nx\n0.7941\n0.125\n6.362\n0.000\n0.532\n1.056\n\n\n\n\n\n\nOmnibus:\n1.410\nDurbin-Watson:\n1.507\n\n\nProb(Omnibus):\n0.494\nJarque-Bera (JB):\n0.890\n\n\nSkew:\n-0.081\nProb(JB):\n0.641\n\n\nKurtosis:\n1.979\nCond. No.\n4.20\n\n\n\nNotes:[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n\n\n\nres.predict(df['x'])\n\n0     0.326200\n1     0.211704\n2     0.798819\n3     0.603306\n4     0.573319\n5     0.823919\n6     0.740622\n7     0.503227\n8     0.292622\n9     0.489566\n10    0.138720\n11    0.355157\n12    0.594171\n13    0.883917\n14    0.266229\n15    0.827021\n16    0.912376\n17    0.163088\n18    0.684858\n19    0.732782\ndtype: float64\n\n\n\nfor i in [1,2,3]:\n    \n    fig = plt.figure(figsize=(10,14))\n    plt.subplot(311)\n    plot_distribution(0.1, 0.8, 0.2)\n    plt.grid()\n    plt.title(f\"True Distribution: $y = {α:.2f} + {β:.2f} x + {σ:.2f} u$\")\n    plt.xlim(0,1)\n    plt.ylim(-0.5, 1.5)\n\n    plt.subplot(312)\n    plt.xlim(0,1)\n    plt.ylim(-0.5, 1.5)\n    if i&gt;=2:\n        plt.plot(df['x'], df['y'], 'o')\n    if i&gt;=3:\n        plt.plot(df['x'], res.predict(), label=f'$\\hat{{α}}={αhat:.2f}; \\hat{{β}}={βhat:.2f}$')\n        plt.legend(loc='lower right')\n    plt.title(\"Random Draw\")\n    plt.grid()\n    \n    plt.savefig(f\"regression_uncertainty_{i}.png\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport scipy.stats\n\n\ndatasets = [generate_dataset(μ1, μ2, αhat, βhat, σhat, N=N) for i in range(K)]\nall_params = [smf.ols(formula='x ~ y + 1', data=df).fit() for df in datasets]\nαvec = np.array( [e.params['Intercept'] for e in all_params] )\nβvec = np.array( [e.params['y'] for e in all_params] )\n\n\ngkd = scipy.stats.kde.gaussian_kde(βvec)\n\n\nfor i in [1,2,3,4,5,6,7,8,9,10,100]:\n\n    fig = plt.figure(figsize=(10,14))\n    plt.subplot(311)\n    plot_distribution(0.1, 0.8, 0.2)\n    plt.grid()\n    plt.title(f\"True Distribution: $y = {αhat:.2f} + {βhat:.2f} x + {σhat:.2f} u$\")\n    plt.xlim(0,1)\n    plt.ylim(-0.5, 1.5)\n    \n    plt.subplot(312)\n    plt.xlim(0,1)\n    plt.ylim(-0.5, 1.5)\n    df = datasets[i]\n    if i&gt;=2:\n        plt.plot(df['x'], df['y'], 'o')\n    plt.title(\"Random Draw\")\n    plt.grid()\n\n    plt.subplot(313)\n    if i==3:\n        plt.plot(βvec[i], βvec[i]*0, 'o')\n    if i&gt;4:\n        plt.plot(βvec[3:i], βvec[3:i]*0, 'o')\n    if i&gt;10:\n        xx = np.linspace(0.2, 1.4, 10000)\n        plt.plot( βvec, gkd.pdf(βvec), '.')\n    plt.title(\"Distribution of β\")\n    plt.xlim(0.2, 1.4)\n    plt.ylim(-0.1, 4)\n    plt.grid()\n\n    plt.tight_layout()\n\n    plt.savefig(f\"random_estimates_{i}.png\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplt.plot( βvec, βvec*0, 'o')"
+  },
+  {
     "objectID": "tutorials/session_5/happiness_regression_correction.html",
     "href": "tutorials/session_5/happiness_regression_correction.html",
     "title": "Regressions 2",
@@ -4683,6 +5577,27 @@
     "title": "Control Flow",
     "section": "",
     "text": "Government bonds are often issued as zero-coupon bonds meaning that they make no payments throughout the entire time that they are held, but, rather make a single payment at the time of maturity.\nHow much should you be willing to pay for a zero-coupon bond that paid 100 in 10 years with an interest rate of 5%?\n\n# your code here\n\n(back to text)\n\n\n\nRun the following two variations on the code with only a single change in the indentation.\nAfter, modify the x to print 3 and then 2, 3 instead.\n\nx = 1\n\nif x &gt; 0:\n    print(\"1\")\n    print(\"2\")\nprint(\"3\")\n\n\nx = 1\n\nif x &gt; 0:\n    print(\"1\")\nprint(\"2\") # changed the indentation\nprint(\"3\")\n\n(back to text)\n\n\n\nUsing the code cell below as a start, print \"Good afternoon\" if the current_time is past noon.\nOtherwise, do nothing.\nWrite some conditional based on current_time.hour.\n\nimport datetime\ncurrent_time = datetime.datetime.now()\n\n## your code here\n\nmore text after\n(back to text)\n\n\n\nIn this example, you will generate a random number between 0 and 1 and then display “x &gt; 0.5” or “x &lt; 0.5” depending on the value of the number.\nThis also introduces a new package numpy.random for drawing random numbers (more in the randomness lecture).\n\nimport numpy as np\nx = np.random.random()\nprint(f\"x = {x}\")\n\n## your code here\n\n(back to text)\n\n\n\nIn economics, when an individual has some knowledge, skills, or education which provides them with a source of future income, we call it human capital.\nWhen a student graduating from high school is considering whether to continue with post-secondary education, they may consider that it gives them higher paying jobs in the future, but requires that they don’t begin working until after graduation.\nConsider the simplified example where a student has perfectly forecastable employment and is given two choices:\n\nBegin working immediately and make 40,000 a year until they retire 40 years later.\n\nPay 5,000 a year for the next 4 years to attend university, then get a job paying 50,000 a year until they retire 40 years after making the college attendance decision.\n\nShould the student enroll in school if the discount rate is r = 0.05?\n\n# Discount rate\nr = 0.05\n\n# High school wage\nw_hs = 40_000\n\n# College wage and cost of college\nc_college = 5_000\nw_college = 50_000\n\n# Compute npv of being a hs worker\n\n# Compute npv of attending college\n\n# Compute npv of being a college worker\n\n# Is npv_collegeworker - npv_collegecost &gt; npv_hsworker\n\n(back to text)\n\n\n\nInstead of the above, write a for loop that uses the lists of cities and states below to print the same “{city} is in {state}” using a zip instead of an enumerate.\nTry using zip\n\ncities = [\"Phoenix\", \"Austin\", \"San Diego\", \"New York\"]\nstates = [\"Arizona\", \"Texas\", \"California\", \"New York\"]\n\n# Your code here\n\n(back to text)\n\n\n\nCompanies often invest in training their employees to raise their productivity. Economists sometimes wonder why companies spend this money when this incentivizes other companies to hire their employees away with higher salaries since employees gain human capital from training?\nLet’s say that it costs a company 25,000 dollars to teach their employees Python, but it raises their output by 2,500 per month. How many months would an employee need to stay for the company to find it profitable to pay for their employees to learn Python if their discount rate is r = 0.01?\n\n# Define cost of teaching python\ncost = 25_000\nr = 0.01\n\n# Per month value\nadded_value = 2500\n\nn_months = 0\ntotal_npv = 0.0\n\n# Put condition below here\nwhile False: # (replace False with your condition here)\n    n_months = n_months + 1  # Increment how many months they've worked\n\n    # Increase total_npv\n\n(back to text)\n\n\n\nTry to find the index of the first value in x that is greater than 0.999 using a for loop and break.\ntry iterating over range(len(x)).\n\nx = np.random.rand(10_000)\n# Your code here\n\n(back to text)\n\n\n\nWrite a for loop that adds up all values in x that are greater than or equal to 0.5.\nUse the continue word to end the body of the loop early for all values of x that are less than 0.5.\nTry starting your loop with for value in x: instead of iterating over the indices of x.\n\nx = np.random.rand(10_000)\n# Your code here\n\n(back to text)\n\n\n\nReturning to our previous example: print “{city} is in {state}” for each combination using a zip and a comprehension.\nTry using zip\n\ncities = [\"Phoenix\", \"Austin\", \"San Diego\", \"New York\"]\nstates = [\"Arizona\", \"Texas\", \"California\", \"New York\"]\n\n# your code here\n\n(back to text)"
+  },
+  {
+    "objectID": "tutorials/session_6/machine_learning_regressions.html",
+    "href": "tutorials/session_6/machine_learning_regressions.html",
+    "title": "Machine learning: regressions",
+    "section": "",
+    "text": "Objectives:\n\ncreate a training set and a validation set\ntrain a model with sklearn\nperform a validation test\n\n\n\nImport the diabetes dataset from sklearn. Describe it.\nSplit the dataset into a training set (70%) and a test set (30%)\nTrain a linear model (with intercept) on the training set\nCompute the fitting score on the test set.\nShould we adjust the size of the test set? What would be the problem?\nImplement \\(k\\)-fold model with \\(k=3\\).\nBonus: use statsmodels (or linearmodels) to estimate the same linear model on the full sample. Is it always a superior method?\n\n\n\nImport the California Housing Price Dataset from sklearn. Explore the data (description, correlations, histograms…)\n\n# dataset = sklearn.datasets.load_boston()\nfrom sklearn.datasets import fetch_california_housing \ndataset = fetch_california_housing()\n\nSplit the dataset into a training set (70%) and a test set (30%).\nTrain a lasso model to predict house prices. Compute the score on the test set.\nTrain a ridge model to predict house prices. Which one is better?"
+  },
+  {
+    "objectID": "tutorials/session_6/machine_learning_regressions.html#diabetes-dataset-basic-regression",
+    "href": "tutorials/session_6/machine_learning_regressions.html#diabetes-dataset-basic-regression",
+    "title": "Machine learning: regressions",
+    "section": "",
+    "text": "Import the diabetes dataset from sklearn. Describe it.\nSplit the dataset into a training set (70%) and a test set (30%)\nTrain a linear model (with intercept) on the training set\nCompute the fitting score on the test set.\nShould we adjust the size of the test set? What would be the problem?\nImplement \\(k\\)-fold model with \\(k=3\\).\nBonus: use statsmodels (or linearmodels) to estimate the same linear model on the full sample. Is it always a superior method?"
+  },
+  {
+    "objectID": "tutorials/session_6/machine_learning_regressions.html#sparse-regressions-on-the-boston-house-price-dataset",
+    "href": "tutorials/session_6/machine_learning_regressions.html#sparse-regressions-on-the-boston-house-price-dataset",
+    "title": "Machine learning: regressions",
+    "section": "",
+    "text": "Import the California Housing Price Dataset from sklearn. Explore the data (description, correlations, histograms…)\n\n# dataset = sklearn.datasets.load_boston()\nfrom sklearn.datasets import fetch_california_housing \ndataset = fetch_california_housing()\n\nSplit the dataset into a training set (70%) and a test set (30%).\nTrain a lasso model to predict house prices. Compute the score on the test set.\nTrain a ridge model to predict house prices. Which one is better?"
   },
   {
     "objectID": "pushups/pushups_2_0.html",

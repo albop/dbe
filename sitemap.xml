@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://albop.github.io/dbe/pushups/pushups_1_correction.html</loc>
-    <lastmod>2024-01-17T08:03:24.153Z</lastmod>
+    <lastmod>2024-02-21T16:46:27.297Z</lastmod>
   </url>
   <url>
     <loc>https://albop.github.io/dbe/pushups/pushups_1.html</loc>
@@ -15,6 +15,10 @@
   <url>
     <loc>https://albop.github.io/dbe/pushups/pushups_3.html</loc>
     <lastmod>2024-01-17T08:03:24.153Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/tutorials/session_6/machine_learning_regressions_correction.html</loc>
+    <lastmod>2024-02-28T07:58:04.273Z</lastmod>
   </url>
   <url>
     <loc>https://albop.github.io/dbe/tutorials/session_1/qe_functions.html</loc>
@@ -53,6 +57,18 @@
     <lastmod>2024-02-21T16:36:39.059Z</lastmod>
   </url>
   <url>
+    <loc>https://albop.github.io/dbe/slides/session_6/index.html</loc>
+    <lastmod>2024-02-28T07:49:20.066Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/slides/session_6/index_handout.html</loc>
+    <lastmod>2024-02-28T07:49:20.066Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/slides/session_6/graphs/Untitled1.html</loc>
+    <lastmod>2024-02-28T07:20:14.722Z</lastmod>
+  </url>
+  <url>
     <loc>https://albop.github.io/dbe/slides/prep_8/index.html</loc>
     <lastmod>2024-02-21T16:40:23.358Z</lastmod>
   </url>
@@ -78,11 +94,11 @@
   </url>
   <url>
     <loc>https://albop.github.io/dbe/slides/prep_6/index.html</loc>
-    <lastmod>2024-01-30T21:27:02.375Z</lastmod>
+    <lastmod>2024-02-28T07:50:40.862Z</lastmod>
   </url>
   <url>
     <loc>https://albop.github.io/dbe/slides/prep_6/index_handout.html</loc>
-    <lastmod>2024-01-30T21:27:02.375Z</lastmod>
+    <lastmod>2024-02-28T07:50:40.862Z</lastmod>
   </url>
   <url>
     <loc>https://albop.github.io/dbe/slides/session_4/Regressions.html</loc>
@@ -98,11 +114,11 @@
   </url>
   <url>
     <loc>https://albop.github.io/dbe/slides/session_5/index.html</loc>
-    <lastmod>2024-02-14T08:02:50.894Z</lastmod>
+    <lastmod>2024-02-28T07:23:00.910Z</lastmod>
   </url>
   <url>
     <loc>https://albop.github.io/dbe/slides/session_5/index_handout.html</loc>
-    <lastmod>2024-02-14T08:02:50.894Z</lastmod>
+    <lastmod>2024-02-28T07:23:00.910Z</lastmod>
   </url>
   <url>
     <loc>https://albop.github.io/dbe/slides/pession_6/machine_learning_regressions_elements.html</loc>
@@ -225,6 +241,14 @@
     <lastmod>2024-01-17T08:03:24.157Z</lastmod>
   </url>
   <url>
+    <loc>https://albop.github.io/dbe/slides/session_6/graphs/inference.html</loc>
+    <lastmod>2024-02-28T07:20:14.730Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/slides/session_6/ml_graphs/plan.html</loc>
+    <lastmod>2024-02-28T07:20:14.774Z</lastmod>
+  </url>
+  <url>
     <loc>https://albop.github.io/dbe/tutorials/session_5/happiness_regression_correction.html</loc>
     <lastmod>2024-02-14T07:29:03.069Z</lastmod>
   </url>
@@ -259,6 +283,10 @@
   <url>
     <loc>https://albop.github.io/dbe/tutorials/session_1/qe_control_answers.html</loc>
     <lastmod>2024-01-17T08:03:24.165Z</lastmod>
+  </url>
+  <url>
+    <loc>https://albop.github.io/dbe/tutorials/session_6/machine_learning_regressions.html</loc>
+    <lastmod>2024-02-28T07:58:06.301Z</lastmod>
   </url>
   <url>
     <loc>https://albop.github.io/dbe/pushups/pushups_2_0.html</loc>
