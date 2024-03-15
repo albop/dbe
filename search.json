@@ -570,14 +570,14 @@
     "href": "index.html",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 17, 2024\n\n\nIntroduction\n\n\n\n\nJan 24, 2024\n\n\nDataframes\n\n\n\n\nJan 31, 2024\n\n\nLinear Regression\n\n\n\n\nFeb 7, 2024\n\n\nMultiple Regression\n\n\n\n\nFeb 7, 2024\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 28, 2024\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 12, 2024\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\nMar 20, 2024\n\n\nWrap-Up / Text Analysis\n\n\n\n\nMar 26, 2024\n\n\nLarge Language Models for Finance\n\n\n\n\nApr 2, 2024\n\n\nFinal Exam ☠\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 17, 2024\n\n\nIntroduction\n\n\n\n\nJan 24, 2024\n\n\nDataframes\n\n\n\n\nJan 31, 2024\n\n\nLinear Regression\n\n\n\n\nFeb 7, 2024\n\n\nMultiple Regression\n\n\n\n\nFeb 7, 2024\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 28, 2024\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 12, 2024\n\n\nIntroduction to Machine Learning (2) [cancelled]\n\n\n\n\nMar 19, 2024\n\n\nText Analysis\n\n\n\n\nMar 26, 2024\n\n\nLarge Language Models for Finance\n\n\n\n\nApr 2, 2024\n\n\nWrap-up Session\n\n\n\n\nApr 7, 2024\n\n\nFinal Exam 🤞\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#schedule",
     "href": "index.html#schedule",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 17, 2024\n\n\nIntroduction\n\n\n\n\nJan 24, 2024\n\n\nDataframes\n\n\n\n\nJan 31, 2024\n\n\nLinear Regression\n\n\n\n\nFeb 7, 2024\n\n\nMultiple Regression\n\n\n\n\nFeb 7, 2024\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 28, 2024\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 12, 2024\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\nMar 20, 2024\n\n\nWrap-Up / Text Analysis\n\n\n\n\nMar 26, 2024\n\n\nLarge Language Models for Finance\n\n\n\n\nApr 2, 2024\n\n\nFinal Exam ☠\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 17, 2024\n\n\nIntroduction\n\n\n\n\nJan 24, 2024\n\n\nDataframes\n\n\n\n\nJan 31, 2024\n\n\nLinear Regression\n\n\n\n\nFeb 7, 2024\n\n\nMultiple Regression\n\n\n\n\nFeb 7, 2024\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 28, 2024\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 12, 2024\n\n\nIntroduction to Machine Learning (2) [cancelled]\n\n\n\n\nMar 19, 2024\n\n\nText Analysis\n\n\n\n\nMar 26, 2024\n\n\nLarge Language Models for Finance\n\n\n\n\nApr 2, 2024\n\n\nWrap-up Session\n\n\n\n\nApr 7, 2024\n\n\nFinal Exam 🤞\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#evaluation",
@@ -1016,203 +1016,203 @@
   {
     "objectID": "slides/session_7/index.html#classification-problem",
     "href": "slides/session_7/index.html#classification-problem",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Classification problem",
     "text": "Classification problem\n\nBinary Classification\n\nGoal is to make a prediction \\(c_n = f(x_{1,1}, ... x_{k,n})\\) …\n…where \\(c_i\\) is a binary variable (\\(\\in\\{0,1\\}\\))\n… and \\((x_{i,n})_k\\), \\(k\\) different features to predict \\(c_n\\)\n\nMulticategory Classification\n\nThe variable to predict takes values in a non ordered set with \\(p\\) different values"
   },
   {
     "objectID": "slides/session_7/index.html#logistic-regression",
     "href": "slides/session_7/index.html#logistic-regression",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Logistic regression",
     "text": "Logistic regression\n\n\n\nGiven a regression model (a linear predictor) \\[ a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n \\]\none can build a classification model: \\[ f(x_1, ..., x_n) = \\sigma( a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n )\\] where \\(\\sigma(x)=\\frac{1}{1+\\exp(-x)}\\) is the logistic function a.k.a. sigmoid\nThe loss function to minimize is: \\[L() = \\sum_n (c_n - \\sigma( a_{0} + a_1 x_{1,n} + a_2 x_{2,n} + \\cdots a_k x_{k,n} ) )^2\\]\nThis works for any regression model (LASSO, RIDGE, nonlinear…)"
   },
   {
     "objectID": "slides/session_7/index.html#logistic-regression-1",
     "href": "slides/session_7/index.html#logistic-regression-1",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Logistic regression",
     "text": "Logistic regression\n\nThe linear model predicts an intensity/score (not a category) \\[ f(x_1, ..., x_n) = \\sigma( \\underbrace{a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n }_{\\text{score}})\\]\nTo make a prediction: round to 0 or 1."
   },
   {
     "objectID": "slides/session_7/index.html#multinomial-regression",
     "href": "slides/session_7/index.html#multinomial-regression",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Multinomial regression",
     "text": "Multinomial regression\n\n\nIf there are \\(P\\) categories to predict:\n\nbuild a linear predictor \\(f_p\\) for each category \\(p\\)\nlinear predictor is also called score\n\nTo predict:\n\nevaluate the score of all categories\nchoose the one with highest score\n\nTo train the model:\n\ntrain separately all scores (works for any predictor, not just linear)\n… there are more subtle approaches (not here)"
   },
   {
     "objectID": "slides/session_7/index.html#common-classification-algorithms",
     "href": "slides/session_7/index.html#common-classification-algorithms",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Common classification algorithms",
     "text": "Common classification algorithms\nThere are many:\n\nLogistic Regression\nNaive Bayes Classifier\nNearest Distance\nneural networks (replace score in sigmoid by n.n.)\nDecision Trees\nSupport Vector Machines"
   },
   {
     "objectID": "slides/session_7/index.html#nearest-distance",
     "href": "slides/session_7/index.html#nearest-distance",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Nearest distance",
     "text": "Nearest distance\n\n\n\nIdea:\n\nin order to predict category \\(c\\) corresponding to \\(x\\) find the closest point \\(x_0\\) in the training set\nAssign to \\(x\\) the same category as \\(x_0\\)\n\nBut this would be very susceptible to noise\nAmended idea: \\(k-nearest\\) neighbours\n\nlook for the \\(k\\) points closest to \\(x\\)\nlabel \\(x\\) with the same category as the majority of them\n\nRemark: this algorithm uses Euclidean distance. This is why it is important to normalize the dataset."
   },
   {
     "objectID": "slides/session_7/index.html#decision-tree-random-forests",
     "href": "slides/session_7/index.html#decision-tree-random-forests",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Decision Tree / Random Forests",
     "text": "Decision Tree / Random Forests\n\n\n\nDecision Tree\n\nrecursively find simple criteria to subdivide dataset\n\nProblems:\n\nGreedy: algorithm does not simplify branches\neasily overfits\n\nExtension : random tree forest\n\nuses several (randomly generated) trees to generate a prediction\nsolves the overfitting problem"
   },
   {
     "objectID": "slides/session_7/index.html#support-vector-classification",
     "href": "slides/session_7/index.html#support-vector-classification",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Support Vector Classification",
     "text": "Support Vector Classification\n\n\n\n\nSeparates data by one line (hyperplane).\n\nChooses the largest margin according to support vectors\n\nCan use a nonlinear kernel."
   },
   {
     "objectID": "slides/session_7/index.html#all-these-algorithms-are-super-easy-to-use",
     "href": "slides/session_7/index.html#all-these-algorithms-are-super-easy-to-use",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "All these algorithms are super easy to use!",
     "text": "All these algorithms are super easy to use!\nExamples:\n\nDecision Tree\n\nfrom sklearn.tree import DecisionTreeClassifier\nclf = DecisionTreeClassifier(random_state=0)\n\n\nSupport Vector\n\nfrom sklearn.svm import SVC\nclf = SVC(random_state=0)\n\n\n\nRidge Regression\n\nfrom sklearn.linear_model import Ridge\nclf = Ridge(random_state=0)"
   },
   {
     "objectID": "slides/session_7/index.html#validity-of-a-classification-algorithm",
     "href": "slides/session_7/index.html#validity-of-a-classification-algorithm",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Validity of a classification algorithm",
     "text": "Validity of a classification algorithm\n\nIndependently of how the classification is made, its validity can be assessed with a similar procedure as in the regression.\nSeparate training set and test set\n\ndo not touch test set at all during the training\n\nCompute score: number of correctly identified categories\n\nnote that this is not the same as the loss function minimized by the training"
   },
   {
     "objectID": "slides/session_7/index.html#classification-matrix",
     "href": "slides/session_7/index.html#classification-matrix",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Classification matrix",
     "text": "Classification matrix\n\nFor binary classification, we focus on the classification matrix or confusion matrix.\n\n\n\n\nPredicted\n(0) Actual\n(1) Actual\n\n\n\n\n0\ntrue negatives (TN)\nfalse negatives (FN)\n\n\n1\nfalse positives (FP)\ntrue positives (TP)\n\n\n\n\nWe can then define different measures:\n\nSensitivity aka True Positive Rate (TPR): \\(\\frac{TP}{FP+TP}\\)\nFalse Positive Rate (FPR): \\(\\frac{FP}{TN+FP}\\)\nOverall accuracy: \\(\\frac{\\text{TN}+\\text{TP}}{\\text{total}}\\)\n\n\n\nWhich one to favour depends on the use case"
   },
   {
     "objectID": "slides/session_7/index.html#example-london-police",
     "href": "slides/session_7/index.html#example-london-police",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Example: London Police",
     "text": "Example: London Police\n\nPolice cameras in LondonAccording to London Police the cameras in London have\n\nTrue Positive Identification rate of over 80% at a fixed number of False Positive Alerts.29 nov. 2022\n\n\nInterpretation? Is failure rate too high?"
   },
   {
     "objectID": "slides/session_7/index.html#example",
     "href": "slides/session_7/index.html#example",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Example",
     "text": "Example\n\nIn-sample confusion matrixBased on consumer data, an algorithm tries to predict the credit score from.\nCan you calculate: FPR, TPR and overall accuracy?"
   },
   {
     "objectID": "slides/session_7/index.html#confusion-matrix-with-sklearn",
     "href": "slides/session_7/index.html#confusion-matrix-with-sklearn",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Confusion matrix with sklearn",
     "text": "Confusion matrix with sklearn\n\nPredict on the test set:\n\ny_pred = model.predict(x_test)\n\nCompute confusion matrix:\n\nfrom sklearn.metrics import confusion_matrix\ncm = confusion_matrix(y_test, y_pred)"
   },
   {
     "objectID": "slides/session_7/index_handout.html",
     "href": "slides/session_7/index_handout.html",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "",
     "text": "Binary Classification\n\nGoal is to make a prediction \\(c_n = f(x_{1,1}, ... x_{k,n})\\) …\n…where \\(c_i\\) is a binary variable (\\(\\in\\{0,1\\}\\))\n… and \\((x_{i,n})_k\\), \\(k\\) different features to predict \\(c_n\\)\n\nMulticategory Classification\n\nThe variable to predict takes values in a non ordered set with \\(p\\) different values\n\n\n\n\n\n\n\n\nGiven a regression model (a linear predictor) \\[ a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n \\]\none can build a classification model: \\[ f(x_1, ..., x_n) = \\sigma( a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n )\\] where \\(\\sigma(x)=\\frac{1}{1+\\exp(-x)}\\) is the logistic function a.k.a. sigmoid\nThe loss function to minimize is: \\[L() = \\sum_n (c_n - \\sigma( a_{0} + a_1 x_{1,n} + a_2 x_{2,n} + \\cdots a_k x_{k,n} ) )^2\\]\nThis works for any regression model (LASSO, RIDGE, nonlinear…)\n\n\n\n\n\n\n\n\n\nThe linear model predicts an intensity/score (not a category) \\[ f(x_1, ..., x_n) = \\sigma( \\underbrace{a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n }_{\\text{score}})\\]\nTo make a prediction: round to 0 or 1.\n\n\n\n\n\n\n\nIf there are \\(P\\) categories to predict:\n\nbuild a linear predictor \\(f_p\\) for each category \\(p\\)\nlinear predictor is also called score\n\nTo predict:\n\nevaluate the score of all categories\nchoose the one with highest score\n\nTo train the model:\n\ntrain separately all scores (works for any predictor, not just linear)\n… there are more subtle approaches (not here)"
   },
   {
     "objectID": "slides/session_7/index_handout.html#classification-problem",
     "href": "slides/session_7/index_handout.html#classification-problem",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "",
     "text": "Binary Classification\n\nGoal is to make a prediction \\(c_n = f(x_{1,1}, ... x_{k,n})\\) …\n…where \\(c_i\\) is a binary variable (\\(\\in\\{0,1\\}\\))\n… and \\((x_{i,n})_k\\), \\(k\\) different features to predict \\(c_n\\)\n\nMulticategory Classification\n\nThe variable to predict takes values in a non ordered set with \\(p\\) different values"
   },
   {
     "objectID": "slides/session_7/index_handout.html#logistic-regression",
     "href": "slides/session_7/index_handout.html#logistic-regression",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "",
     "text": "Given a regression model (a linear predictor) \\[ a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n \\]\none can build a classification model: \\[ f(x_1, ..., x_n) = \\sigma( a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n )\\] where \\(\\sigma(x)=\\frac{1}{1+\\exp(-x)}\\) is the logistic function a.k.a. sigmoid\nThe loss function to minimize is: \\[L() = \\sum_n (c_n - \\sigma( a_{0} + a_1 x_{1,n} + a_2 x_{2,n} + \\cdots a_k x_{k,n} ) )^2\\]\nThis works for any regression model (LASSO, RIDGE, nonlinear…)"
   },
   {
     "objectID": "slides/session_7/index_handout.html#logistic-regression-1",
     "href": "slides/session_7/index_handout.html#logistic-regression-1",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "",
     "text": "The linear model predicts an intensity/score (not a category) \\[ f(x_1, ..., x_n) = \\sigma( \\underbrace{a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n }_{\\text{score}})\\]\nTo make a prediction: round to 0 or 1."
   },
   {
     "objectID": "slides/session_7/index_handout.html#multinomial-regression",
     "href": "slides/session_7/index_handout.html#multinomial-regression",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "",
     "text": "If there are \\(P\\) categories to predict:\n\nbuild a linear predictor \\(f_p\\) for each category \\(p\\)\nlinear predictor is also called score\n\nTo predict:\n\nevaluate the score of all categories\nchoose the one with highest score\n\nTo train the model:\n\ntrain separately all scores (works for any predictor, not just linear)\n… there are more subtle approaches (not here)"
   },
   {
     "objectID": "slides/session_7/index_handout.html#common-classification-algorithms",
     "href": "slides/session_7/index_handout.html#common-classification-algorithms",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Common classification algorithms",
     "text": "Common classification algorithms\nThere are many:\n\nLogistic Regression\nNaive Bayes Classifier\nNearest Distance\nneural networks (replace score in sigmoid by n.n.)\nDecision Trees\nSupport Vector Machines"
   },
   {
     "objectID": "slides/session_7/index_handout.html#nearest-distance",
     "href": "slides/session_7/index_handout.html#nearest-distance",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Nearest distance",
     "text": "Nearest distance\n\n\n\nIdea:\n\nin order to predict category \\(c\\) corresponding to \\(x\\) find the closest point \\(x_0\\) in the training set\nAssign to \\(x\\) the same category as \\(x_0\\)\n\nBut this would be very susceptible to noise\nAmended idea: \\(k-nearest\\) neighbours\n\nlook for the \\(k\\) points closest to \\(x\\)\nlabel \\(x\\) with the same category as the majority of them\n\nRemark: this algorithm uses Euclidean distance. This is why it is important to normalize the dataset."
   },
   {
     "objectID": "slides/session_7/index_handout.html#decision-tree-random-forests",
     "href": "slides/session_7/index_handout.html#decision-tree-random-forests",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Decision Tree / Random Forests",
     "text": "Decision Tree / Random Forests\n\n\n\nDecision Tree\n\nrecursively find simple criteria to subdivide dataset\n\nProblems:\n\nGreedy: algorithm does not simplify branches\neasily overfits\n\nExtension : random tree forest\n\nuses several (randomly generated) trees to generate a prediction\nsolves the overfitting problem"
   },
   {
     "objectID": "slides/session_7/index_handout.html#support-vector-classification",
     "href": "slides/session_7/index_handout.html#support-vector-classification",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Support Vector Classification",
     "text": "Support Vector Classification\n\n\n\n\nSeparates data by one line (hyperplane).\n\nChooses the largest margin according to support vectors\n\nCan use a nonlinear kernel."
   },
   {
     "objectID": "slides/session_7/index_handout.html#all-these-algorithms-are-super-easy-to-use",
     "href": "slides/session_7/index_handout.html#all-these-algorithms-are-super-easy-to-use",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "All these algorithms are super easy to use!",
     "text": "All these algorithms are super easy to use!\nExamples:\n\nDecision Tree\n\nfrom sklearn.tree import DecisionTreeClassifier\nclf = DecisionTreeClassifier(random_state=0)\n. . .\n\nSupport Vector\n\nfrom sklearn.svm import SVC\nclf = SVC(random_state=0)\n. . .\n\nRidge Regression\n\nfrom sklearn.linear_model import Ridge\nclf = Ridge(random_state=0)"
   },
   {
     "objectID": "slides/session_7/index_handout.html#validity-of-a-classification-algorithm",
     "href": "slides/session_7/index_handout.html#validity-of-a-classification-algorithm",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Validity of a classification algorithm",
     "text": "Validity of a classification algorithm\n\nIndependently of how the classification is made, its validity can be assessed with a similar procedure as in the regression.\nSeparate training set and test set\n\ndo not touch test set at all during the training\n\nCompute score: number of correctly identified categories\n\nnote that this is not the same as the loss function minimized by the training"
   },
   {
     "objectID": "slides/session_7/index_handout.html#classification-matrix",
     "href": "slides/session_7/index_handout.html#classification-matrix",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Classification matrix",
     "text": "Classification matrix\n\nFor binary classification, we focus on the classification matrix or confusion matrix.\n\n\n\n\nPredicted\n(0) Actual\n(1) Actual\n\n\n\n\n0\ntrue negatives (TN)\nfalse negatives (FN)\n\n\n1\nfalse positives (FP)\ntrue positives (TP)\n\n\n\n. . .\nWe can then define different measures:\n\nSensitivity aka True Positive Rate (TPR): \\(\\frac{TP}{FP+TP}\\)\nFalse Positive Rate (FPR): \\(\\frac{FP}{TN+FP}\\)\nOverall accuracy: \\(\\frac{\\text{TN}+\\text{TP}}{\\text{total}}\\)\n\n. . .\nWhich one to favour depends on the use case"
   },
   {
     "objectID": "slides/session_7/index_handout.html#example-london-police",
     "href": "slides/session_7/index_handout.html#example-london-police",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Example: London Police",
     "text": "Example: London Police\n\n\n\nPolice cameras in London\n\n\nAccording to London Police the cameras in London have\n\nTrue Positive Identification rate of over 80% at a fixed number of False Positive Alerts.29 nov. 2022\n\n. . .\nInterpretation? Is failure rate too high?"
   },
   {
     "objectID": "slides/session_7/index_handout.html#example",
     "href": "slides/session_7/index_handout.html#example",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Example",
     "text": "Example\n\n\n\nIn-sample confusion matrix\n\n\nBased on consumer data, an algorithm tries to predict the credit score from.\nCan you calculate: FPR, TPR and overall accuracy?"
   },
   {
     "objectID": "slides/session_7/index_handout.html#confusion-matrix-with-sklearn",
     "href": "slides/session_7/index_handout.html#confusion-matrix-with-sklearn",
-    "title": "Introduction to Machine Learning (2)",
+    "title": "Introduction to Machine Learning (2) [cancelled]",
     "section": "Confusion matrix with sklearn",
     "text": "Confusion matrix with sklearn\n\nPredict on the test set:\n\ny_pred = model.predict(x_test)\n\nCompute confusion matrix:\n\nfrom sklearn.metrics import confusion_matrix\ncm = confusion_matrix(y_test, y_pred)"
   },
@@ -1226,7 +1226,7 @@
   {
     "objectID": "slides/prep_9/index_handout.html",
     "href": "slides/prep_9/index_handout.html",
-    "title": "Wrap-Up / Text Analysis",
+    "title": "Text Analysis",
     "section": "",
     "text": "Come back later!."
   },
@@ -2556,6 +2556,13 @@
     "title": "Data Frames",
     "section": "",
     "text": "Suppose we have two dataframes, with related observations\nHow can we construct one single database with all informations?\nAnswer:\n\nconcatenate if long format\nmerge databases if wide format\n\nLots of subtleties when data gets complicated\n\nwe’ll see them in due time\n\n\n\ntxt_long_1 = \"\"\"year,country,measure\n2018,\"france\",950.0\n2019,\"france\",960.0\n2020,\"france\",1000.0\n2018,\"usa\",2500.0\n2019,\"usa\",2150.0\n2020,\"usa\",2300.0\n\"\"\"\nopen(\"dummy_long_1.csv\",'w').write(txt_long_1)\n\n136\n\n\n\ntxt_long_2 = \"\"\"year,country,recipient\n2018,\"france\",maxime\n2019,\"france\",mauricette\n2020,\"france\",mathilde\n2018,\"usa\",sherlock\n2019,\"usa\",watson\n2020,\"usa\",moriarty\n\"\"\"\nopen(\"dummy_long_2.csv\",'w').write(txt_long_2)\n\n150\n\n\n\ndf_long_1 = pd.read_csv('dummy_long_1.csv')\ndf_long_2 = pd.read_csv('dummy_long_2.csv')\n\n\n\n\n\ndf_long_1.merge(df_long_2)\n\nNameError: name 'df_long_1' is not defined"
+  },
+  {
+    "objectID": "slides/prep_11/index_handout.html",
+    "href": "slides/prep_11/index_handout.html",
+    "title": "Final Exam 🤞",
+    "section": "",
+    "text": "Come back later!."
   },
   {
     "objectID": "slides/session_2/Exercises.html",
@@ -4614,7 +4621,7 @@
   {
     "objectID": "slides/prep_10/index_handout.html",
     "href": "slides/prep_10/index_handout.html",
-    "title": "Final Exam ☠",
+    "title": "Wrap-up Session",
     "section": "",
     "text": "Come back later!."
   },
