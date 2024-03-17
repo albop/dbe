@@ -1,6 +1,6 @@
 ---
-title: "Wrap-Up / Text Analysis"
-date: 2024/03/20
+title: "Text Analysis"
+date: 2024/03/19
 subtitle: Data-Based Economics, ESCP, 2023-2024
 author: Pablo Winant
 format:

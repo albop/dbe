@@ -1,5 +1,5 @@
 ---
-title: "Final Exam ☠"
+title: "Wrap-up Session"
 date: 2024/04/02
 subtitle: Data-Based Economics, ESCP, 2023-2024
 author: Pablo Winant

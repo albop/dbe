@@ -1,6 +1,6 @@
 ---
-title: "Introduction to Machine Learning (2)"
-date: 2024/03/12
+title: "Final Exam 🤞"
+date: 2024/04/09
 subtitle: Data-Based Economics, ESCP, 2023-2024
 author: Pablo Winant
 format:
