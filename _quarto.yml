@@ -14,6 +14,7 @@ website:
             - slides/session_3/index.qmd
             - slides/session_4/index.qmd
             - slides/session_5/index.qmd
+            - slides/session_6/index.qmd
 
 
         - section: tutorials
@@ -21,12 +22,14 @@ website:
             - tutorials/session_3/Phillips_curve_correction.ipynb
             - tutorials/session_4/Regressions_correction.ipynb
             - tutorials/session_5/instrumental_variables_correction.ipynb
+            - tutorials/session_6/machine_learning_regressions_correction.ipynb
         #     - tutorials/session_1/Exercises.ipynb
         #     - tutorials/session_1/Python_basics.ipynb
       
         - section: pushups
           contents:
             - pushups/pushups_1_correction.ipynb
+            # - pushups/pushups_3_correction.ipynb
 
 format:
   html:
