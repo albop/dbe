@@ -755,26 +755,30 @@ Lemmatization: keeps the word base
 </section>
 <section id="lexical-analysis" class="slide level2">
 <h2>Lexical analysis</h2>
+<div class="enumerate">
 <ul>
-<li><p>Use a “sentiment dictionary” to provide a value (positive or negative) for each word</p>
+<li>Use a “sentiment dictionary” to provide a value (positive or negative) for each word
 <ul>
 <li>sum the weights to get positive or negative sentiment</li>
 </ul></li>
-<li><!-- .element: class="fragment" -->
-<p>Example: <span class="math display">\[\underbrace{\text{Sadly}}_{-}\text{, there wasn't a glimpse of }\underbrace{\text{light}}_{+} \text{ in his } \text{world } \text{ of intense }\underbrace{\text{suffering.}}_{-}\]</span></p></li>
-<li><!-- .element: class="fragment" -->
-<p>Total:</p>
+<li>Example: <span class="math display">\[\underbrace{\text{Sadly}}_{-}\text{, there wasn't a glimpse of }\underbrace{\text{light}}_{+} \text{ in his } \text{world } \text{ of intense }\underbrace{\text{suffering.}}_{-}\]</span></li>
+<li>Total:
 <ul>
 <li>-1+1-1. Sentiment is negative.</li>
 </ul></li>
-<li><!-- .element: class="fragment" -->
-<p>Problems:</p>
-<ul>
-<li>here, taking grammar into account would change everything</li>
-<li>doesn’t capture irony</li>
-<li>our dictionary doesn’t have weights for what matters to us <span class="math display">\[ \text{the central bank forecasts increased }\underbrace{\text{inflation}}_{?}\]</span></li>
-</ul></li>
 </ul>
+</div>
+<div class="fragment">
+<p>Problems:?</p>
+<div class="enumerate">
+<ul>
+<li>doesn’t capture irony</li>
+<li>here, taking grammar into account would change everything</li>
+<li>our dictionary doesn’t have weights for what matters to us</li>
+</ul>
+</div>
+<p><span class="math display">\[ \text{the central bank forecasts increased }\underbrace{\text{inflation}}_{?}\]</span></p>
+</div>
 </section>
 <section id="machine-learning" class="slide level2">
 <h2>Machine learning</h2>
@@ -867,7 +871,7 @@ Lemmatization: keeps the word base
 </tbody>
 </table>
 <ul>
-<li>We can the train the model: <span class="math inline">\(y = x_1 f(w_1) + \cdots x_K f(w_K)\)</span> where <span class="math inline">\(y\)</span> is the sentiment and <span class="math inline">\(w_i\)</span> is wordcount of word <span class="math inline">\(w_i\)</span>
+<li>We can the train the model: <span class="math inline">\(y = x_1 fw_1 + \cdots x_K w_K\)</span> where <span class="math inline">\(y\)</span> is the sentiment and <span class="math inline">\(w_i\)</span> is wordcount of word <span class="math inline">\(w_i\)</span>
 <ul>
 <li>of course, we need a similar procedure as before (split the training set and evaluation set, …)</li>
 <li>we can use any model (like naive bayesian updating)</li>
@@ -877,24 +881,47 @@ Lemmatization: keeps the word base
 </section>
 <section id="some-issues" class="slide level2">
 <h2>Some issues</h2>
-<ul>
-<li>The preceding approach has a few issues:
+<p>Bag of words approach with raw word count has a few issues:</p>
+<div class="enumerate">
 <ul>
 <li>it requires a big training set with labels</li>
 <li>it overweights long documents</li>
 <li>there is noise due to the very frequent words that don’t affect sentiment</li>
-</ul></li>
-<li>Improvement: TF-IDF
+</ul>
+</div>
+<div class="enumerate">
+<p><strong>Improvement</strong>: TF-IDF (Term-Frequency*Inverse-Distribution-Frequency)</p>
 <ul>
-<li>stands for Term-Frequency*Inverse-Distribution-Frequency</li>
-<li>replace word frequency <span class="math inline">\(f(w)\)</span> by <span class="math display">\[\text{tf-idf} = f(w)\frac{\text{number of documents}}{\text{number of documents containing $w$}}\]</span></li>
+<li>replace word frequency <span class="math inline">\(w\)</span> by <span class="math display">\[\text{tf-idf} = wd\frac{\text{number of documents}}{\text{number of documents containing $w$}}\]</span></li>
 <li>reduces noise due to frequent words</li>
+</ul>
+</div>
+</section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+<p>&nbsp;&nbsp;&nbsp; <strong>Recent trends for text analysis:</strong></p>
+<div>
+<ul>
+<li class="fragment">deep learning
+<ul>
+<li class="fragment">very flexible model</li>
+<li class="fragment">replace tokenization by abstract embedding</li>
+</ul></li>
+<li class="fragment">generative AI
+<ul>
+<li class="fragment">can perform many text analysis text <em>without</em> pretraining!</li>
 </ul></li>
 </ul>
+</div>
+<div class="fragment">
+<p>Next week:</p>
+<p><em>Introduction to Large Language Models for Finance</em>, by Emilie Rannou, partner at Ekimetrics</p>
+<p>Bring your laptops!</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </div>
 </section></section>
