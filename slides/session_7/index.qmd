@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Machine Learning (2) [cancelled]"
+title: "Introduction to Machine Learning (2)"
 date: 2024/03/12
 subtitle: Data-Based Economics, ESCP, 2023-2024
 author: Pablo Winant
