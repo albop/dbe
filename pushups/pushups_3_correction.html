@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data-Based Economics - Sklearn: sparse regression</title>
+<title>Data-Based Economics - Sparse regression with sklearn</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,9 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Data-Based Economics
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pushups/pushups_1_correction.html">pushups</a></li><li class="breadcrumb-item"><a href="../pushups/pushups_3_correction.html">Sparse regression with sklearn</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -159,6 +157,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Introduction to Instrumental Variables</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_6/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Machine Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_7/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Machine Learning (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/session_8/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Text Analysis</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -188,6 +204,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Instrumental variables</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/session_6/machine_learning_regressions_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Machine learning: regressions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/session_7/Classification_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classification and clustering</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -205,6 +233,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Basics and Collections</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pushups/pushups_3_correction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Sparse regression with sklearn</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -217,19 +251,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sklearn-sparse-regression" id="toc-sklearn-sparse-regression" class="nav-link active" data-scroll-target="#sklearn-sparse-regression">Sklearn: sparse regression</a>
-  <ul class="collapse">
-  <li><a href="#predicting-breast-cancer" id="toc-predicting-breast-cancer" class="nav-link" data-scroll-target="#predicting-breast-cancer">Predicting Breast Cancer</a></li>
-  </ul></li>
+  <li><a href="#predicting-breast-cancer" id="toc-predicting-breast-cancer" class="nav-link active" data-scroll-target="#predicting-breast-cancer">Predicting Breast Cancer</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pushups/pushups_1_correction.html">pushups</a></li><li class="breadcrumb-item"><a href="../pushups/pushups_3_correction.html">Sparse regression with sklearn</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Sklearn: sparse regression</h1>
+<h1 class="title">Sparse regression with sklearn</h1>
 </div>
 
 
@@ -246,8 +277,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="sklearn-sparse-regression" class="level1">
-<h1>Sklearn: sparse regression</h1>
 <section id="predicting-breast-cancer" class="level2">
 <h2 class="anchored" data-anchor-id="predicting-breast-cancer">Predicting Breast Cancer</h2>
 <p>Sklearn includes the Winsconsin breast cancer database. It associates medical outcomes for tumor observation, with several characteristics. Can a machine learn how to predict whether a cancer is benign or malignant ?</p>
@@ -717,7 +746,6 @@ Score: 0.9734513274336283</code></pre>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

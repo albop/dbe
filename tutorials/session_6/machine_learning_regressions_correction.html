@@ -130,9 +130,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Data-Based Economics
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../tutorials/session_3/Phillips_curve_correction.html">tutorials</a></li><li class="breadcrumb-item"><a href="../../tutorials/session_6/machine_learning_regressions_correction.html">Machine learning: regressions</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -188,6 +186,24 @@ window.Quarto = {
  <span class="menu-text">Introduction to Instrumental Variables</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_6/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Machine Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_7/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Machine Learning (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_8/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Text Analysis</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -217,6 +233,18 @@ window.Quarto = {
  <span class="menu-text">Instrumental variables</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorials/session_6/machine_learning_regressions_correction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Machine learning: regressions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorials/session_7/Classification_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classification and clustering</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -234,6 +262,12 @@ window.Quarto = {
  <span class="menu-text">Basics and Collections</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pushups/pushups_3_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sparse regression with sklearn</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -246,18 +280,15 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#machine-learning-regressions" id="toc-machine-learning-regressions" class="nav-link active" data-scroll-target="#machine-learning-regressions">Machine learning: regressions</a>
-  <ul class="collapse">
-  <li><a href="#diabetes-dataset-basic-regression" id="toc-diabetes-dataset-basic-regression" class="nav-link" data-scroll-target="#diabetes-dataset-basic-regression">Diabetes dataset: basic regression</a></li>
+  <li><a href="#diabetes-dataset-basic-regression" id="toc-diabetes-dataset-basic-regression" class="nav-link active" data-scroll-target="#diabetes-dataset-basic-regression">Diabetes dataset: basic regression</a></li>
   <li><a href="#sparse-regressions-on-the-boston-house-price-dataset" id="toc-sparse-regressions-on-the-boston-house-price-dataset" class="nav-link" data-scroll-target="#sparse-regressions-on-the-boston-house-price-dataset">Sparse regressions on the Boston House Price Dataset</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../tutorials/session_3/Phillips_curve_correction.html">tutorials</a></li><li class="breadcrumb-item"><a href="../../tutorials/session_6/machine_learning_regressions_correction.html">Machine learning: regressions</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Machine learning: regressions</h1>
 </div>
@@ -276,14 +307,6 @@ window.Quarto = {
 </header>
 
 
-<section id="machine-learning-regressions" class="level1">
-<h1>Machine learning: regressions</h1>
-<p>Objectives:</p>
-<ul>
-<li>create a training set and a validation set</li>
-<li>train a model with <a href="">sklearn</a></li>
-<li>perform a validation test</li>
-</ul>
 <section id="diabetes-dataset-basic-regression" class="level2">
 <h2 class="anchored" data-anchor-id="diabetes-dataset-basic-regression">Diabetes dataset: basic regression</h2>
 <p><strong>Import the diabetes dataset from sklearn. Describe it.</strong></p>
@@ -969,7 +992,6 @@ It can be downloaded/loaded using the
 <p>It looks like the ridge model has a better fit (score). However, we should have left a test set appart and not used it at all during training phase. Here it has influenced the choice of the model (between ridge and lasso).</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
