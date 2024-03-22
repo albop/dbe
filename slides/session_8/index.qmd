@@ -438,7 +438,7 @@ $$ \underbrace{\text{the}}_{x_1} \underbrace{\text{ central}}_{x_2} \underbrace{
 | text3 | 4   |         | 1    |           |           | 1         |         | 1             | 1      | -1                     |
 |       |
 
-- We can the train the model:  $y = x_1 fw_1 + \cdots x_K w_K$ where $y$ is the sentiment and $w_i$ is wordcount of word $w_i$
+- We can the train the model:  $y = x_1 w_1 + \cdots x_K w_K$ where $y$ is the sentiment and $w_i$ is wordcount of word $w_i$
   - of course, we need a similar procedure as before (split the training set and evaluation set, ...)
   - we can use any model (like naive bayesian updating)
 
