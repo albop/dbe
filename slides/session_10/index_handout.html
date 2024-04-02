@@ -9,7 +9,7 @@
 <meta name="author" content="Pablo Winant">
 <meta name="dcterms.date" content="2024-04-02">
 
-<title>Data-Based Economics - Wrap-up Session</title>
+<title>Data-Based Economics - Some Important Points</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -53,6 +53,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -214,14 +243,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#bias-vs-variance" id="toc-bias-vs-variance" class="nav-link active" data-scroll-target="#bias-vs-variance">Bias vs Variance</a></li>
+  <li><a href="#overfitting" id="toc-overfitting" class="nav-link" data-scroll-target="#overfitting">Overfitting</a></li>
+  <li><a href="#explanation-vs-prediction" id="toc-explanation-vs-prediction" class="nav-link" data-scroll-target="#explanation-vs-prediction">Explanation vs Prediction</a></li>
+  <li><a href="#read-regression-results" id="toc-read-regression-results" class="nav-link" data-scroll-target="#read-regression-results">Read Regression Results</a></li>
+  <li><a href="#read-a-regression-table" id="toc-read-a-regression-table" class="nav-link" data-scroll-target="#read-a-regression-table">Read A Regression Table</a></li>
+  <li><a href="#can-there-be-too-many-variables" id="toc-can-there-be-too-many-variables" class="nav-link" data-scroll-target="#can-there-be-too-many-variables">Can there be too many variables?</a></li>
+  <li><a href="#colinearity" id="toc-colinearity" class="nav-link" data-scroll-target="#colinearity">Colinearity</a></li>
+  <li><a href="#ommitted-variable" id="toc-ommitted-variable" class="nav-link" data-scroll-target="#ommitted-variable">Ommitted Variable</a></li>
+  <li><a href="#omitted-variable" id="toc-omitted-variable" class="nav-link" data-scroll-target="#omitted-variable">Omitted Variable</a></li>
+  <li><a href="#endogeneity" id="toc-endogeneity" class="nav-link" data-scroll-target="#endogeneity">Endogeneity</a></li>
+  <li><a href="#instrument" id="toc-instrument" class="nav-link" data-scroll-target="#instrument">Instrument</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Wrap-up Session</h1>
+<h1 class="title">Some Important Points</h1>
 <p class="subtitle lead">Data-Based Economics, ESCP, 2023-2024</p>
 </div>
 
@@ -251,10 +296,252 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="wip.png" class="img-fluid"></p>
-<p>Come back later!.</p>
+<section id="bias-vs-variance" class="level2">
+<h2 class="anchored" data-anchor-id="bias-vs-variance">Bias vs Variance</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>A model is fitted (trained / regressed) on a given amount of data</li>
+<li>A model can be more or less flexible
+<ul class="incremental">
+<li>have more or less independent parameters (aka degrees of freedom)</li>
+<li>ex: <span class="math inline">\(y = a + b x\)</span> (2) vs <span class="math inline">\(y = a + b x_1 + c x_1^2 + e x_2 + f x_3\)</span> (5)</li>
+</ul></li>
+<li>More flexible models fit the training data better…</li>
+<li>…but tend to perform worse for predictions</li>
+<li>This is known as:
+<ul class="incremental">
+<li>The Bias (bad fit) vs Variance (bad prediction) tradeoff</li>
+<li>The no free lunch theorem</li>
+</ul></li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="overfitting" class="level2">
+<h2 class="anchored" data-anchor-id="overfitting">Overfitting</h2>
+<p><img src="graphs/overfitting.png" class="img-fluid"></p>
+<hr>
+</section>
+<section id="explanation-vs-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="explanation-vs-prediction">Explanation vs Prediction</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>The goal of <strong>machine learning</strong> consists in making the best <strong>predictions</strong>:
+<ul class="incremental">
+<li>use enough data to maximize the fit…</li>
+<li>… but control the number of independent parameters to prevent overfitting
+<ul class="incremental">
+<li>ex: LASSO regression has lots of parameters, but tries to keep most of them zero</li>
+</ul></li>
+<li>ultimately quality of prediction is evaluated on a test set, independent from the training set</li>
+</ul></li>
+<li>In <strong>econometrics</strong> we can perform
+<ul class="incremental">
+<li>predictions: sames issues as ML</li>
+<li>explanatory analysis: focus on the effect of one (or a few) explanatory variables
+<ul class="incremental">
+<li>this does not necessary require strong predictive power</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="read-regression-results" class="level2">
+<h2 class="anchored" data-anchor-id="read-regression-results">Read Regression Results</h2>
+<pre class="text"><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.252
+Model:                            OLS   Adj. R-squared:                  0.245
+Method:                 Least Squares   F-statistic:                     33.08
+Date:                Tue, 30 Mar 2021   Prob (F-statistic):           1.01e-07
+Time:                        02:34:12   Log-Likelihood:                -111.39
+No. Observations:                 100   AIC:                             226.8
+Df Residuals:                      98   BIC:                             232.0
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+==============================================================================
+Intercept     -0.1750      0.162     -1.082      0.282      -0.496       0.146
+x              0.1377      0.024      5.751      0.000       0.090       0.185
+==============================================================================
+Omnibus:                        2.673   Durbin-Watson:                   1.118
+Prob(Omnibus):                  0.263   Jarque-Bera (JB):                2.654
+Skew:                           0.352   Prob(JB):                        0.265
+Kurtosis:                       2.626   Cond. No.                         14.9
+==============================================================================</code></pre>
+<ul>
+<li>Understand p-value: chances that a given statistics might have been obtained, under the H0 hypothesis</li>
+</ul>
+<div class="r-stack">
+<div class="fragment current-visible">
+<ul>
+<li>Check:
+<ul>
+<li><code>R2</code>: provides an indication of predictive power. Does not prevent overfitting.</li>
+<li><code>adj. R2</code>: predictive power corrected for excessive degrees of freedom</li>
+<li>global significance (p-value of Fisher test): chances we would have obtained this R2 if all real coefficients were actually 0 (H0 hypothesis)</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Coefficient:
+<ul>
+<li><code>p-value</code> probability that coefficient might have been greater than observed, if it was actually 0.</li>
+<li>if p-value is smaller than 5%: the coefficient is significant at a 5% level</li>
+<li>confidence intervals (5%): if the true coefficient was out of this interval, observed value would be very implausible
+<ul>
+<li>higher confidence levels -&gt; bigger intervals</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+<section id="read-a-regression-table" class="level2">
+<h2 class="anchored" data-anchor-id="read-a-regression-table">Read A Regression Table</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="graphs/regression_table.png" class="img-fluid figure-img"></p>
+<figcaption>Example of a Regression Table</figcaption>
+</figure>
+</div>
+</section>
+<section id="can-there-be-too-many-variables" class="level2">
+<h2 class="anchored" data-anchor-id="can-there-be-too-many-variables">Can there be too many variables?</h2>
+<ul>
+<li><p>Overfitting</p>
+<ul>
+<li>bad predictions</li>
+</ul></li>
+<li><p>Colinearity</p>
+<ul>
+<li>can bias a coefficient of interest</li>
+<li>not a problem for prediction</li>
+<li>exact colinearity makes traditional OLS fail</li>
+</ul></li>
+<li><p>To choose the right amount of variables find a combination which maximizes adjusted R2 or an information criterium</p></li>
+</ul>
+</section>
+<section id="colinearity" class="level2">
+<h2 class="anchored" data-anchor-id="colinearity">Colinearity</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p><span class="math inline">\(x\)</span> is colinear with <span class="math inline">\(y\)</span> if <span class="math inline">\(cor(x,y)\)</span> very close to 1</p></li>
+<li><p>more generally <span class="math inline">\(x\)</span> is colinear with <span class="math inline">\(y_1, ... y_n\)</span> if <span class="math inline">\(x\)</span> can be deduced linearly from <span class="math inline">\(y_1...y_n\)</span></p>
+<ul class="incremental">
+<li>there exists <span class="math inline">\(\lambda_1, ... \lambda_n\)</span> such that <span class="math inline">\(x = \lambda_1 x_1 + ... + \lambda_n x_n\)</span></li>
+<li>example: hours of sleep / hours awake (sleep=24-awake)</li>
+</ul></li>
+<li><p>perfect colinearity is a problem: coefficients are not well defined</p>
+<ul class="incremental">
+<li><span class="math inline">\(\text{productivity} = 0.1 + 0.5 \text{sleep} + 0.5 \text{awake}\)</span> or <span class="math inline">\(\text{productivity} = -11.9 + 1 \text{sleep} + 1 \text{awake}\)</span> ?</li>
+</ul></li>
+<li><p>best regressions have regressors that:</p></li>
+<li><p>explain independent variable</p></li>
+<li><p>are independent from each other (as much as possible)</p></li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="ommitted-variable" class="level2">
+<h2 class="anchored" data-anchor-id="ommitted-variable">Ommitted Variable</h2>
+<p>What if you don’t have enough variables?</p>
+<p><span class="math inline">\(y = a + bx\)</span></p>
+<ul>
+<li>R2 can be low. It’s ok for explanatory analysis.</li>
+<li>as long as residuals are normally distributed
+<ul>
+<li>check graphically to be sure</li>
+<li>(more advanced): there are statistical tests</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="omitted-variable" class="level2">
+<h2 class="anchored" data-anchor-id="omitted-variable">Omitted Variable</h2>
+<div class="columns">
+<div class="column">
+<div class="r-stack">
+<div class="fragment current-visible">
+<p><img src="graphs/reg_1_full.svg" class="img-fluid" width="800"></p>
+</div>
+<div class="fragment current-visible">
+<p><img src="graphs/reg_2_full.svg" class="img-fluid" width="800"></p>
+</div>
+<div class="fragment current-visible">
+<p><img src="graphs/reg_3_mixed.svg" class="img-fluid" width="800"></p>
+</div>
+<div class="fragment current-visible">
+<p><img src="graphs/reg_4_mixed.svg" class="img-fluid" width="800"></p>
+</div>
+</div>
+</div><div class="column">
+<ul>
+<li>Suppose we want to know the effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span>.</li>
+<li>We run the regression <span class="math inline">\(y = a + b x\)</span>
+<ul>
+<li>we find <span class="math inline">\(y = 0.21 + \color{red}{0.15} x\)</span></li>
+</ul></li>
+<li>We then realize we have access to a categorical variable <span class="math inline">\(gender \in {male, female}\)</span></li>
+<li>We then add the <span class="math inline">\(\delta\)</span> dummy variable to the regression: <span class="math inline">\(y = a + bx + c \delta\)</span>
+<ul>
+<li>we find $ y = -0.04 + x - 0.98 $</li>
+</ul></li>
+<li>Note that adding the indicator
+<ul>
+<li>improved the fit (<span class="math inline">\(R^2\)</span> is 0.623 instead of 0.306)</li>
+<li>corrected for the <strong>omitted variable bias</strong> (true value of b is actually 0.2)</li>
+<li>provided an estimate for the effect of variable gender</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="endogeneity" class="level2">
+<h2 class="anchored" data-anchor-id="endogeneity">Endogeneity</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>Consider the regression model <span class="math inline">\(y = a + b x + \epsilon\)</span></li>
+<li>When <span class="math inline">\(\epsilon\)</span> is correlated with <span class="math inline">\(x\)</span> we have an <strong>endogeneity</strong> problem.
+<ul class="incremental">
+<li>we can check in the regression results whether the residuals ares correlated with <span class="math inline">\(y\)</span> or <span class="math inline">\(x\)</span></li>
+</ul></li>
+<li>Endogeneity can have several sources: omitted variable, measurement error, simultaneity
+<ul class="incremental">
+<li>it creates a bias in the estimate of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></li>
+</ul></li>
+<li>We say we <em>control</em> for endogeneity by adding some variables</li>
+<li>A special case of endogeneity is a <strong>confounding factor</strong> a variable <span class="math inline">\(z\)</span> which causes at the same time <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="instrument" class="level2">
+<h2 class="anchored" data-anchor-id="instrument">Instrument</h2>
+<p><span class="math display">\[y = a + b x + \epsilon\]</span></p>
+<div class="incremental">
+<ul class="incremental">
+<li>Recall: endogeneity issue when <span class="math inline">\(\epsilon\)</span> is correlated with <span class="math inline">\(x\)</span></li>
+<li>Instrument: a way to keep only the variability of <span class="math inline">\(x\)</span> that is independent from <span class="math inline">\(\epsilon\)</span>
+<ul class="incremental">
+<li>it needs to be correlated with <span class="math inline">\(x\)</span></li>
+<li>not with any component of <span class="math inline">\(\epsilon\)</span></li>
+<li>it needs to predict <span class="math inline">\(y\)</span></li>
+</ul></li>
+<li>An instrument can be used to solve endogeneity issues</li>
+<li>It can also establish the causality from <span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span>:
+<ul class="incremental">
+<li>since it is independent from <span class="math inline">\(\epsilon\)</span>, all its effect on <span class="math inline">\(y\)</span> goes through <span class="math inline">\(x\)</span></li>
+</ul></li>
+</ul>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

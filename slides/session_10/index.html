@@ -12,7 +12,7 @@
 
   <meta name="author" content="Pablo Winant">
   <meta name="dcterms.date" content="2024-04-02">
-  <title>Data-Based Economics - Wrap-up Session</title>
+  <title>Data-Based Economics - Some Important Points</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -327,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Wrap-up Session</h1>
+  <h1 class="title">Some Important Points</h1>
   <p class="subtitle">Data-Based Economics, ESCP, 2023-2024</p>
 
 <div class="quarto-title-authors">
@@ -340,10 +405,237 @@ Pablo Winant
 
   <p class="date">2024-04-02</p>
 </section>
-<section class="slide level2">
+<section id="bias-vs-variance" class="slide level2">
+<h2>Bias vs Variance</h2>
+<div>
+<ul>
+<li class="fragment">A model is fitted (trained / regressed) on a given amount of data</li>
+<li class="fragment">A model can be more or less flexible
+<ul>
+<li class="fragment">have more or less independent parameters (aka degrees of freedom)</li>
+<li class="fragment">ex: <span class="math inline">\(y = a + b x\)</span> (2) vs <span class="math inline">\(y = a + b x_1 + c x_1^2 + e x_2 + f x_3\)</span> (5)</li>
+</ul></li>
+<li class="fragment">More flexible models fit the training data better…</li>
+<li class="fragment">…but tend to perform worse for predictions</li>
+<li class="fragment">This is known as:
+<ul>
+<li class="fragment">The Bias (bad fit) vs Variance (bad prediction) tradeoff</li>
+<li class="fragment">The no free lunch theorem</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="overfitting" class="slide level2">
+<h2>Overfitting</h2>
 
+<img data-src="graphs/overfitting.png" class="r-stretch"></section>
+<section id="explanation-vs-prediction" class="slide level2">
+<h2>Explanation vs Prediction</h2>
+<div>
+<ul>
+<li class="fragment">The goal of <strong>machine learning</strong> consists in making the best <strong>predictions</strong>:
+<ul>
+<li class="fragment">use enough data to maximize the fit…</li>
+<li class="fragment">… but control the number of independent parameters to prevent overfitting
+<ul>
+<li class="fragment">ex: LASSO regression has lots of parameters, but tries to keep most of them zero</li>
+</ul></li>
+<li class="fragment">ultimately quality of prediction is evaluated on a test set, independent from the training set</li>
+</ul></li>
+<li class="fragment">In <strong>econometrics</strong> we can perform
+<ul>
+<li class="fragment">predictions: sames issues as ML</li>
+<li class="fragment">explanatory analysis: focus on the effect of one (or a few) explanatory variables
+<ul>
+<li class="fragment">this does not necessary require strong predictive power</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="read-regression-results" class="slide level2">
+<h2>Read Regression Results</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>                            OLS Regression Results                            </span>
+<span id="cb1-2"><a></a>==============================================================================</span>
+<span id="cb1-3"><a></a>Dep. Variable:                      y   R-squared:                       0.252</span>
+<span id="cb1-4"><a></a>Model:                            OLS   Adj. R-squared:                  0.245</span>
+<span id="cb1-5"><a></a>Method:                 Least Squares   F-statistic:                     33.08</span>
+<span id="cb1-6"><a></a>Date:                Tue, 30 Mar 2021   Prob (F-statistic):           1.01e-07</span>
+<span id="cb1-7"><a></a>Time:                        02:34:12   Log-Likelihood:                -111.39</span>
+<span id="cb1-8"><a></a>No. Observations:                 100   AIC:                             226.8</span>
+<span id="cb1-9"><a></a>Df Residuals:                      98   BIC:                             232.0</span>
+<span id="cb1-10"><a></a>Df Model:                           1                                         </span>
+<span id="cb1-11"><a></a>Covariance Type:            nonrobust                                         </span>
+<span id="cb1-12"><a></a>==============================================================================</span>
+<span id="cb1-13"><a></a>                 coef    std err          t      P&gt;|t|      [0.025      0.975]</span>
+<span id="cb1-14"><a></a>==============================================================================</span>
+<span id="cb1-15"><a></a>Intercept     -0.1750      0.162     -1.082      0.282      -0.496       0.146</span>
+<span id="cb1-16"><a></a>x              0.1377      0.024      5.751      0.000       0.090       0.185</span>
+<span id="cb1-17"><a></a>==============================================================================</span>
+<span id="cb1-18"><a></a>Omnibus:                        2.673   Durbin-Watson:                   1.118</span>
+<span id="cb1-19"><a></a>Prob(Omnibus):                  0.263   Jarque-Bera (JB):                2.654</span>
+<span id="cb1-20"><a></a>Skew:                           0.352   Prob(JB):                        0.265</span>
+<span id="cb1-21"><a></a>Kurtosis:                       2.626   Cond. No.                         14.9</span>
+<span id="cb1-22"><a></a>==============================================================================</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Understand p-value: chances that a given statistics might have been obtained, under the H0 hypothesis</li>
+</ul>
+<div class="r-stack">
+<div class="fragment current-visible">
+<ul>
+<li>Check:
+<ul>
+<li><code>R2</code>: provides an indication of predictive power. Does not prevent overfitting.</li>
+<li><code>adj. R2</code>: predictive power corrected for excessive degrees of freedom</li>
+<li>global significance (p-value of Fisher test): chances we would have obtained this R2 if all real coefficients were actually 0 (H0 hypothesis)</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Coefficient:
+<ul>
+<li><code>p-value</code> probability that coefficient might have been greater than observed, if it was actually 0.</li>
+<li>if p-value is smaller than 5%: the coefficient is significant at a 5% level</li>
+<li>confidence intervals (5%): if the true coefficient was out of this interval, observed value would be very implausible
+<ul>
+<li>higher confidence levels -&gt; bigger intervals</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="read-a-regression-table" class="slide level2">
+<h2>Read A Regression Table</h2>
 
-<img data-src="wip.png" class="r-stretch"><p>Come back later!.</p>
+<img data-src="graphs/regression_table.png" class="r-stretch quarto-figure-center"><p class="caption">Example of a Regression Table</p></section>
+<section id="can-there-be-too-many-variables" class="slide level2">
+<h2>Can there be too many variables?</h2>
+<ul>
+<li><p>Overfitting</p>
+<ul>
+<li>bad predictions</li>
+</ul></li>
+<li><p>Colinearity</p>
+<ul>
+<li>can bias a coefficient of interest</li>
+<li>not a problem for prediction</li>
+<li>exact colinearity makes traditional OLS fail</li>
+</ul></li>
+<li><p>To choose the right amount of variables find a combination which maximizes adjusted R2 or an information criterium</p></li>
+</ul>
+</section>
+<section id="colinearity" class="slide level2">
+<h2>Colinearity</h2>
+<div>
+<ul>
+<li class="fragment"><p><span class="math inline">\(x\)</span> is colinear with <span class="math inline">\(y\)</span> if <span class="math inline">\(cor(x,y)\)</span> very close to 1</p></li>
+<li class="fragment"><p>more generally <span class="math inline">\(x\)</span> is colinear with <span class="math inline">\(y_1, ... y_n\)</span> if <span class="math inline">\(x\)</span> can be deduced linearly from <span class="math inline">\(y_1...y_n\)</span></p>
+<ul>
+<li class="fragment">there exists <span class="math inline">\(\lambda_1, ... \lambda_n\)</span> such that <span class="math inline">\(x = \lambda_1 x_1 + ... + \lambda_n x_n\)</span></li>
+<li class="fragment">example: hours of sleep / hours awake (sleep=24-awake)</li>
+</ul></li>
+<li class="fragment"><p>perfect colinearity is a problem: coefficients are not well defined</p>
+<ul>
+<li class="fragment"><span class="math inline">\(\text{productivity} = 0.1 + 0.5 \text{sleep} + 0.5 \text{awake}\)</span> or <span class="math inline">\(\text{productivity} = -11.9 + 1 \text{sleep} + 1 \text{awake}\)</span> ?</li>
+</ul></li>
+<li class="fragment"><p>best regressions have regressors that:</p></li>
+<li class="fragment"><p>explain independent variable</p></li>
+<li class="fragment"><p>are independent from each other (as much as possible)</p></li>
+</ul>
+</div>
+</section>
+<section id="ommitted-variable" class="slide level2">
+<h2>Ommitted Variable</h2>
+<p>What if you don’t have enough variables?</p>
+<p><span class="math inline">\(y = a + bx\)</span></p>
+<ul>
+<li>R2 can be low. It’s ok for explanatory analysis.</li>
+<li>as long as residuals are normally distributed
+<ul>
+<li>check graphically to be sure</li>
+<li>(more advanced): there are statistical tests</li>
+</ul></li>
+</ul>
+</section>
+<section id="omitted-variable" class="slide level2">
+<h2>Omitted Variable</h2>
+<div class="columns">
+<div class="column">
+<div class="r-stack">
+<div class="fragment current-visible">
+<p><img data-src="graphs/reg_1_full.svg" width="800"></p>
+</div>
+<div class="fragment current-visible">
+<p><img data-src="graphs/reg_2_full.svg" width="800"></p>
+</div>
+<div class="fragment current-visible">
+<p><img data-src="graphs/reg_3_mixed.svg" width="800"></p>
+</div>
+<div class="fragment current-visible">
+<p><img data-src="graphs/reg_4_mixed.svg" width="800"></p>
+</div>
+</div>
+</div><div class="column">
+<ul>
+<li>Suppose we want to know the effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span>.</li>
+<li>We run the regression <span class="math inline">\(y = a + b x\)</span>
+<ul>
+<li>we find <span class="math inline">\(y = 0.21 + \color{red}{0.15} x\)</span></li>
+</ul></li>
+<li>We then realize we have access to a categorical variable <span class="math inline">\(gender \in {male, female}\)</span></li>
+<li>We then add the <span class="math inline">\(\delta\)</span> dummy variable to the regression: <span class="math inline">\(y = a + bx + c \delta\)</span>
+<ul>
+<li>we find $ y = -0.04 + x - 0.98 $</li>
+</ul></li>
+<li>Note that adding the indicator
+<ul>
+<li>improved the fit (<span class="math inline">\(R^2\)</span> is 0.623 instead of 0.306)</li>
+<li>corrected for the <strong>omitted variable bias</strong> (true value of b is actually 0.2)</li>
+<li>provided an estimate for the effect of variable gender</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="endogeneity" class="slide level2">
+<h2>Endogeneity</h2>
+<div>
+<ul>
+<li class="fragment">Consider the regression model <span class="math inline">\(y = a + b x + \epsilon\)</span></li>
+<li class="fragment">When <span class="math inline">\(\epsilon\)</span> is correlated with <span class="math inline">\(x\)</span> we have an <strong>endogeneity</strong> problem.
+<ul>
+<li class="fragment">we can check in the regression results whether the residuals ares correlated with <span class="math inline">\(y\)</span> or <span class="math inline">\(x\)</span></li>
+</ul></li>
+<li class="fragment">Endogeneity can have several sources: omitted variable, measurement error, simultaneity
+<ul>
+<li class="fragment">it creates a bias in the estimate of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></li>
+</ul></li>
+<li class="fragment">We say we <em>control</em> for endogeneity by adding some variables</li>
+<li class="fragment">A special case of endogeneity is a <strong>confounding factor</strong> a variable <span class="math inline">\(z\)</span> which causes at the same time <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
+</ul>
+</div>
+</section>
+<section id="instrument" class="slide level2">
+<h2>Instrument</h2>
+<p><span class="math display">\[y = a + b x + \epsilon\]</span></p>
+<div>
+<ul>
+<li class="fragment">Recall: endogeneity issue when <span class="math inline">\(\epsilon\)</span> is correlated with <span class="math inline">\(x\)</span></li>
+<li class="fragment">Instrument: a way to keep only the variability of <span class="math inline">\(x\)</span> that is independent from <span class="math inline">\(\epsilon\)</span>
+<ul>
+<li class="fragment">it needs to be correlated with <span class="math inline">\(x\)</span></li>
+<li class="fragment">not with any component of <span class="math inline">\(\epsilon\)</span></li>
+<li class="fragment">it needs to predict <span class="math inline">\(y\)</span></li>
+</ul></li>
+<li class="fragment">An instrument can be used to solve endogeneity issues</li>
+<li class="fragment">It can also establish the causality from <span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span>:
+<ul>
+<li class="fragment">since it is independent from <span class="math inline">\(\epsilon\)</span>, all its effect on <span class="math inline">\(y\)</span> goes through <span class="math inline">\(x\)</span></li>
+</ul></li>
+</ul>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -527,9 +819,9 @@ Pablo Winant
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1920,
 
-        height: 700,
+        height: 1080,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
