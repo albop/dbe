@@ -5580,7 +5580,7 @@
     "href": "slides/session_3/index_handout.html#student-test",
     "title": "Linear Regression",
     "section": "Student test",
-    "text": "Student test\n\nSo our estimate is \\(y = \\underbrace{0.121}_{\\tilde{\\alpha}} + \\underbrace{0.794}_{\\tilde{\\beta}} x\\).\n\nwe know \\(\\tilde{\\beta}\\) is a bit random (it’s an estimator)\nare we even sure \\(\\tilde{\\beta}\\) could not have been zero?\n\nStudent Test:\n\nH0: \\(\\beta=0\\)\nH1: \\(\\beta \\neq 0\\)\nStatistics: \\(t=\\frac{\\hat{\\beta}}{\\sigma(\\hat{\\beta})}\\)\n\nintuitively: compare mean of estimator to its standard deviation\nalso a function of degrees of freedom\n\n\nSignificance levels (read in a table or use software):\n\nfor 18 degrees of freedom, \\(P(|t|&gt;t^{\\star})=0.05\\) with \\(t^{\\star}=1.734\\)\nif \\(t&gt;t^{\\star}\\) we are \\(95%\\) confident the coefficient is significant",
+    "text": "Student test\n\n\nSo our estimate is \\(y = \\underbrace{0.121}_{\\tilde{\\alpha}} + \\underbrace{0.794}_{\\tilde{\\beta}} x\\).\n\nwe know \\(\\tilde{\\beta}\\) is a bit random (it’s an estimator)\nare we even sure \\(\\tilde{\\beta}\\) could not have been zero?\n\nStudent Test:\n\nH0: \\(\\beta=0\\)\nH1: \\(\\beta \\neq 0\\)\nStatistics: \\(t=\\frac{\\hat{\\beta}}{\\sigma(\\hat{\\beta})}\\)\n\nintuitively: compare mean of estimator to its standard deviation\nalso a function of degrees of freedom\n\n\nSignificance levels (read in a table or use software):\n\nfor 18 degrees of freedom, \\(P(|t|&gt;t^{\\star})=0.05\\) with \\(t^{\\star}=1.734\\)\nif \\(t&gt;t^{\\star}\\) we are \\(95%\\) confident the coefficient is significant",
     "crumbs": [
       "lectures",
       "Linear Regression"
@@ -5778,7 +5778,7 @@
     "href": "slides/session_3/index.html#student-test",
     "title": "Linear Regression",
     "section": "Student test",
-    "text": "Student test\n\nSo our estimate is \\(y = \\underbrace{0.121}_{\\tilde{\\alpha}} + \\underbrace{0.794}_{\\tilde{\\beta}} x\\).\n\nwe know \\(\\tilde{\\beta}\\) is a bit random (it’s an estimator)\nare we even sure \\(\\tilde{\\beta}\\) could not have been zero?\n\nStudent Test:\n\nH0: \\(\\beta=0\\)\nH1: \\(\\beta \\neq 0\\)\nStatistics: \\(t=\\frac{\\hat{\\beta}}{\\sigma(\\hat{\\beta})}\\)\n\nintuitively: compare mean of estimator to its standard deviation\nalso a function of degrees of freedom\n\n\nSignificance levels (read in a table or use software):\n\nfor 18 degrees of freedom, \\(P(|t|&gt;t^{\\star})=0.05\\) with \\(t^{\\star}=1.734\\)\nif \\(t&gt;t^{\\star}\\) we are \\(95%\\) confident the coefficient is significant"
+    "text": "Student test\n\n\nSo our estimate is \\(y = \\underbrace{0.121}_{\\tilde{\\alpha}} + \\underbrace{0.794}_{\\tilde{\\beta}} x\\).\n\nwe know \\(\\tilde{\\beta}\\) is a bit random (it’s an estimator)\nare we even sure \\(\\tilde{\\beta}\\) could not have been zero?\n\nStudent Test:\n\nH0: \\(\\beta=0\\)\nH1: \\(\\beta \\neq 0\\)\nStatistics: \\(t=\\frac{\\hat{\\beta}}{\\sigma(\\hat{\\beta})}\\)\n\nintuitively: compare mean of estimator to its standard deviation\nalso a function of degrees of freedom\n\n\nSignificance levels (read in a table or use software):\n\nfor 18 degrees of freedom, \\(P(|t|&gt;t^{\\star})=0.05\\) with \\(t^{\\star}=1.734\\)\nif \\(t&gt;t^{\\star}\\) we are \\(95%\\) confident the coefficient is significant"
   },
   {
     "objectID": "slides/session_3/index.html#student-tables",
