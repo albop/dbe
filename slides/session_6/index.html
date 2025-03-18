@@ -1107,7 +1107,7 @@ Explorer
 <ul>
 <li class="fragment">split needs to be random to avoid any bias</li>
 </ul></li>
-<li class="fragment">normalize the data
+<li class="fragment">normalize the data (i.e.&nbsp;rescale to <span class="math inline">\([-1,1]\)</span>)
 <ul>
 <li class="fragment">most ML algorithm are sensitive to scale</li>
 </ul></li>
@@ -1131,12 +1131,13 @@ Explorer
 <span id="cb1-10"><a></a>sc <span class="op">=</span> StandardScaler()</span>
 <span id="cb1-11"><a></a>X_train <span class="op">=</span> sc.fit_transform(X_train)</span>
 <span id="cb1-12"><a></a>X_test <span class="op">=</span> sc.transform(X_test)</span>
-<span id="cb1-13"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb1-14"><a></a>model <span class="op">=</span> LinearRegression()</span>
-<span id="cb1-15"><a></a>model.fit(X_train, y_train)</span>
-<span id="cb1-16"><a></a></span>
-<span id="cb1-17"><a></a>model.score(X_test, y_test)</span>
-<span id="cb1-18"><a></a>model.predict(X_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-13"><a></a></span>
+<span id="cb1-14"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-15"><a></a>model <span class="op">=</span> LinearRegression()</span>
+<span id="cb1-16"><a></a>model.fit(X_train, y_train)</span>
+<span id="cb1-17"><a></a></span>
+<span id="cb1-18"><a></a>model.score(X_test, y_test)</span>
+<span id="cb1-19"><a></a>model.predict(X_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>The workflow is always the same, no matter what the model is</p>

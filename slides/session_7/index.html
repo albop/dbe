@@ -218,7 +218,7 @@ Pablo Winant
 <ul>
 <li>Goal is to make a <em>prediction</em> <span class="math inline">\(c_n = f(x_{1,1}, ... x_{k,n})\)</span> …</li>
 <li>…where <span class="math inline">\(c_i\)</span> is a binary variable (<span class="math inline">\(\in\{0,1\}\)</span>)</li>
-<li>… and <span class="math inline">\((x_{i,n})_k\)</span>, <span class="math inline">\(k\)</span> different features to predict <span class="math inline">\(c_n\)</span></li>
+<li>… and <span class="math inline">\((x_{i,n})_{k\in[1,n]}\)</span>, <span class="math inline">\(k\)</span> different features to predict <span class="math inline">\(c_n\)</span></li>
 </ul></li>
 <li>Multicategory Classification
 <ul>
@@ -244,6 +244,7 @@ Pablo Winant
 <h2>Logistic regression</h2>
 <ul>
 <li>The linear model predicts an intensity/score (not a category) <span class="math display">\[ f(x_1, ..., x_n) = \sigma( \underbrace{a_0 + a_1 x_1 + a_2 x_2 + \cdots a_n x_n }_{\text{score}})\]</span></li>
+<li><span class="math inline">\(f\)</span> can be interpreted as the “probability” to be 1 rather than 0.</li>
 <li>To make a prediction: round to 0 or 1.</li>
 </ul>
 
@@ -375,9 +376,6 @@ Can use a nonlinear kernel.</li>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
 <span id="cb3-2"><a></a>clf <span class="op">=</span> Ridge(random_state<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section>
 <section id="validation" class="title-slide slide level1 center">
@@ -444,13 +442,16 @@ Can use a nonlinear kernel.</li>
 <li>True Positive Identification rate of over 80% at a fixed number of False Positive Alerts.29 nov. 2022</li>
 </ul>
 <div class="fragment">
-<p>Interpretation? Is failure rate <a href="https://time.com/5770976/london-facial-recognition-police/">too high</a>?</p>
+<p>But reporters found a 81% are <a href="https://time.com/5770976/london-facial-recognition-police/">misidentication</a> rate</p>
+</div>
+<div class="fragment">
+<p>Interpretation? Is it working?</p>
 </div>
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
 
-<img data-src="graphs/classification_score.png" class="r-stretch quarto-figure-center"><p class="caption">In-sample confusion matrix</p><p>Based on consumer data, an algorithm tries to predict the credit score from.</p>
+<img data-src="graphs/classification_score.png" class="r-stretch quarto-figure-center"><p class="caption">In-sample confusion matrix</p><p>Based on consumer data, an algorithm tries to predict the credit score from various client characeristics. The predictions are reported in the confusion matrix.</p>
 <p>Can you calculate: FPR, TPR and overall accuracy?</p>
 </section>
 <section id="confusion-matrix-with-sklearn" class="slide level2">
@@ -464,9 +465,6 @@ Can use a nonlinear kernel.</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
 <span id="cb5-2"><a></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>

@@ -3427,7 +3427,7 @@
   {
     "objectID": "slides/session_9/index_handout.html",
     "href": "slides/session_9/index_handout.html",
-    "title": "Large Language Models for Finance",
+    "title": "Large Language Models",
     "section": "",
     "text": "Come back later!."
   },
@@ -4721,7 +4721,7 @@
     "href": "slides/session_7/index_handout.html",
     "title": "Introduction to Machine Learning (2)",
     "section": "",
-    "text": "Binary Classification\n\nGoal is to make a prediction \\(c_n = f(x_{1,1}, ... x_{k,n})\\) …\n…where \\(c_i\\) is a binary variable (\\(\\in\\{0,1\\}\\))\n… and \\((x_{i,n})_k\\), \\(k\\) different features to predict \\(c_n\\)\n\nMulticategory Classification\n\nThe variable to predict takes values in a non ordered set with \\(p\\) different values\n\n\n\n\n\n\n\n\nGiven a regression model (a linear predictor) \\[ a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n \\]\none can build a classification model: \\[ f(x_1, ..., x_n) = \\sigma( a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n )\\] where \\(\\sigma(x)=\\frac{1}{1+\\exp(-x)}\\) is the logistic function a.k.a. sigmoid\nThe loss function to minimize is: \\[L() = \\sum_n (c_n - \\sigma( a_{0} + a_1 x_{1,n} + a_2 x_{2,n} + \\cdots a_k x_{k,n} ) )^2\\]\nThis works for any regression model (LASSO, RIDGE, nonlinear…)\n\n\n\n\n\n\n\n\n\nThe linear model predicts an intensity/score (not a category) \\[ f(x_1, ..., x_n) = \\sigma( \\underbrace{a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n }_{\\text{score}})\\]\nTo make a prediction: round to 0 or 1.\n\n\n\n\n\n\n\nIf there are \\(P\\) categories to predict:\n\nbuild a linear predictor \\(f_p\\) for each category \\(p\\)\nlinear predictor is also called score\n\nTo predict:\n\nevaluate the score of all categories\nchoose the one with highest score\n\nTo train the model:\n\ntrain separately all scores (works for any predictor, not just linear)\n… there are more subtle approaches (not here)",
+    "text": "Binary Classification\n\nGoal is to make a prediction \\(c_n = f(x_{1,1}, ... x_{k,n})\\) …\n…where \\(c_i\\) is a binary variable (\\(\\in\\{0,1\\}\\))\n… and \\((x_{i,n})_{k\\in[1,n]}\\), \\(k\\) different features to predict \\(c_n\\)\n\nMulticategory Classification\n\nThe variable to predict takes values in a non ordered set with \\(p\\) different values\n\n\n\n\n\n\n\n\nGiven a regression model (a linear predictor) \\[ a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n \\]\none can build a classification model: \\[ f(x_1, ..., x_n) = \\sigma( a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n )\\] where \\(\\sigma(x)=\\frac{1}{1+\\exp(-x)}\\) is the logistic function a.k.a. sigmoid\nThe loss function to minimize is: \\[L() = \\sum_n (c_n - \\sigma( a_{0} + a_1 x_{1,n} + a_2 x_{2,n} + \\cdots a_k x_{k,n} ) )^2\\]\nThis works for any regression model (LASSO, RIDGE, nonlinear…)\n\n\n\n\n\n\n\n\n\nThe linear model predicts an intensity/score (not a category) \\[ f(x_1, ..., x_n) = \\sigma( \\underbrace{a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n }_{\\text{score}})\\]\n\\(f\\) can be interpreted as the “probability” to be 1 rather than 0.\nTo make a prediction: round to 0 or 1.\n\n\n\n\n\n\n\nIf there are \\(P\\) categories to predict:\n\nbuild a linear predictor \\(f_p\\) for each category \\(p\\)\nlinear predictor is also called score\n\nTo predict:\n\nevaluate the score of all categories\nchoose the one with highest score\n\nTo train the model:\n\ntrain separately all scores (works for any predictor, not just linear)\n… there are more subtle approaches (not here)",
     "crumbs": [
       "lectures",
       "Introduction to Machine Learning (2)"
@@ -4732,7 +4732,7 @@
     "href": "slides/session_7/index_handout.html#classification-problem",
     "title": "Introduction to Machine Learning (2)",
     "section": "",
-    "text": "Binary Classification\n\nGoal is to make a prediction \\(c_n = f(x_{1,1}, ... x_{k,n})\\) …\n…where \\(c_i\\) is a binary variable (\\(\\in\\{0,1\\}\\))\n… and \\((x_{i,n})_k\\), \\(k\\) different features to predict \\(c_n\\)\n\nMulticategory Classification\n\nThe variable to predict takes values in a non ordered set with \\(p\\) different values",
+    "text": "Binary Classification\n\nGoal is to make a prediction \\(c_n = f(x_{1,1}, ... x_{k,n})\\) …\n…where \\(c_i\\) is a binary variable (\\(\\in\\{0,1\\}\\))\n… and \\((x_{i,n})_{k\\in[1,n]}\\), \\(k\\) different features to predict \\(c_n\\)\n\nMulticategory Classification\n\nThe variable to predict takes values in a non ordered set with \\(p\\) different values",
     "crumbs": [
       "lectures",
       "Introduction to Machine Learning (2)"
@@ -4754,7 +4754,7 @@
     "href": "slides/session_7/index_handout.html#logistic-regression-1",
     "title": "Introduction to Machine Learning (2)",
     "section": "",
-    "text": "The linear model predicts an intensity/score (not a category) \\[ f(x_1, ..., x_n) = \\sigma( \\underbrace{a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n }_{\\text{score}})\\]\nTo make a prediction: round to 0 or 1.",
+    "text": "The linear model predicts an intensity/score (not a category) \\[ f(x_1, ..., x_n) = \\sigma( \\underbrace{a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n }_{\\text{score}})\\]\n\\(f\\) can be interpreted as the “probability” to be 1 rather than 0.\nTo make a prediction: round to 0 or 1.",
     "crumbs": [
       "lectures",
       "Introduction to Machine Learning (2)"
@@ -4853,7 +4853,7 @@
     "href": "slides/session_7/index_handout.html#example-london-police",
     "title": "Introduction to Machine Learning (2)",
     "section": "Example: London Police",
-    "text": "Example: London Police\n\n\n\nPolice cameras in London\n\n\nAccording to London Police the cameras in London have\n\nTrue Positive Identification rate of over 80% at a fixed number of False Positive Alerts.29 nov. 2022\n\n. . .\nInterpretation? Is failure rate too high?",
+    "text": "Example: London Police\n\n\n\nPolice cameras in London\n\n\nAccording to London Police the cameras in London have\n\nTrue Positive Identification rate of over 80% at a fixed number of False Positive Alerts.29 nov. 2022\n\n. . .\nBut reporters found a 81% are misidentication rate\n. . .\nInterpretation? Is it working?",
     "crumbs": [
       "lectures",
       "Introduction to Machine Learning (2)"
@@ -4864,7 +4864,7 @@
     "href": "slides/session_7/index_handout.html#example",
     "title": "Introduction to Machine Learning (2)",
     "section": "Example",
-    "text": "Example\n\n\n\nIn-sample confusion matrix\n\n\nBased on consumer data, an algorithm tries to predict the credit score from.\nCan you calculate: FPR, TPR and overall accuracy?",
+    "text": "Example\n\n\n\nIn-sample confusion matrix\n\n\nBased on consumer data, an algorithm tries to predict the credit score from various client characeristics. The predictions are reported in the confusion matrix.\nCan you calculate: FPR, TPR and overall accuracy?",
     "crumbs": [
       "lectures",
       "Introduction to Machine Learning (2)"
@@ -4886,7 +4886,7 @@
     "href": "slides/session_7/index.html#classification-problem",
     "title": "Introduction to Machine Learning (2)",
     "section": "Classification problem",
-    "text": "Classification problem\n\nBinary Classification\n\nGoal is to make a prediction \\(c_n = f(x_{1,1}, ... x_{k,n})\\) …\n…where \\(c_i\\) is a binary variable (\\(\\in\\{0,1\\}\\))\n… and \\((x_{i,n})_k\\), \\(k\\) different features to predict \\(c_n\\)\n\nMulticategory Classification\n\nThe variable to predict takes values in a non ordered set with \\(p\\) different values"
+    "text": "Classification problem\n\nBinary Classification\n\nGoal is to make a prediction \\(c_n = f(x_{1,1}, ... x_{k,n})\\) …\n…where \\(c_i\\) is a binary variable (\\(\\in\\{0,1\\}\\))\n… and \\((x_{i,n})_{k\\in[1,n]}\\), \\(k\\) different features to predict \\(c_n\\)\n\nMulticategory Classification\n\nThe variable to predict takes values in a non ordered set with \\(p\\) different values"
   },
   {
     "objectID": "slides/session_7/index.html#logistic-regression",
@@ -4900,7 +4900,7 @@
     "href": "slides/session_7/index.html#logistic-regression-1",
     "title": "Introduction to Machine Learning (2)",
     "section": "Logistic regression",
-    "text": "Logistic regression\n\nThe linear model predicts an intensity/score (not a category) \\[ f(x_1, ..., x_n) = \\sigma( \\underbrace{a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n }_{\\text{score}})\\]\nTo make a prediction: round to 0 or 1."
+    "text": "Logistic regression\n\nThe linear model predicts an intensity/score (not a category) \\[ f(x_1, ..., x_n) = \\sigma( \\underbrace{a_0 + a_1 x_1 + a_2 x_2 + \\cdots a_n x_n }_{\\text{score}})\\]\n\\(f\\) can be interpreted as the “probability” to be 1 rather than 0.\nTo make a prediction: round to 0 or 1."
   },
   {
     "objectID": "slides/session_7/index.html#multinomial-regression",
@@ -4963,14 +4963,14 @@
     "href": "slides/session_7/index.html#example-london-police",
     "title": "Introduction to Machine Learning (2)",
     "section": "Example: London Police",
-    "text": "Example: London Police\n\nPolice cameras in LondonAccording to London Police the cameras in London have\n\nTrue Positive Identification rate of over 80% at a fixed number of False Positive Alerts.29 nov. 2022\n\n\nInterpretation? Is failure rate too high?"
+    "text": "Example: London Police\n\nPolice cameras in LondonAccording to London Police the cameras in London have\n\nTrue Positive Identification rate of over 80% at a fixed number of False Positive Alerts.29 nov. 2022\n\n\nBut reporters found a 81% are misidentication rate\n\n\nInterpretation? Is it working?"
   },
   {
     "objectID": "slides/session_7/index.html#example",
     "href": "slides/session_7/index.html#example",
     "title": "Introduction to Machine Learning (2)",
     "section": "Example",
-    "text": "Example\n\nIn-sample confusion matrixBased on consumer data, an algorithm tries to predict the credit score from.\nCan you calculate: FPR, TPR and overall accuracy?"
+    "text": "Example\n\nIn-sample confusion matrixBased on consumer data, an algorithm tries to predict the credit score from various client characeristics. The predictions are reported in the confusion matrix.\nCan you calculate: FPR, TPR and overall accuracy?"
   },
   {
     "objectID": "slides/session_7/index.html#confusion-matrix-with-sklearn",
@@ -5585,7 +5585,7 @@
     "href": "slides/session_6/index_handout.html#in-practice",
     "title": "Introduction to Machine Learning",
     "section": "In practice",
-    "text": "In practice\n\n\nBasic sklearn workflow:\n\n\nimport data\n\nfeatures: a matrix X (2d numpy array)\nlabels: a vector y (1d numpy array)\n\nsplit the data, between training and test datasets\n\nsplit needs to be random to avoid any bias\n\nnormalize the data\n\nmost ML algorithm are sensitive to scale\n\ncreate a model (independent from data)\ntrain the model on training dataset\nevaluate accuracy on test dataset (here \\(R^2\\))\nuse the model to make predictions\n\n\n\n\nfrom sklearn.datasets import load_diabetes\ndataset = load_diabetes()\nX = dataset['data']\ny = dataset['target']\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.1)\n\n#Feature Scaling\nfrom sklearn.preprocessing import StandardScaler\nsc = StandardScaler()\nX_train = sc.fit_transform(X_train)\nX_test = sc.transform(X_test)\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\n\nmodel.score(X_test, y_test)\nmodel.predict(X_new)\n\n\nThe workflow is always the same, no matter what the model is\n\ntry sklearn.linear_model.Lasso instead of LinearRegression",
+    "text": "In practice\n\n\nBasic sklearn workflow:\n\n\nimport data\n\nfeatures: a matrix X (2d numpy array)\nlabels: a vector y (1d numpy array)\n\nsplit the data, between training and test datasets\n\nsplit needs to be random to avoid any bias\n\nnormalize the data (i.e. rescale to \\([-1,1]\\))\n\nmost ML algorithm are sensitive to scale\n\ncreate a model (independent from data)\ntrain the model on training dataset\nevaluate accuracy on test dataset (here \\(R^2\\))\nuse the model to make predictions\n\n\n\n\nfrom sklearn.datasets import load_diabetes\ndataset = load_diabetes()\nX = dataset['data']\ny = dataset['target']\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.1)\n\n#Feature Scaling\nfrom sklearn.preprocessing import StandardScaler\nsc = StandardScaler()\nX_train = sc.fit_transform(X_train)\nX_test = sc.transform(X_test)\n\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\n\nmodel.score(X_test, y_test)\nmodel.predict(X_new)\n\n\nThe workflow is always the same, no matter what the model is\n\ntry sklearn.linear_model.Lasso instead of LinearRegression",
     "crumbs": [
       "lectures",
       "Introduction to Machine Learning"
@@ -5803,7 +5803,7 @@
     "href": "slides/session_6/index.html#in-practice",
     "title": "Introduction to Machine Learning",
     "section": "In practice",
-    "text": "In practice\n\n\nBasic sklearn workflow:\n\n\nimport data\n\nfeatures: a matrix X (2d numpy array)\nlabels: a vector y (1d numpy array)\n\nsplit the data, between training and test datasets\n\nsplit needs to be random to avoid any bias\n\nnormalize the data\n\nmost ML algorithm are sensitive to scale\n\ncreate a model (independent from data)\ntrain the model on training dataset\nevaluate accuracy on test dataset (here \\(R^2\\))\nuse the model to make predictions\n\n\n\n\nfrom sklearn.datasets import load_diabetes\ndataset = load_diabetes()\nX = dataset['data']\ny = dataset['target']\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.1)\n\n#Feature Scaling\nfrom sklearn.preprocessing import StandardScaler\nsc = StandardScaler()\nX_train = sc.fit_transform(X_train)\nX_test = sc.transform(X_test)\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\n\nmodel.score(X_test, y_test)\nmodel.predict(X_new)\n\n\nThe workflow is always the same, no matter what the model is\n\ntry sklearn.linear_model.Lasso instead of LinearRegression"
+    "text": "In practice\n\n\nBasic sklearn workflow:\n\n\nimport data\n\nfeatures: a matrix X (2d numpy array)\nlabels: a vector y (1d numpy array)\n\nsplit the data, between training and test datasets\n\nsplit needs to be random to avoid any bias\n\nnormalize the data (i.e. rescale to \\([-1,1]\\))\n\nmost ML algorithm are sensitive to scale\n\ncreate a model (independent from data)\ntrain the model on training dataset\nevaluate accuracy on test dataset (here \\(R^2\\))\nuse the model to make predictions\n\n\n\n\nfrom sklearn.datasets import load_diabetes\ndataset = load_diabetes()\nX = dataset['data']\ny = dataset['target']\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.1)\n\n#Feature Scaling\nfrom sklearn.preprocessing import StandardScaler\nsc = StandardScaler()\nX_train = sc.fit_transform(X_train)\nX_test = sc.transform(X_test)\n\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\n\nmodel.score(X_test, y_test)\nmodel.predict(X_new)\n\n\nThe workflow is always the same, no matter what the model is\n\ntry sklearn.linear_model.Lasso instead of LinearRegression"
   },
   {
     "objectID": "slides/session_6/index.html#k-fold-validation-with-sklearn",
@@ -5817,14 +5817,14 @@
     "href": "index.html",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 15, 2025\n\n\nIntroduction\n\n\n\n\nJan 21, 2025\n\n\nDataframes\n\n\n\n\nJan 29, 2025\n\n\nLinear Regression\n\n\n\n\nFeb 5, 2025\n\n\nMultiple Regression\n\n\n\n\nFeb 12, 2025\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 19, 2025\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 4, 2025\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\nMar 25, 2025\n\n\nText Analysis\n\n\n\n\nApr 1, 2025\n\n\nLarge Language Models for Finance\n\n\n\n\nApr 8, 2025\n\n\nFinal Exam 🤞\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 15, 2025\n\n\nIntroduction\n\n\n\n\nJan 21, 2025\n\n\nDataframes\n\n\n\n\nJan 29, 2025\n\n\nLinear Regression\n\n\n\n\nFeb 5, 2025\n\n\nMultiple Regression\n\n\n\n\nFeb 12, 2025\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 19, 2025\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 4, 2025\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\nMar 25, 2025\n\n\nText Analysis\n\n\n\n\nApr 1, 2025\n\n\nLarge Language Models\n\n\n\n\nApr 8, 2025\n\n\nFinal Exam 🤞\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#schedule",
     "href": "index.html#schedule",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 15, 2025\n\n\nIntroduction\n\n\n\n\nJan 21, 2025\n\n\nDataframes\n\n\n\n\nJan 29, 2025\n\n\nLinear Regression\n\n\n\n\nFeb 5, 2025\n\n\nMultiple Regression\n\n\n\n\nFeb 12, 2025\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 19, 2025\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 4, 2025\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\nMar 25, 2025\n\n\nText Analysis\n\n\n\n\nApr 1, 2025\n\n\nLarge Language Models for Finance\n\n\n\n\nApr 8, 2025\n\n\nFinal Exam 🤞\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 15, 2025\n\n\nIntroduction\n\n\n\n\nJan 21, 2025\n\n\nDataframes\n\n\n\n\nJan 29, 2025\n\n\nLinear Regression\n\n\n\n\nFeb 5, 2025\n\n\nMultiple Regression\n\n\n\n\nFeb 12, 2025\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 19, 2025\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 4, 2025\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\nMar 25, 2025\n\n\nText Analysis\n\n\n\n\nApr 1, 2025\n\n\nLarge Language Models\n\n\n\n\nApr 8, 2025\n\n\nFinal Exam 🤞\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#evaluation",

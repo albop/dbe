@@ -291,7 +291,7 @@ window.Quarto = {
 <ul>
 <li>Goal is to make a <em>prediction</em> <span class="math inline">\(c_n = f(x_{1,1}, ... x_{k,n})\)</span> …</li>
 <li>…where <span class="math inline">\(c_i\)</span> is a binary variable (<span class="math inline">\(\in\{0,1\}\)</span>)</li>
-<li>… and <span class="math inline">\((x_{i,n})_k\)</span>, <span class="math inline">\(k\)</span> different features to predict <span class="math inline">\(c_n\)</span></li>
+<li>… and <span class="math inline">\((x_{i,n})_{k\in[1,n]}\)</span>, <span class="math inline">\(k\)</span> different features to predict <span class="math inline">\(c_n\)</span></li>
 </ul></li>
 <li>Multicategory Classification
 <ul>
@@ -318,6 +318,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="logistic-regression-1">Logistic regression</h2>
 <ul>
 <li>The linear model predicts an intensity/score (not a category) <span class="math display">\[ f(x_1, ..., x_n) = \sigma( \underbrace{a_0 + a_1 x_1 + a_2 x_2 + \cdots a_n x_n }_{\text{score}})\]</span></li>
+<li><span class="math inline">\(f\)</span> can be interpreted as the “probability” to be 1 rather than 0.</li>
 <li>To make a prediction: round to 0 or 1.</li>
 </ul>
 <p><img src="graphs/datacamp.jpeg" width="60%"></p>
@@ -449,12 +450,10 @@ Can use a nonlinear kernel.</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> Ridge(random_state<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
 </section>
 </section>
 <section id="validation" class="level1">
 <h1>Validation</h1>
-<hr>
 <section id="validity-of-a-classification-algorithm" class="level2">
 <h2 class="anchored" data-anchor-id="validity-of-a-classification-algorithm">Validity of a classification algorithm</h2>
 <ul>
@@ -468,7 +467,6 @@ Can use a nonlinear kernel.</li>
 <li>note that this is not the same as the loss function minimized by the training</li>
 </ul></li>
 </ul>
-<hr>
 </section>
 <section id="classification-matrix" class="level2">
 <h2 class="anchored" data-anchor-id="classification-matrix">Classification matrix</h2>
@@ -519,8 +517,9 @@ Can use a nonlinear kernel.</li>
 <li>True Positive Identification rate of over 80% at a fixed number of False Positive Alerts.29 nov. 2022</li>
 </ul>
 <p>. . .</p>
-<p>Interpretation? Is failure rate <a href="https://time.com/5770976/london-facial-recognition-police/">too high</a>?</p>
-<hr>
+<p>But reporters found a 81% are <a href="https://time.com/5770976/london-facial-recognition-police/">misidentication</a> rate</p>
+<p>. . .</p>
+<p>Interpretation? Is it working?</p>
 </section>
 <section id="example" class="level2">
 <h2 class="anchored" data-anchor-id="example">Example</h2>
@@ -530,7 +529,7 @@ Can use a nonlinear kernel.</li>
 <figcaption>In-sample confusion matrix</figcaption>
 </figure>
 </div>
-<p>Based on consumer data, an algorithm tries to predict the credit score from.</p>
+<p>Based on consumer data, an algorithm tries to predict the credit score from various client characeristics. The predictions are reported in the confusion matrix.</p>
 <p>Can you calculate: FPR, TPR and overall accuracy?</p>
 </section>
 <section id="confusion-matrix-with-sklearn" class="level2">
@@ -544,7 +543,6 @@ Can use a nonlinear kernel.</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
 
 
 </section>
