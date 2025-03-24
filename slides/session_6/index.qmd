@@ -1,7 +1,7 @@
 ---
 title: Introduction to Machine Learning
-date: 2024/02/28
-subtitle: Data-Based Economics, ESCP, 2023-2024
+date: 2025/02/19
+subtitle: Data-Based Economics, ESCP, 2024-2025
 author: Pablo Winant
 format:
   revealjs:
@@ -227,7 +227,8 @@ __supervised: regression__:
 __supervised: classification__
 
 - Output is discrete
-- Regular trick: $\sigma(f(x; \theta))$ where $\sigma(x)=\frac{1}{1-e^{-x}}$
+- A regression with discrete output
+  - train $\sigma(f(x; \theta))$ where $\sigma(x)=\frac{1}{1-e^{-x}}$
 
 
 ![classification](ml_graphs/classification.png)
@@ -372,16 +373,19 @@ $$\underbrace{y}_{\text{labels}} = a \underbrace{x}_{\text{features}} + b$$
 ## Difference with traditional regression
 
 
+::: {.incremental}
+
 - Big data requires other means to process the data:
-    - data is long: so many observations $x$ doesn't fit in the memory
+    - data is __long__: so many observations $x$ doesn't fit in the memory
         - need to use incremental training method to use only a subsample at a time
-    - data is wide: so many features, the model is crudely overspecified
+    - data is __wide__: so many features, the model is crudely overspecified
         - need to build dimension reduction into the objective
-    - data is nonlinear: 
+    - data is __nonlinear__: 
         - use nonlinear model (and nonlinear training)
     - data is not a simple vector...
         - same as nonlinear
 
+:::
 
 # Regression with long data
 
@@ -433,7 +437,7 @@ Incremental learning:
 - pick $N$ random observations (the batch)
   - regress them to get new estimate $a$, $b$
   - this minimizes the square of errors
-- update with learning rate $\beta$:
+- update with (possibly varying) learning rate $\beta_n$:
   -  $a_{n+1} \leftarrow a_n (1-\beta_n) + \beta_n a$
   -  $b_{n+1} \leftarrow b_n (1-\beta_n) + \beta_n b$
 - process is not biased (that is $a$ converges to the true value) as long as one decreases $\beta$ sufficiently fast over time (ex: $\beta_n=\frac{1}{n}$)
@@ -725,7 +729,7 @@ Basic sklearn workflow:
   - labels: a vector y (1d numpy array)
 - split the data, between training and test datasets
   - split needs to be random to avoid any bias
-- normalize the data
+- normalize the data (i.e. rescale to $[-1,1]$)
   - most ML algorithm are sensitive to scale
 
 - create a model (independent from data)
@@ -754,6 +758,7 @@ from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
+
 from sklearn.linear_model import LinearRegression
 model = LinearRegression()
 model.fit(X_train, y_train)

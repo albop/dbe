@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Machine Learning (2)"
-date: 2024/03/12
-subtitle: Data-Based Economics, ESCP, 2023-2024
+date: 2025/03/04
+subtitle: Data-Based Economics, ESCP, 2024-2025
 author: Pablo Winant
 format:
   revealjs:
@@ -25,7 +25,7 @@ format:
 - Binary Classification 
   - Goal is to make a *prediction* $c_n = f(x_{1,1}, ... x_{k,n})$ ...
   - ...where $c_i$ is a binary variable ($\in\{0,1\}$)
-  - ... and $(x_{i,n})_k$, $k$ different features to predict $c_n$
+  - ... and $(x_{i,n})_{k\in[1,n]}$, $k$ different features to predict $c_n$
 - Multicategory Classification
   - The variable to predict takes values in a non ordered set with $p$ different values
 
@@ -58,7 +58,9 @@ $$L() = \sum_n (c_n - \sigma( a_{0} + a_1 x_{1,n} + a_2 x_{2,n} + \cdots a_k x_{
 
 - The linear model predicts an intensity/score (not a category)
 $$ f(x_1, ..., x_n) = \sigma( \underbrace{a_0 + a_1 x_1 + a_2 x_2 + \cdots a_n x_n }_{\text{score}})$$
+- $f$ can be interpreted as the "probability" to be 1 rather than 0.
 - To make a prediction: round to 0 or 1.
+
 
 <img src=graphs/datacamp.jpeg width=60%>
 
@@ -201,12 +203,8 @@ clf = Ridge(random_state=0)
 ```
 
 
-
----
-
 # Validation
 
-----
 
 ## Validity of a classification algorithm
 
@@ -218,8 +216,6 @@ clf = Ridge(random_state=0)
 - Compute score: number of correctly identified categories
   - note that this is not the same as the loss function minimized by the training
 
-
-----
 
 ## Classification matrix
 
@@ -253,15 +249,17 @@ According to [London Police](https://www.google.com/search?q=accuracy+facial+rec
 
 . . .
 
-Interpretation? Is failure rate [too high](https://time.com/5770976/london-facial-recognition-police/)?
+But reporters found a 81% are [misidentication](https://time.com/5770976/london-facial-recognition-police/) rate
 
-----
+. . .
+
+Interpretation? Is it working?
 
 ## Example
 
 ![In-sample confusion matrix](graphs/classification_score.png)
 
-Based on consumer data, an algorithm tries to predict the credit score from.
+Based on consumer data, an algorithm tries to predict the credit score from various client characeristics. The predictions are reported in the confusion matrix.
 
 Can you calculate: FPR, TPR and overall accuracy?
 
@@ -281,5 +279,3 @@ y_pred = model.predict(x_test)
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 ```
-
-----

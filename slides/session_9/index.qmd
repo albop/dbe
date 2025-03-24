@@ -1,7 +1,7 @@
 ---
-title: "Large Language Models for Finance"
-date: 2024/03/26
-subtitle: Data-Based Economics, ESCP, 2023-2024
+title: "Large Language Models"
+date: 2025/04/01
+subtitle: Data-Based Economics, ESCP, 2024-2025
 author: Pablo Winant
 format:
   revealjs:
