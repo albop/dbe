@@ -1,14 +1,14 @@
 ---
 title: Dataframes
 subtitle: Data-Based Economics
-author: Year 2022-2023
-date: 2024/01/24
+author: Year 2024-2025
+date: 2025/01/21
 format:
   html: default
   revealjs:
     navigation: grid
-    width: 1920
-    height: 1080
+    width: 1600
+    height: 900
     output-file: slides.html
 aspectratio: 169
 
@@ -81,6 +81,7 @@ aspectratio: 169
   - in the 80s...
 -  probably worth looking at if you have some "data" ambitions
   -  you will see the shadow of SQL everywhere
+    - words like: join, merge, select, insert...
   - plenty of resources to learn (example: [sqbolt](https://sqlbolt.com/lesson/select_queries_introduction))
 
 ::::::
@@ -116,7 +117,7 @@ aspectratio: 169
   - very optimized
 - essentially a dataframe object
 - many options but if in doubt:
-  - [minimally sufficient pandas](https://medium.com/dunder-data/minimally-sufficient-pandas-a8e67f2a2428) is asmall subset of pandas to do everything
+  - [minimally sufficient pandas](https://medium.com/dunder-data/minimally-sufficient-pandas-a8e67f2a2428) is a small subset of pandas to do everything
 - tons of online tutorials
   - official documenation [doc](https://pandas.pydata.org/)
   - [quantecon](https://datascience.quantecon.org/pandas/index.html)
@@ -271,8 +272,6 @@ df
 - excel files: use `pd.read_excel()` or `xlsreader` if unlucky
   - note that excel does not store a dataframe (each cell is potentially different)
   - postprocessing is needed
-
-![](excel.jpg)
 
 
 ## Comma separated file

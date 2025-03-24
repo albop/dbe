@@ -1,8 +1,8 @@
 ---
 title: Introduction to Instrumental Variables
 author: Pablo Winant
-date: 2024/02/07
-subtitle: Data-Based Economics, ESCP, 2023-2024
+date: 2025/02/12
+subtitle: Data-Based Economics, ESCP, 2024-2025
 format:
   revealjs:
     toc: true

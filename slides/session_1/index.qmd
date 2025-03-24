@@ -1,13 +1,10 @@
 ---
 title: Introduction
 subtitle: Data-Based Economics
-author: Year 2023-2024
-date: 2024/01/17
+author: Year 2024-2025
+date: 2025/01/15
 format:
-  # html: default
   revealjs:
-    # width: 1920
-    # height: 1080
     menu:
       side: left
       width: normal
@@ -20,8 +17,7 @@ format:
 
 - Your instructors:
   - Pablo Winadnt: `pwinant@escp.eu` (course and tutorials)
-  - Rayane Hanifi: `rayane.hanifi@edu.escp.eu` (tutorials)
-  - Émilie Rannou: (session on LLMs)
+  - Rabab Khatib: `rabab.khatib@edu.escp.eu` (tutorials)
 - Hint: start your mail subject by `[dbe]`
 
 ## General (2)
@@ -46,6 +42,7 @@ format:
 
 - Most economists use data all the time
   - to illustrate facts
+    - or debunk myths
   - to test theories
 
 ## What do economists do ?
@@ -102,7 +99,7 @@ $$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanato
   -  young men who go to war receive *in average* lower wages when they return than men who didn't go to war
   - ... is it because they skipped college?
   - ... or did they choose to go to war because they were less skilled for college?
-- How to decide?
+- How to know which is right?
 
 :::
 
@@ -112,10 +109,12 @@ $$\underbrace{y}_{\text{dependent variable}} = a \underbrace{x}_{\text{explanato
 
 ::: {.incremental}
 
-- How to decide?
+- How to know which is right?
+
   -  find a way to extract *causality*
   -  instrumental variables
-  - This was worth a Nobel Prize! (D. Card, J. Angrist, G.W. Imbens)
+
+- This was worth a Nobel Prize! (D. Card, J. Angrist, G.W. Imbens)
 
 :::
 
@@ -256,11 +255,11 @@ Python has:
 
 - Researchers (econometricians or data scientists) spend 80% of their time writing code.
 - Presentation (plots, interactive apps) is key and relies on
-    - ... programming
+  - ... programming
 -  Interaction with code becomes unavoidable in business environment
-    - fixing the website
-    - querying the database, ...
-    - ...
+  - fixing the website
+  - querying the database, ...
+  - ...
 
 :::
 
@@ -272,14 +271,15 @@ Python has:
 
 - Worth investing a  bit of time to learn it
   - you can easily become an __expert__
-  - and can do *anything*
+- And can do *anything*
+- Have an AI do your work with the right API
 - Plus it's fun
 
 ::::
 
 :::: {.column}
 
-![import antigravity](python.png){width=20%}
+![import antigravity](python.png){width=10%}
 
 ::::
 
@@ -288,7 +288,6 @@ Python has:
 ## Why should you learn programming ? (2) {auto-animate="true"}
 
 ![import antigravity](python.png){width=100%}
-
 
 
 ## How good should you program ?

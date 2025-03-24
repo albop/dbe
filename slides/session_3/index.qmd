@@ -1,7 +1,7 @@
 ---
 title: "Linear Regression"
-date: 2024/01/31
-subtitle: Data-Based Economics, ESCP, 2023-2024
+date: 2025/01/29
+subtitle: Data-Based Economics, ESCP, 2024-2025
 author: Pablo Winant
 format:
   revealjs:
@@ -10,8 +10,8 @@ format:
     menu:
       side: left
       width: normal
-    width: 1920
-    height: 1080
+    width: 1600
+    height: 900
     filters:
     - shinylive
   html:
@@ -27,6 +27,7 @@ execute:
 ## A Simple Dataset
 
 Duncan's Occupational Prestige Data
+
 - Many *occupations* in 1950.
 - Education and prestige associated to each occupation
 
@@ -495,11 +496,11 @@ How confident am I in these estimates ?
 
 ::::: {.r-stack}
 
-![](graphs/regression_uncertainty_1.png){.fragment .current-visible data-fragment-index=1 width=100%}
+![](graphs/regression_uncertainty_1.png){.fragment .current-visible data-fragment-index=1 width=90%}
 
-![](graphs/regression_uncertainty_2.png){.fragment .current-visible data-fragment-index=2 width=100%}
+![](graphs/regression_uncertainty_2.png){.fragment .current-visible data-fragment-index=2 width=90%}
 
-![](graphs/regression_uncertainty_3.png){.fragment .current-visible data-fragment-index=3 width=100%}
+![](graphs/regression_uncertainty_3.png){.fragment .current-visible data-fragment-index=3 width=90%}
 
 :::::
 
@@ -544,27 +545,27 @@ How confident am I in these estimates ?
 
 ::::: r-stack
 
-![](graphs/random_estimates_1.png){.fragment .current-visible data-fragment-index=2}
+![](graphs/random_estimates_1.png){.fragment .current-visible data-fragment-index=2 width=80%}
 
-![](graphs/random_estimates_2.png){.fragment .current-visible data-fragment-index=3}
+![](graphs/random_estimates_2.png){.fragment .current-visible data-fragment-index=3 width=80%}
 
-![](graphs/random_estimates_3.png){.fragment .current-visible data-fragment-index=4}
+![](graphs/random_estimates_3.png){.fragment .current-visible data-fragment-index=4 width=80%}
 
-![](graphs/random_estimates_4.png){.fragment .current-visible data-fragment-index=5}
+![](graphs/random_estimates_4.png){.fragment .current-visible data-fragment-index=5 width=80%}
 
-![](graphs/random_estimates_5.png){.fragment .current-visible data-fragment-index=6}
+![](graphs/random_estimates_5.png){.fragment .current-visible data-fragment-index=6 width=80%}
 
-![](graphs/random_estimates_6.png){.fragment .current-visible data-fragment-index=7}
+![](graphs/random_estimates_6.png){.fragment .current-visible data-fragment-index=7 width=80%}
 
-![](graphs/random_estimates_7.png){.fragment .current-visible data-fragment-index=8}
+![](graphs/random_estimates_7.png){.fragment .current-visible data-fragment-index=8 width=80%}
 
-![](graphs/random_estimates_8.png){.fragment .current-visible data-fragment-index=9}
+![](graphs/random_estimates_8.png){.fragment .current-visible data-fragment-index=9 width=80%}
 
-![](graphs/random_estimates_9.png){.fragment .current-visible data-fragment-index=10}
+![](graphs/random_estimates_9.png){.fragment .current-visible data-fragment-index=10 width=80%}
 
-![](graphs/random_estimates_10.png){.fragment .current-visible data-fragment-index=11}
+![](graphs/random_estimates_10.png){.fragment .current-visible data-fragment-index=11 width=80%}
 
-![](graphs/random_estimates_100.png){.fragment .current-visible data-fragment-index=12}
+![](graphs/random_estimates_100.png){.fragment .current-visible data-fragment-index=12 width=80%}
 
 :::::
 
@@ -652,6 +653,7 @@ In social science, typical required p-value is 5%.
 
 ## Student test
 
+::: {.incremental}
 
 - So our estimate is $y = \underbrace{0.121}_{\tilde{\alpha}} + \underbrace{0.794}_{\tilde{\beta}} x$.
     - we know $\tilde{\beta}$ is a bit random (it's an estimator)
@@ -668,6 +670,7 @@ In social science, typical required p-value is 5%.
   - for 18 degrees of freedom, $P(|t|>t^{\star})=0.05$  with $t^{\star}=1.734$
   - if $t>t^{\star}$ we are $95%$ confident the coefficient is *significant*
 
+:::
 
 ## Student tables
 
