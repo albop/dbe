@@ -3418,11 +3418,256 @@
     "text": "Philips Curve and Okun’s Law\nIf needed, install dbnomics with !pip install dbnomics.\n\nDownload inflation, unemployment and gdp series from France.\n\nThere is a clear tutorial on how to use dbnomics available from Quantecon. There are two ways to import a dbnomics series:\n\nuse api link\nuse the organization/database/series identifiers\n\nDownload with the API was broken when we tried in class (the website returned an incorrect json file), so we will use the second method. (update: this seems to be fixed now)\nOn the dbnomics website we search for “inflation france” and decide to use OECD database. We eventually obtain the following page:\n\nFrom this page we obtain the series identifier: OECD/MEI/FRA.CPALTT01.CTGY.M\nIt is split in three parts: - organization: OECD - database: KEY (Key Economic Indicators) - series: CPALTT01.FRA.GY.A\nWe use these elements to import a series with dbnomics:\n\nimport dbnomics\ndf_inflation = dbnomics.fetch_series('OECD', 'KEI', 'CPALTT01.FRA.GY.A')\ndf_inflation.head()\n\n\n\n\n\n\n\n\n@frequency\nprovider_code\ndataset_code\ndataset_name\nseries_code\nseries_name\noriginal_period\nperiod\noriginal_value\nvalue\nSUBJECT\nLOCATION\nMEASURE\nFREQUENCY\nSubject\nCountry\nMeasure\nFrequency\n\n\n\n\n0\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1956\n1956-01-01\n1.897315\n1.897315\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n\n\n1\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1957\n1957-01-01\n3.057669\n3.057669\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n\n\n2\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1958\n1958-01-01\n15.260526\n15.260526\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n\n\n3\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1959\n1959-01-01\n5.815255\n5.815255\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n\n\n4\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1960\n1960-01-01\n4.139938\n4.139938\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n\n\n\n\n\n\n\n\n# equivalent:\n# df_inflation = dbnomics.fetch_series_by_api_link(...)\n# df_inflation\n\n\n# let's check it is not empty:\ndf_inflation.head()\n\n\n\n\n\n\n\n\n@frequency\nprovider_code\ndataset_code\ndataset_name\nseries_code\nseries_name\noriginal_period\nperiod\noriginal_value\nvalue\nSUBJECT\nLOCATION\nMEASURE\nFREQUENCY\nSubject\nCountry\nMeasure\nFrequency\n\n\n\n\n0\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1956\n1956-01-01\n1.897315\n1.897315\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n\n\n1\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1957\n1957-01-01\n3.057669\n3.057669\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n\n\n2\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1958\n1958-01-01\n15.260526\n15.260526\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n\n\n3\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1959\n1959-01-01\n5.815255\n5.815255\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n\n\n4\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1960\n1960-01-01\n4.139938\n4.139938\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n\n\n\n\n\n\n\n\n# we see the column associated with the values is called 'value'\n# the one associated with date is called `period`\ndisplay( df_inflation['value'].head() )\ndisplay( df_inflation['period'].head() )\n\n0     1.897315\n1     3.057669\n2    15.260526\n3     5.815255\n4     4.139938\nName: value, dtype: float64\n\n\n0   1956-01-01\n1   1957-01-01\n2   1958-01-01\n3   1959-01-01\n4   1960-01-01\nName: period, dtype: datetime64[ns]\n\n\n\nplt.plot(df_inflation['period'],df_inflation['value'])\n\n\n\n\n\n\n\n\nWe follow the same steps for unemployment and gdp. For the sake of simplicity, we choose annual frequency for all series. Not that the series on unemployment starts on only in 2004. That will be enough for the current purpose.\n\n# we proceed similarly for unemployment and gdp\ndf_gdp = dbnomics.fetch_series('OECD', 'MEI', 'FRA.NAEXCP01.STSA.A')\ndf_unemployment = dbnomics.fetch_series('OECD', 'CSPCUBE', 'UNEMPLRT_T1C.FRA')\n\n\n# let's look at what we have\nplt.figure(figsize=(10,5))\nplt.subplot(131)\nplt.plot(df_unemployment['period'], df_unemployment['value'])\nplt.title('unemployment')\nplt.subplot(132)\nplt.plot(df_gdp['period'], df_gdp['value'])\nplt.title('gdp')\nplt.subplot(133)\nplt.plot(df_inflation['period'], df_inflation['value'])\nplt.title(\"inflation\")\nplt.tight_layout()\n\n\n\n\n\n\n\n\n\n# before we proceed, let's create some new columns to avoid conflicts\ndf_inflation['inflation'] = df_inflation['value']\ndf_inflation.head()\n\n\n\n\n\n\n\n\n@frequency\nprovider_code\ndataset_code\ndataset_name\nseries_code\nseries_name\noriginal_period\nperiod\noriginal_value\nvalue\nSUBJECT\nLOCATION\nMEASURE\nFREQUENCY\nSubject\nCountry\nMeasure\nFrequency\ninflation\n\n\n\n\n0\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1956\n1956-01-01\n1.897315\n1.897315\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n1.897315\n\n\n1\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1957\n1957-01-01\n3.057669\n3.057669\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n3.057669\n\n\n2\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1958\n1958-01-01\n15.260526\n15.260526\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n15.260526\n\n\n3\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1959\n1959-01-01\n5.815255\n5.815255\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n5.815255\n\n\n4\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.FRA.GY.A\nConsumer prices: all items – France – Growth o...\n1960\n1960-01-01\n4.139938\n4.139938\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n4.139938\n\n\n\n\n\n\n\n\ndf_gdp['gdp'] = df_gdp['value']\ndf_unemployment['unemployment'] = df_unemployment['value']\n\n\n# the following table contains both gdp and inflation\n# note that when there was any ambiguity_x suffixes were added to the gdp table, and _y suffixes added to inflation table\n# this is why we added another column with the good name.\n# as for the period column, since it had the same meaning for both tables, it is not renamed\nddf = df_gdp.merge(df_inflation, on='period')\nddf.head()\n\n\n\n\n\n\n\n\n@frequency_x\nprovider_code_x\ndataset_code_x\ndataset_name_x\nseries_code_x\nseries_name_x\noriginal_period_x\nperiod\noriginal_value_x\nvalue_x\n...\nvalue_y\nSUBJECT_y\nLOCATION_y\nMEASURE_y\nFREQUENCY_y\nSubject_y\nCountry_y\nMeasure_y\nFrequency_y\ninflation\n\n\n\n\n0\nannual\nOECD\nMEI\nMain Economic Indicators Publication\nFRA.NAEXCP01.STSA.A\nFrance – National Accounts &gt; GDP by Expenditur...\n1980\n1980-01-01\n451.772\n451.772\n...\n13.562578\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n13.562578\n\n\n1\nannual\nOECD\nMEI\nMain Economic Indicators Publication\nFRA.NAEXCP01.STSA.A\nFrance – National Accounts &gt; GDP by Expenditur...\n1981\n1981-01-01\n509.984\n509.984\n...\n13.314400\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n13.314400\n\n\n2\nannual\nOECD\nMEI\nMain Economic Indicators Publication\nFRA.NAEXCP01.STSA.A\nFrance – National Accounts &gt; GDP by Expenditur...\n1982\n1982-01-01\n585.990\n585.990\n...\n11.978476\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n11.978476\n\n\n3\nannual\nOECD\nMEI\nMain Economic Indicators Publication\nFRA.NAEXCP01.STSA.A\nFrance – National Accounts &gt; GDP by Expenditur...\n1983\n1983-01-01\n650.514\n650.514\n...\n9.459548\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n9.459548\n\n\n4\nannual\nOECD\nMEI\nMain Economic Indicators Publication\nFRA.NAEXCP01.STSA.A\nFrance – National Accounts &gt; GDP by Expenditur...\n1984\n1984-01-01\n707.030\n707.030\n...\n7.673803\nCPALTT01\nFRA\nGY\nA\nConsumer prices: all items\nFrance\nGrowth on the same period of the previous year\nAnnual\n7.673803\n\n\n\n\n5 rows × 37 columns\n\n\n\n\nddf.columns\n\nIndex(['@frequency_x', 'provider_code_x', 'dataset_code_x', 'dataset_name_x',\n       'series_code_x', 'series_name_x', 'original_period_x', 'period',\n       'original_value_x', 'value_x', 'LOCATION_x', 'SUBJECT_x', 'MEASURE_x',\n       'FREQUENCY_x', 'Country_x', 'Subject_x', 'Measure_x', 'Frequency_x',\n       'gdp', '@frequency_y', 'provider_code_y', 'dataset_code_y',\n       'dataset_name_y', 'series_code_y', 'series_name_y', 'original_period_y',\n       'original_value_y', 'value_y', 'SUBJECT_y', 'LOCATION_y', 'MEASURE_y',\n       'FREQUENCY_y', 'Subject_y', 'Country_y', 'Measure_y', 'Frequency_y',\n       'inflation'],\n      dtype='object')\n\n\n\n# plot time series:\nplt.figure(figsize=(12,5))\nplt.subplot(121)\nplt.plot(ddf['period'], ddf['gdp'])\nplt.title(\"gdp\")\nplt.subplot(122)\nplt.plot(ddf['period'], ddf['inflation'])\nplt.title('inflation')\nplt.tight_layout()\n\n\n\n\n\n\n\n\n\n# let's add unemployment too\nddf = ddf.merge(df_unemployment, on='period')\nddf.head()\n\n\n\n\n\n\n\n\n@frequency_x\nprovider_code_x\ndataset_code_x\ndataset_name_x\nseries_code_x\nseries_name_x\noriginal_period_x\nperiod\noriginal_value_x\nvalue_x\n...\nseries_code\nseries_name\noriginal_period\noriginal_value\nvalue\nSUB\nLOCATION\nSubject\nCountry\nunemployment\n\n\n\n\n0\nannual\nOECD\nMEI\nMain Economic Indicators Publication\nFRA.NAEXCP01.STSA.A\nFrance – National Accounts &gt; GDP by Expenditur...\n2003\n2003-01-01\n1630.666\n1630.666\n...\nUNEMPLRT_T1C.FRA\nUnemployment rates: total – France\n2003\n8.099563\n8.099563\nUNEMPLRT_T1C\nFRA\nUnemployment rates: total\nFrance\n8.099563\n\n\n1\nannual\nOECD\nMEI\nMain Economic Indicators Publication\nFRA.NAEXCP01.STSA.A\nFrance – National Accounts &gt; GDP by Expenditur...\n2004\n2004-01-01\n1704.017\n1704.017\n...\nUNEMPLRT_T1C.FRA\nUnemployment rates: total – France\n2004\n8.468398\n8.468398\nUNEMPLRT_T1C\nFRA\nUnemployment rates: total\nFrance\n8.468398\n\n\n2\nannual\nOECD\nMEI\nMain Economic Indicators Publication\nFRA.NAEXCP01.STSA.A\nFrance – National Accounts &gt; GDP by Expenditur...\n2005\n2005-01-01\n1765.903\n1765.903\n...\nUNEMPLRT_T1C.FRA\nUnemployment rates: total – France\n2005\n8.493855\n8.493855\nUNEMPLRT_T1C\nFRA\nUnemployment rates: total\nFrance\n8.493855\n\n\n3\nannual\nOECD\nMEI\nMain Economic Indicators Publication\nFRA.NAEXCP01.STSA.A\nFrance – National Accounts &gt; GDP by Expenditur...\n2006\n2006-01-01\n1848.150\n1848.150\n...\nUNEMPLRT_T1C.FRA\nUnemployment rates: total – France\n2006\n8.449007\n8.449007\nUNEMPLRT_T1C\nFRA\nUnemployment rates: total\nFrance\n8.449007\n\n\n4\nannual\nOECD\nMEI\nMain Economic Indicators Publication\nFRA.NAEXCP01.STSA.A\nFrance – National Accounts &gt; GDP by Expenditur...\n2007\n2007-01-01\n1941.361\n1941.361\n...\nUNEMPLRT_T1C.FRA\nUnemployment rates: total – France\n2007\n7.658579\n7.658579\nUNEMPLRT_T1C\nFRA\nUnemployment rates: total\nFrance\n7.658579\n\n\n\n\n5 rows × 51 columns\n\n\n\n\n# let's keep only what we need\nddf = ddf[['period', 'inflation', 'gdp', 'unemployment']]\n\n\n# let the period be the index of the dataframe\nddf.index = ddf['period']\nddf.head()\n\n\n\n\n\n\n\n\nperiod\ninflation\ngdp\nunemployment\n\n\nperiod\n\n\n\n\n\n\n\n\n2003-01-01\n2003-01-01\n2.098472\n1630.666\n8.099563\n\n\n2004-01-01\n2004-01-01\n2.142090\n1704.017\n8.468398\n\n\n2005-01-01\n2005-01-01\n1.745869\n1765.903\n8.493855\n\n\n2006-01-01\n2006-01-01\n1.675124\n1848.150\n8.449007\n\n\n2007-01-01\n2007-01-01\n1.487998\n1941.361\n7.658579\n\n\n\n\n\n\n\n\n# to keep things tidy, we can remove the period column\nddf = ddf.drop(columns=['period'])\nddf.head()\n\n\n\n\n\n\n\n\ninflation\ngdp\nunemployment\n\n\nperiod\n\n\n\n\n\n\n\n2003-01-01\n2.098472\n1630.666\n8.099563\n\n\n2004-01-01\n2.142090\n1704.017\n8.468398\n\n\n2005-01-01\n1.745869\n1765.903\n8.493855\n\n\n2006-01-01\n1.675124\n1848.150\n8.449007\n\n\n2007-01-01\n1.487998\n1941.361\n7.658579\n\n\n\n\n\n\n\nNow we’ve got a nice, easy to use, dataframe !\n\nCompute growth rate of gdp.\n\n\n#a new series with the observations from period before can be obtained using .shift()(\n# note the missing value for the initial date\nddf.shift(1).head()\n\n\n\n\n\n\n\n\ninflation\ngdp\nunemployment\n\n\nperiod\n\n\n\n\n\n\n\n2003-01-01\nNaN\nNaN\nNaN\n\n\n2004-01-01\n2.098472\n1630.666\n8.099563\n\n\n2005-01-01\n2.142090\n1704.017\n8.468398\n\n\n2006-01-01\n1.745869\n1765.903\n8.493855\n\n\n2007-01-01\n1.675124\n1848.150\n8.449007\n\n\n\n\n\n\n\n\n# now we can compute growth rates\nddf['gdp_growth'] = (ddf['gdp']-ddf['gdp'].shift(1))/(ddf['gdp'].shift(1))*100\n\n\nddf['gdp_growth'].head()\n\nperiod\n2003-01-01         NaN\n2004-01-01    4.498223\n2005-01-01    3.631771\n2006-01-01    4.657504\n2007-01-01    5.043476\nName: gdp_growth, dtype: float64\n\n\n\nPlot two graphs two verify graphically the Phillips curve (unemployment against inflation) and Okun’s law (unemployment against output).\n\n\nddf.columns\n\nIndex(['inflation', 'gdp', 'unemployment', 'gdp_growth'], dtype='object')\n\n\n\nplt.plot(ddf['unemployment'], ddf['inflation'], 'o')\nplt.xlabel(\"Unemployment (%)\")\nplt.ylabel(\"Inflation (%)\")\nplt.title(\"Phillips curve (2004-2020)\")\n\nText(0.5, 1.0, 'Phillips curve (2004-2020)')\n\n\n\n\n\n\n\n\n\nWithout any econometric, work, it would seem that the Phillips relationship holds pretty well in France from 2004 to 2020.\n\nplt.plot(ddf['unemployment'], ddf['gdp_growth'], 'o')\nplt.xlabel(\"Unemployment (%)\")\nplt.ylabel(\"GDP growth (%)\")\nplt.title(\"Okun's law (France: 2004-2020)\")\n\nText(0.5, 1.0, \"Okun's law (France: 2004-2020)\")\n\n\n\n\n\n\n\n\n\nAs for Okun’s law, again, the negeative relationship between GDP growth and unemployment holds fairly well, save for one very abnormal point.\n\nBonus: alternative solution to import the data\n\nIt is possible to import all series at once, by supplying all identifiers to the ‘fetch_series’ method.\n\nfull_df = dbnomics.fetch_series(['OECD/KEI/CPALTT01.USA.GP.A', 'OECD/MEI/FRA.NAEXCP01.STSA.A', 'OECD/CSPCUBE/UNEMPLRT_T1C.FRA'])\nfull_df.head()\n\n\n\n\n\n\n\n\n@frequency\nprovider_code\ndataset_code\ndataset_name\nseries_code\nseries_name\noriginal_period\nperiod\noriginal_value\nvalue\n...\nSubject\nCountry\nSubject\nCountry\nMeasure\nFrequency\nCountry\nSubject\nMeasure\nFrequency\n\n\n\n\n0\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.USA.GP.A\nConsumer prices: all items – United States – G...\n1956\n1956-01-01\n1.525054\n1.525054\n...\nConsumer prices: all items\nUnited States\nConsumer prices: all items\nUnited States\nGrowth previous period\nAnnual\nUnited States\nConsumer prices: all items\nGrowth previous period\nAnnual\n\n\n1\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.USA.GP.A\nConsumer prices: all items – United States – G...\n1957\n1957-01-01\n3.341508\n3.341508\n...\nConsumer prices: all items\nUnited States\nConsumer prices: all items\nUnited States\nGrowth previous period\nAnnual\nUnited States\nConsumer prices: all items\nGrowth previous period\nAnnual\n\n\n2\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.USA.GP.A\nConsumer prices: all items – United States – G...\n1958\n1958-01-01\n2.729160\n2.729160\n...\nConsumer prices: all items\nUnited States\nConsumer prices: all items\nUnited States\nGrowth previous period\nAnnual\nUnited States\nConsumer prices: all items\nGrowth previous period\nAnnual\n\n\n3\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.USA.GP.A\nConsumer prices: all items – United States – G...\n1959\n1959-01-01\n1.010684\n1.010684\n...\nConsumer prices: all items\nUnited States\nConsumer prices: all items\nUnited States\nGrowth previous period\nAnnual\nUnited States\nConsumer prices: all items\nGrowth previous period\nAnnual\n\n\n4\nannual\nOECD\nKEI\nKey Short-Term Economic Indicators\nCPALTT01.USA.GP.A\nConsumer prices: all items – United States – G...\n1960\n1960-01-01\n1.457976\n1.457976\n...\nConsumer prices: all items\nUnited States\nConsumer prices: all items\nUnited States\nGrowth previous period\nAnnual\nUnited States\nConsumer prices: all items\nGrowth previous period\nAnnual\n\n\n\n\n5 rows × 30 columns\n\n\n\n\nfull_df['series_name'].unique()\n\narray(['Consumer prices: all items – United States – Growth previous period – Annual',\n       'France – National Accounts &gt; GDP by Expenditure &gt; Current Prices &gt; Gross Domestic Product - Total – Level, rate or national currency, s.a. – Annual',\n       'Unemployment rates: total – France'], dtype=object)\n\n\nIn the result, each line corresponds to an observation. The column series_name contains the relevant observation. Let’s keep only the relevant column to get a clearer view.\n\ndf_long = full_df[['period', 'series_name','value']]\n\nThis is essentially the long format. We can use it as is, or convert to the wide format.\n\ndf_long.columns\n\nIndex(['period', 'series_name', 'value'], dtype='object')\n\n\n\ndf_long\n\n\n\n\n\n\n\n\nperiod\nseries_name\nvalue\n\n\n\n\n0\n1956-01-01\nConsumer prices: all items – United States – G...\n1.525054\n\n\n1\n1957-01-01\nConsumer prices: all items – United States – G...\n3.341508\n\n\n2\n1958-01-01\nConsumer prices: all items – United States – G...\n2.729160\n\n\n3\n1959-01-01\nConsumer prices: all items – United States – G...\n1.010684\n\n\n4\n1960-01-01\nConsumer prices: all items – United States – G...\n1.457976\n\n\n...\n...\n...\n...\n\n\n11\n2014-01-01\nUnemployment rates: total – France\n10.291710\n\n\n12\n2015-01-01\nUnemployment rates: total – France\n10.359810\n\n\n13\n2016-01-01\nUnemployment rates: total – France\n10.056610\n\n\n14\n2017-01-01\nUnemployment rates: total – France\n9.398605\n\n\n15\n2018-01-01\nUnemployment rates: total – France\n9.059228\n\n\n\n\n120 rows × 3 columns\n\n\n\nTo convert it to the wide format, use the pivot function.\n\ndf_wide = df_long.pivot(index='period', columns=['series_name'])\n\n\ndf_wide\n\n\n\n\n\n\n\n\nvalue\n\n\nseries_name\nConsumer prices: all items – United States – Growth previous period – Annual\nFrance – National Accounts &gt; GDP by Expenditure &gt; Current Prices &gt; Gross Domestic Product - Total – Level, rate or national currency, s.a. – Annual\nUnemployment rates: total – France\n\n\nperiod\n\n\n\n\n\n\n\n1956-01-01\n1.525054\nNaN\nNaN\n\n\n1957-01-01\n3.341508\nNaN\nNaN\n\n\n1958-01-01\n2.729160\nNaN\nNaN\n\n\n1959-01-01\n1.010684\nNaN\nNaN\n\n\n1960-01-01\n1.457976\nNaN\nNaN\n\n\n...\n...\n...\n...\n\n\n2015-01-01\n0.118627\n2198.432\n10.359810\n\n\n2016-01-01\n1.261583\n2234.129\n10.056610\n\n\n2017-01-01\n2.130110\n2297.244\n9.398605\n\n\n2018-01-01\n2.442583\n2360.686\n9.059228\n\n\n2019-01-01\n1.812210\n2425.710\nNaN\n\n\n\n\n64 rows × 3 columns\n\n\n\n\n# rename columns\ndf_wide.columns = ['inflation','gdp', 'unemployment']\n\n\n# and here is our tidy dataframe !\ndf_wide\n\n\n\n\n\n\n\n\ninflation\ngdp\nunemployment\n\n\nperiod\n\n\n\n\n\n\n\n1956-01-01\n1.525054\nNaN\nNaN\n\n\n1957-01-01\n3.341508\nNaN\nNaN\n\n\n1958-01-01\n2.729160\nNaN\nNaN\n\n\n1959-01-01\n1.010684\nNaN\nNaN\n\n\n1960-01-01\n1.457976\nNaN\nNaN\n\n\n...\n...\n...\n...\n\n\n2015-01-01\n0.118627\n2198.432\n10.359810\n\n\n2016-01-01\n1.261583\n2234.129\n10.056610\n\n\n2017-01-01\n2.130110\n2297.244\n9.398605\n\n\n2018-01-01\n2.442583\n2360.686\n9.059228\n\n\n2019-01-01\n1.812210\n2425.710\nNaN\n\n\n\n\n64 rows × 3 columns"
   },
   {
-    "objectID": "slides/session_9/index_handout.html",
-    "href": "slides/session_9/index_handout.html",
-    "title": "Large Language Models",
+    "objectID": "slides/session_9/index.html#do-you-like-poetry",
+    "href": "slides/session_9/index.html#do-you-like-poetry",
+    "title": "Intro to Large Language Models",
+    "section": "Do you like poetry?",
+    "text": "Do you like poetry?\n\n\nA rose is a rose is a rose\n\n\n\nGertrude Stein\n\n\n\nBrexit means Brexit means Brexit\n\n\n\nJohn Crace\n\n\n\nElementary my dear Watson\n\n\n\nP.G. Woodehouse\n\n\n \n\n\nThere is an easy way for Europe to respond to the trade war started by Donald Trump\n\n\n\n  \nIf we could complete any sentence. . . Would we be able to solve any problem?\n\n\n  \n⮕ We are witnessing the advent of language-based AI."
+  },
+  {
+    "objectID": "slides/session_9/index.html#complete-text",
+    "href": "slides/session_9/index.html#complete-text",
+    "title": "Intro to Large Language Models",
+    "section": "Complete Text",
+    "text": "Complete Text\nAll1 Generative Language Models so far perform text completion\nThey generate plausible2 text following a prompt.\nThe type of answer, will depend on the kind of prompt.\nthe next generation might have the ability to plan and/or a world modelhere, plausible, means that it is more likely to be a correct text written by a human, rather than otherwise"
+  },
+  {
+    "objectID": "slides/session_9/index.html#gpt-playground",
+    "href": "slides/session_9/index.html#gpt-playground",
+    "title": "Intro to Large Language Models",
+    "section": "GPT Playground",
+    "text": "GPT Playground\nTo use AI you have to experiment with the prompt.\n\ntry the Playground mode\n\nIt is the same as learning how to do google queries\n\naltavista: +noir +film -\"pinot noir\"\nnowadays: ???\n\n“Prompt engineering” is becoming a discipline in itself…"
+  },
+  {
+    "objectID": "slides/session_9/index.html#some-examples",
+    "href": "slides/session_9/index.html#some-examples",
+    "title": "Intro to Large Language Models",
+    "section": "Some Examples",
+    "text": "Some Examples\nBy providing enough context, it is possible to perform amazing tasks\nLook at the demos\nEven Chat Interfaces have a hidden prompt."
+  },
+  {
+    "objectID": "slides/session_9/index.html#language-models-and-cryptography",
+    "href": "slides/session_9/index.html#language-models-and-cryptography",
+    "title": "Intro to Large Language Models",
+    "section": "Language Models and Cryptography",
+    "text": "Language Models and Cryptography\n\nThe Caesar code"
+  },
+  {
+    "objectID": "slides/session_9/index.html#section",
+    "href": "slides/session_9/index.html#section",
+    "title": "Intro to Large Language Models",
     "section": "",
-    "text": "Come back later!."
+    "text": "Zodiac 408 Cipher"
+  },
+  {
+    "objectID": "slides/session_9/index.html#section-1",
+    "href": "slides/session_9/index.html#section-1",
+    "title": "Intro to Large Language Models",
+    "section": "",
+    "text": "Zodiac 408 Cipher\n\n\n\n\n\n\n\nKey for Zodiac 408\n\n\n\n\n\n\nFigure 1: Solved in a week by Bettye and Donald Harden using frequency tables."
+  },
+  {
+    "objectID": "slides/session_9/index.html#section-2",
+    "href": "slides/session_9/index.html#section-2",
+    "title": "Intro to Large Language Models",
+    "section": "",
+    "text": "Later in 2001, in a prison, somewhere in California\n\n\nSolved by Stanford’s Persi Diaconis and his students using Monte Carlo Markov Chains"
+  },
+  {
+    "objectID": "slides/session_9/index.html#monte-carlo-markov-chains",
+    "href": "slides/session_9/index.html#monte-carlo-markov-chains",
+    "title": "Intro to Large Language Models",
+    "section": "Monte Carlo Markov Chains",
+    "text": "Monte Carlo Markov Chains\nTake a letter \\(x_n\\), what is the probability of the next letter being \\(x_{n+1}\\)?\n\\[\\pi_{X,Y} = P(x_{n+1}=Y, x_{n}=X)\\]\nfor \\(X=\\{a, b, .... , z\\} , Y=\\{a,b,c, ... z\\}\\)\nThe language model can be trained using dataset of english language.\nAnd used to determine whether a given cipher-key is consistent with english language.\nIt yields a very efficient algorithm to decode any caesar code (with very small sample)"
+  },
+  {
+    "objectID": "slides/session_9/index.html#mcmc-to-generate-text",
+    "href": "slides/session_9/index.html#mcmc-to-generate-text",
+    "title": "Intro to Large Language Models",
+    "section": "MCMC to generate text",
+    "text": "MCMC to generate text\nMCMCs can also be used to generate text:\n\ntake initial prompt: I think therefore I\n\nlast letter is I\nmost plausible character afterwards is \nmost plausible character afterwards is I\n\nResult: I think therefore I I I I I I\n\nNot good but promising (🤷)"
+  },
+  {
+    "objectID": "slides/session_9/index.html#mcmc-to-generate-text-1",
+    "href": "slides/session_9/index.html#mcmc-to-generate-text-1",
+    "title": "Intro to Large Language Models",
+    "section": "MCMC to generate text",
+    "text": "MCMC to generate text\nGoing further\n\naugment memory\n\nfore I&gt; ???\n\nchange basic unit (use phonems or words)\n\nAn example using MCMC\n\nusing words and 3 states He ha ‘s kill’d me Mother , Run away I pray you Oh this is Counter you false Danish Dogges ."
+  },
+  {
+    "objectID": "slides/session_9/index.html#big-mcmc",
+    "href": "slides/session_9/index.html#big-mcmc",
+    "title": "Intro to Large Language Models",
+    "section": "Big MCMC",
+    "text": "Big MCMC\nCan we augment memory?\n\nif you want to compute the most frequent letter (among 26) after 50 letters, you need to take into account 5.6061847e+70 combinations !\n\nimpossible to store, let alone do the training\n\nbut some combinations are useless:\n\nwjai dfni\nDespite the constant negative press covfefe 🤔"
+  },
+  {
+    "objectID": "slides/session_9/index.html#neural-networks",
+    "href": "slides/session_9/index.html#neural-networks",
+    "title": "Intro to Large Language Models",
+    "section": "Neural Networks",
+    "text": "Neural Networks\n\n\n\n\n\n\n\nNeural Network\n\n\n\n\nNeural networks make it possible to increase the state-space to represent\n\n\\[\\forall X, P(x_n=X| x_{n-1}, ..., x_{n-k}) = \\varphi^{NL}( x_{n-1}, ..., x_{n-k}; \\theta )\\]\nwith a smaller vector of parameters \\(\\theta\\)\n\nNeural netowrks reduce endogenously the dimensionality."
+  },
+  {
+    "objectID": "slides/session_9/index.html#recurrent-neural-networks",
+    "href": "slides/session_9/index.html#recurrent-neural-networks",
+    "title": "Intro to Large Language Models",
+    "section": "Recurrent Neural Networks",
+    "text": "Recurrent Neural Networks\n\n\nIn 2015\n\n\n\n\n\nNeural Network reduce dimensionality of data discovering structure\nhidden state encodes meaning of the model so far"
+  },
+  {
+    "objectID": "slides/session_9/index.html#long-short-term-memory",
+    "href": "slides/session_9/index.html#long-short-term-memory",
+    "title": "Intro to Large Language Models",
+    "section": "Long Short Term Memory",
+    "text": "Long Short Term Memory\n\n\n2000-&gt;2019 : Emergence of Long Short Term Memory models\n\nspeech recognition\nLSTM behind “Google Translate”, “Alexa”, …"
+  },
+  {
+    "objectID": "slides/session_9/index.html#the-rise-of-transformers",
+    "href": "slides/session_9/index.html#the-rise-of-transformers",
+    "title": "Intro to Large Language Models",
+    "section": "The Rise of transformers",
+    "text": "The Rise of transformers\nA special kind of encoder/decoder architecture.\n\n\nMost successful models since 2017\n\nPosition Encodings\n\nmodel is not sequential anymore\ntries to learn sequence\n\nAttention\n\nattention is all you need\n\nSelf-Attention\n\n\n\n\nExplanations here or here"
+  },
+  {
+    "objectID": "slides/session_9/index.html#encoders-decoders-13",
+    "href": "slides/session_9/index.html#encoders-decoders-13",
+    "title": "Intro to Large Language Models",
+    "section": "Encoders / Decoders (1/3)",
+    "text": "Encoders / Decoders (1/3)\nTake some data \\((x_n)\\in R^x\\).\nConsider two functions:\n\nan encoder \\[\\varphi^E(x; \\theta^E) = h \\in \\mathbb{R^h}\\]\na decoder: \\[\\varphi^D(h; \\theta^D) = x' \\in \\mathbb{R^x}\\]\n\nTrain the coefficients with:\n\\[\\min_{\\theta^E, \\theta^D}  \\left( \\varphi^D( \\varphi^E(x_n; \\theta^E), \\theta^D) - x_n\\right)^2\\]\ni.e. train the nets \\(\\varphi^D\\) and \\(\\varphi^E\\) to predict the “data from the data” (it is called autoencoding)"
+  },
+  {
+    "objectID": "slides/session_9/index.html#encoders-decoders-23",
+    "href": "slides/session_9/index.html#encoders-decoders-23",
+    "title": "Intro to Large Language Models",
+    "section": "Encoders / Decoders (2/3)",
+    "text": "Encoders / Decoders (2/3)\nThe relation \\(\\varphi^D( \\varphi^E(x_n; \\theta^E), \\theta^D) ~ x_n\\) can be rewritten as\n\\[x_n \\xrightarrow{\\varphi^E(; \\theta^E)} h \\xrightarrow{\\varphi^D(; \\theta^D)} x_n \\]\nWhen that relation is (mostly) satisfied and \\(\\mathbb{R}^h &lt;&lt; \\mathbb{R}^x\\), \\(h\\) can be viewed as a lower dimension representation of \\(x\\). It encodes the information as a lower dimension vector \\(h\\) and is called learned embeddings.\nIn particular words have a vector representation in this space!"
+  },
+  {
+    "objectID": "slides/session_9/index.html#encoders-decoders-33",
+    "href": "slides/session_9/index.html#encoders-decoders-33",
+    "title": "Intro to Large Language Models",
+    "section": "Encoders / Decoders (3/3)",
+    "text": "Encoders / Decoders (3/3)\n\ninstead of \\(\\underbrace{x_n}_{\\text{prompt}} \\rightarrow \\underbrace{y_n}_{\\text{text completion}}\\)\none can learn \\(\\underbrace{h_n}_{\\text{prompt (low dim)}} \\xrightarrow{\\varphi^C( ; \\theta^C)} \\underbrace{h_n^c}_{\\text{text completion (low dim)}}\\)\n\nit is easier to learn\n\nand perform the original task as \\[\\underbrace{x_n}_{\\text{prompt}} \\xrightarrow{\\varphi^E}  h_n \\xrightarrow{\\varphi^C} h_n^C \\xrightarrow{\\varphi^D} \\underbrace{y_n}_{\\text{text completion}}\\]\n\nThis very powerful approach can be applied to combine encoders/decoders from different contexts (ex Dall-E)"
+  },
+  {
+    "objectID": "slides/session_9/index.html#attention",
+    "href": "slides/session_9/index.html#attention",
+    "title": "Intro to Large Language Models",
+    "section": "Attention",
+    "text": "Attention\nMain flaw with the recursive approach:\n\nthe context made to predict new words/embeddings puts a lower weight on further words/embeddings\nthis is related to the so-called vanishing gradient problem\n\n\n\n\nWith the attention mechanism, each predicted word/embedding is determined by all preceding words/embeddings, with different weights that are endogenous.\n\n\n\n\nAttention"
+  },
+  {
+    "objectID": "slides/session_9/index.html#quick-summary",
+    "href": "slides/session_9/index.html#quick-summary",
+    "title": "Intro to Large Language Models",
+    "section": "Quick summary",
+    "text": "Quick summary\n\nShort History of Language models\n\nfrequency tables\nmonte carlo markov chains\ndeep learning -&gt; recurrent neural networks\nlong-short-term memory (&gt;2000)\nencoders-decoders\ntransformers (&gt;2018)\n\nattention is all you need\ncheckout the video from 3blue1brown on attention. It’s brilliant! . . .\n\n\nSince 2010 main breakthrough came through the development of deep-learning techniques (software/hardware)\nRecently, models/algorithms have improved tremendously"
+  },
+  {
+    "objectID": "slides/session_9/index.html#gpt",
+    "href": "slides/session_9/index.html#gpt",
+    "title": "Intro to Large Language Models",
+    "section": "GPT",
+    "text": "GPT\nMost famous engine developped by OpenAI: Generative Pre-trained Transformer (aka GPT)\n\n\n\nGPT1 (1018)\n\n0.1 billion parameters\nhad to be fine-tuned to a particular problem\ntransfer learning (few shots learning)\n\nGPT2:\n\nmultitask\nno mandatory fine tuning\n\nGPT3:\n\nbigger: 175 billions parameters\n\nGPT4:\n\neven bigger: 1000 billions parameters ???\non your harddrive: 1Tb"
+  },
+  {
+    "objectID": "slides/session_9/index.html#corpus",
+    "href": "slides/session_9/index.html#corpus",
+    "title": "Intro to Large Language Models",
+    "section": "Corpus",
+    "text": "Corpus\n\n\nGPT-3 was trained1 on\n\nCommonCrawl\nWebText (proprietary db, with opensource alternative )\nWikipedia\nmany books\n\n⇒ 45 TB of data\n\ncured into a smaller datasets\n\n⇒ size ???\nDataset (mostly) ends in 2021.\n\n\n\nDetailed information about gpt-4 is harder to find."
+  },
+  {
+    "objectID": "slides/session_9/index.html#how-is-the-model-trained",
+    "href": "slides/session_9/index.html#how-is-the-model-trained",
+    "title": "Intro to Large Language Models",
+    "section": "How is the model trained?",
+    "text": "How is the model trained?\nSeveral concepts are relevant here:\n\n\nunsupervised learning\n\nautoencoding\n⇒ build a representation of the text\n\nfine tuning\nreinforcement learning"
+  },
+  {
+    "objectID": "slides/session_9/index.html#what-is-learning",
+    "href": "slides/session_9/index.html#what-is-learning",
+    "title": "Intro to Large Language Models",
+    "section": "What is learning?",
+    "text": "What is learning?\nA machine can perform a task \\(f(x; \\theta)\\) for some input \\(x\\) in a data-generating process \\(\\mathcal{X}\\) and and some parameters \\(\\theta\\).\nA typical learning task consists in optimizing a loss function (aka theoretical risk): \\[\\min _{\\theta} \\mathcal{L}(\\theta) = \\mathbb{E}_{\\theta} f(x; \\theta)\\]\nThe central learning method to minimize the objective is called stochastic gradient descent.\n\n\n\n.\n\n\n\n\nA common issue in ai is that of preference misspecification. (Cf Bostrom or link)"
+  },
+  {
+    "objectID": "slides/session_9/index.html#learning-set",
+    "href": "slides/session_9/index.html#learning-set",
+    "title": "Intro to Large Language Models",
+    "section": "Learning Set",
+    "text": "Learning Set\nIn practice one has access to a dataset \\((x_n) \\subset \\mathcal{X}\\) and minimizes the “empirical” risk function\n\\[L\\left( (x_n)_{n=1:N}, \\theta \\right) = \\frac{1}{N} \\sum_{n=1}^N f(x; \\theta)\\]\n\nRegular case: in usual cases, we assume that the dataset is generated by the true model (data-generating process)\nTwo important variants:\n\ntransfer learning:\n\ngoal is to use the model \\(\\mathcal{X}\\) but the training dataset is generated from another data-generating process \\(\\mathcal{Y}\\)\n\\(\\mathcal{Y}\\) can be a subset of \\(\\mathcal{X}\\) or (partially) disjoint\ndo you need some data from \\(\\mathcal{Y}\\) (few shots learning) or non at all (zero-shot learning)\n\nreinforcement learning\n\nthe learning algorithm can generate some data to improve learning"
+  },
+  {
+    "objectID": "slides/session_9/index.html#transfer-learning",
+    "href": "slides/session_9/index.html#transfer-learning",
+    "title": "Intro to Large Language Models",
+    "section": "Transfer learning",
+    "text": "Transfer learning\n\n\nGPT is inherently a transfer learning machine\n\nwhy?\n\nearlier versions (GPT-1, GPT-2) needed some examples before being able to perform any given task:\n\nfine-tuning: retrain some coefficients of the wole NN\n\nnew versions (&gt;GPT-3) can perform zero-shot tasks just by text completion\n\nfine-tuning can be emulated by prompting\nthere is still a fine-tuning API"
+  },
+  {
+    "objectID": "slides/session_9/index.html#reinforcement-learning",
+    "href": "slides/session_9/index.html#reinforcement-learning",
+    "title": "Intro to Large Language Models",
+    "section": "Reinforcement Learning",
+    "text": "Reinforcement Learning\nA reinforcement learning algorithm can take actions which have two effects:\n\nprovide some reward to the algorithm\ngenerate (more) data to improve the quality of future actions\n\nExample:\n\nchoose a restaurant\ndrive a car\nfamous examples: breakout, hide and seek"
+  },
+  {
+    "objectID": "slides/session_9/index.html#reinforcement-learning-for-gpt-4",
+    "href": "slides/session_9/index.html#reinforcement-learning-for-gpt-4",
+    "title": "Intro to Large Language Models",
+    "section": "Reinforcement Learning for GPT-4",
+    "text": "Reinforcement Learning for GPT-4\nThe GPT-4 model has been fine-tuned with reinforcement learning. The language model was rewarded for providing the right kind of answer:\n\nthe feedback came from kenyan workers (sic!)\n\nTwo main variants on top of foundation model GPT Base:1\n\ninstructGPT\n\nalignment, non-toxicity, …\nfactual correctness\n\nchatGPT\n\nfollow a conversation\norganization of answer\nnot just a context on top of GPT\n\n\nComing next: assistants."
+  },
+  {
+    "objectID": "slides/session_9/index.html#section-3",
+    "href": "slides/session_9/index.html#section-3",
+    "title": "Intro to Large Language Models",
+    "section": "",
+    "text": "There is information about how GPT-3 was trained (check technical paper or summary)"
+  },
+  {
+    "objectID": "slides/session_9/index.html#many-models-are-available",
+    "href": "slides/session_9/index.html#many-models-are-available",
+    "title": "Intro to Large Language Models",
+    "section": "Many models are available",
+    "text": "Many models are available\nWhich of the following model should you use?\nLots of GPT variants:\n\n\no3-mini\ngpt-4o\ngpt-4-turbo-preview\ntext-ada-001\n…\n\n\n\nAnd a lot of competititors:\n\nmistral, deepseek, llama, …\nall with different subvariants\nThey usually provide a compatible API (you can use openai)"
+  },
+  {
+    "objectID": "slides/session_9/index.html#the-different-variants-of-gpt",
+    "href": "slides/session_9/index.html#the-different-variants-of-gpt",
+    "title": "Intro to Large Language Models",
+    "section": "The different variants of GPT",
+    "text": "The different variants of GPT\nWhat are the differences between the various engines?\n\narchitecture\nmodel size\n\nfull size\nquantized model size\n\ntraining set of foundation model (GPT Base)\ntype of fine-tuning (instruct/chat/code)\ntype of interface"
+  },
+  {
+    "objectID": "slides/session_9/index.html#section-4",
+    "href": "slides/session_9/index.html#section-4",
+    "title": "Intro to Large Language Models",
+    "section": "",
+    "text": "Checkout the awesome list!"
+  },
+  {
+    "objectID": "slides/session_9/index.html#section-5",
+    "href": "slides/session_9/index.html#section-5",
+    "title": "Intro to Large Language Models",
+    "section": "",
+    "text": "What are the trends?\n\nmany foundation Models\n\nmove from opensource to closedsource\nbut: opensource is still very alive\nopensource is gaining momentum again\n\nllama, mistral, deepseek have opensource specificiations\nopenweights\n\n\nresearch to reduce size of models / training time\n\nquantized versions\n\nmany more versions specialized (fine-tuned) to specific tasks\n\nexample: all _code models"
+  },
+  {
+    "objectID": "slides/session_9/index.html#one-common-misconception",
+    "href": "slides/session_9/index.html#one-common-misconception",
+    "title": "Intro to Large Language Models",
+    "section": "One common misconception",
+    "text": "One common misconception\n\n\nLanguage models hallucinate facts…\n\ntherefore are definitely unreliable\n\nThere are possible workarounds\n\navoid tasks where hallucinations occur\n\nex: ask for paper citations\n\nmore structure in the prompting\n\nex: detail your reasoning (aka chain of thought prompting)"
+  },
+  {
+    "objectID": "slides/session_9/index.html#its-all-ongoing",
+    "href": "slides/session_9/index.html#its-all-ongoing",
+    "title": "Intro to Large Language Models",
+    "section": "It’s all ongoing",
+    "text": "It’s all ongoing\n\n\n\n\nAnd research being done…\n\non using fine-tuning for more correctness (e.g. instructGPT)\non using specific context (Retrieval Augmented Generation)\n\nex: GPTs\n\non developing mixed systems\n\nGPT Assistants and Scite\n\n\nAt the same time, lots of products get designed\n\npsst: under the hood, they make API calls…\n… and provide interfaces to other APIs\n\nDon’t be fooled by the marketing:\n\ndo it yourself !"
   },
   {
     "objectID": "slides/osession_10/graphs/inference.html",
@@ -5810,14 +6055,14 @@
     "href": "index.html",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 15, 2025\n\n\nIntroduction\n\n\n\n\nJan 21, 2025\n\n\nDataframes\n\n\n\n\nJan 29, 2025\n\n\nLinear Regression\n\n\n\n\nFeb 5, 2025\n\n\nMultiple Regression\n\n\n\n\nFeb 12, 2025\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 19, 2025\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 4, 2025\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\nMar 25, 2025\n\n\nText Analysis\n\n\n\n\nApr 1, 2025\n\n\nLarge Language Models\n\n\n\n\nApr 8, 2025\n\n\nFinal Exam 🤞\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 15, 2025\n\n\nIntroduction\n\n\n\n\nJan 21, 2025\n\n\nDataframes\n\n\n\n\nJan 29, 2025\n\n\nLinear Regression\n\n\n\n\nFeb 5, 2025\n\n\nMultiple Regression\n\n\n\n\nFeb 12, 2025\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 19, 2025\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 4, 2025\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\nMar 25, 2025\n\n\nText Analysis\n\n\n\n\nApr 1, 2025\n\n\nIntro to Large Language Models\n\n\n\n\nApr 8, 2025\n\n\nFinal Exam 🤞\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#schedule",
     "href": "index.html#schedule",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 15, 2025\n\n\nIntroduction\n\n\n\n\nJan 21, 2025\n\n\nDataframes\n\n\n\n\nJan 29, 2025\n\n\nLinear Regression\n\n\n\n\nFeb 5, 2025\n\n\nMultiple Regression\n\n\n\n\nFeb 12, 2025\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 19, 2025\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 4, 2025\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\nMar 25, 2025\n\n\nText Analysis\n\n\n\n\nApr 1, 2025\n\n\nLarge Language Models\n\n\n\n\nApr 8, 2025\n\n\nFinal Exam 🤞\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\n\n\n\n\nJan 15, 2025\n\n\nIntroduction\n\n\n\n\nJan 21, 2025\n\n\nDataframes\n\n\n\n\nJan 29, 2025\n\n\nLinear Regression\n\n\n\n\nFeb 5, 2025\n\n\nMultiple Regression\n\n\n\n\nFeb 12, 2025\n\n\nIntroduction to Instrumental Variables\n\n\n\n\nFeb 19, 2025\n\n\nIntroduction to Machine Learning\n\n\n\n\nMar 4, 2025\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\nMar 25, 2025\n\n\nText Analysis\n\n\n\n\nApr 1, 2025\n\n\nIntro to Large Language Models\n\n\n\n\nApr 8, 2025\n\n\nFinal Exam 🤞\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#evaluation",
