@@ -1,0 +1,139 @@
+---
+title: Final Exam Part II
+subtitle: Data-Based Economics
+author: Year 2024-2025
+date: 2025/04/08
+format:
+  ipynb: default
+  html: default
+eval: false
+---
+
+## Simple string operations
+
+```{python}
+s = """
+Although trade policy is often framed in terms of tariffs and quotas, its real-world implications stretch far beyond simple economic indicators, influencing global supply chains, shaping diplomatic relationships, altering domestic labor markets, and forcing policymakers to constantly balance the competing interests of protecting local industries, ensuring consumer access to affordable goods, meeting international obligations, and adapting to shifting geopolitical landscapes where a decision as seemingly straightforward as imposing a 10% duty on imported steel can ripple outward to affect everything from the price of cars to the stability of cross-border alliances and the strategic calculations of multinational corporations.
+"""
+```
+
+---
+
+@. Count the number of times letter `g` appears in the above sentence.
+```{python}
+# your code here
+```
+
+
+@. Modify the following code so as to map each letter from a to z (in lowercase) with the number of times it appears in the above string. (*hint*: there are at least two modifications to make. For the character table you can check the following [website](https://www.ascii-code.com/characters/a-z))
+```{python}
+frequencies = {}
+for i in range(1,26):
+  l = chr(i) # compute character from index
+  n = (i+i)/i+i   # modify the right hand side
+  frequencies[l] = n
+
+```
+
+
+@. What is the most frequent letter?
+
+@. Using only the functions `str.split()` and `len()`, count the number of words in this sentence.
+
+```{python}
+# your code here
+```
+
+@. Define a new string `s2` where the number 10 is replaced with 20.
+
+```{python}
+# your code here
+```
+
+
+## A (too) simple formula to compute tariffs
+
+
+An hypotetical country named Wonderland (W) is trading with a neigbour country Canadry (C).
+
+The dataframe included in file `trade.csv` contains the following variables:
+
+- $X$: the volume of exports from W to C  
+- $M$: the volume of imports from C to W  
+- $t$: the tariff rate imposed by W on imports from C  
+- $P$: the price of import goods
+
+  - these are the border prices, i.e. prices paid by local importer adding what is paid to foreigners and what is collected by the tax authority
+- $P_r$: retail prices
+
+  - prices paid by consumers, i.e. prices paid by local importers plus the margin of local firms
+
+---
+
+@. Import the dataset and describe it (number of observations, averages, ...)
+
+
+```{python}
+# your code here
+```
+
+
+@. Compute the average value of $\frac{M-X}{M}$. Compute the average value of $\frac{M-X}{M}$ for $t<0.025$. This last value will be used as the initial starting point for the trade deficit.
+
+
+```{python}
+# your code here
+```
+
+
+The goal is now to model the effect of tariffs on the trade deficit.
+
+We assume that imports are a function of import prices $P$, and that import prices are a function of tariffs $t$. 
+
+We postulate the following functional forms:
+
+$$M(P) = M_0 (P/P_0)^\phi$$
+
+$$P(t) = P_0 (1+t)^\epsilon$$
+
+@. Regress `log(M)` on `log(P)` using statsmodels. Comment on the results of the regression. What is the value of $\phi$?
+
+```{python}
+# your code here
+```
+
+
+@. Regress `log(P)` on `log(1+t)` using statsmodels (you might have to define a new variable). Comment on the results of the regression. What is the value of $\epsilon$? Is that consistent with your intuition?
+
+
+```{python}
+# your code here
+```
+
+
+An adviser to the Wonderland government devised a formula to compute the amount of tariffs needed to eliminate completely the trade deficit. This formula is given by: $T = \frac{M-X}{M}\frac{1}{\epsilon \phi}$
+
+@. What would be the corresponding tax rate? Make a plot with the tax rate as the x-axis, and the trade deficit as the y-axis. Comment.
+
+```{python}
+# your code here
+```
+
+
+Unfortunately, another advisor got the wrong memo and used the retail prices (instead of border prices) to compute the elasticity $\epsilon$. 
+He obtained $\epsilon=0.25$ and thus claimed that he could apply the simplistic formula $T = \frac{1}{2}\frac{M-X}{M}$ where the $\frac{1}{2}$ is a discretionary factor added out of generosity.
+
+@. What would be the corresponding tax rate? Illustrate the effect on the trade deficit using the same plot as before.
+
+```{python}
+# your code here
+```
+
+
+::: {.callout}
+
+The story doesn't really stop there. It is not just that the formula was not applied in a consistent way...
+It's also that it was simplistic to start with, using the same elasticities for all countries and ignoring the existence of multilateral trade, of intermediary goods, and the effects of possible retaliation, ...
+The application of the same formula to all trade partners sent world markets into financial turmoil. The rest is history...
+
+:::
