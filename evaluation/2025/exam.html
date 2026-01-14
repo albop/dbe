@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Pablo Winant">
-<meta name="dcterms.date" content="2026-04-08">
+<meta name="author" content="Year 2024-2025">
+<meta name="dcterms.date" content="2025-04-08">
 
-<title>Final Exam 🤞 – Data-Based Economics</title>
+<title>Final Exam Part II – Data-Based Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -53,6 +87,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -66,7 +129,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../slides/session_1/index.html">lectures</a></li><li class="breadcrumb-item"><a href="../../slides/session_10/index_handout.html">Final Exam 🤞</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Data-Based Economics
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -142,7 +207,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_10/index_handout.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../slides/session_10/index_handout.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Final Exam 🤞</span></a>
   </div>
 </li>
@@ -154,15 +219,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#simple-string-operations" id="toc-simple-string-operations" class="nav-link active" data-scroll-target="#simple-string-operations">Simple string operations</a></li>
+  <li><a href="#a-too-simple-formula-to-compute-tariffs" id="toc-a-too-simple-formula-to-compute-tariffs" class="nav-link" data-scroll-target="#a-too-simple-formula-to-compute-tariffs">A (too) simple formula to compute tariffs</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="exam.ipynb" download="exam.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../slides/session_1/index.html">lectures</a></li><li class="breadcrumb-item"><a href="../../slides/session_10/index_handout.html">Final Exam 🤞</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Final Exam 🤞</h1>
-<p class="subtitle lead">Data-Based Economics, ESCP, 2024-2025</p>
+<h1 class="title">Final Exam Part II</h1>
+<p class="subtitle lead">Data-Based Economics</p>
 </div>
 
 
@@ -172,14 +244,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Pablo Winant </p>
+             <p>Year 2024-2025 </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 8, 2026</p>
+      <p class="date">April 8, 2025</p>
     </div>
   </div>
   
@@ -191,10 +263,121 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="wip.png" class="img-fluid"></p>
-<p>Come back later!.</p>
+<section id="simple-string-operations" class="level2">
+<h2 class="anchored" data-anchor-id="simple-string-operations">Simple string operations</h2>
+<div id="c1ed84cb" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="st">Although trade policy is often framed in terms of tariffs and quotas, its real-world implications stretch far beyond simple economic indicators, influencing global supply chains, shaping diplomatic relationships, altering domestic labor markets, and forcing policymakers to constantly balance the competing interests of protecting local industries, ensuring consumer access to affordable goods, meeting international obligations, and adapting to shifting geopolitical landscapes where a decision as seemingly straightforward as imposing a 10</span><span class="sc">% d</span><span class="st">uty on imported steel can ripple outward to affect everything from the price of cars to the stability of cross-border alliances and the strategic calculations of multinational corporations.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<ol class="example" type="1">
+<li>Count the number of times letter <code>g</code> appears in the above sentence.</li>
+</ol>
+<div id="4429a6d4" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" class="example" type="1">
+<li>Modify the following code so as to map each letter from a to z (in lowercase) with the number of times it appears in the above string. (<em>hint</em>: there are at least two modifications to make. For the character table you can check the following <a href="https://www.ascii-code.com/characters/a-z">website</a>)</li>
+</ol>
+<div id="4468acac" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>frequencies <span class="op">=</span> {}</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">26</span>):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  l <span class="op">=</span> <span class="bu">chr</span>(i) <span class="co"># compute character from index</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  n <span class="op">=</span> (i<span class="op">+</span>i)<span class="op">/</span>i<span class="op">+</span>i   <span class="co"># modify the right hand side</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  frequencies[l] <span class="op">=</span> n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" class="example" type="1">
+<li><p>What is the most frequent letter?</p></li>
+<li><p>Using only the functions <code>str.split()</code> and <code>len()</code>, count the number of words in this sentence.</p></li>
+</ol>
+<div id="5ec1ebeb" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" class="example" type="1">
+<li>Define a new string <code>s2</code> where the number 10 is replaced with 20.</li>
+</ol>
+<div id="ee7e9a0e" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="a-too-simple-formula-to-compute-tariffs" class="level2">
+<h2 class="anchored" data-anchor-id="a-too-simple-formula-to-compute-tariffs">A (too) simple formula to compute tariffs</h2>
+<p>An hypotetical country named Wonderland (W) is trading with a neigbour country Canadry (C).</p>
+<p>The dataframe included in file <code>trade.csv</code> contains the following variables:</p>
+<ul>
+<li><p><span class="math inline">\(X\)</span>: the volume of exports from W to C<br>
+</p></li>
+<li><p><span class="math inline">\(M\)</span>: the volume of imports from C to W<br>
+</p></li>
+<li><p><span class="math inline">\(t\)</span>: the tariff rate imposed by W on imports from C<br>
+</p></li>
+<li><p><span class="math inline">\(P\)</span>: the price of import goods</p>
+<ul>
+<li>these are the border prices, i.e.&nbsp;prices paid by local importer adding what is paid to foreigners and what is collected by the tax authority</li>
+</ul></li>
+<li><p><span class="math inline">\(P_r\)</span>: retail prices</p>
+<ul>
+<li>prices paid by consumers, i.e.&nbsp;prices paid by local importers plus the margin of local firms</li>
+</ul></li>
+</ul>
+<hr>
+<ol start="6" class="example" type="1">
+<li>Import the dataset and describe it (number of observations, averages, …)</li>
+</ol>
+<div id="89356f7f" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="7" class="example" type="1">
+<li>Compute the average value of <span class="math inline">\(\frac{M-X}{M}\)</span>. Compute the average value of <span class="math inline">\(\frac{M-X}{M}\)</span> for <span class="math inline">\(t&lt;0.025\)</span>. This last value will be used as the initial starting point for the trade deficit.</li>
+</ol>
+<div id="84af4a0c" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The goal is now to model the effect of tariffs on the trade deficit.</p>
+<p>We assume that imports are a function of import prices <span class="math inline">\(P\)</span>, and that import prices are a function of tariffs <span class="math inline">\(t\)</span>.</p>
+<p>We postulate the following functional forms:</p>
+<p><span class="math display">\[M(P) = M_0 (P/P_0)^\phi\]</span></p>
+<p><span class="math display">\[P(t) = P_0 (1+t)^\epsilon\]</span></p>
+<ol start="8" class="example" type="1">
+<li>Regress <code>log(M)</code> on <code>log(P)</code> using statsmodels. Comment on the results of the regression. What is the value of <span class="math inline">\(\phi\)</span>?</li>
+</ol>
+<div id="87d464ec" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="9" class="example" type="1">
+<li>Regress <code>log(P)</code> on <code>log(1+t)</code> using statsmodels (you might have to define a new variable). Comment on the results of the regression. What is the value of <span class="math inline">\(\epsilon\)</span>? Is that consistent with your intuition?</li>
+</ol>
+<div id="2324d5d7" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>An adviser to the Wonderland government devised a formula to compute the amount of tariffs needed to eliminate completely the trade deficit. This formula is given by: <span class="math inline">\(T = \frac{M-X}{M}\frac{1}{\epsilon \phi}\)</span></p>
+<ol start="10" class="example" type="1">
+<li>What would be the corresponding tax rate? Make a plot with the tax rate as the x-axis, and the trade deficit as the y-axis. Comment.</li>
+</ol>
+<div id="9b37624b" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Unfortunately, another advisor got the wrong memo and used the retail prices (instead of border prices) to compute the elasticity <span class="math inline">\(\epsilon\)</span>. He obtained <span class="math inline">\(\epsilon=0.25\)</span> and thus claimed that he could apply the simplistic formula <span class="math inline">\(T = \frac{1}{2}\frac{M-X}{M}\)</span> where the <span class="math inline">\(\frac{1}{2}\)</span> is a discretionary factor added out of generosity.</p>
+<ol start="11" class="example" type="1">
+<li>What would be the corresponding tax rate? Illustrate the effect on the trade deficit using the same plot as before.</li>
+</ol>
+<div id="e82e468e" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The story doesn’t really stop there. It is not just that the formula was not applied in a consistent way… It’s also that it was simplistic to start with, using the same elasticities for all countries and ignoring the existence of multilateral trade, of intermediary goods, and the effects of possible retaliation, … The application of the same formula to all trade partners sent world markets into financial turmoil. The rest is history…</p>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
