@@ -1,0 +1,3325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Modify dataframe – Data-Based Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6f73c5116d67d1f2a0ad64de19d303ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Data-Based Economics
+      </li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Data-Based Economics</a> 
+    </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">lectures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataframes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_3/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_4/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_5/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Instrumental Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_6/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Machine Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_7/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Machine Learning (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_8/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Text Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_10/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Exam 🤞</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Modify dataframe</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="2e3230f9-27d2-4eb9-9275-bcc9bb8018ac" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5390f089-3083-43bc-970b-b369c26b497a" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from a dictionary</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"country"</span>: [<span class="st">"USA"</span>, <span class="st">"UK"</span>, <span class="st">"France"</span>],</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"comics"</span>: [<span class="dv">13</span>, <span class="dv">10</span>, <span class="dv">12</span>]   </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>{'country': ['USA', 'UK', 'France'], 'comics': [13, 10, 12]}</code></pre>
+</div>
+</div>
+<div id="633872a4-9360-4881-b713-3a11d7127e24" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(d) </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">comics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>USA</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>UK</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>France</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="961d86f0-7012-4527-8b24-c30646c9ae6a" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create dummy file</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> <span class="st">"""year,country,measure</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">2018,"france",950.0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">2019,"france",960.0</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">2020,"france",1000.0</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">2018,"usa",2500.0</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">2019,"usa",2150.0</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">2020,"usa",2300.0</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">open</span>(<span class="st">'dummy_file.csv'</span>,<span class="st">'w'</span>).write(txt) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>136</code></pre>
+</div>
+</div>
+<div id="75cc87d1-3b13-4809-b02c-f90861a7d445" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'dummy_file.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">measure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2018</td>
+<td>france</td>
+<td>950.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2019</td>
+<td>france</td>
+<td>960.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2020</td>
+<td>france</td>
+<td>1000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2018</td>
+<td>usa</td>
+<td>2500.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2019</td>
+<td>usa</td>
+<td>2150.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>2020</td>
+<td>usa</td>
+<td>2300.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="1b1b970d-a3b0-4063-b79e-d88238bae243" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat annoying_dummy_file.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>year;country;measure
+2018;"france";950.0
+2019;"france";960.0
+2020;"france";1000.0
+2018;"usa";2500.0
+2019;"usa";2150.0
+2020;"usa";2300.0</code></pre>
+</div>
+</div>
+<div id="9fbe2c4c-b3f8-47af-a5fa-ef098ee25824" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">"annoying_dummy_file.csv"</span>, sep<span class="op">=</span><span class="st">";"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">measure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2018</td>
+<td>france</td>
+<td>950.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2019</td>
+<td>france</td>
+<td>960.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2020</td>
+<td>france</td>
+<td>1000.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2018</td>
+<td>usa</td>
+<td>2500.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2019</td>
+<td>usa</td>
+<td>2150.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>2020</td>
+<td>usa</td>
+<td>2300.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="ff4323ed-939b-4b18-8cca-576da6788891" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pd.read_csv?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span>
+pd<span class="ansi-blue-fg">.</span>read_csv<span class="ansi-blue-fg">(</span>
+    filepath_or_buffer<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str]'</span><span class="ansi-blue-fg">,</span>
+    <span class="ansi-blue-fg">*</span><span class="ansi-blue-fg">,</span>
+    sep<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str | None | lib.NoDefault'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&lt;</span>no_default<span class="ansi-blue-fg">&gt;</span><span class="ansi-blue-fg">,</span>
+    delimiter<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str | None | lib.NoDefault'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    header<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">"int | Sequence[int] | None | Literal['infer']"</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">'infer'</span><span class="ansi-blue-fg">,</span>
+    names<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'Sequence[Hashable] | None | lib.NoDefault'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&lt;</span>no_default<span class="ansi-blue-fg">&gt;</span><span class="ansi-blue-fg">,</span>
+    index_col<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'IndexLabel | Literal[False] | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    usecols<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'UsecolsArgType'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    dtype<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'DtypeArg | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    engine<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'CSVEngine | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    converters<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'Mapping[Hashable, Callable] | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    true_values<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'list | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    false_values<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'list | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    skipinitialspace<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span><span class="ansi-blue-fg">,</span>
+    skiprows<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'list[int] | int | Callable[[Hashable], bool] | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    skipfooter<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'int'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span>
+    nrows<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'int | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    na_values<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'Hashable | Iterable[Hashable] | Mapping[Hashable, Iterable[Hashable]] | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    keep_default_na<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
+    na_filter<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
+    verbose<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool | lib.NoDefault'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&lt;</span>no_default<span class="ansi-blue-fg">&gt;</span><span class="ansi-blue-fg">,</span>
+    skip_blank_lines<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
+    parse_dates<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool | Sequence[Hashable] | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    infer_datetime_format<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool | lib.NoDefault'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&lt;</span>no_default<span class="ansi-blue-fg">&gt;</span><span class="ansi-blue-fg">,</span>
+    keep_date_col<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool | lib.NoDefault'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&lt;</span>no_default<span class="ansi-blue-fg">&gt;</span><span class="ansi-blue-fg">,</span>
+    date_parser<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'Callable | lib.NoDefault'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&lt;</span>no_default<span class="ansi-blue-fg">&gt;</span><span class="ansi-blue-fg">,</span>
+    date_format<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str | dict[Hashable, str] | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    dayfirst<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span><span class="ansi-blue-fg">,</span>
+    cache_dates<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
+    iterator<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span><span class="ansi-blue-fg">,</span>
+    chunksize<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'int | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    compression<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'CompressionOptions'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">'infer'</span><span class="ansi-blue-fg">,</span>
+    thousands<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    decimal<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">'.'</span><span class="ansi-blue-fg">,</span>
+    lineterminator<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    quotechar<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">'"'</span><span class="ansi-blue-fg">,</span>
+    quoting<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'int'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">,</span>
+    doublequote<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
+    escapechar<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    comment<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    encoding<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    encoding_errors<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">'strict'</span><span class="ansi-blue-fg">,</span>
+    dialect<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str | csv.Dialect | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    on_bad_lines<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'str'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">'error'</span><span class="ansi-blue-fg">,</span>
+    delim_whitespace<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool | lib.NoDefault'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&lt;</span>no_default<span class="ansi-blue-fg">&gt;</span><span class="ansi-blue-fg">,</span>
+    low_memory<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
+    memory_map<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'bool'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span><span class="ansi-blue-fg">,</span>
+    float_precision<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">"Literal['high', 'legacy'] | None"</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    storage_options<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'StorageOptions | None'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+    dtype_backend<span class="ansi-blue-fg">:</span> <span class="ansi-blue-fg">'DtypeBackend | lib.NoDefault'</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&lt;</span>no_default<span class="ansi-blue-fg">&gt;</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">-&gt;</span> <span class="ansi-blue-fg">'DataFrame | TextFileReader'</span>
+<span class="ansi-red-fg">Docstring:</span>
+Read a comma-separated values (csv) file into DataFrame.
+Also supports optionally iterating or breaking of the file
+into chunks.
+Additional help can be found in the online docs for
+`IO Tools &lt;https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html&gt;`_.
+Parameters
+----------
+filepath_or_buffer : str, path object or file-like object
+    Any valid string path is acceptable. The string could be a URL. Valid
+    URL schemes include http, ftp, s3, gs, and file. For file URLs, a host is
+    expected. A local file could be: file://localhost/path/to/table.csv.
+    If you want to pass in a path object, pandas accepts any ``os.PathLike``.
+    By file-like object, we refer to objects with a ``read()`` method, such as
+    a file handle (e.g. via builtin ``open`` function) or ``StringIO``.
+sep : str, default ','
+    Character or regex pattern to treat as the delimiter. If ``sep=None``, the
+    C engine cannot automatically detect
+    the separator, but the Python parsing engine can, meaning the latter will
+    be used and automatically detect the separator from only the first valid
+    row of the file by Python's builtin sniffer tool, ``csv.Sniffer``.
+    In addition, separators longer than 1 character and different from
+    ``'\s+'`` will be interpreted as regular expressions and will also force
+    the use of the Python parsing engine. Note that regex delimiters are prone
+    to ignoring quoted data. Regex example: ``'\r\t'``.
+delimiter : str, optional
+    Alias for ``sep``.
+header : int, Sequence of int, 'infer' or None, default 'infer'
+    Row number(s) containing column labels and marking the start of the
+    data (zero-indexed). Default behavior is to infer the column names: if no ``names``
+    are passed the behavior is identical to ``header=0`` and column
+    names are inferred from the first line of the file, if column
+    names are passed explicitly to ``names`` then the behavior is identical to
+    ``header=None``. Explicitly pass ``header=0`` to be able to
+    replace existing names. The header can be a list of integers that
+    specify row locations for a :class:`~pandas.MultiIndex` on the columns
+    e.g. ``[0, 1, 3]``. Intervening rows that are not specified will be
+    skipped (e.g. 2 in this example is skipped). Note that this
+    parameter ignores commented lines and empty lines if
+    ``skip_blank_lines=True``, so ``header=0`` denotes the first line of
+    data rather than the first line of the file.
+names : Sequence of Hashable, optional
+    Sequence of column labels to apply. If the file contains a header row,
+    then you should explicitly pass ``header=0`` to override the column names.
+    Duplicates in this list are not allowed.
+index_col : Hashable, Sequence of Hashable or False, optional
+  Column(s) to use as row label(s), denoted either by column labels or column
+  indices.  If a sequence of labels or indices is given, :class:`~pandas.MultiIndex`
+  will be formed for the row labels.
+  Note: ``index_col=False`` can be used to force pandas to *not* use the first
+  column as the index, e.g., when you have a malformed file with delimiters at
+  the end of each line.
+usecols : Sequence of Hashable or Callable, optional
+    Subset of columns to select, denoted either by column labels or column indices.
+    If list-like, all elements must either
+    be positional (i.e. integer indices into the document columns) or strings
+    that correspond to column names provided either by the user in ``names`` or
+    inferred from the document header row(s). If ``names`` are given, the document
+    header row(s) are not taken into account. For example, a valid list-like
+    ``usecols`` parameter would be ``[0, 1, 2]`` or ``['foo', 'bar', 'baz']``.
+    Element order is ignored, so ``usecols=[0, 1]`` is the same as ``[1, 0]``.
+    To instantiate a :class:`~pandas.DataFrame` from ``data`` with element order
+    preserved use ``pd.read_csv(data, usecols=['foo', 'bar'])[['foo', 'bar']]``
+    for columns in ``['foo', 'bar']`` order or
+    ``pd.read_csv(data, usecols=['foo', 'bar'])[['bar', 'foo']]``
+    for ``['bar', 'foo']`` order.
+    If callable, the callable function will be evaluated against the column
+    names, returning names where the callable function evaluates to ``True``. An
+    example of a valid callable argument would be ``lambda x: x.upper() in
+    ['AAA', 'BBB', 'DDD']``. Using this parameter results in much faster
+    parsing time and lower memory usage.
+dtype : dtype or dict of {Hashable : dtype}, optional
+    Data type(s) to apply to either the whole dataset or individual columns.
+    E.g., ``{'a': np.float64, 'b': np.int32, 'c': 'Int64'}``
+    Use ``str`` or ``object`` together with suitable ``na_values`` settings
+    to preserve and not interpret ``dtype``.
+    If ``converters`` are specified, they will be applied INSTEAD
+    of ``dtype`` conversion.
+    .. versionadded:: 1.5.0
+        Support for ``defaultdict`` was added. Specify a ``defaultdict`` as input where
+        the default determines the ``dtype`` of the columns which are not explicitly
+        listed.
+engine : {'c', 'python', 'pyarrow'}, optional
+    Parser engine to use. The C and pyarrow engines are faster, while the python engine
+    is currently more feature-complete. Multithreading is currently only supported by
+    the pyarrow engine.
+    .. versionadded:: 1.4.0
+        The 'pyarrow' engine was added as an *experimental* engine, and some features
+        are unsupported, or may not work correctly, with this engine.
+converters : dict of {Hashable : Callable}, optional
+    Functions for converting values in specified columns. Keys can either
+    be column labels or column indices.
+true_values : list, optional
+    Values to consider as ``True`` in addition to case-insensitive variants of 'True'.
+false_values : list, optional
+    Values to consider as ``False`` in addition to case-insensitive variants of 'False'.
+skipinitialspace : bool, default False
+    Skip spaces after delimiter.
+skiprows : int, list of int or Callable, optional
+    Line numbers to skip (0-indexed) or number of lines to skip (``int``)
+    at the start of the file.
+    If callable, the callable function will be evaluated against the row
+    indices, returning ``True`` if the row should be skipped and ``False`` otherwise.
+    An example of a valid callable argument would be ``lambda x: x in [0, 2]``.
+skipfooter : int, default 0
+    Number of lines at bottom of file to skip (Unsupported with ``engine='c'``).
+nrows : int, optional
+    Number of rows of file to read. Useful for reading pieces of large files.
+na_values : Hashable, Iterable of Hashable or dict of {Hashable : Iterable}, optional
+    Additional strings to recognize as ``NA``/``NaN``. If ``dict`` passed, specific
+    per-column ``NA`` values.  By default the following values are interpreted as
+    ``NaN``: " ", "#N/A", "#N/A N/A", "#NA", "-1.#IND", "-1.#QNAN", "-NaN", "-nan",
+    "1.#IND", "1.#QNAN", "&lt;NA&gt;", "N/A", "NA", "NULL", "NaN", "None",
+    "n/a", "nan", "null ".
+keep_default_na : bool, default True
+    Whether or not to include the default ``NaN`` values when parsing the data.
+    Depending on whether ``na_values`` is passed in, the behavior is as follows:
+    * If ``keep_default_na`` is ``True``, and ``na_values`` are specified, ``na_values``
+      is appended to the default ``NaN`` values used for parsing.
+    * If ``keep_default_na`` is ``True``, and ``na_values`` are not specified, only
+      the default ``NaN`` values are used for parsing.
+    * If ``keep_default_na`` is ``False``, and ``na_values`` are specified, only
+      the ``NaN`` values specified ``na_values`` are used for parsing.
+    * If ``keep_default_na`` is ``False``, and ``na_values`` are not specified, no
+      strings will be parsed as ``NaN``.
+    Note that if ``na_filter`` is passed in as ``False``, the ``keep_default_na`` and
+    ``na_values`` parameters will be ignored.
+na_filter : bool, default True
+    Detect missing value markers (empty strings and the value of ``na_values``). In
+    data without any ``NA`` values, passing ``na_filter=False`` can improve the
+    performance of reading a large file.
+verbose : bool, default False
+    Indicate number of ``NA`` values placed in non-numeric columns.
+    .. deprecated:: 2.2.0
+skip_blank_lines : bool, default True
+    If ``True``, skip over blank lines rather than interpreting as ``NaN`` values.
+parse_dates : bool, list of Hashable, list of lists or dict of {Hashable : list}, default False
+    The behavior is as follows:
+    * ``bool``. If ``True`` -&gt; try parsing the index. Note: Automatically set to
+      ``True`` if ``date_format`` or ``date_parser`` arguments have been passed.
+    * ``list`` of ``int`` or names. e.g. If ``[1, 2, 3]`` -&gt; try parsing columns 1, 2, 3
+      each as a separate date column.
+    * ``list`` of ``list``. e.g.  If ``[[1, 3]]`` -&gt; combine columns 1 and 3 and parse
+      as a single date column. Values are joined with a space before parsing.
+    * ``dict``, e.g. ``{'foo' : [1, 3]}`` -&gt; parse columns 1, 3 as date and call
+      result 'foo'. Values are joined with a space before parsing.
+    If a column or index cannot be represented as an array of ``datetime``,
+    say because of an unparsable value or a mixture of timezones, the column
+    or index will be returned unaltered as an ``object`` data type. For
+    non-standard ``datetime`` parsing, use :func:`~pandas.to_datetime` after
+    :func:`~pandas.read_csv`.
+    Note: A fast-path exists for iso8601-formatted dates.
+infer_datetime_format : bool, default False
+    If ``True`` and ``parse_dates`` is enabled, pandas will attempt to infer the
+    format of the ``datetime`` strings in the columns, and if it can be inferred,
+    switch to a faster method of parsing them. In some cases this can increase
+    the parsing speed by 5-10x.
+    .. deprecated:: 2.0.0
+        A strict version of this argument is now the default, passing it has no effect.
+keep_date_col : bool, default False
+    If ``True`` and ``parse_dates`` specifies combining multiple columns then
+    keep the original columns.
+date_parser : Callable, optional
+    Function to use for converting a sequence of string columns to an array of
+    ``datetime`` instances. The default uses ``dateutil.parser.parser`` to do the
+    conversion. pandas will try to call ``date_parser`` in three different ways,
+    advancing to the next if an exception occurs: 1) Pass one or more arrays
+    (as defined by ``parse_dates``) as arguments; 2) concatenate (row-wise) the
+    string values from the columns defined by ``parse_dates`` into a single array
+    and pass that; and 3) call ``date_parser`` once for each row using one or
+    more strings (corresponding to the columns defined by ``parse_dates``) as
+    arguments.
+    .. deprecated:: 2.0.0
+       Use ``date_format`` instead, or read in as ``object`` and then apply
+       :func:`~pandas.to_datetime` as-needed.
+date_format : str or dict of column -&gt; format, optional
+    Format to use for parsing dates when used in conjunction with ``parse_dates``.
+    The strftime to parse time, e.g. :const:`"%d/%m/%Y"`. See
+    `strftime documentation
+    &lt;https://docs.python.org/3/library/datetime.html
+    #strftime-and-strptime-behavior&gt;`_ for more information on choices, though
+    note that :const:`"%f"` will parse all the way up to nanoseconds.
+    You can also pass:
+    - "ISO8601", to parse any `ISO8601 &lt;https://en.wikipedia.org/wiki/ISO_8601&gt;`_
+        time string (not necessarily in exactly the same format);
+    - "mixed", to infer the format for each element individually. This is risky,
+        and you should probably use it along with `dayfirst`.
+    .. versionadded:: 2.0.0
+dayfirst : bool, default False
+    DD/MM format dates, international and European format.
+cache_dates : bool, default True
+    If ``True``, use a cache of unique, converted dates to apply the ``datetime``
+    conversion. May produce significant speed-up when parsing duplicate
+    date strings, especially ones with timezone offsets.
+iterator : bool, default False
+    Return ``TextFileReader`` object for iteration or getting chunks with
+    ``get_chunk()``.
+chunksize : int, optional
+    Number of lines to read from the file per chunk. Passing a value will cause the
+    function to return a ``TextFileReader`` object for iteration.
+    See the `IO Tools docs
+    &lt;https://pandas.pydata.org/pandas-docs/stable/io.html#io-chunking&gt;`_
+    for more information on ``iterator`` and ``chunksize``.
+compression : str or dict, default 'infer'
+    For on-the-fly decompression of on-disk data. If 'infer' and 'filepath_or_buffer' is
+    path-like, then detect compression from the following extensions: '.gz',
+    '.bz2', '.zip', '.xz', '.zst', '.tar', '.tar.gz', '.tar.xz' or '.tar.bz2'
+    (otherwise no compression).
+    If using 'zip' or 'tar', the ZIP file must contain only one data file to be read in.
+    Set to ``None`` for no decompression.
+    Can also be a dict with key ``'method'`` set
+    to one of {``'zip'``, ``'gzip'``, ``'bz2'``, ``'zstd'``, ``'xz'``, ``'tar'``} and
+    other key-value pairs are forwarded to
+    ``zipfile.ZipFile``, ``gzip.GzipFile``,
+    ``bz2.BZ2File``, ``zstandard.ZstdDecompressor``, ``lzma.LZMAFile`` or
+    ``tarfile.TarFile``, respectively.
+    As an example, the following could be passed for Zstandard decompression using a
+    custom compression dictionary:
+    ``compression={'method': 'zstd', 'dict_data': my_compression_dict}``.
+    .. versionadded:: 1.5.0
+        Added support for `.tar` files.
+    .. versionchanged:: 1.4.0 Zstandard support.
+thousands : str (length 1), optional
+    Character acting as the thousands separator in numerical values.
+decimal : str (length 1), default '.'
+    Character to recognize as decimal point (e.g., use ',' for European data).
+lineterminator : str (length 1), optional
+    Character used to denote a line break. Only valid with C parser.
+quotechar : str (length 1), optional
+    Character used to denote the start and end of a quoted item. Quoted
+    items can include the ``delimiter`` and it will be ignored.
+quoting : {0 or csv.QUOTE_MINIMAL, 1 or csv.QUOTE_ALL, 2 or csv.QUOTE_NONNUMERIC, 3 or csv.QUOTE_NONE}, default csv.QUOTE_MINIMAL
+    Control field quoting behavior per ``csv.QUOTE_*`` constants. Default is
+    ``csv.QUOTE_MINIMAL`` (i.e., 0) which implies that only fields containing special
+    characters are quoted (e.g., characters defined in ``quotechar``, ``delimiter``,
+    or ``lineterminator``.
+doublequote : bool, default True
+   When ``quotechar`` is specified and ``quoting`` is not ``QUOTE_NONE``, indicate
+   whether or not to interpret two consecutive ``quotechar`` elements INSIDE a
+   field as a single ``quotechar`` element.
+escapechar : str (length 1), optional
+    Character used to escape other characters.
+comment : str (length 1), optional
+    Character indicating that the remainder of line should not be parsed.
+    If found at the beginning
+    of a line, the line will be ignored altogether. This parameter must be a
+    single character. Like empty lines (as long as ``skip_blank_lines=True``),
+    fully commented lines are ignored by the parameter ``header`` but not by
+    ``skiprows``. For example, if ``comment='#'``, parsing
+    ``#empty\na,b,c\n1,2,3`` with ``header=0`` will result in ``'a,b,c'`` being
+    treated as the header.
+encoding : str, optional, default 'utf-8'
+    Encoding to use for UTF when reading/writing (ex. ``'utf-8'``). `List of Python
+    standard encodings
+    &lt;https://docs.python.org/3/library/codecs.html#standard-encodings&gt;`_ .
+encoding_errors : str, optional, default 'strict'
+    How encoding errors are treated. `List of possible values
+    &lt;https://docs.python.org/3/library/codecs.html#error-handlers&gt;`_ .
+    .. versionadded:: 1.3.0
+dialect : str or csv.Dialect, optional
+    If provided, this parameter will override values (default or not) for the
+    following parameters: ``delimiter``, ``doublequote``, ``escapechar``,
+    ``skipinitialspace``, ``quotechar``, and ``quoting``. If it is necessary to
+    override values, a ``ParserWarning`` will be issued. See ``csv.Dialect``
+    documentation for more details.
+on_bad_lines : {'error', 'warn', 'skip'} or Callable, default 'error'
+    Specifies what to do upon encountering a bad line (a line with too many fields).
+    Allowed values are :
+    - ``'error'``, raise an Exception when a bad line is encountered.
+    - ``'warn'``, raise a warning when a bad line is encountered and skip that line.
+    - ``'skip'``, skip bad lines without raising or warning when they are encountered.
+    .. versionadded:: 1.3.0
+    .. versionadded:: 1.4.0
+        - Callable, function with signature
+          ``(bad_line: list[str]) -&gt; list[str] | None`` that will process a single
+          bad line. ``bad_line`` is a list of strings split by the ``sep``.
+          If the function returns ``None``, the bad line will be ignored.
+          If the function returns a new ``list`` of strings with more elements than
+          expected, a ``ParserWarning`` will be emitted while dropping extra elements.
+          Only supported when ``engine='python'``
+    .. versionchanged:: 2.2.0
+        - Callable, function with signature
+          as described in `pyarrow documentation
+          &lt;https://arrow.apache.org/docs/python/generated/pyarrow.csv.ParseOptions.html
+          #pyarrow.csv.ParseOptions.invalid_row_handler&gt;`_ when ``engine='pyarrow'``
+delim_whitespace : bool, default False
+    Specifies whether or not whitespace (e.g. ``' '`` or ``'\t'``) will be
+    used as the ``sep`` delimiter. Equivalent to setting ``sep='\s+'``. If this option
+    is set to ``True``, nothing should be passed in for the ``delimiter``
+    parameter.
+    .. deprecated:: 2.2.0
+        Use ``sep="\s+"`` instead.
+low_memory : bool, default True
+    Internally process the file in chunks, resulting in lower memory use
+    while parsing, but possibly mixed type inference.  To ensure no mixed
+    types either set ``False``, or specify the type with the ``dtype`` parameter.
+    Note that the entire file is read into a single :class:`~pandas.DataFrame`
+    regardless, use the ``chunksize`` or ``iterator`` parameter to return the data in
+    chunks. (Only valid with C parser).
+memory_map : bool, default False
+    If a filepath is provided for ``filepath_or_buffer``, map the file object
+    directly onto memory and access the data directly from there. Using this
+    option can improve performance because there is no longer any I/O overhead.
+float_precision : {'high', 'legacy', 'round_trip'}, optional
+    Specifies which converter the C engine should use for floating-point
+    values. The options are ``None`` or ``'high'`` for the ordinary converter,
+    ``'legacy'`` for the original lower precision pandas converter, and
+    ``'round_trip'`` for the round-trip converter.
+storage_options : dict, optional
+    Extra options that make sense for a particular storage connection, e.g.
+    host, port, username, password, etc. For HTTP(S) URLs the key-value pairs
+    are forwarded to ``urllib.request.Request`` as header options. For other
+    URLs (e.g. starting with "s3://", and "gcs://") the key-value pairs are
+    forwarded to ``fsspec.open``. Please see ``fsspec`` and ``urllib`` for more
+    details, and for more examples on storage options refer `here
+    &lt;https://pandas.pydata.org/docs/user_guide/io.html?
+    highlight=storage_options#reading-writing-remote-files&gt;`_.
+dtype_backend : {'numpy_nullable', 'pyarrow'}, default 'numpy_nullable'
+    Back-end data type applied to the resultant :class:`DataFrame`
+    (still experimental). Behaviour is as follows:
+    * ``"numpy_nullable"``: returns nullable-dtype-backed :class:`DataFrame`
+      (default).
+    * ``"pyarrow"``: returns pyarrow-backed nullable :class:`ArrowDtype`
+      DataFrame.
+    .. versionadded:: 2.0
+Returns
+-------
+DataFrame or TextFileReader
+    A comma-separated values (csv) file is returned as two-dimensional
+    data structure with labeled axes.
+See Also
+--------
+DataFrame.to_csv : Write DataFrame to a comma-separated values (csv) file.
+read_table : Read general delimited file into DataFrame.
+read_fwf : Read a table of fixed-width formatted lines into DataFrame.
+Examples
+--------
+&gt;&gt;&gt; pd.read_csv('data.csv')  # doctest: +SKIP
+<span class="ansi-red-fg">File:</span>      ~/.local/opt/micromamba/envs/escp/lib/python3.12/site-packages/pandas/io/parsers/readers.py
+<span class="ansi-red-fg">Type:</span>      function</pre>
+</div>
+</div>
+</div>
+<div id="a2769042-858c-42f4-a3b6-de125b9ad3b9" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'out.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="501cfbf7-29e2-4a25-bb15-1d8f48b34d49" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dbnomics</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> dbnomics.fetch_series(<span class="st">'AMECO/ZUTN/EA19.1.0.0.0.ZUTN'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="8ef0a09a-d214-4301-a9e2-78c18f843b07" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">@frequency</th>
+<th data-quarto-table-cell-role="th">provider_code</th>
+<th data-quarto-table-cell-role="th">dataset_code</th>
+<th data-quarto-table-cell-role="th">dataset_name</th>
+<th data-quarto-table-cell-role="th">series_code</th>
+<th data-quarto-table-cell-role="th">series_name</th>
+<th data-quarto-table-cell-role="th">original_period</th>
+<th data-quarto-table-cell-role="th">period</th>
+<th data-quarto-table-cell-role="th">original_value</th>
+<th data-quarto-table-cell-role="th">value</th>
+<th data-quarto-table-cell-role="th">freq</th>
+<th data-quarto-table-cell-role="th">unit</th>
+<th data-quarto-table-cell-role="th">geo</th>
+<th data-quarto-table-cell-role="th">Frequency</th>
+<th data-quarto-table-cell-role="th">Unit</th>
+<th data-quarto-table-cell-role="th">Country</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>1960</td>
+<td>1960-01-01</td>
+<td>NA</td>
+<td>NaN</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>1961</td>
+<td>1961-01-01</td>
+<td>NA</td>
+<td>NaN</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>1962</td>
+<td>1962-01-01</td>
+<td>NA</td>
+<td>NaN</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>1963</td>
+<td>1963-01-01</td>
+<td>NA</td>
+<td>NaN</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>1964</td>
+<td>1964-01-01</td>
+<td>NA</td>
+<td>NaN</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">63</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>2023</td>
+<td>2023-01-01</td>
+<td>6.6</td>
+<td>6.6</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">64</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>2024</td>
+<td>2024-01-01</td>
+<td>6.4</td>
+<td>6.4</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">65</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>2025</td>
+<td>2025-01-01</td>
+<td>6.4</td>
+<td>6.4</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">66</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>2026</td>
+<td>2026-01-01</td>
+<td>6.3</td>
+<td>6.3</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">67</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>2027</td>
+<td>2027-01-01</td>
+<td>6.2</td>
+<td>6.2</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+</tbody>
+</table>
+
+<p>68 rows × 16 columns</p>
+</div>
+</div>
+</div>
+<div id="fb202a59-b031-49ef-b44c-76e8ae86e4ca" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">@frequency</th>
+<th data-quarto-table-cell-role="th">provider_code</th>
+<th data-quarto-table-cell-role="th">dataset_code</th>
+<th data-quarto-table-cell-role="th">dataset_name</th>
+<th data-quarto-table-cell-role="th">series_code</th>
+<th data-quarto-table-cell-role="th">series_name</th>
+<th data-quarto-table-cell-role="th">original_period</th>
+<th data-quarto-table-cell-role="th">period</th>
+<th data-quarto-table-cell-role="th">original_value</th>
+<th data-quarto-table-cell-role="th">value</th>
+<th data-quarto-table-cell-role="th">freq</th>
+<th data-quarto-table-cell-role="th">unit</th>
+<th data-quarto-table-cell-role="th">geo</th>
+<th data-quarto-table-cell-role="th">Frequency</th>
+<th data-quarto-table-cell-role="th">Unit</th>
+<th data-quarto-table-cell-role="th">Country</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>1960</td>
+<td>1960-01-01</td>
+<td>NA</td>
+<td>NaN</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>1961</td>
+<td>1961-01-01</td>
+<td>NA</td>
+<td>NaN</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>1962</td>
+<td>1962-01-01</td>
+<td>NA</td>
+<td>NaN</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>1963</td>
+<td>1963-01-01</td>
+<td>NA</td>
+<td>NaN</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>annual</td>
+<td>AMECO</td>
+<td>ZUTN</td>
+<td>Unemployment rate: total :- Member States: def...</td>
+<td>EA19.1.0.0.0.ZUTN</td>
+<td>Annually – (Percentage of active population) –...</td>
+<td>1964</td>
+<td>1964-01-01</td>
+<td>NA</td>
+<td>NaN</td>
+<td>a</td>
+<td>percentage-of-active-population</td>
+<td>ea19</td>
+<td>Annually</td>
+<td>(Percentage of active population)</td>
+<td>Euro area (19 countries)</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="36fc5b56-724a-443d-808e-5b3c6c2529f8" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">period</th>
+<th data-quarto-table-cell-role="th">value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>68</td>
+<td>31.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">mean</th>
+<td>1993-07-02 06:00:00</td>
+<td>8.912903</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">min</th>
+<td>1960-01-01 00:00:00</td>
+<td>6.200000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25%</th>
+<td>1976-10-01 12:00:00</td>
+<td>7.600000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">50%</th>
+<td>1993-07-02 12:00:00</td>
+<td>9.100000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">75%</th>
+<td>2010-04-02 06:00:00</td>
+<td>10.300000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">max</th>
+<td>2027-01-01 00:00:00</td>
+<td>12.100000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">std</th>
+<td>NaN</td>
+<td>1.761201</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="28ff6463-475f-4fb1-a7ad-4b999d56ec6e" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'value'</span>].plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Untitled_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Show how to modify data</p>
+<div id="e716f887-ddba-478f-abb9-caed681265b0" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import dataset</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> vega_datasets</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> vega_datasets.data(<span class="st">'iris'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sepalLength</th>
+<th data-quarto-table-cell-role="th">sepalWidth</th>
+<th data-quarto-table-cell-role="th">petalLength</th>
+<th data-quarto-table-cell-role="th">petalWidth</th>
+<th data-quarto-table-cell-role="th">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>5.1</td>
+<td>3.5</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>4.9</td>
+<td>3.0</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>4.7</td>
+<td>3.2</td>
+<td>1.3</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4.6</td>
+<td>3.1</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>5.0</td>
+<td>3.6</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">145</th>
+<td>6.7</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>2.3</td>
+<td>virginica</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">146</th>
+<td>6.3</td>
+<td>2.5</td>
+<td>5.0</td>
+<td>1.9</td>
+<td>virginica</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">147</th>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>2.0</td>
+<td>virginica</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">148</th>
+<td>6.2</td>
+<td>3.4</td>
+<td>5.4</td>
+<td>2.3</td>
+<td>virginica</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">149</th>
+<td>5.9</td>
+<td>3.0</td>
+<td>5.1</td>
+<td>1.8</td>
+<td>virginica</td>
+</tr>
+</tbody>
+</table>
+
+<p>150 rows × 5 columns</p>
+</div>
+</div>
+</div>
+<div id="35b5af60-432e-45c0-bbc2-565ccbee14e8" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [<span class="st">'sLength'</span>, <span class="st">'sWidth'</span>, <span class="st">'pLength'</span>, <span class="st">'pWidth'</span>, <span class="st">'species'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="1441f0cf-81c3-4181-bf92-9a2add69ae02" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.head() <span class="co">## calling ()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="1fb99d3f-0957-4318-adda-a746252c2715" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'sLength'</span>]   <span class="co">#index with []</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>0      5.1
+1      4.9
+2      4.7
+3      4.6
+4      5.0
+      ... 
+145    6.7
+146    6.3
+147    6.5
+148    6.2
+149    5.9
+Name: sLength, Length: 150, dtype: float64</code></pre>
+</div>
+</div>
+<div id="c723d39d-fe98-4e8d-b8e4-dc5af6cb28b8" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'totalLength'</span>] <span class="op">=</span> <span class="fl">0.5</span><span class="op">*</span>df[<span class="st">'sLength'</span>] <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>df[<span class="st">'pLength'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="f9a86fa3-fc45-4177-93e5-74831e021ebd" class="cell" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sLength</th>
+<th data-quarto-table-cell-role="th">sWidth</th>
+<th data-quarto-table-cell-role="th">pLength</th>
+<th data-quarto-table-cell-role="th">pWidth</th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">totalLength</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>5.1</td>
+<td>3.5</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+<td>3.25</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>4.9</td>
+<td>3.0</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+<td>3.15</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>4.7</td>
+<td>3.2</td>
+<td>1.3</td>
+<td>0.2</td>
+<td>setosa</td>
+<td>3.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4.6</td>
+<td>3.1</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>setosa</td>
+<td>3.05</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>5.0</td>
+<td>3.6</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+<td>3.20</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="fb4f17ad-2264-4195-a47e-d95ac63496b1" class="cell" data-execution_count="42">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'species'</span>].unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>array(['setosa', 'versicolor', 'virginica'], dtype=object)</code></pre>
+</div>
+</div>
+<div id="873b0414-7857-45b5-a9fd-652dcf32a92c" class="cell" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract all virginica lines</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> df[<span class="st">'species'</span>] <span class="op">==</span> <span class="st">'virginica'</span>  <span class="co">### '==' : check for equality &gt; True or False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="1a44a817-4cd8-4d00-b321-e636f8cf5464" class="cell" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df[mask]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sLength</th>
+<th data-quarto-table-cell-role="th">sWidth</th>
+<th data-quarto-table-cell-role="th">pLength</th>
+<th data-quarto-table-cell-role="th">pWidth</th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">totalLength</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">100</th>
+<td>6.3</td>
+<td>3.3</td>
+<td>6.0</td>
+<td>2.5</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">101</th>
+<td>5.8</td>
+<td>2.7</td>
+<td>5.1</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.45</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">102</th>
+<td>7.1</td>
+<td>3.0</td>
+<td>5.9</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.50</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">103</th>
+<td>6.3</td>
+<td>2.9</td>
+<td>5.6</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">104</th>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.8</td>
+<td>2.2</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">105</th>
+<td>7.6</td>
+<td>3.0</td>
+<td>6.6</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>7.10</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">106</th>
+<td>4.9</td>
+<td>2.5</td>
+<td>4.5</td>
+<td>1.7</td>
+<td>virginica</td>
+<td>4.70</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">107</th>
+<td>7.3</td>
+<td>2.9</td>
+<td>6.3</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.80</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">108</th>
+<td>6.7</td>
+<td>2.5</td>
+<td>5.8</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.25</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">109</th>
+<td>7.2</td>
+<td>3.6</td>
+<td>6.1</td>
+<td>2.5</td>
+<td>virginica</td>
+<td>6.65</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">110</th>
+<td>6.5</td>
+<td>3.2</td>
+<td>5.1</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.80</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">111</th>
+<td>6.4</td>
+<td>2.7</td>
+<td>5.3</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">112</th>
+<td>6.8</td>
+<td>3.0</td>
+<td>5.5</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">113</th>
+<td>5.7</td>
+<td>2.5</td>
+<td>5.0</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.35</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">114</th>
+<td>5.8</td>
+<td>2.8</td>
+<td>5.1</td>
+<td>2.4</td>
+<td>virginica</td>
+<td>5.45</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">115</th>
+<td>6.4</td>
+<td>3.2</td>
+<td>5.3</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">116</th>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.5</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">117</th>
+<td>7.7</td>
+<td>3.8</td>
+<td>6.7</td>
+<td>2.2</td>
+<td>virginica</td>
+<td>7.20</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">118</th>
+<td>7.7</td>
+<td>2.6</td>
+<td>6.9</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>7.30</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">119</th>
+<td>6.0</td>
+<td>2.2</td>
+<td>5.0</td>
+<td>1.5</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">120</th>
+<td>6.9</td>
+<td>3.2</td>
+<td>5.7</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.30</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">121</th>
+<td>5.6</td>
+<td>2.8</td>
+<td>4.9</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.25</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">122</th>
+<td>7.7</td>
+<td>2.8</td>
+<td>6.7</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>7.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">123</th>
+<td>6.3</td>
+<td>2.7</td>
+<td>4.9</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.60</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">124</th>
+<td>6.7</td>
+<td>3.3</td>
+<td>5.7</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">125</th>
+<td>7.2</td>
+<td>3.2</td>
+<td>6.0</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.60</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">126</th>
+<td>6.2</td>
+<td>2.8</td>
+<td>4.8</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">127</th>
+<td>6.1</td>
+<td>3.0</td>
+<td>4.9</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">128</th>
+<td>6.4</td>
+<td>2.8</td>
+<td>5.6</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">129</th>
+<td>7.2</td>
+<td>3.0</td>
+<td>5.8</td>
+<td>1.6</td>
+<td>virginica</td>
+<td>6.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">130</th>
+<td>7.4</td>
+<td>2.8</td>
+<td>6.1</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>6.75</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">131</th>
+<td>7.9</td>
+<td>3.8</td>
+<td>6.4</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>7.15</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">132</th>
+<td>6.4</td>
+<td>2.8</td>
+<td>5.6</td>
+<td>2.2</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">133</th>
+<td>6.3</td>
+<td>2.8</td>
+<td>5.1</td>
+<td>1.5</td>
+<td>virginica</td>
+<td>5.70</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">134</th>
+<td>6.1</td>
+<td>2.6</td>
+<td>5.6</td>
+<td>1.4</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">135</th>
+<td>7.7</td>
+<td>3.0</td>
+<td>6.1</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.90</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">136</th>
+<td>6.3</td>
+<td>3.4</td>
+<td>5.6</td>
+<td>2.4</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">137</th>
+<td>6.4</td>
+<td>3.1</td>
+<td>5.5</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">138</th>
+<td>6.0</td>
+<td>3.0</td>
+<td>4.8</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.40</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">139</th>
+<td>6.9</td>
+<td>3.1</td>
+<td>5.4</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">140</th>
+<td>6.7</td>
+<td>3.1</td>
+<td>5.6</td>
+<td>2.4</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">141</th>
+<td>6.9</td>
+<td>3.1</td>
+<td>5.1</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">142</th>
+<td>5.8</td>
+<td>2.7</td>
+<td>5.1</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.45</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">143</th>
+<td>6.8</td>
+<td>3.2</td>
+<td>5.9</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.35</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">144</th>
+<td>6.7</td>
+<td>3.3</td>
+<td>5.7</td>
+<td>2.5</td>
+<td>virginica</td>
+<td>6.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">145</th>
+<td>6.7</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">146</th>
+<td>6.3</td>
+<td>2.5</td>
+<td>5.0</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.65</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">147</th>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">148</th>
+<td>6.2</td>
+<td>3.4</td>
+<td>5.4</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>5.80</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">149</th>
+<td>5.9</td>
+<td>3.0</td>
+<td>5.1</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="d987b533-b1cf-4cae-80ff-ff82a8b16c64" class="cell" data-execution_count="46">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[ df[<span class="st">'species'</span>] <span class="op">==</span> <span class="st">'virginica'</span> ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sLength</th>
+<th data-quarto-table-cell-role="th">sWidth</th>
+<th data-quarto-table-cell-role="th">pLength</th>
+<th data-quarto-table-cell-role="th">pWidth</th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">totalLength</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">100</th>
+<td>6.3</td>
+<td>3.3</td>
+<td>6.0</td>
+<td>2.5</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">101</th>
+<td>5.8</td>
+<td>2.7</td>
+<td>5.1</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.45</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">102</th>
+<td>7.1</td>
+<td>3.0</td>
+<td>5.9</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.50</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">103</th>
+<td>6.3</td>
+<td>2.9</td>
+<td>5.6</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">104</th>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.8</td>
+<td>2.2</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">105</th>
+<td>7.6</td>
+<td>3.0</td>
+<td>6.6</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>7.10</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">106</th>
+<td>4.9</td>
+<td>2.5</td>
+<td>4.5</td>
+<td>1.7</td>
+<td>virginica</td>
+<td>4.70</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">107</th>
+<td>7.3</td>
+<td>2.9</td>
+<td>6.3</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.80</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">108</th>
+<td>6.7</td>
+<td>2.5</td>
+<td>5.8</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.25</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">109</th>
+<td>7.2</td>
+<td>3.6</td>
+<td>6.1</td>
+<td>2.5</td>
+<td>virginica</td>
+<td>6.65</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">110</th>
+<td>6.5</td>
+<td>3.2</td>
+<td>5.1</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.80</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">111</th>
+<td>6.4</td>
+<td>2.7</td>
+<td>5.3</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">112</th>
+<td>6.8</td>
+<td>3.0</td>
+<td>5.5</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">113</th>
+<td>5.7</td>
+<td>2.5</td>
+<td>5.0</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.35</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">114</th>
+<td>5.8</td>
+<td>2.8</td>
+<td>5.1</td>
+<td>2.4</td>
+<td>virginica</td>
+<td>5.45</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">115</th>
+<td>6.4</td>
+<td>3.2</td>
+<td>5.3</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">116</th>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.5</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">117</th>
+<td>7.7</td>
+<td>3.8</td>
+<td>6.7</td>
+<td>2.2</td>
+<td>virginica</td>
+<td>7.20</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">118</th>
+<td>7.7</td>
+<td>2.6</td>
+<td>6.9</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>7.30</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">119</th>
+<td>6.0</td>
+<td>2.2</td>
+<td>5.0</td>
+<td>1.5</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">120</th>
+<td>6.9</td>
+<td>3.2</td>
+<td>5.7</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.30</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">121</th>
+<td>5.6</td>
+<td>2.8</td>
+<td>4.9</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.25</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">122</th>
+<td>7.7</td>
+<td>2.8</td>
+<td>6.7</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>7.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">123</th>
+<td>6.3</td>
+<td>2.7</td>
+<td>4.9</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.60</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">124</th>
+<td>6.7</td>
+<td>3.3</td>
+<td>5.7</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">125</th>
+<td>7.2</td>
+<td>3.2</td>
+<td>6.0</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.60</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">126</th>
+<td>6.2</td>
+<td>2.8</td>
+<td>4.8</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">127</th>
+<td>6.1</td>
+<td>3.0</td>
+<td>4.9</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">128</th>
+<td>6.4</td>
+<td>2.8</td>
+<td>5.6</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">129</th>
+<td>7.2</td>
+<td>3.0</td>
+<td>5.8</td>
+<td>1.6</td>
+<td>virginica</td>
+<td>6.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">130</th>
+<td>7.4</td>
+<td>2.8</td>
+<td>6.1</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>6.75</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">131</th>
+<td>7.9</td>
+<td>3.8</td>
+<td>6.4</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>7.15</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">132</th>
+<td>6.4</td>
+<td>2.8</td>
+<td>5.6</td>
+<td>2.2</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">133</th>
+<td>6.3</td>
+<td>2.8</td>
+<td>5.1</td>
+<td>1.5</td>
+<td>virginica</td>
+<td>5.70</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">134</th>
+<td>6.1</td>
+<td>2.6</td>
+<td>5.6</td>
+<td>1.4</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">135</th>
+<td>7.7</td>
+<td>3.0</td>
+<td>6.1</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.90</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">136</th>
+<td>6.3</td>
+<td>3.4</td>
+<td>5.6</td>
+<td>2.4</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">137</th>
+<td>6.4</td>
+<td>3.1</td>
+<td>5.5</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">138</th>
+<td>6.0</td>
+<td>3.0</td>
+<td>4.8</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.40</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">139</th>
+<td>6.9</td>
+<td>3.1</td>
+<td>5.4</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">140</th>
+<td>6.7</td>
+<td>3.1</td>
+<td>5.6</td>
+<td>2.4</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">141</th>
+<td>6.9</td>
+<td>3.1</td>
+<td>5.1</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">142</th>
+<td>5.8</td>
+<td>2.7</td>
+<td>5.1</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.45</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">143</th>
+<td>6.8</td>
+<td>3.2</td>
+<td>5.9</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.35</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">144</th>
+<td>6.7</td>
+<td>3.3</td>
+<td>5.7</td>
+<td>2.5</td>
+<td>virginica</td>
+<td>6.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">145</th>
+<td>6.7</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">146</th>
+<td>6.3</td>
+<td>2.5</td>
+<td>5.0</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.65</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">147</th>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">148</th>
+<td>6.2</td>
+<td>3.4</td>
+<td>5.4</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>5.80</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">149</th>
+<td>5.9</td>
+<td>3.0</td>
+<td>5.1</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="dfab32c8-cdb6-426d-83ef-e116ba2f9e74" class="cell" data-execution_count="47">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"species=='virginica'"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sLength</th>
+<th data-quarto-table-cell-role="th">sWidth</th>
+<th data-quarto-table-cell-role="th">pLength</th>
+<th data-quarto-table-cell-role="th">pWidth</th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">totalLength</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">100</th>
+<td>6.3</td>
+<td>3.3</td>
+<td>6.0</td>
+<td>2.5</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">101</th>
+<td>5.8</td>
+<td>2.7</td>
+<td>5.1</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.45</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">102</th>
+<td>7.1</td>
+<td>3.0</td>
+<td>5.9</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.50</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">103</th>
+<td>6.3</td>
+<td>2.9</td>
+<td>5.6</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">104</th>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.8</td>
+<td>2.2</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">105</th>
+<td>7.6</td>
+<td>3.0</td>
+<td>6.6</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>7.10</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">106</th>
+<td>4.9</td>
+<td>2.5</td>
+<td>4.5</td>
+<td>1.7</td>
+<td>virginica</td>
+<td>4.70</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">107</th>
+<td>7.3</td>
+<td>2.9</td>
+<td>6.3</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.80</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">108</th>
+<td>6.7</td>
+<td>2.5</td>
+<td>5.8</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.25</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">109</th>
+<td>7.2</td>
+<td>3.6</td>
+<td>6.1</td>
+<td>2.5</td>
+<td>virginica</td>
+<td>6.65</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">110</th>
+<td>6.5</td>
+<td>3.2</td>
+<td>5.1</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.80</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">111</th>
+<td>6.4</td>
+<td>2.7</td>
+<td>5.3</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">112</th>
+<td>6.8</td>
+<td>3.0</td>
+<td>5.5</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">113</th>
+<td>5.7</td>
+<td>2.5</td>
+<td>5.0</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.35</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">114</th>
+<td>5.8</td>
+<td>2.8</td>
+<td>5.1</td>
+<td>2.4</td>
+<td>virginica</td>
+<td>5.45</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">115</th>
+<td>6.4</td>
+<td>3.2</td>
+<td>5.3</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">116</th>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.5</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">117</th>
+<td>7.7</td>
+<td>3.8</td>
+<td>6.7</td>
+<td>2.2</td>
+<td>virginica</td>
+<td>7.20</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">118</th>
+<td>7.7</td>
+<td>2.6</td>
+<td>6.9</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>7.30</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">119</th>
+<td>6.0</td>
+<td>2.2</td>
+<td>5.0</td>
+<td>1.5</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">120</th>
+<td>6.9</td>
+<td>3.2</td>
+<td>5.7</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.30</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">121</th>
+<td>5.6</td>
+<td>2.8</td>
+<td>4.9</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.25</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">122</th>
+<td>7.7</td>
+<td>2.8</td>
+<td>6.7</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>7.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">123</th>
+<td>6.3</td>
+<td>2.7</td>
+<td>4.9</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.60</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">124</th>
+<td>6.7</td>
+<td>3.3</td>
+<td>5.7</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">125</th>
+<td>7.2</td>
+<td>3.2</td>
+<td>6.0</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>6.60</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">126</th>
+<td>6.2</td>
+<td>2.8</td>
+<td>4.8</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">127</th>
+<td>6.1</td>
+<td>3.0</td>
+<td>4.9</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">128</th>
+<td>6.4</td>
+<td>2.8</td>
+<td>5.6</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">129</th>
+<td>7.2</td>
+<td>3.0</td>
+<td>5.8</td>
+<td>1.6</td>
+<td>virginica</td>
+<td>6.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">130</th>
+<td>7.4</td>
+<td>2.8</td>
+<td>6.1</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>6.75</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">131</th>
+<td>7.9</td>
+<td>3.8</td>
+<td>6.4</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>7.15</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">132</th>
+<td>6.4</td>
+<td>2.8</td>
+<td>5.6</td>
+<td>2.2</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">133</th>
+<td>6.3</td>
+<td>2.8</td>
+<td>5.1</td>
+<td>1.5</td>
+<td>virginica</td>
+<td>5.70</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">134</th>
+<td>6.1</td>
+<td>2.6</td>
+<td>5.6</td>
+<td>1.4</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">135</th>
+<td>7.7</td>
+<td>3.0</td>
+<td>6.1</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.90</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">136</th>
+<td>6.3</td>
+<td>3.4</td>
+<td>5.6</td>
+<td>2.4</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">137</th>
+<td>6.4</td>
+<td>3.1</td>
+<td>5.5</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">138</th>
+<td>6.0</td>
+<td>3.0</td>
+<td>4.8</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.40</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">139</th>
+<td>6.9</td>
+<td>3.1</td>
+<td>5.4</td>
+<td>2.1</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">140</th>
+<td>6.7</td>
+<td>3.1</td>
+<td>5.6</td>
+<td>2.4</td>
+<td>virginica</td>
+<td>6.15</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">141</th>
+<td>6.9</td>
+<td>3.1</td>
+<td>5.1</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.00</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">142</th>
+<td>5.8</td>
+<td>2.7</td>
+<td>5.1</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.45</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">143</th>
+<td>6.8</td>
+<td>3.2</td>
+<td>5.9</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>6.35</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">144</th>
+<td>6.7</td>
+<td>3.3</td>
+<td>5.7</td>
+<td>2.5</td>
+<td>virginica</td>
+<td>6.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">145</th>
+<td>6.7</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>5.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">146</th>
+<td>6.3</td>
+<td>2.5</td>
+<td>5.0</td>
+<td>1.9</td>
+<td>virginica</td>
+<td>5.65</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">147</th>
+<td>6.5</td>
+<td>3.0</td>
+<td>5.2</td>
+<td>2.0</td>
+<td>virginica</td>
+<td>5.85</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">148</th>
+<td>6.2</td>
+<td>3.4</td>
+<td>5.4</td>
+<td>2.3</td>
+<td>virginica</td>
+<td>5.80</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">149</th>
+<td>5.9</td>
+<td>3.0</td>
+<td>5.1</td>
+<td>1.8</td>
+<td>virginica</td>
+<td>5.50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/albop\.github\.io\/dbe\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
