@@ -869,7 +869,7 @@
     "href": "slides/session_3/index.html#student-test",
     "title": "Linear Regression",
     "section": "Student test",
-    "text": "Student test\n\nSo our estimate is \\(y = \\underbrace{0.121}_{\\tilde{\\alpha}} + \\underbrace{0.794}_{\\tilde{\\beta}} x\\).\n\nwe know \\(\\tilde{\\beta}\\) is a bit random (it’s an estimator)\nare we even sure \\(\\tilde{\\beta}\\) could not have been zero?\n\nStudent Test:\n\nH0: \\(\\beta=0\\)\nH1: \\(\\beta \\neq 0\\)\nStatistics: \\(t=\\frac{\\hat{\\beta}}{\\sigma(\\hat{\\beta})}\\)\n\nintuitively: compare mean of estimator to its standard deviation\nalso a function of degrees of freedom\n\n\nSignificance levels (read in a table or use software):\n\nfor 18 degrees of freedom, \\(P(|t|&gt;t^{\\star})=0.05\\) with \\(t^{\\star}=1.734\\)\nif \\(t&gt;t^{\\star}\\) we are \\(95%\\) confident the coefficient is significant"
+    "text": "Student test\n\nSo our estimate is \\(y = \\underbrace{0.121}_{\\tilde{\\alpha}} + \\underbrace{0.794}_{\\tilde{\\beta}} x\\).\n\nwe know \\(\\tilde{\\beta}\\) is a bit random (it’s an estimator): are we even sure \\(\\tilde{\\beta}\\) could not have been zero?\n\nStudent Test: H0: \\(\\beta=0\\), H1: \\(\\beta \\neq 0\\)\n\nStatistics: \\(t=\\frac{\\hat{\\beta}}{\\sigma(\\hat{\\beta})}\\)\n\nintuitively: compare mean of estimator to its standard deviation\nalso a function of degrees of freedom\n\n\nSignificance levels (read in a table or use software):\n\nfor 18 degrees of freedom, \\(P(|t|&gt;t^{\\star})=0.05\\) with \\(t^{\\star}=1.734\\)\nif \\(t&gt;t^{\\star}\\) we are \\(95%\\) confident the coefficient is significant"
   },
   {
     "objectID": "slides/session_3/index.html#student-tables",
@@ -883,7 +883,14 @@
     "href": "slides/session_3/index.html#confidence-intervals",
     "title": "Linear Regression",
     "section": "Confidence intervals",
-    "text": "Confidence intervals\nThe student test can also be used to construct confidence intervals.\n\nGiven estimate, \\(\\hat{\\beta}\\) with standard deviation \\(\\sigma(\\hat{\\beta})\\)\nGiven a probability threshold \\(\\alpha\\) (for instance \\(\\alpha=0.05\\)) we can compute \\(t^{\\star}\\) such that \\(P(|t|&gt;t*)=\\alpha\\)\nWe construct the confidence interval:\n\n\\[I^{\\alpha} = [\\hat{\\beta}-t\\sigma(\\hat{\\beta}), \\hat{\\beta}+t\\sigma(\\hat{\\beta})]\\]\n\nInterpretation:\n\nif the true value was outside of the confidence interval, the probability of obtaining the value that we got would be less than 5%.\nwe can say the true value is within the interval with 95% confidence level"
+    "text": "Confidence intervals\nThe student test can also be used to construct confidence intervals.\n\nGiven estimate, \\(\\hat{\\beta}\\) with standard deviation \\(\\sigma(\\hat{\\beta})\\)\nGiven a probability threshold \\(\\alpha\\) (for instance \\(\\alpha=0.05\\)) we can compute \\(t^{\\star}\\) such that \\(P(|t|&gt;t*)=\\alpha\\)\n\nWe construct the confidence interval: \\[I^{\\alpha} = [\\hat{\\beta}-t\\sigma(\\hat{\\beta}), \\hat{\\beta}+t\\sigma(\\hat{\\beta})]\\]\n\nInterpretation (⚠: subtle)\n\nif the true value was outside of the confidence interval, the probability of obtaining the value that we got would be less than 5%\nif we had repeated the experiment many times and computed the confidence interval, the true value would be inside it 95% of the time\nwe can say the true value is within the interval with 95% confidence level"
+  },
+  {
+    "objectID": "slides/session_3/index.html#do-more-firearms-reduce-homicide",
+    "href": "slides/session_3/index.html#do-more-firearms-reduce-homicide",
+    "title": "Linear Regression",
+    "section": "Do more firearms reduce homicide?",
+    "text": "Do more firearms reduce homicide?\nClaim (common intuition): “More civilian firearms deter crime ⇒ fewer homicides.”\n\nSimple cross-country OLS (26 high-income countries, early 1990s)\n\\[\\text{HomicideRate}_i = \\alpha + \\beta\\,\\text{GunAvailability}_i + \\varepsilon_i\\]\n\nGun availability proxied by the Cook index = average of\n(% suicides with a firearm, % homicides with a firearm)\n\n\n\nWhat the bivariate regression finds (Table 2):\n\nCrude homicide rate: (= 9.2) (p &lt; 0.001), corr = 0.74\n\nExcluding the U.S.: (= 4.9) (p = 0.003), corr = 0.57\n\n\n\nTakeaway: The “more guns → less homicide” claim is not supported by this simple cross-country correlation.\n\n⚠️ Caution (OLS lesson): This is not causal (possible confounding, reverse causality, measurement error). Use it to practice interpreting (), p-values, and thinking about omitted variables.\n\n\nSource: Hemenway, D. & Miller, M. (2000). Firearm Availability and Homicide Rates across 26 High-Income Countries. Journal of Trauma, 49(6), 985–988. Paper"
   },
   {
     "objectID": "slides/session_3/index_handout.html",
@@ -1143,7 +1150,7 @@
     "href": "slides/session_3/index_handout.html#student-test",
     "title": "Linear Regression",
     "section": "Student test",
-    "text": "Student test\n\n\nSo our estimate is \\(y = \\underbrace{0.121}_{\\tilde{\\alpha}} + \\underbrace{0.794}_{\\tilde{\\beta}} x\\).\n\nwe know \\(\\tilde{\\beta}\\) is a bit random (it’s an estimator)\nare we even sure \\(\\tilde{\\beta}\\) could not have been zero?\n\nStudent Test:\n\nH0: \\(\\beta=0\\)\nH1: \\(\\beta \\neq 0\\)\nStatistics: \\(t=\\frac{\\hat{\\beta}}{\\sigma(\\hat{\\beta})}\\)\n\nintuitively: compare mean of estimator to its standard deviation\nalso a function of degrees of freedom\n\n\nSignificance levels (read in a table or use software):\n\nfor 18 degrees of freedom, \\(P(|t|&gt;t^{\\star})=0.05\\) with \\(t^{\\star}=1.734\\)\nif \\(t&gt;t^{\\star}\\) we are \\(95%\\) confident the coefficient is significant",
+    "text": "Student test\n\n\nSo our estimate is \\(y = \\underbrace{0.121}_{\\tilde{\\alpha}} + \\underbrace{0.794}_{\\tilde{\\beta}} x\\).\n\nwe know \\(\\tilde{\\beta}\\) is a bit random (it’s an estimator): are we even sure \\(\\tilde{\\beta}\\) could not have been zero?\n\nStudent Test: H0: \\(\\beta=0\\), H1: \\(\\beta \\neq 0\\)\n\nStatistics: \\(t=\\frac{\\hat{\\beta}}{\\sigma(\\hat{\\beta})}\\)\n\nintuitively: compare mean of estimator to its standard deviation\nalso a function of degrees of freedom\n\n\nSignificance levels (read in a table or use software):\n\nfor 18 degrees of freedom, \\(P(|t|&gt;t^{\\star})=0.05\\) with \\(t^{\\star}=1.734\\)\nif \\(t&gt;t^{\\star}\\) we are \\(95%\\) confident the coefficient is significant",
     "crumbs": [
       "lectures",
       "Linear Regression"
@@ -1165,7 +1172,18 @@
     "href": "slides/session_3/index_handout.html#confidence-intervals",
     "title": "Linear Regression",
     "section": "Confidence intervals",
-    "text": "Confidence intervals\nThe student test can also be used to construct confidence intervals.\n\nGiven estimate, \\(\\hat{\\beta}\\) with standard deviation \\(\\sigma(\\hat{\\beta})\\)\nGiven a probability threshold \\(\\alpha\\) (for instance \\(\\alpha=0.05\\)) we can compute \\(t^{\\star}\\) such that \\(P(|t|&gt;t*)=\\alpha\\)\nWe construct the confidence interval:\n\n\\[I^{\\alpha} = [\\hat{\\beta}-t\\sigma(\\hat{\\beta}), \\hat{\\beta}+t\\sigma(\\hat{\\beta})]\\]\n. . .\nInterpretation:\n\nif the true value was outside of the confidence interval, the probability of obtaining the value that we got would be less than 5%.\nwe can say the true value is within the interval with 95% confidence level",
+    "text": "Confidence intervals\nThe student test can also be used to construct confidence intervals.\n\nGiven estimate, \\(\\hat{\\beta}\\) with standard deviation \\(\\sigma(\\hat{\\beta})\\)\nGiven a probability threshold \\(\\alpha\\) (for instance \\(\\alpha=0.05\\)) we can compute \\(t^{\\star}\\) such that \\(P(|t|&gt;t*)=\\alpha\\)\n\nWe construct the confidence interval: \\[I^{\\alpha} = [\\hat{\\beta}-t\\sigma(\\hat{\\beta}), \\hat{\\beta}+t\\sigma(\\hat{\\beta})]\\]\n. . .\nInterpretation (⚠: subtle)\n\nif the true value was outside of the confidence interval, the probability of obtaining the value that we got would be less than 5%\nif we had repeated the experiment many times and computed the confidence interval, the true value would be inside it 95% of the time\nwe can say the true value is within the interval with 95% confidence level",
+    "crumbs": [
+      "lectures",
+      "Linear Regression"
+    ]
+  },
+  {
+    "objectID": "slides/session_3/index_handout.html#do-more-firearms-reduce-homicide",
+    "href": "slides/session_3/index_handout.html#do-more-firearms-reduce-homicide",
+    "title": "Linear Regression",
+    "section": "Do more firearms reduce homicide?",
+    "text": "Do more firearms reduce homicide?\nClaim (common intuition): “More civilian firearms deter crime ⇒ fewer homicides.”\n. . .\nSimple cross-country OLS (26 high-income countries, early 1990s)\n\\[\\text{HomicideRate}_i = \\alpha + \\beta\\,\\text{GunAvailability}_i + \\varepsilon_i\\]\n\nGun availability proxied by the Cook index = average of\n(% suicides with a firearm, % homicides with a firearm)\n\n. . .\nWhat the bivariate regression finds (Table 2):\n\nCrude homicide rate: (= 9.2) (p &lt; 0.001), corr = 0.74\n\nExcluding the U.S.: (= 4.9) (p = 0.003), corr = 0.57\n\n. . .\nTakeaway: The “more guns → less homicide” claim is not supported by this simple cross-country correlation.\n\n⚠️ Caution (OLS lesson): This is not causal (possible confounding, reverse causality, measurement error). Use it to practice interpreting (), p-values, and thinking about omitted variables.\n\n\nSource: Hemenway, D. & Miller, M. (2000). Firearm Availability and Homicide Rates across 26 High-Income Countries. Journal of Trauma, 49(6), 985–988. Paper",
     "crumbs": [
       "lectures",
       "Linear Regression"
@@ -1511,7 +1529,7 @@
     "href": "slides/session_4/index.html#remember-dataset-from-last-time",
     "title": "Multiple Regression",
     "section": "Remember dataset from last time",
-    "text": "Remember dataset from last time\n\n\n\n\n\n\ntype\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = xx + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = xx + 0.83 \\text{prestige}\\]\nWhich one is better?"
+    "text": "Remember dataset from last time\n\n\n\n\n\n\ntype\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = x + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = x + 0.83 \\text{prestige}\\]\nWhich one is better?"
   },
   {
     "objectID": "slides/session_4/index.html#prestige-or-education",
@@ -1630,7 +1648,7 @@
     "href": "slides/session_4/index.html#confidence-intervals",
     "title": "Multiple Regression",
     "section": "Confidence intervals",
-    "text": "Confidence intervals\nSame as in the 1d case.\n\nTake estimate \\(\\color{red}{\\beta_i}\\) with an estimate of its standard deviation \\(\\color{red}{\\hat{\\sigma}(\\beta_i)}\\)\nCompute student \\(\\color{red}{t^{\\star}}\\) at \\(\\color{red}{\\alpha}\\) confidence level (ex: \\(\\alpha=5\\\\%\\)) such that:\n\n\\(P(|t|&gt;t^{\\star})&lt;\\alpha\\)\n\n\n\nProduce confidence intervals at \\(\\alpha\\) confidence level:\n\n\\([\\color{red}{\\beta_i} - t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}, \\color{red}{\\beta_i} + t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}]\\)\n\nInterpretation:\n\nfor a given confidence interval at confidence level \\(\\alpha\\)…\nthe probability that our coefficient was obtained, if the true coefficient were outside of it, is smaller than \\(\\alpha\\)"
+    "text": "Confidence intervals\nSame as in the 1d case.\n\nTake estimate \\(\\color{red}{\\beta_i}\\) with an estimate of its standard deviation \\(\\color{red}{\\hat{\\sigma}(\\beta_i)}\\)\nCompute student \\(\\color{red}{t^{\\star}}\\) at \\(\\color{red}{\\alpha}\\) confidence level (ex: \\(\\alpha=5\\%\\)) such that:\n\n\\(P(|t|&gt;t^{\\star})&lt;\\alpha\\)\n\n\n\nProduce confidence intervals at \\(\\alpha\\) confidence level:\n\n\\([\\color{red}{\\beta_i} - t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}, \\color{red}{\\beta_i} + t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}]\\)\n\nInterpretation: for a given confidence interval at confidence level \\(\\alpha\\)… - the probability that our coefficient was obtained, if the true coefficient were outside of it, is smaller than \\(\\alpha\\) - if we had run many regressions and computed the confidence interval, the true coefficient would be inside it 95% of the time"
   },
   {
     "objectID": "slides/session_4/index.html#other-tests",
@@ -1679,7 +1697,7 @@
     "href": "slides/session_4/index_handout.html",
     "title": "Multiple Regression",
     "section": "",
-    "text": "type\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = xx + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = xx + 0.83 \\text{prestige}\\]\nWhich one is better?\n\n\n\n\n\n\n\n\n\nif the goal is to predict: the one with higher explained variance\n\nprestige has higher \\(R^2\\) (\\(0.83^2\\))\n\nunless we are interested in the effect of education\n\n\n\n\n\n\nWhat about using both?\n\n2 variables model: \\[\\text{income} = \\alpha + \\beta_1 \\text{education} + \\beta_2 \\text{prestige}\\]\nwill probably improve prediction power (explained variance)\n\\(\\beta_1\\) might not be meaningful on its own anymore (education and prestige are correlated)\n\n\n\n\n\n\nNow we are trying to fit a plane to a cloud of points.\n \n\n\n\n\n\nTake all observations: \\((\\text{income}_n,\\text{education}_n,\\text{prestige}_n)_{n\\in[0,N]}\\)\nObjective: sum of squares \\[ L(\\alpha, \\beta_1, \\beta_2) = \\sum_i \\left( \\underbrace{ \\alpha + \\beta_1 \\text{education}_n + \\beta_2 \\text{prestige}_n - \\text{income}_n }_{e_n=\\text{prediction error} }\\right)^2 \\]\nMinimize loss function in \\(\\alpha\\), \\(\\beta_1\\), \\(\\beta_2\\)\nAgain, we can perform numerical optimization (machine learning approach)\n\n… but there is an explicit formula\n\n\n\n\n\n\n\n\n\n\\[Y = \\begin{bmatrix}\n\\text{income}_1 \\\\\\\\\n\\vdots \\\\\\\\\n\\text{income}_N\n\\end{bmatrix}\\] \\[X = \\begin{bmatrix}\n1 & \\text{education}_1 & \\text{prestige}_1 \\\\\\\\\n\\vdots & \\vdots & \\vdots \\\\\\\\\n1 &\\text{education}_N & \\text{prestige}_N\n\\end{bmatrix}\\]\n\n\nMatrix Version (look for \\(B = \\left( \\alpha,  \\beta_1 , \\beta_2 \\right)\\)): \\[Y =  X B + E\\]\nNote that constant can be interpreted as a “variable”\nLoss function \\[L(A,B) = (Y - X B)' (Y - X B)\\]\nResult of minimization \\(\\min_{(A,B)} L(A,B)\\) : \\[\\begin{bmatrix}\\alpha & \\beta_1 & \\beta_2 \\end{bmatrix} = (X'X)^{-1} X' Y \\]\n\n\n\n\n\n\n\nResult: \\[\\text{income} = 10.43  + 0.03 \\times \\text{education} + 0.62 \\times \\text{prestige}\\]\nQuestions:\n\nis it a better regression than the other?\nis the coefficient in front of education significant?\nhow do we interpret it?\ncan we build confidence intervals?",
+    "text": "type\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = x + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = x + 0.83 \\text{prestige}\\]\nWhich one is better?\n\n\n\n\n\n\n\n\n\nif the goal is to predict: the one with higher explained variance\n\nprestige has higher \\(R^2\\) (\\(0.83^2\\))\n\nunless we are interested in the effect of education\n\n\n\n\n\n\nWhat about using both?\n\n2 variables model: \\[\\text{income} = \\alpha + \\beta_1 \\text{education} + \\beta_2 \\text{prestige}\\]\nwill probably improve prediction power (explained variance)\n\\(\\beta_1\\) might not be meaningful on its own anymore (education and prestige are correlated)\n\n\n\n\n\n\nNow we are trying to fit a plane to a cloud of points.\n \n\n\n\n\n\nTake all observations: \\((\\text{income}_n,\\text{education}_n,\\text{prestige}_n)_{n\\in[0,N]}\\)\nObjective: sum of squares \\[ L(\\alpha, \\beta_1, \\beta_2) = \\sum_i \\left( \\underbrace{ \\alpha + \\beta_1 \\text{education}_n + \\beta_2 \\text{prestige}_n - \\text{income}_n }_{e_n=\\text{prediction error} }\\right)^2 \\]\nMinimize loss function in \\(\\alpha\\), \\(\\beta_1\\), \\(\\beta_2\\)\nAgain, we can perform numerical optimization (machine learning approach)\n\n… but there is an explicit formula\n\n\n\n\n\n\n\n\n\n\\[Y = \\begin{bmatrix}\n\\text{income}_1 \\\\\\\\\n\\vdots \\\\\\\\\n\\text{income}_N\n\\end{bmatrix}\\] \\[X = \\begin{bmatrix}\n1 & \\text{education}_1 & \\text{prestige}_1 \\\\\\\\\n\\vdots & \\vdots & \\vdots \\\\\\\\\n1 &\\text{education}_N & \\text{prestige}_N\n\\end{bmatrix}\\]\n\n\nMatrix Version (look for \\(B = \\left( \\alpha,  \\beta_1 , \\beta_2 \\right)\\)): \\[Y =  X B + E\\]\nNote that constant can be interpreted as a “variable”\nLoss function \\[L(A,B) = (Y - X B)' (Y - X B)\\]\nResult of minimization \\(\\min_{(A,B)} L(A,B)\\) : \\[\\begin{bmatrix}\\alpha & \\beta_1 & \\beta_2 \\end{bmatrix} = (X'X)^{-1} X' Y \\]\n\n\n\n\n\n\n\nResult: \\[\\text{income} = 10.43  + 0.03 \\times \\text{education} + 0.62 \\times \\text{prestige}\\]\nQuestions:\n\nis it a better regression than the other?\nis the coefficient in front of education significant?\nhow do we interpret it?\ncan we build confidence intervals?",
     "crumbs": [
       "lectures",
       "Multiple Regression"
@@ -1690,7 +1708,7 @@
     "href": "slides/session_4/index_handout.html#remember-dataset-from-last-time",
     "title": "Multiple Regression",
     "section": "",
-    "text": "type\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = xx + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = xx + 0.83 \\text{prestige}\\]\nWhich one is better?",
+    "text": "type\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = x + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = x + 0.83 \\text{prestige}\\]\nWhich one is better?",
     "crumbs": [
       "lectures",
       "Multiple Regression"
@@ -1877,7 +1895,7 @@
     "href": "slides/session_4/index_handout.html#confidence-intervals",
     "title": "Multiple Regression",
     "section": "Confidence intervals",
-    "text": "Confidence intervals\nSame as in the 1d case.\n\nTake estimate \\(\\color{red}{\\beta_i}\\) with an estimate of its standard deviation \\(\\color{red}{\\hat{\\sigma}(\\beta_i)}\\)\nCompute student \\(\\color{red}{t^{\\star}}\\) at \\(\\color{red}{\\alpha}\\) confidence level (ex: \\(\\alpha=5\\\\%\\)) such that:\n\n\\(P(|t|&gt;t^{\\star})&lt;\\alpha\\)\n\n\n. . .\nProduce confidence intervals at \\(\\alpha\\) confidence level:\n\n\\([\\color{red}{\\beta_i} - t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}, \\color{red}{\\beta_i} + t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}]\\)\n\nInterpretation:\n\nfor a given confidence interval at confidence level \\(\\alpha\\)…\nthe probability that our coefficient was obtained, if the true coefficient were outside of it, is smaller than \\(\\alpha\\)",
+    "text": "Confidence intervals\nSame as in the 1d case.\n\nTake estimate \\(\\color{red}{\\beta_i}\\) with an estimate of its standard deviation \\(\\color{red}{\\hat{\\sigma}(\\beta_i)}\\)\nCompute student \\(\\color{red}{t^{\\star}}\\) at \\(\\color{red}{\\alpha}\\) confidence level (ex: \\(\\alpha=5\\%\\)) such that:\n\n\\(P(|t|&gt;t^{\\star})&lt;\\alpha\\)\n\n\n. . .\nProduce confidence intervals at \\(\\alpha\\) confidence level:\n\n\\([\\color{red}{\\beta_i} - t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}, \\color{red}{\\beta_i} + t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}]\\)\n\nInterpretation: for a given confidence interval at confidence level \\(\\alpha\\)… - the probability that our coefficient was obtained, if the true coefficient were outside of it, is smaller than \\(\\alpha\\) - if we had run many regressions and computed the confidence interval, the true coefficient would be inside it 95% of the time",
     "crumbs": [
       "lectures",
       "Multiple Regression"
@@ -5348,7 +5366,7 @@
     "href": "slides/session_1/index.html#general-1",
     "title": "Introduction",
     "section": "General (1)",
-    "text": "General (1)\n\nYour instructors:\n\nPablo Winadnt: pwinant@escp.eu (course)\nEzgi Ozsogut Khatib: ezgi.ozsogut@escp.eu (tutorials)\n\nHint: start your mail subject by [dbe]",
+    "text": "General (1)\n\nYour instructors:\n\nPablo Winadnt: pwinant@escp.eu (course)\nEzgi Ozsogut: ezgi.ozsogut@escp.eu (tutorials)\n\nHint: start your mail subject by [dbe]",
     "crumbs": [
       "lectures",
       "Introduction"
@@ -6181,14 +6199,14 @@
     "href": "index.html",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\n\nTitle\n\n\n\n\n\n\n\n\nJan 14, 2026\n\n\nIntroduction\n\n\n\n\n\n\nJan 14, 2026\n\n\nDataframes\n\n\n\n\n\n\nJan 29, 2026\n\n\nLinear Regression\n\n\n\n\n\n\nFeb 5, 2026\n\n\nMultiple Regression\n\n\n\n\n\n\nFeb 12, 2026\n\n\nIntroduction to Instrumental Variables\n\n\n\n\n\n\nFeb 19, 2026\n\n\nIntroduction to Machine Learning\n\n\n\n\n\n\nMar 4, 2026\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\n\n\nMar 25, 2026\n\n\nText Analysis\n\n\n\n\n\n\nApr 1, 2026\n\n\nIntro to Large Language Models\n\n\n\n\n\n\nApr 8, 2026\n\n\nFinal Exam 🤞\n\n\n\n\n\n\n \n\n\nSome Important Points\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\n\nTitle\n\n\n\n\n\n\n\n\nJan 14, 2026\n\n\nIntroduction\n\n\n\n\n\n\nJan 14, 2026\n\n\nDataframes\n\n\n\n\n\n\nJan 21, 2026\n\n\nMultiple Regression\n\n\n\n\n\n\nJan 28, 2026\n\n\nIntroduction to Instrumental Variables\n\n\n\n\n\n\nJan 29, 2026\n\n\nLinear Regression\n\n\n\n\n\n\nFeb 19, 2026\n\n\nIntroduction to Machine Learning\n\n\n\n\n\n\nMar 4, 2026\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\n\n\nMar 25, 2026\n\n\nText Analysis\n\n\n\n\n\n\nApr 1, 2026\n\n\nIntro to Large Language Models\n\n\n\n\n\n\nApr 8, 2026\n\n\nFinal Exam 🤞\n\n\n\n\n\n\n \n\n\nSome Important Points\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#schedule",
     "href": "index.html#schedule",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\n\nTitle\n\n\n\n\n\n\n\n\nJan 14, 2026\n\n\nIntroduction\n\n\n\n\n\n\nJan 14, 2026\n\n\nDataframes\n\n\n\n\n\n\nJan 29, 2026\n\n\nLinear Regression\n\n\n\n\n\n\nFeb 5, 2026\n\n\nMultiple Regression\n\n\n\n\n\n\nFeb 12, 2026\n\n\nIntroduction to Instrumental Variables\n\n\n\n\n\n\nFeb 19, 2026\n\n\nIntroduction to Machine Learning\n\n\n\n\n\n\nMar 4, 2026\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\n\n\nMar 25, 2026\n\n\nText Analysis\n\n\n\n\n\n\nApr 1, 2026\n\n\nIntro to Large Language Models\n\n\n\n\n\n\nApr 8, 2026\n\n\nFinal Exam 🤞\n\n\n\n\n\n\n \n\n\nSome Important Points\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\n\nTitle\n\n\n\n\n\n\n\n\nJan 14, 2026\n\n\nIntroduction\n\n\n\n\n\n\nJan 14, 2026\n\n\nDataframes\n\n\n\n\n\n\nJan 21, 2026\n\n\nMultiple Regression\n\n\n\n\n\n\nJan 28, 2026\n\n\nIntroduction to Instrumental Variables\n\n\n\n\n\n\nJan 29, 2026\n\n\nLinear Regression\n\n\n\n\n\n\nFeb 19, 2026\n\n\nIntroduction to Machine Learning\n\n\n\n\n\n\nMar 4, 2026\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\n\n\nMar 25, 2026\n\n\nText Analysis\n\n\n\n\n\n\nApr 1, 2026\n\n\nIntro to Large Language Models\n\n\n\n\n\n\nApr 8, 2026\n\n\nFinal Exam 🤞\n\n\n\n\n\n\n \n\n\nSome Important Points\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#evaluation",

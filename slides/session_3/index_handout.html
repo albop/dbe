@@ -264,6 +264,10 @@ window.Quarto = {
   <li><a href="#student-tables" id="toc-student-tables" class="nav-link" data-scroll-target="#student-tables">Student tables</a></li>
   <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence intervals</a></li>
   </ul></li>
+  <li><a href="#fact-check" id="toc-fact-check" class="nav-link" data-scroll-target="#fact-check">Fact Check</a>
+  <ul class="collapse">
+  <li><a href="#do-more-firearms-reduce-homicide" id="toc-do-more-firearms-reduce-homicide" class="nav-link" data-scroll-target="#do-more-firearms-reduce-homicide">Do more firearms reduce homicide?</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -324,7 +328,7 @@ window.Quarto = {
 <section id="quick-look" class="level2">
 <h2 class="anchored" data-anchor-id="quick-look">Quick look</h2>
 <p>Import the data from statsmodels’ dataset:</p>
-<div id="11b473f9" class="cell" data-execution_count="1">
+<div id="ae506e92" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"Duncan"</span>, <span class="st">"carData"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> dataset.data</span>
@@ -405,7 +409,7 @@ window.Quarto = {
 </ul>
 </div><div class="column">
 <div class="fragment">
-<div id="85f00773" class="cell" data-execution_count="2">
+<div id="831f3a68" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -506,7 +510,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="columns">
 <div class="column">
-<div id="25e3eae2" class="cell" data-execution_count="3">
+<div id="80ca51da" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'income'</span>,<span class="st">'education'</span>,<span class="st">'prestige'</span>]].cov()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -548,7 +552,7 @@ window.Quarto = {
 </div>
 </div><div class="column">
 <div class="fragment">
-<div id="1d879779" class="cell" data-execution_count="4">
+<div id="48bb50bb" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'income'</span>,<span class="st">'education'</span>,<span class="st">'prestige'</span>]].corr()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -598,7 +602,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="quick">Quick</h2>
 <div class="columns">
 <div class="column">
-<div id="8fa590b1" class="cell" data-execution_count="5">
+<div id="3a8e5b34" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'education'</span>],df[<span class="st">'income'</span>],<span class="st">'o'</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
@@ -614,7 +618,7 @@ window.Quarto = {
 </div>
 </div>
 </div><div class="column">
-<div id="38aacb99" class="cell" data-execution_count="6">
+<div id="34d586b7" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'education'</span>],df[<span class="st">'prestige'</span>],<span class="st">'o'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
@@ -635,7 +639,7 @@ window.Quarto = {
 <section id="quick-look-1" class="level2">
 <h2 class="anchored" data-anchor-id="quick-look-1">Quick look</h2>
 <p>Using <a href="https://matplotlib.org/">matplotlib</a> (3d)</p>
-<div id="899d16b0" class="cell" data-execution_count="7">
+<div id="ff1b11b1" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -647,7 +651,7 @@ window.Quarto = {
 </section>
 <section id="quick-look-2" class="level2">
 <h2 class="anchored" data-anchor-id="quick-look-2">Quick look</h2>
-<div id="4c3a1157" class="cell" data-execution_count="8">
+<div id="c4bc9eae" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(df[[<span class="st">'education'</span>, <span class="st">'prestige'</span>, <span class="st">'income'</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -991,13 +995,10 @@ This direct iterative procedure is used in machine learning</li>
 <ul class="incremental">
 <li>So our estimate is <span class="math inline">\(y = \underbrace{0.121}_{\tilde{\alpha}} + \underbrace{0.794}_{\tilde{\beta}} x\)</span>.
 <ul class="incremental">
-<li>we know <span class="math inline">\(\tilde{\beta}\)</span> is a bit random (it’s an estimator)</li>
-<li>are we even sure <span class="math inline">\(\tilde{\beta}\)</span> could not have been zero?</li>
+<li>we know <span class="math inline">\(\tilde{\beta}\)</span> is a bit random (it’s an estimator): are we even sure <span class="math inline">\(\tilde{\beta}\)</span> could not have been zero?</li>
 </ul></li>
-<li>Student Test:
+<li>Student Test: H0: <span class="math inline">\(\beta=0\)</span>, H1: <span class="math inline">\(\beta \neq 0\)</span>
 <ul class="incremental">
-<li>H0: <span class="math inline">\(\beta=0\)</span></li>
-<li>H1: <span class="math inline">\(\beta \neq 0\)</span></li>
 <li>Statistics: <span class="math inline">\(t=\frac{\hat{\beta}}{\sigma(\hat{\beta})}\)</span>
 <ul class="incremental">
 <li>intuitively: compare mean of estimator to its standard deviation</li>
@@ -1022,15 +1023,44 @@ This direct iterative procedure is used in machine learning</li>
 <ul>
 <li><p>Given estimate, <span class="math inline">\(\hat{\beta}\)</span> with standard deviation <span class="math inline">\(\sigma(\hat{\beta})\)</span></p></li>
 <li><p>Given a probability threshold <span class="math inline">\(\alpha\)</span> (for instance <span class="math inline">\(\alpha=0.05\)</span>) we can compute <span class="math inline">\(t^{\star}\)</span> such that <span class="math inline">\(P(|t|&gt;t*)=\alpha\)</span></p></li>
-<li><p>We construct the <strong>confidence interval</strong>:</p></li>
 </ul>
-<p><span class="math display">\[I^{\alpha} = [\hat{\beta}-t\sigma(\hat{\beta}), \hat{\beta}+t\sigma(\hat{\beta})]\]</span></p>
+<p>We construct the <strong>confidence interval</strong>: <span class="math display">\[I^{\alpha} = [\hat{\beta}-t\sigma(\hat{\beta}), \hat{\beta}+t\sigma(\hat{\beta})]\]</span></p>
 <p>. . .</p>
-<p>Interpretation:</p>
+<p>Interpretation (⚠: subtle)</p>
 <ul>
-<li>if the true value was outside of the confidence interval, the probability of obtaining the value that we got would be less than 5%.</li>
-<li>we can say the true value is within the interval with 95% confidence level</li>
+<li>if the true value was outside of the confidence interval, the probability of obtaining the value that we got would be less than 5%</li>
+<li>if we had repeated the experiment many times and computed the confidence interval, the true value would be inside it 95% of the time</li>
+<li>we can say the true value is within the interval with 95% <em>confidence level</em></li>
 </ul>
+</section>
+</section>
+<section id="fact-check" class="level1">
+<h1>Fact Check</h1>
+<section id="do-more-firearms-reduce-homicide" class="level2">
+<h2 class="anchored" data-anchor-id="do-more-firearms-reduce-homicide">Do more firearms reduce homicide?</h2>
+<p><strong>Claim (common intuition):</strong> “More civilian firearms deter crime ⇒ fewer homicides.”</p>
+<p>. . .</p>
+<p><strong>Simple cross-country OLS (26 high-income countries, early 1990s)</strong><br>
+<span class="math display">\[\text{HomicideRate}_i = \alpha + \beta\,\text{GunAvailability}_i + \varepsilon_i\]</span></p>
+<ul>
+<li>Gun availability proxied by the <strong>Cook index</strong> = average of<br>
+(% suicides with a firearm, % homicides with a firearm)</li>
+</ul>
+<p>. . .</p>
+<p><strong>What the bivariate regression finds (Table 2):</strong></p>
+<ul>
+<li>Crude homicide rate: (= 9.2) (p &lt; 0.001), corr = 0.74<br>
+</li>
+<li>Excluding the U.S.: (= 4.9) (p = 0.003), corr = 0.57</li>
+</ul>
+<p>. . .</p>
+<p><strong>Takeaway:</strong> The “more guns → less homicide” claim is <strong>not supported</strong> by this simple cross-country correlation.</p>
+<div class="small">
+<p>⚠️ <strong>Caution (OLS lesson):</strong> This is <strong>not causal</strong> (possible confounding, reverse causality, measurement error). Use it to practice interpreting (), p-values, and thinking about omitted variables.</p>
+</div>
+<div class="footer">
+<p>Source: Hemenway, D. &amp; Miller, M. (2000). <em>Firearm Availability and Homicide Rates across 26 High-Income Countries</em>. <strong>Journal of Trauma</strong>, 49(6), 985–988. <a href="./FirearmAvailabilityVsHomicideRates.pdf.crdownload">Paper</a></p>
+</div>
 
 
 </section>
