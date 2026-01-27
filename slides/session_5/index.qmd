@@ -170,7 +170,7 @@ There is an options to choose the reference group
 salary ~ C(activity, Treatment(reference="archeologist"))
 ```
  
-# Causality
+# Causality and Endogeneity
 
 ## What is causality?
 
@@ -272,6 +272,52 @@ Variable $A$ causes $B$ in a statistical sense if
   - like Granger causality...
   - ... but not for this course
 
+
+## The Problem: Endogeneity
+
+::: columns
+
+:::: column
+
+**The Ideal Regression**
+$$ y = \alpha + \beta x + \epsilon $$
+- We want $\beta$ to be the *causal* effect of $x$ on $y$.
+- Assumption: $corr(x, \epsilon) = 0$ (Exogeneity)
+
+::::
+
+:::: column
+
+**The Reality: Endogeneity**
+
+- Often, $x$ is correlated with the error term $\epsilon$.
+- Why?
+  - **Omitted Variable Bias**: A third variable $U$ affects both $x$ and $y$.
+  - **Reverse Causality**: $y$ causes $x$.
+  - **Measurement Error**.
+
+- Result: $\beta$ is biased! You cannot trust it.
+
+::::
+
+:::
+
+## DAG Representation (Problem)
+
+We can represent this problem using a Causal Graph (DAG):
+
+```{mermaid}
+graph LR
+    U[Unobserved Confounder] -->|?| X[Treatment]
+    U -->|?| Y[Outcome]
+    X -->|beta| Y
+    
+    style U fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+```
+
+- We want to measure the arrow $X \to Y$.
+- But the path $X \leftarrow U \to Y$ creates a "backdoor" correlation.
+- Since we don't observe $U$, we can't control for it.
 
 # Experiments
 
@@ -563,17 +609,46 @@ A natural experiment satisfies conditions that treatment is assigned randomly
 
 An exemple of a Natural Experiment:
 
-  - *gender bias in french local elections*
-(jean-pierre eymeoud, paul vertier) [link](https://spire.sciencespo.fr/hdl:/2441/3k0m7r593p8gs9njjtpupmlknu/resources/wp-78-eymeoud-vertier.pdf)
-  - are women discriminated against by voters in local elections?
+  - *Gender Biases: Evidence from a Natural Experiment in French Local Elections*
+    - (Eymeoud & Vertier, 2018)
 
-. . .
+## Case Study: Eymeoud & Vertier (2018)
 
-Result: yes, they get 1.5% less votes by right-wing voters
+::: columns
 
-. . .
+:::: column
 
-What was the natural experiment?
+**The Context**
+
+- 2015 French *Departmental* Elections.
+- Major reform: strict parity.
+- Candidates must run in **Pairs** (Binôme: 1 Man + 1 Woman).
+- Voters accept the whole pair (no panachage).
+
+::::
+
+:::: column
+
+**The Natural Experiment**
+
+- How to list the names? (M-F or F-M?)
+- **Rule**: Determined by **Alphabetical Order**.
+  - This is "Random" (Exogenous)!
+  - Whether the Woman is 1st or 2nd is uncorrelated with her quality/ability.
+
+::::
+
+:::
+
+::: incremental
+
+- **Hypothesis**: Being listed first signals being the "Leader".
+- **Result**:
+  - Pairs with **Woman first** received **1.5% fewer votes** from Right-wing voters.
+  - No significant effect for Left-wing voters.
+- **Conclusion**: Evidence of discriminatory preferences among certain voters.
+
+:::
 
 
 
@@ -650,64 +725,64 @@ $$y = \alpha + \beta_1 x + \beta_2 z + \epsilon$$
 
 :::
 
-## Reformulate the problem
+## The IV Solution (DAG)
 
-::: columns
+We introduce an **Instrument ($Z$)** to break the link.
 
-:::: column
+```{mermaid}
+graph LR
+    U[Unobserved Confounder] -.-> X[Treatment]
+    U -.-> Y[Outcome]
+    X -->|beta| Y
+    Z[Instrument] -->|Relevance| X
+    Z -.->|Exclusion| Y
+    Z x-.-x U
 
-- Let's assume treatment $x$ is a binary variable $\in{0,1}$
-- We want to estimate
-  $$y = \alpha + \beta x + z + \epsilon$$
-  where $z$ is potentially correlated to $x$ and $y$
-- There are two groups:
-  - those who receive the treatment
-$$y = \alpha + \beta + z_{T=1} + \epsilon$$
-  - the others
-$$y = \alpha + 0 +  z_{T=0} + \epsilon$$
+    style U fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+    style Z fill:#9f9,stroke:#333,stroke-width:4px
+    linkStyle 4 stroke:red,stroke-width:2px;
+    linkStyle 5 stroke:red,stroke-width:2px;
+```
 
-::::
-:::: column
 
-- Problem:
-  -  if $z$ is higher in the treatment group, its effect can't be separated from the treatment effect.
-- Intuition: what if we make groups differently?
-  - completely independent from $z$ (and $\epsilon$)
-  - not independently from $x$ so that one group will receive more treatment than the other
-- To make this group we need a new variable $q$ that is:
-  - correlated with $x$ so that it will correspond to some treatment effect
-  - uncorrelated to $z$ or $\epsilon$ (exogenous)
-  
-::::
+::: {.fragment}
+**The Logic:**
+
+1.  Verify $Z$ causes variation in $X$.
+2.  Use **only** that variation in $X$ (caused by $Z$) to predict $Y$.
+3.  Since $Z$ is uncorrelated with $U$, this "clean" variation is safe to use.
 
 :::
 
+## Conditions for a Valid Instrument
 
-## Two stage regression
+To be valid, an instrument $Z$ must satisfy two key conditions:
 
-::: columns
+::: incremental
+1.  **Relevance**: $Cov(Z, X) \neq 0$
+    - The instrument must actually affect the treatment.
+    - *Testable*: Regress $X$ on $Z$ and check significance (F-stat > 10).
 
-
-:::: column
-
-- We would like to redo the treatment groups in a way that is independent from $z$ (and everything contained in $\epsilon$)
-  - $q$ is a binary variable: drafted or not
-- <!-- .element class="fragment" --> First stage: regress group assignment on the instrument: $$x = \alpha_0 + \beta_0 q + \eta$$
-  - we can now predict group assignment in a way that is independent from $z$ (and everything in $\epsilon$) $$\tilde{x} = \alpha_0 + \beta_0 q$$
-- <!-- .element class="fragment" --> Second stage: use the predicted value instead of the original one
-$$y = \alpha + \beta_1 \tilde{x} + z + \epsilon$$
-
-::::
-:::: column
-
-- <!-- .element class="fragment" --> Result:
-  - If $\beta_1$ is significantly nonzero, there is a causal effect between $x$ and $y$.
-  - Note that $\tilde{x}$ is imperfectly correlated with the treatment: $\beta_1$ can't be interpreted directly
-  - The actual effect will be $\frac{\beta_1}{\beta_0}$ (in 1d)
-- <!-- .element class="fragment" -->We say that we <strong>instrument</strong> $x$ by $q$.
-
-::::
+2.  **Exclusion Restriction**: $Cov(Z, \epsilon) = 0$
+    - The instrument affects $Y$ **ONLY** through $X$.
+    - It must NOT be correlated with the omitted variable $U$.
+    - *NOT Testable*: Must be argued from theory/institution.
 :::
+
+## Two Stage Least Squares (2SLS)
+
+How do we estimate this? In two stages:
+
+**Stage 1: Predict the Treatment**
+Isolate the part of $X$ driven by $Z$.
+$$ \hat{x} = \alpha_0 + \beta_0 z $$
+
+**Stage 2: Estimate the Effect**
+Use the predicted treatment $\hat{x}$ (which is "clean") to explain $Y$.
+$$ y = \alpha + \beta_{IV} \hat{x} + \epsilon $$
+
+- **Result**: $\beta_{IV}$ is a consistent estimator of the causal effect.
+- **Intuition**: $\beta_{IV} \approx \frac{\text{Effect of Z on Y}}{\text{Effect of Z on X}}$ (Wald Estimator)
 
 ## Choosing a good instrument
 
@@ -741,3 +816,25 @@ ols = IV2SLS.from_formula(formula, data)
 ols_res = ols.fit(cov_type="robust")
 print(ols_res)
 ```
+
+---
+
+# Conclusion
+
+## Summary
+
+::: incremental
+1.  **Causality $\neq$ Correlation**: We need to worry about *endogeneity* (confounders, reverse causality).
+2.  **Gold Standard**: Randomized Control Trials (RCT) solve this by forcing $X$ to be random.
+3.  **Instrumental Variables (IV)**:
+    - We look for a "natural experiment" ($Z$) that mimics an RCT.
+    - $Z$ must be **Relevant** ($Z \to X$) and **Exogenous** ($Z \perp \epsilon$).
+4.  **Implementation**: Use Two-Stage Least Squares (2SLS) supported by libraries like `linearmodels`
+:::
+
+::: fragment
+::: callout-warning
+## Warning
+Finding a valid instrument is **hard**. A bad instrument (weak or endogenous) can be worse than OLS!
+:::
+:::

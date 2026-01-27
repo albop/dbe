@@ -19,17 +19,43 @@ format:
 ---
 
 
-# Panels
+# Panels: Longitudinal Data
 
 ---
 
-##  Time and space
+## Motivation
 
 ----
 
-### Time and Space
+### A Simple Question
 
-- Until now, we have been rather loose about where the data comes from:
+-   **Question**: Does drinking coffee improve productivity?
+-   **Data**: We survey 1000 employees over 5 years.
+
+::: {.incremental}
+-   **Cross-Sectional View**: Compare Alice (drinks 5 cups) vs. Bob (drinks 0 cups).
+    -   *Finding*: Alice is more stressed and less productive. $\rightarrow$ Coffee is bad?
+-   **Time-Series View**: Follow Alice when she varies her coffee intake.
+    -   *Finding*: On days she drinks coffee, she gets more done. $\rightarrow$ Coffee is good!
+-   **The Puzzle**: Alice works in a high-pressure trading floor (stress causes coffee). Bob works in a library.
+:::
+
+::: {.fragment .fade-up}
+::: {.callout-tip}
+## The Power of Panels
+Panel data lets us separate the **individual effect** (Alice vs Bob) from the **causal effect** (Coffee vs No Coffee).
+:::
+:::
+
+---
+
+## Data Dimensions: Time and Space
+
+----
+
+### Two Dimensions
+
+- Until now, we have been rather loose about where the data comes from.
 - Trying to explain $N$ observations: $y_n = a + b x_n, n\in [1,N]$
 
 - All these lonely observations, where do they all come from?
@@ -37,16 +63,18 @@ format:
 :::: {.columns}
 
 ::: {.column width="50%"}
-
-Individuals: cross section
+**Individuals (Space)**
+<br>
+*(Cross-section)*
 
 ![](individuals.png)
 
 :::
 
 ::: {.column width="50%"}
-
-Dates: time-series
+**Dates (Time)**
+<br>
+*(Time-series)*
 
 ![](timeseries.png)
 
@@ -78,25 +106,29 @@ Dates: time-series
 
 :::::: {.fragment .current-visible fragment-index=1}
 
-- Repeated cross sectional studies
-- Index individual by $i\in [1,J]$ and time by $t\in[1,T]$
-[graph repeated cross-sectional]
-- we can study evolution of the regression over time
-  $$\text{date 1}: y_{i,1} = a_1 + b_1 x_{1,1}$$
-  $$\text{date t}: y_{i,t} = a_i + b_i x_{i,1}$$
-  $$\text{date T}: y_{i,T} = a_T + b_T x_{i,T}$$
-
-- $y_{i,t}$ and $y_{i,t+1}$ are unrelated
-- One big regression: *pooled* regression.
+#### 1. Repeated Cross-Sections
+- **Idea**: Survey different random people each year.
+- **Example**: "US Census 2000, 2010, 2020"
+- **Structure**:
+  - Index individual $i$ and time $t$.
+  - But $i=1$ in 2000 is NOT the same person as $i=1$ in 2010.
+- **Analysis**:
+  - We can study trends (e.g. inequality over time).
+  - But we cannot see *who* got richer.
 
 ::::::
 
 :::::: {.fragment .current-visible fragment-index=2}
 
-- Even better: longitudinal data
-- The same individuals are followed over time.
-- We can study the evolution of individuals while taking into account their heterogeneity
-
+#### 2. Longitudinal (Panel) Data
+- **Idea**: Follow the **same** individuals over time.
+- **Example**: "Tracking the same 5000 families for 20 years (PSID)"
+- **Structure**:
+  - $y_{i,t}$ is person $i$ at date $t$.
+  - $y_{i,t+1}$ is the same person, later.
+- **Power**:
+  - We can control for unobserved characteristics of $i$.
+  - We can study detailed dynamics.
 
 ::::::
 
@@ -176,13 +208,12 @@ Dates: time-series
 ---
 
 
-## Taking heterogeneity into account
+## The Curse of Heterogeneity
 
 
 ----
 
-### What if you don't take it into account ?
-
+### The Trap of Pooled Regression
 
 :::: {.columns}
 
@@ -200,21 +231,25 @@ Dates: time-series
 
 ::: {.column width="50%"}
 
-- Suppose we want to explain the growth rate of several countries
+**Context**: We want to explain economic growth ($y$) using trade openness ($x$) for several countries.
 
-:::: {.fragment fragment-index=2}
+::: {.fragment fragment-index=2}
+**The Mistake**: "Pooled Regression"
 
-- Let's do a big regression (pooled regression)
-  $$y_{i,t} = a + b x_{i,t}$$ (pooled regression)
+- We throw all data points (all countries, all years) into one big pot.
+- Formula: $y_{i,t} = a + b x_{i,t} + \epsilon_{i,t}$
+- **Result**: We find a *negative* relationship (the green line)!
 
-::::
-:::: {.fragment fragment-index=3}
+:::
 
-- What was missing?
-  - There must be some effects, not captured by the regression, specific to each individual
-  - -> Unobserved heterogeneity
+::: {.fragment fragment-index=3}
+**The Reality**:
 
-::::
+- Look closely at each country (dots of same color).
+- Within each country, the relationship is *positive*!
+- **Conclusion**: We missed the **"Country Effect"** (Unobserved Heterogeneity).
+
+:::
 
 :::
 
@@ -222,38 +257,29 @@ Dates: time-series
 
 ----
 
-### Fixed effect
+### The Solution: Individual Fixed Effects
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-![](bias_3.jpg){.fragment fragment-index=2}
+![](bias_3.jpg)
 
 :::
 
 ::: {.column width="50%"}
 
-- capture idiosyncratic variability by adding an individual specific constant
-$$ y_{i,t} = a + a_i +  b x_{i,t} + \epsilon_{i,t}$$
-$a_i$ is called a *fixed effect*
+#### The Intuition
+We admit that some individuals are just naturally "higher" or "lower" than others.
+We give each individual their own starting point (intercept).
 
-:::: {.fragment fragment-index=3}
+#### The Model
+$$ y_{i,t} = \underbrace{\alpha_i}_{\text{Individual Intercept}} +  \beta x_{i,t} + \epsilon_{i,t}$$
 
-- We assume some *structure* on the data to discipline the regression.
+- $\alpha_i$ is the **Fixed Effect**. It captures **EVERYTHING** that is:
+  - Specific to individual $i$
+  - Constant over time (time-invariant)
+  - Even if we can't observe it! (e.g., "Culture", "Talent")
 
-::::
-
-:::: {.fragment fragment-index=3}
-
-- How can we estimate the model? i.e. find  plausible values for $a$, $a_i$, $b$, $\sigma(\epsilon)$, etc.
-
-::::
-:::: {.fragment fragment-index=3}
-
-- We focus on OLS estimator:
-  $$\min_{a,a_i, b} \sum_{i,t} ( y_{i,t} - \underbrace{a + a_i +  b x_{i,t}}_{\text{predicted value}} )^2$$
-
-::::
 :::
 ::::
 
@@ -334,31 +360,32 @@ $$ y_{i,t} = a + a_i + a_t +  b x_{i,t}$$
 
 ----
 
-### Example of Panel Data Estimator: Diff in Diff quasi-experiment
-
+### A Quasi-Experiment
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
-- Setup:
-  - Population $i\in[1,I]$
-  - We follow the whole population at two successive dates $t_1$ and $t_2$.
-  - We measure outcome $y$
-  - Individuals in group $\mathcal{G}_T$ receive treatment $T$
-  - How do we measure the effect of the treatment?
-- Examples
-  - tutoring at school (afternoon lessons)
-    - $y$: final grade
-    - dates: beginning ($t_1$), end of year ($t_2$)
-    - $T_{i}$ whether subject received afternoon sessions.
+**The Setup**
 
+- **Scenario**: A school introduces a tutoring program.
+- **Problem**: Usually, students who *need* help sign up.
+  - Comparing Tutors vs Non-Tutors is biased (selection bias).
+- **The Diff-in-Diff Trick**:
+  - Don't compare levels. Compare **changes**.
+  - Compare the *improvement* of tutored students vs the *improvement* of non-tutored students.
+
+**Formalization**
+
+- Two groups: Treated ($T=1$) and Control ($T=0$).
+- Two periods: Pre ($t=0$) and Post ($t=1$).
+- Goal: Isolate the effect of the Treatment.
 
 :::
 
 ::: {.column width="50%"}
 
-Gaphical summary: 
+**Graphical Intuition**
 
 ![](schematic_animated.gif)
 
@@ -368,60 +395,105 @@ Gaphical summary:
 
 ----
 
-### Diff-in-diff regression: by hand
+### The Logic of Diff-in-Diff
 
-- What we want:
-  - Average change over time in the outcome variable for the *treatment* group,
-  - Compare with average change over time for the *control* group
-- Idea: regress simultaneously
-$$\forall i \in \mathcal{G}\_T, \quad y_{i,2} - y_{i,1} = \alpha + \beta x_{i,t} +  \epsilon_{i,t}$$
-$$\forall i \notin \mathcal{G}\_t, \quad y_{i,2} - y_{i,1} = \alpha + \delta + \beta x_{i,t} + \epsilon_{i,t}$$
-- Hypotheses:
-  - equal trend ($\alpha$ is the same in both groups)
-  - same effect of all other variables ($\beta$ is the same)
-  - $\epsilon_{i,t}$ normally distributed, independent, etc....
-  - $x_{i,t}$: (controls) other variables that might explain differences in learning speed
-    - must be independent from $\epsilon$ and $T$
+- **Goal**: Estimate the *extra* growth of the treated group compared to the control group.
 
+::: {.callout-note}
+## The Calculation
+$$ \text{DID} = (\bar{y}_{\text{Treat}, \text{Post}} - \bar{y}_{\text{Treat}, \text{Pre}}) - (\bar{y}_{\text{Control}, \text{Post}} - \bar{y}_{\text{Control}, \text{Pre}}) $$
+:::
 
-----
+- **Interpretation**:
+  - $(\bar{y}_{C,\text{Post}} - \bar{y}_{C,\text{Pre}})$: The "Normal" time trend (what would have happened anyway).
+  - $(\bar{y}_{T,\text{Post}} - \bar{y}_{T,\text{Pre}})$: The actual change for the Treated.
+  - The difference is the **Causal Effect**.
 
-### Diff-in-diff regression
+- **Key Assumption**: **Parallel Trends**.
+  - Without treatment, both groups would have followed the same trend.
 
-- Using Panel data:
-$$y_{i,t} = \beta_{t} + \delta T_{i} + \beta x_{i,t} + \epsilon_{i,t}$$
- or using time dummies:
-$$y_{i,t} = \underbrace{\beta_1 1_{t=1} + \beta_2 1_{t=2}}_{\text{time fixed effects}} + \delta T_{i} + \epsilon_{i,t}$$
-- By construction the diff in diff is directly given by $\delta$
-  - convince yourself: the effect of time, is completely captured by the fixed effect
-- This specification allows for an average change over time that is the same for the two groups
 
 ----
 
-### Time and individual fixed effects
+### Implementing Diff-in-Diff
 
-- We can do better:
-  - imagine we follow the population at many dates
-  - some receive the treatment at $t=1$, some at $t=2$, etc...
-  - suppose there is unobserved heterogeneity
-- Code up the treatment: $T_{i,t}$ if treatment was received before $t-1$
-- If we don't take unobserved heterogeneity, we might get completely wrong results.
-- Solution:
-  - use time-fixed effect: to capture common trend
-  - use individuals indicators: to capture individual heterogeneity
-- You might implement a specification like:
-$$y_{i,t} = a_{i} + a_t + \delta T_{i,t} + \beta x_{i,t} + \epsilon_{i,t}$$
+We estimate it using a regression with an **Interaction Term**:
+
+$$y_{i,t} = \alpha + \beta_1 \underbrace{\text{Treat}_i}_{\text{Group}} + \beta_2 \underbrace{\text{Post}_t}_{\text{Time}} + \delta (\underbrace{\text{Treat}_i \times \text{Post}_t}_{\text{Interaction}}) + \epsilon_{i,t}$$
+
+- $\beta_1$: Baseline difference between groups.
+- $\beta_2$: Common time trend.
+- **$\delta$**: The **Difference-in-Differences estimator**.
+
+::: {.fragment}
+::: {.callout-important}
+## Interpretation
+$\delta$ captures the extra jump that the treated group experiences in the second period. This is our causal effect!
+:::
+:::
+
+----
+
+### Generalized Diff-in-Diff
+
+- **Scenario**:
+  - Multiple time periods.
+  - Different individuals get treated at different times (Staggered adoption).
+- **The Model**: Two-Way Fixed Effects (TWFE)
+$$y_{i,t} = \underbrace{\alpha_{i}}_{\text{Entity FE}} + \underbrace{\alpha_t}_{\text{Time FE}} + \delta D_{i,t} + \beta x_{i,t} + \epsilon_{i,t}$$
+
+- **$D_{i,t}$**: The "Post-Treatment" dummy
+  - $D_{i,t} = 1$ if individual $i$ is actively treated at time $t$.
+  - $D_{i,t} = 0$ otherwise.
+  
+- **Conclusion**: This is the standard workhorse model for policy evaluation in economics.
 
 ---
 
-### In practice
+### In practice: Python
 
-- With `linearmodels` (example):
-  - individual fixed effects:
-  ```invest ~ 1 + value + capital + EntityEffects```
-  - time fixed effects:
-  ```invest ~ 1 + value + capital + TimeEffects```
-  - both
-  ```invest ~ 1 + value + capital + EntityEffects + TimeEffects```
-- Regress with PanelOLS
-  - mathematically equivalent to OLS but more efficient
+- Using the `linearmodels` library (built on top of pandas/statsmodels).
+
+- **Entity Fixed Effects**:
+  ```python
+  from linearmodels import PanelOLS
+  # ... load data ...
+  mod = PanelOLS.from_formula('invest ~ 1 + value + capital + EntityEffects', data=df)
+  res = mod.fit()
+  ```
+
+- **Two-Way Fixed Effects**:
+  ```python
+  mod = PanelOLS.from_formula('invest ~ 1 + value + capital + EntityEffects + TimeEffects', data=df)
+  res = mod.fit()
+  ```
+
+::: {.callout-tip}
+## Pro Tip
+`PanelOLS` handles the dummy variable math efficiently. Don't try to create 1000 columns of dummies yourself!
+:::
+
+---
+
+# Conclusion
+
+----
+
+### Takeaways
+
+::: {.incremental}
+1.  **More Data, More Power**: Panel data combines the best of cross-sections ("differences between people") and time-series ("changes over time").
+2.  **Control the Unobservable**: 
+  - For simple cases, you can just add dummy variables to control for heterogeneity, or do different regressions for different groups
+  - Use **Fixed Effects** to absorb constant individual characteristics (culture, ability) that would otherwise bias your results.
+3.  **Think Causally**: **Diff-in-Diff** allows for powerful quasi-experimental analysis (Treated vs Control, Before vs After).
+4.  **Tools**: Use `linearmodels` in Python to handle the complexity automatically.
+:::
+
+::: {.fragment .fade-up}
+
+:::
+
+
+
+//Todo : add slide with example of a panel regression
