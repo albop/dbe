@@ -16,7 +16,7 @@ format:
     - shinylive
   html:
     output-file: index_handout.html
-jupyter: escp
+jupyter: python3
 execute:
   echo: true
   enabled: true

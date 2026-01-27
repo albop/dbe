@@ -58,7 +58,7 @@ $$y_\text{salary} = \alpha + \beta x_{\text{gonetowar}}$$
 Look at the model:
 $$y_{\text{CO2 emission}} = \alpha + \beta x_{\text{banish cars}} $$
 
-where $y_{\text{CO2 emission}}$ is an individual's CO2 emissions and $x_{\text{yellow vest support}}$ is the response the the question *Do you suport the banishment of petrol cars?*.
+where $y_{\text{CO2 emission}}$ is an individual's CO2 emissions and $x_{\text{banishment support}}$ is the response the the question *Do you suport the banishment of petrol cars?*.
 
 ::: columns
 
@@ -112,7 +112,7 @@ We use one __dummy variable__ per possible answer.
 $$y_{\text{CO2 emission}} = \alpha + \beta_1 x_{\text{strdis}} + \beta_2 x_{\text{dis}} + \beta_3 x_{\text{agr}} + \beta_4 x_{\text{stragr}}$$
 
 - Interpretation: 
-  - being in the group which strongly agrees to the yellow vest's claim is associated with an additional $\beta_4$ increase in CO2 consumption compared with members of the neutral group
+  - being in the group which strongly agrees to the banishment support's claim is associated with an additional $\beta_4$ increase in CO2 consumption compared with members of the neutral group
 
 
 ## Nonnumerical variables

@@ -1,4 +1,8 @@
 /.quarto/
 _site
 *ipynb_checkpoint*
-_build*
+_build*# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+**/*.quarto_ipynb
