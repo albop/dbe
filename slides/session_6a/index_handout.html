@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pablo Winant">
+<meta name="dcterms.date" content="2026-01-28">
+
+<title>Introduction to Panel Data – Data-Based Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6f73c5116d67d1f2a0ad64de19d303ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Data-Based Economics
+      </li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Data-Based Economics</a> 
+    </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">lectures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataframes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_3/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_4/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_5/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Instrumental Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_6/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Machine Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_7/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Machine Learning (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_8/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Text Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../slides/session_10/index_handout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Exam 🤞</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#panels-longitudinal-data" id="toc-panels-longitudinal-data" class="nav-link active" data-scroll-target="#panels-longitudinal-data">Panels: Longitudinal Data</a>
+  <ul class="collapse">
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a>
+  <ul class="collapse">
+  <li><a href="#a-simple-question" id="toc-a-simple-question" class="nav-link" data-scroll-target="#a-simple-question">A Simple Question</a></li>
+  </ul></li>
+  <li><a href="#data-dimensions-time-and-space" id="toc-data-dimensions-time-and-space" class="nav-link" data-scroll-target="#data-dimensions-time-and-space">Data Dimensions: Time and Space</a>
+  <ul class="collapse">
+  <li><a href="#two-dimensions" id="toc-two-dimensions" class="nav-link" data-scroll-target="#two-dimensions">Two Dimensions</a></li>
+  <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series">Time Series</a></li>
+  <li><a href="#longitudinal-data-panel-data" id="toc-longitudinal-data-panel-data" class="nav-link" data-scroll-target="#longitudinal-data-panel-data">Longitudinal Data / Panel Data</a></li>
+  <li><a href="#balanced-vs-unbalanced" id="toc-balanced-vs-unbalanced" class="nav-link" data-scroll-target="#balanced-vs-unbalanced">Balanced vs Unbalanced</a></li>
+  <li><a href="#long-and-wide-format" id="toc-long-and-wide-format" class="nav-link" data-scroll-target="#long-and-wide-format">Long and wide format</a></li>
+  <li><a href="#micro-panel-vs-macro-panel" id="toc-micro-panel-vs-macro-panel" class="nav-link" data-scroll-target="#micro-panel-vs-macro-panel">Micro-Panel vs Macro-Panel</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#the-curse-of-heterogeneity" id="toc-the-curse-of-heterogeneity" class="nav-link" data-scroll-target="#the-curse-of-heterogeneity">The Curse of Heterogeneity</a>
+  <ul class="collapse">
+  <li><a href="#the-trap-of-pooled-regression" id="toc-the-trap-of-pooled-regression" class="nav-link" data-scroll-target="#the-trap-of-pooled-regression">The Trap of Pooled Regression</a></li>
+  <li><a href="#the-solution-individual-fixed-effects" id="toc-the-solution-individual-fixed-effects" class="nav-link" data-scroll-target="#the-solution-individual-fixed-effects">The Solution: Individual Fixed Effects</a></li>
+  <li><a href="#fixed-effect-implementation" id="toc-fixed-effect-implementation" class="nav-link" data-scroll-target="#fixed-effect-implementation">Fixed effect (implementation)</a></li>
+  <li><a href="#estimation-methods" id="toc-estimation-methods" class="nav-link" data-scroll-target="#estimation-methods">Estimation methods</a></li>
+  <li><a href="#time-fixed-effects" id="toc-time-fixed-effects" class="nav-link" data-scroll-target="#time-fixed-effects">Time Fixed Effects</a></li>
+  <li><a href="#both-fixed-effects" id="toc-both-fixed-effects" class="nav-link" data-scroll-target="#both-fixed-effects">Both Fixed Effects</a></li>
+  <li><a href="#limitation-of-fixed-effects" id="toc-limitation-of-fixed-effects" class="nav-link" data-scroll-target="#limitation-of-fixed-effects">Limitation of fixed effects</a></li>
+  <li><a href="#other-models" id="toc-other-models" class="nav-link" data-scroll-target="#other-models">Other models</a></li>
+  </ul></li>
+  <li><a href="#diff-in-diff" id="toc-diff-in-diff" class="nav-link" data-scroll-target="#diff-in-diff">Diff in Diff</a>
+  <ul class="collapse">
+  <li><a href="#a-quasi-experiment" id="toc-a-quasi-experiment" class="nav-link" data-scroll-target="#a-quasi-experiment">A Quasi-Experiment</a></li>
+  <li><a href="#the-logic-of-diff-in-diff" id="toc-the-logic-of-diff-in-diff" class="nav-link" data-scroll-target="#the-logic-of-diff-in-diff">The Logic of Diff-in-Diff</a></li>
+  <li><a href="#implementing-diff-in-diff" id="toc-implementing-diff-in-diff" class="nav-link" data-scroll-target="#implementing-diff-in-diff">Implementing Diff-in-Diff</a></li>
+  <li><a href="#generalized-diff-in-diff" id="toc-generalized-diff-in-diff" class="nav-link" data-scroll-target="#generalized-diff-in-diff">Generalized Diff-in-Diff</a></li>
+  <li><a href="#in-practice-python" id="toc-in-practice-python" class="nav-link" data-scroll-target="#in-practice-python">In practice: Python</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Introduction to Panel Data</h1>
+<p class="subtitle lead">Data-Based Economics, ESCP, 2025-2026</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Pablo Winant </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 28, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="panels-longitudinal-data" class="level1">
+<h1>Panels: Longitudinal Data</h1>
+<hr>
+<section id="motivation" class="level2">
+<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<hr>
+<section id="a-simple-question" class="level3">
+<h3 class="anchored" data-anchor-id="a-simple-question">A Simple Question</h3>
+<ul>
+<li><strong>Question</strong>: Does drinking coffee improve productivity?</li>
+<li><strong>Data</strong>: We survey 1000 employees over 5 years.</li>
+</ul>
+<div class="incremental">
+<ul class="incremental">
+<li><strong>Cross-Sectional View</strong>: Compare Alice (drinks 5 cups) vs.&nbsp;Bob (drinks 0 cups).
+<ul class="incremental">
+<li><em>Finding</em>: Alice is more stressed and less productive. <span class="math inline">\(\rightarrow\)</span> Coffee is bad?</li>
+</ul></li>
+<li><strong>Time-Series View</strong>: Follow Alice when she varies her coffee intake.
+<ul class="incremental">
+<li><em>Finding</em>: On days she drinks coffee, she gets more done. <span class="math inline">\(\rightarrow\)</span> Coffee is good!</li>
+</ul></li>
+<li><strong>The Puzzle</strong>: Alice works in a high-pressure trading floor (stress causes coffee). Bob works in a library.</li>
+</ul>
+</div>
+<div class="fragment fade-up">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>The Power of Panels
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Panel data lets us separate the <strong>individual effect</strong> (Alice vs Bob) from the <strong>causal effect</strong> (Coffee vs No Coffee).</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="data-dimensions-time-and-space" class="level2">
+<h2 class="anchored" data-anchor-id="data-dimensions-time-and-space">Data Dimensions: Time and Space</h2>
+<hr>
+<section id="two-dimensions" class="level3">
+<h3 class="anchored" data-anchor-id="two-dimensions">Two Dimensions</h3>
+<ul>
+<li><p>Until now, we have been rather loose about where the data comes from.</p></li>
+<li><p>Trying to explain <span class="math inline">\(N\)</span> observations: <span class="math inline">\(y_n = a + b x_n, n\in [1,N]\)</span></p></li>
+<li><p>All these lonely observations, where do they all come from?</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Individuals (Space)</strong> <br> <em>(Cross-section)</em></p>
+<p><img src="individuals.png" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Dates (Time)</strong> <br> <em>(Time-series)</em></p>
+<p><img src="timeseries.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="time-series" class="level3">
+<h3 class="anchored" data-anchor-id="time-series">Time Series</h3>
+<p><img src="timeseries.png" class="img-fluid"></p>
+<ul>
+<li>very simple study: structural break
+<ul>
+<li>does regression on <span class="math inline">\([T_1, \overline{T}]\)</span> yield (significantly) different results on <span class="math inline">\([\overline{T}, T_2]\)</span></li>
+</ul></li>
+<li>going further: <em>time series analysis</em>
+<ul>
+<li>data is typically autocorrelated</li>
+<li>example (AR1) <span class="math inline">\(x_t = a  + b x_{t-1} + \epsilon_t\)</span></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="longitudinal-data-panel-data" class="level3">
+<h3 class="anchored" data-anchor-id="longitudinal-data-panel-data">Longitudinal Data / Panel Data</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="r-stack">
+<div class="fragment current-visible" data-fragment-index="1">
+<section id="repeated-cross-sections" class="level4">
+<h4 class="anchored" data-anchor-id="repeated-cross-sections">1. Repeated Cross-Sections</h4>
+<ul>
+<li><strong>Idea</strong>: Survey different random people each year.</li>
+<li><strong>Example</strong>: “US Census 2000, 2010, 2020”</li>
+<li><strong>Structure</strong>:
+<ul>
+<li>Index individual <span class="math inline">\(i\)</span> and time <span class="math inline">\(t\)</span>.</li>
+<li>But <span class="math inline">\(i=1\)</span> in 2000 is NOT the same person as <span class="math inline">\(i=1\)</span> in 2010.</li>
+</ul></li>
+<li><strong>Analysis</strong>:
+<ul>
+<li>We can study trends (e.g.&nbsp;inequality over time).</li>
+<li>But we cannot see <em>who</em> got richer.</li>
+</ul></li>
+</ul>
+</section>
+</div>
+<div class="fragment current-visible" data-fragment-index="2">
+<section id="longitudinal-panel-data" class="level4">
+<h4 class="anchored" data-anchor-id="longitudinal-panel-data">2. Longitudinal (Panel) Data</h4>
+<ul>
+<li><strong>Idea</strong>: Follow the <strong>same</strong> individuals over time.</li>
+<li><strong>Example</strong>: “Tracking the same 5000 families for 20 years (PSID)”</li>
+<li><strong>Structure</strong>:
+<ul>
+<li><span class="math inline">\(y_{i,t}\)</span> is person <span class="math inline">\(i\)</span> at date <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(y_{i,t+1}\)</span> is the same person, later.</li>
+</ul></li>
+<li><strong>Power</strong>:
+<ul>
+<li>We can control for unobserved characteristics of <span class="math inline">\(i\)</span>.</li>
+<li>We can study detailed dynamics.</li>
+</ul></li>
+</ul>
+</section>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="r-stack">
+<p><img src="panel_2.jpg" class="fragment current-visible img-fluid" data-fragment-index="1"></p>
+<p><img src="panel_1.jpg" class="fragment current-visible img-fluid" data-fragment-index="2"></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="balanced-vs-unbalanced" class="level3">
+<h3 class="anchored" data-anchor-id="balanced-vs-unbalanced">Balanced vs Unbalanced</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Balanced: all individuals in the sample are followed from 1 to T</li>
+<li>Unbalanced: some indivuduals start later, stop earlier</li>
+</ul>
+<p><img src="balanced_unbalanced.png" class="img-fluid" style="width:100.0%"></p>
+</div><div class="column" style="width:50%;">
+<div class="incremental">
+<ul class="incremental">
+<li>Crude solutions:
+<ul class="incremental">
+<li>truncate the dates between <span class="math inline">\([T_1, T_2]\)</span> so that dataset is balanced</li>
+<li>eliminate individuals who are not present in the full sample</li>
+</ul></li>
+<li>Not very good:
+<ul class="incremental">
+<li>can limit a lot the size of the sample</li>
+<li>can induce a “selection bias”</li>
+</ul></li>
+<li>Real gurus know how to deal with missing values
+<ul class="incremental">
+<li>many algorithms can be adapted</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="long-and-wide-format" class="level3">
+<h3 class="anchored" data-anchor-id="long-and-wide-format">Long and wide format</h3>
+<p><img src="long_wide.png" class="img-fluid" style="width:80.0%"></p>
+<ul>
+<li>we tend to prefer here the long format (w.r.t id and date)</li>
+<li>there can be many columns though (for each variable)</li>
+</ul>
+<hr>
+</section>
+<section id="micro-panel-vs-macro-panel" class="level3">
+<h3 class="anchored" data-anchor-id="micro-panel-vs-macro-panel">Micro-Panel vs Macro-Panel</h3>
+<ul>
+<li><strong>micro-panel</strong>: <span class="math inline">\(T&lt;&lt;N\)</span>
+<ul>
+<li>Panel Study of Income Dynamics (PSID): 5000 consumers since 1967 (US)
+<ul>
+<li>reinterview same individuals from year to year</li>
+<li>but some go in/out of the panel</li>
+</ul></li>
+<li>Survey of Consumer and Finance (SCF)</li>
+<li>…</li>
+</ul></li>
+<li><strong>macro-panel</strong>: <span class="math inline">\(T\approx N\)</span>
+<ul>
+<li>WIIW: 23 countries since the 60s (central, east and southern Europe)</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="the-curse-of-heterogeneity" class="level1">
+<h1>The Curse of Heterogeneity</h1>
+<hr>
+<section id="the-trap-of-pooled-regression" class="level3">
+<h3 class="anchored" data-anchor-id="the-trap-of-pooled-regression">The Trap of Pooled Regression</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="r-stack">
+<p><img src="bias_1.jpg" class="fragment current-visible img-fluid" data-fragment-index="1"></p>
+<p><img src="bias_2.jpg" class="fragment img-fluid" data-fragment-index="2"></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Context</strong>: We want to explain economic growth (<span class="math inline">\(y\)</span>) using trade openness (<span class="math inline">\(x\)</span>) for several countries.</p>
+<div class="fragment" data-fragment-index="2">
+<p><strong>The Mistake</strong>: “Pooled Regression”</p>
+<ul>
+<li>We throw all data points (all countries, all years) into one big pot.</li>
+<li>Formula: <span class="math inline">\(y_{i,t} = a + b x_{i,t} + \epsilon_{i,t}\)</span></li>
+<li><strong>Result</strong>: We find a <em>negative</em> relationship (the green line)!</li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="3">
+<p><strong>The Reality</strong>:</p>
+<ul>
+<li>Look closely at each country (dots of same color).</li>
+<li>Within each country, the relationship is <em>positive</em>!</li>
+<li><strong>Conclusion</strong>: We missed the <strong>“Country Effect”</strong> (Unobserved Heterogeneity).</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="the-solution-individual-fixed-effects" class="level3">
+<h3 class="anchored" data-anchor-id="the-solution-individual-fixed-effects">The Solution: Individual Fixed Effects</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="bias_3.jpg" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+<section id="the-intuition" class="level4">
+<h4 class="anchored" data-anchor-id="the-intuition">The Intuition</h4>
+<p>We admit that some individuals are just naturally “higher” or “lower” than others. We give each individual their own starting point (intercept).</p>
+</section>
+<section id="the-model" class="level4">
+<h4 class="anchored" data-anchor-id="the-model">The Model</h4>
+<p><span class="math display">\[ y_{i,t} = \underbrace{\alpha_i}_{\text{Individual Intercept}} +  \beta x_{i,t} + \epsilon_{i,t}\]</span></p>
+<ul>
+<li><span class="math inline">\(\alpha_i\)</span> is the <strong>Fixed Effect</strong>. It captures <strong>EVERYTHING</strong> that is:
+<ul>
+<li>Specific to individual <span class="math inline">\(i\)</span></li>
+<li>Constant over time (time-invariant)</li>
+<li>Even if we can’t observe it! (e.g., “Culture”, “Talent”)</li>
+</ul></li>
+</ul>
+</section>
+</div>
+</div>
+<hr>
+</section>
+<section id="fixed-effect-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-effect-implementation">Fixed effect (implementation)</h3>
+<ul>
+<li>Fixed effect regression: <span class="math display">\[ y_{i,t} = a + a_i +  b x_{i,t} + \epsilon_{i,t}\]</span> is equivalent to <span class="math display">\[ y_{i,t} = a.1 + a_1 d_{i=1} + \cdots + a_I d_{i=I} +  b x_{i,t} + \epsilon_{i,t}\]</span> where <span class="math inline">\(d\)</span> is a dummy variable such that <span class="math inline">\(d_{i=j} = \begin{cases}1, &amp; \text{if}\ i=j \\\\ 0, &amp; \text{otherwise}\end{cases}\)</span></li>
+<li>Minor problem: <span class="math inline">\(1, d_{i=1}, ... d_{i=I}\)</span> are not independent: <span class="math inline">\(\sum_{j=1}^I \delta_{i=j}=1\)</span>
+<ul>
+<li>Solution: ignore one of them, exactly like the dummies for categorical variables</li>
+</ul></li>
+<li>Now the regression can be estimated with OLS…</li>
+</ul>
+<hr>
+</section>
+<section id="estimation-methods" class="level3">
+<h3 class="anchored" data-anchor-id="estimation-methods">Estimation methods</h3>
+<ul>
+<li>… Now the regression can be estimated with OLS (or other)
+<ul>
+<li>naive approach fails for big panels (lots of dummy regressors makes <span class="math inline">\(X^{\prime}X\)</span> hard to invert)</li>
+<li>smart approach decomposes computation in several steps
+<ul>
+<li>“between” and “within” estimator (for advanced panel course)</li>
+</ul></li>
+<li>software does it for us…</li>
+</ul></li>
+<li>Like always, we get estimates and significance numbers / confidence intervals</li>
+</ul>
+<hr>
+</section>
+<section id="time-fixed-effects" class="level3">
+<h3 class="anchored" data-anchor-id="time-fixed-effects">Time Fixed Effects</h3>
+<ul>
+<li>Sometimes, we know the whole dataset is affected by common time-varying shocks
+<ul>
+<li>assume there isn’t a variable we can use to capture them (unobservable shocks)</li>
+</ul></li>
+<li>We can use time-fixed effects to capture them: <span class="math display">\[ y_{i,t} = a + a_t +  b x_{i,t}\]</span></li>
+<li>Analysis is very similar to individual fixed effects</li>
+</ul>
+<hr>
+</section>
+<section id="both-fixed-effects" class="level3">
+<h3 class="anchored" data-anchor-id="both-fixed-effects">Both Fixed Effects</h3>
+<ul>
+<li>We can capture time heterogeneity and individual heterogeneity at the same time. <span class="math display">\[ y_{i,t} = a + a_i + a_t +  b x_{i,t}\]</span></li>
+<li>More of it soon.</li>
+</ul>
+<hr>
+</section>
+<section id="limitation-of-fixed-effects" class="level3">
+<h3 class="anchored" data-anchor-id="limitation-of-fixed-effects">Limitation of fixed effects</h3>
+<ul>
+<li>Problem with fixed effect model:
+<ul>
+<li>each individual has a unique fixed effect</li>
+<li>it is impossible to predict it from other characteristics
+<ul>
+<li>… and to compare an individual’s fixed effect to the predicted value</li>
+</ul></li>
+</ul></li>
+<li>Solution:
+<ul>
+<li>instead of assuming that specific effect is completely free, constrain it to follow a distribution: <span class="math display">\[y_{i,t} = \alpha + \beta x_{i,t} + \epsilon_{i,t}\]</span> <span class="math display">\[\epsilon_{i,t} = \epsilon_i + \epsilon_t + \epsilon\]</span></li>
+<li>where <span class="math inline">\(\epsilon_{i}\)</span>, <span class="math inline">\(\epsilon_t\)</span> and <span class="math inline">\(\epsilon\)</span> are random variables with usual normality assumptions</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="other-models" class="level3">
+<h3 class="anchored" data-anchor-id="other-models">Other models</h3>
+<ul>
+<li><p>Composed coefficients: (coefficients can also be heterogenous in both dimension)</p>
+<p><span class="math display">\[y_{i,t} = \alpha_i + \alpha_t + (\beta_i + \beta_t) x_{i,t} + \epsilon_{i,t}\]</span></p></li>
+<li><p>Random coefficients …</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="diff-in-diff" class="level1">
+<h1>Diff in Diff</h1>
+<hr>
+<section id="a-quasi-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="a-quasi-experiment">A Quasi-Experiment</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The Setup</strong></p>
+<ul>
+<li><strong>Scenario</strong>: A school introduces a tutoring program.</li>
+<li><strong>Problem</strong>: Usually, students who <em>need</em> help sign up.
+<ul>
+<li>Comparing Tutors vs Non-Tutors is biased (selection bias).</li>
+</ul></li>
+<li><strong>The Diff-in-Diff Trick</strong>:
+<ul>
+<li>Don’t compare levels. Compare <strong>changes</strong>.</li>
+<li>Compare the <em>improvement</em> of tutored students vs the <em>improvement</em> of non-tutored students.</li>
+</ul></li>
+</ul>
+<p><strong>Formalization</strong></p>
+<ul>
+<li>Two groups: Treated (<span class="math inline">\(T=1\)</span>) and Control (<span class="math inline">\(T=0\)</span>).</li>
+<li>Two periods: Pre (<span class="math inline">\(t=0\)</span>) and Post (<span class="math inline">\(t=1\)</span>).</li>
+<li>Goal: Isolate the effect of the Treatment.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Graphical Intuition</strong></p>
+<p><img src="schematic_animated.gif" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="the-logic-of-diff-in-diff" class="level3">
+<h3 class="anchored" data-anchor-id="the-logic-of-diff-in-diff">The Logic of Diff-in-Diff</h3>
+<ul>
+<li><strong>Goal</strong>: Estimate the <em>extra</em> growth of the treated group compared to the control group.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The Calculation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[ \text{DID} = (\bar{y}_{\text{Treat}, \text{Post}} - \bar{y}_{\text{Treat}, \text{Pre}}) - (\bar{y}_{\text{Control}, \text{Post}} - \bar{y}_{\text{Control}, \text{Pre}}) \]</span></p>
+</div>
+</div>
+<ul>
+<li><strong>Interpretation</strong>:
+<ul>
+<li><span class="math inline">\((\bar{y}_{C,\text{Post}} - \bar{y}_{C,\text{Pre}})\)</span>: The “Normal” time trend (what would have happened anyway).</li>
+<li><span class="math inline">\((\bar{y}_{T,\text{Post}} - \bar{y}_{T,\text{Pre}})\)</span>: The actual change for the Treated.</li>
+<li>The difference is the <strong>Causal Effect</strong>.</li>
+</ul></li>
+<li><strong>Key Assumption</strong>: <strong>Parallel Trends</strong>.
+<ul>
+<li>Without treatment, both groups would have followed the same trend.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="implementing-diff-in-diff" class="level3">
+<h3 class="anchored" data-anchor-id="implementing-diff-in-diff">Implementing Diff-in-Diff</h3>
+<p>We estimate it using a regression with an <strong>Interaction Term</strong>:</p>
+<p><span class="math display">\[y_{i,t} = \alpha + \beta_1 \underbrace{\text{Treat}_i}_{\text{Group}} + \beta_2 \underbrace{\text{Post}_t}_{\text{Time}} + \delta (\underbrace{\text{Treat}_i \times \text{Post}_t}_{\text{Interaction}}) + \epsilon_{i,t}\]</span></p>
+<ul>
+<li><span class="math inline">\(\beta_1\)</span>: Baseline difference between groups.</li>
+<li><span class="math inline">\(\beta_2\)</span>: Common time trend.</li>
+<li><strong><span class="math inline">\(\delta\)</span></strong>: The <strong>Difference-in-Differences estimator</strong>.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Interpretation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\delta\)</span> captures the extra jump that the treated group experiences in the second period. This is our causal effect!</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="generalized-diff-in-diff" class="level3">
+<h3 class="anchored" data-anchor-id="generalized-diff-in-diff">Generalized Diff-in-Diff</h3>
+<ul>
+<li><p><strong>Scenario</strong>:</p>
+<ul>
+<li>Multiple time periods.</li>
+<li>Different individuals get treated at different times (Staggered adoption).</li>
+</ul></li>
+<li><p><strong>The Model</strong>: Two-Way Fixed Effects (TWFE) <span class="math display">\[y_{i,t} = \underbrace{\alpha_{i}}_{\text{Entity FE}} + \underbrace{\alpha_t}_{\text{Time FE}} + \delta D_{i,t} + \beta x_{i,t} + \epsilon_{i,t}\]</span></p></li>
+<li><p><strong><span class="math inline">\(D_{i,t}\)</span></strong>: The “Post-Treatment” dummy</p>
+<ul>
+<li><span class="math inline">\(D_{i,t} = 1\)</span> if individual <span class="math inline">\(i\)</span> is actively treated at time <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(D_{i,t} = 0\)</span> otherwise.</li>
+</ul></li>
+<li><p><strong>Conclusion</strong>: This is the standard workhorse model for policy evaluation in economics.</p></li>
+</ul>
+<hr>
+</section>
+<section id="in-practice-python" class="level3">
+<h3 class="anchored" data-anchor-id="in-practice-python">In practice: Python</h3>
+<ul>
+<li><p>Using the <code>linearmodels</code> library (built on top of pandas/statsmodels).</p></li>
+<li><p><strong>Entity Fixed Effects</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> linearmodels <span class="im">import</span> PanelOLS</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ... load data ...</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> PanelOLS.from_formula(<span class="st">'invest ~ 1 + value + capital + EntityEffects'</span>, data<span class="op">=</span>df)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Two-Way Fixed Effects</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> PanelOLS.from_formula(<span class="st">'invest ~ 1 + value + capital + EntityEffects + TimeEffects'</span>, data<span class="op">=</span>df)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> mod.fit()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Pro Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>PanelOLS</code> handles the dummy variable math efficiently. Don’t try to create 1000 columns of dummies yourself!</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<hr>
+<section id="takeaways" class="level3">
+<h3 class="anchored" data-anchor-id="takeaways">Takeaways</h3>
+<div class="incremental">
+<ol class="incremental" type="1">
+<li><strong>More Data, More Power</strong>: Panel data combines the best of cross-sections (“differences between people”) and time-series (“changes over time”).</li>
+<li><strong>Control the Unobservable</strong>:</li>
+</ol>
+<ul class="incremental">
+<li>For simple cases, you can just add dummy variables to control for heterogeneity, or do different regressions for different groups</li>
+<li>Use <strong>Fixed Effects</strong> to absorb constant individual characteristics (culture, ability) that would otherwise bias your results.</li>
+</ul>
+<ol class="incremental" start="3" type="1">
+<li><strong>Think Causally</strong>: <strong>Diff-in-Diff</strong> allows for powerful quasi-experimental analysis (Treated vs Control, Before vs After).</li>
+<li><strong>Tools</strong>: Use <code>linearmodels</code> in Python to handle the complexity automatically.</li>
+</ol>
+</div>
+<div class="fragment fade-up">
+
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/albop\.github\.io\/dbe\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

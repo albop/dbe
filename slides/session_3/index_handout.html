@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Pablo Winant">
-<meta name="dcterms.date" content="2026-01-29">
+<meta name="dcterms.date" content="2026-01-21">
 
 <title>Linear Regression – Data-Based Economics</title>
 <style>
@@ -294,7 +294,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 29, 2026</p>
+      <p class="date">January 21, 2026</p>
     </div>
   </div>
   
@@ -328,7 +328,7 @@ window.Quarto = {
 <section id="quick-look" class="level2">
 <h2 class="anchored" data-anchor-id="quick-look">Quick look</h2>
 <p>Import the data from statsmodels’ dataset:</p>
-<div id="ae506e92" class="cell" data-execution_count="1">
+<div id="395e6bcb" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> sm.datasets.get_rdataset(<span class="st">"Duncan"</span>, <span class="st">"carData"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> dataset.data</span>
@@ -409,7 +409,7 @@ window.Quarto = {
 </ul>
 </div><div class="column">
 <div class="fragment">
-<div id="831f3a68" class="cell" data-execution_count="2">
+<div id="c827e9e6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -510,7 +510,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <div class="columns">
 <div class="column">
-<div id="80ca51da" class="cell" data-execution_count="3">
+<div id="94d84e4f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'income'</span>,<span class="st">'education'</span>,<span class="st">'prestige'</span>]].cov()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -552,7 +552,7 @@ window.Quarto = {
 </div>
 </div><div class="column">
 <div class="fragment">
-<div id="48bb50bb" class="cell" data-execution_count="4">
+<div id="3a76f3c1" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'income'</span>,<span class="st">'education'</span>,<span class="st">'prestige'</span>]].corr()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -602,7 +602,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="quick">Quick</h2>
 <div class="columns">
 <div class="column">
-<div id="3a8e5b34" class="cell" data-execution_count="5">
+<div id="d5d322c3" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'education'</span>],df[<span class="st">'income'</span>],<span class="st">'o'</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
@@ -618,7 +618,7 @@ window.Quarto = {
 </div>
 </div>
 </div><div class="column">
-<div id="34d586b7" class="cell" data-execution_count="6">
+<div id="615a862f" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'education'</span>],df[<span class="st">'prestige'</span>],<span class="st">'o'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
@@ -639,7 +639,7 @@ window.Quarto = {
 <section id="quick-look-1" class="level2">
 <h2 class="anchored" data-anchor-id="quick-look-1">Quick look</h2>
 <p>Using <a href="https://matplotlib.org/">matplotlib</a> (3d)</p>
-<div id="ff1b11b1" class="cell" data-execution_count="7">
+<div id="09f6ecef" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -651,7 +651,7 @@ window.Quarto = {
 </section>
 <section id="quick-look-2" class="level2">
 <h2 class="anchored" data-anchor-id="quick-look-2">Quick look</h2>
-<div id="c4bc9eae" class="cell" data-execution_count="8">
+<div id="889985ca" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(df[[<span class="st">'education'</span>, <span class="st">'prestige'</span>, <span class="st">'income'</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">

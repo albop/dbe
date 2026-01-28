@@ -89,6 +89,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -236,7 +239,7 @@ window.Quarto = {
   <li><a href="#nonnumerical-variables" id="toc-nonnumerical-variables" class="nav-link" data-scroll-target="#nonnumerical-variables">Nonnumerical variables</a></li>
   <li><a href="#hands-on" id="toc-hands-on" class="nav-link" data-scroll-target="#hands-on">Hands-on</a></li>
   </ul></li>
-  <li><a href="#causality" id="toc-causality" class="nav-link" data-scroll-target="#causality">Causality</a>
+  <li><a href="#causality-and-endogeneity" id="toc-causality-and-endogeneity" class="nav-link" data-scroll-target="#causality-and-endogeneity">Causality and Endogeneity</a>
   <ul class="collapse">
   <li><a href="#what-is-causality" id="toc-what-is-causality" class="nav-link" data-scroll-target="#what-is-causality">What is causality?</a></li>
   <li><a href="#spurious-correlation" id="toc-spurious-correlation" class="nav-link" data-scroll-target="#spurious-correlation">Spurious correlation</a></li>
@@ -244,6 +247,8 @@ window.Quarto = {
   <li><a href="#how-do-we-define-causality-1" id="toc-how-do-we-define-causality-1" class="nav-link" data-scroll-target="#how-do-we-define-causality-1">How do we define causality (1)</a></li>
   <li><a href="#how-do-we-define-causality-2" id="toc-how-do-we-define-causality-2" class="nav-link" data-scroll-target="#how-do-we-define-causality-2">How do we define causality (2)</a></li>
   <li><a href="#causality-in-statistics" id="toc-causality-in-statistics" class="nav-link" data-scroll-target="#causality-in-statistics">Causality in Statistics</a></li>
+  <li><a href="#the-problem-endogeneity" id="toc-the-problem-endogeneity" class="nav-link" data-scroll-target="#the-problem-endogeneity">The Problem: Endogeneity</a></li>
+  <li><a href="#dag-representation-problem" id="toc-dag-representation-problem" class="nav-link" data-scroll-target="#dag-representation-problem">DAG Representation (Problem)</a></li>
   </ul></li>
   <li><a href="#experiments" id="toc-experiments" class="nav-link" data-scroll-target="#experiments">Experiments</a>
   <ul class="collapse">
@@ -254,16 +259,22 @@ window.Quarto = {
   <li><a href="#formalisation-of-the-problem" id="toc-formalisation-of-the-problem" class="nav-link" data-scroll-target="#formalisation-of-the-problem">Formalisation of the problem</a></li>
   <li><a href="#randomized-control-trial" id="toc-randomized-control-trial" class="nav-link" data-scroll-target="#randomized-control-trial">Randomized Control Trial</a></li>
   <li><a href="#natural-experiment" id="toc-natural-experiment" class="nav-link" data-scroll-target="#natural-experiment">Natural experiment</a></li>
+  <li><a href="#case-study-eymeoud-vertier-2018" id="toc-case-study-eymeoud-vertier-2018" class="nav-link" data-scroll-target="#case-study-eymeoud-vertier-2018">Case Study: Eymeoud &amp; Vertier (2018)</a></li>
   </ul></li>
   <li><a href="#instrumental-variables" id="toc-instrumental-variables" class="nav-link" data-scroll-target="#instrumental-variables">Instrumental variables</a>
   <ul class="collapse">
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
-  <li><a href="#reformulate-the-problem" id="toc-reformulate-the-problem" class="nav-link" data-scroll-target="#reformulate-the-problem">Reformulate the problem</a></li>
-  <li><a href="#two-stage-regression" id="toc-two-stage-regression" class="nav-link" data-scroll-target="#two-stage-regression">Two stage regression</a></li>
+  <li><a href="#the-iv-solution-dag" id="toc-the-iv-solution-dag" class="nav-link" data-scroll-target="#the-iv-solution-dag">The IV Solution (DAG)</a></li>
+  <li><a href="#conditions-for-a-valid-instrument" id="toc-conditions-for-a-valid-instrument" class="nav-link" data-scroll-target="#conditions-for-a-valid-instrument">Conditions for a Valid Instrument</a></li>
+  <li><a href="#two-stage-least-squares-2sls" id="toc-two-stage-least-squares-2sls" class="nav-link" data-scroll-target="#two-stage-least-squares-2sls">Two Stage Least Squares (2SLS)</a></li>
   <li><a href="#choosing-a-good-instrument" id="toc-choosing-a-good-instrument" class="nav-link" data-scroll-target="#choosing-a-good-instrument">Choosing a good instrument</a></li>
   <li><a href="#in-practice" id="toc-in-practice" class="nav-link" data-scroll-target="#in-practice">In practice</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -344,7 +355,7 @@ window.Quarto = {
 <section id="categorical-variable" class="level2">
 <h2 class="anchored" data-anchor-id="categorical-variable">Categorical variable</h2>
 <p>Look at the model: <span class="math display">\[y_{\text{CO2 emission}} = \alpha + \beta x_{\text{banish cars}} \]</span></p>
-<p>where <span class="math inline">\(y_{\text{CO2 emission}}\)</span> is an individual’s CO2 emissions and <span class="math inline">\(x_{\text{yellow vest support}}\)</span> is the response the the question <em>Do you suport the banishment of petrol cars?</em>.</p>
+<p>where <span class="math inline">\(y_{\text{CO2 emission}}\)</span> is an individual’s CO2 emissions and <span class="math inline">\(x_{\text{banishment support}}\)</span> is the response the the question <em>Do you suport the banishment of petrol cars?</em>.</p>
 <div class="columns">
 <div class="column">
 <p>Response is coded up as:</p>
@@ -448,7 +459,7 @@ window.Quarto = {
 <ul>
 <li>Interpretation:
 <ul>
-<li>being in the group which strongly agrees to the yellow vest’s claim is associated with an additional <span class="math inline">\(\beta_4\)</span> increase in CO2 consumption compared with members of the neutral group</li>
+<li>being in the group which strongly agrees to the banishment support’s claim is associated with an additional <span class="math inline">\(\beta_4\)</span> increase in CO2 consumption compared with members of the neutral group</li>
 </ul></li>
 </ul>
 </section>
@@ -549,8 +560,8 @@ Then we convert to dummy variables exactly like hierarchical indices
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>salary <span class="op">~</span> C(activity, Treatment(reference<span class="op">=</span><span class="st">"archeologist"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="causality" class="level1 page-columns page-full">
-<h1>Causality</h1>
+<section id="causality-and-endogeneity" class="level1 page-columns page-full">
+<h1>Causality and Endogeneity</h1>
 <section id="what-is-causality" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-causality">What is causality?</h2>
 <p>. . .</p>
@@ -658,6 +669,52 @@ Then we convert to dummy variables exactly like hierarchical indices
 <li>like Granger causality…</li>
 <li>… but not for this course</li>
 </ul></li>
+</ul>
+</section>
+<section id="the-problem-endogeneity" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-endogeneity">The Problem: Endogeneity</h2>
+<div class="columns">
+<div class="column">
+<p><strong>The Ideal Regression</strong> <span class="math display">\[ y = \alpha + \beta x + \epsilon \]</span> - We want <span class="math inline">\(\beta\)</span> to be the <em>causal</em> effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span>. - Assumption: <span class="math inline">\(corr(x, \epsilon) = 0\)</span> (Exogeneity)</p>
+</div><div class="column">
+<p><strong>The Reality: Endogeneity</strong></p>
+<ul>
+<li>Often, <span class="math inline">\(x\)</span> is correlated with the error term <span class="math inline">\(\epsilon\)</span>.</li>
+<li>Why?
+<ul>
+<li><strong>Omitted Variable Bias</strong>: A third variable <span class="math inline">\(U\)</span> affects both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</li>
+<li><strong>Reverse Causality</strong>: <span class="math inline">\(y\)</span> causes <span class="math inline">\(x\)</span>.</li>
+<li><strong>Measurement Error</strong>.</li>
+</ul></li>
+<li>Result: <span class="math inline">\(\beta\)</span> is biased! You cannot trust it.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="dag-representation-problem" class="level2">
+<h2 class="anchored" data-anchor-id="dag-representation-problem">DAG Representation (Problem)</h2>
+<p>We can represent this problem using a Causal Graph (DAG):</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    U[Unobserved Confounder] --&gt;|?| X[Treatment]
+    U --&gt;|?| Y[Outcome]
+    X --&gt;|beta| Y
+    
+    style U fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>We want to measure the arrow <span class="math inline">\(X \to Y\)</span>.</li>
+<li>But the path <span class="math inline">\(X \leftarrow U \to Y\)</span> creates a “backdoor” correlation.</li>
+<li>Since we don’t observe <span class="math inline">\(U\)</span>, we can’t control for it.</li>
 </ul>
 </section>
 </section>
@@ -827,37 +884,41 @@ Then we convert to dummy variables exactly like hierarchical indices
 <!-- reference group: no shirt -->
 <div class="columns">
 <div class="column">
-<ul>
+<div class="incremental">
+<ul class="incremental">
 <li><p>Cause (A): two groups of people</p>
-<ul>
+<ul class="incremental">
 <li>those given a shirt (treatment 1)</li>
 <li>those not given a shirt (treatment 0)</li>
 </ul></li>
 <li><p>Possible consequence (B): performance</p></li>
 <li><p>Take a given agent <em>Alice</em>: she performs well with a PSG shirt.</p>
-<ul>
+<ul class="incremental">
 <li>maybe she is a good investor?</li>
 <li>or maybe she <em>is</em> playing for her team?</li>
 </ul></li>
 <li><p>Let’s try to have her play again without the football shirt</p>
-<ul>
+<ul class="incremental">
 <li>now the experiment has changed: she has gained experience, is more tired, misses the shirt…</li>
 <li>it is impossible to get a perfect counterfactual (i.e.&nbsp;where only A changes)</li>
 </ul></li>
 </ul>
+</div>
 </div><div class="column">
-<ul>
+<div class="incremental">
+<ul class="incremental">
 <li>Let’s take somebody else then? Bob was really bad without a PSG shirt.
-<ul>
+<ul class="incremental">
 <li>he might be a bad investor? or he didn’t understand the rules?</li>
 <li>some other variables have changed, not only the treatment</li>
 </ul></li>
 <li>How to make a perfect experiment?
-<ul>
+<ul class="incremental">
 <li>Choose <em>randomly</em> whether assigning a shirt or not</li>
 <li>by construction the treatment will not be correlated with other variables</li>
 </ul></li>
 </ul>
+</div>
 </div>
 </div>
 <hr>
@@ -927,13 +988,46 @@ Then we convert to dummy variables exactly like hierarchical indices
 </div>
 <p>An exemple of a Natural Experiment:</p>
 <ul>
-<li><em>gender bias in french local elections</em> (jean-pierre eymeoud, paul vertier) <a href="https://spire.sciencespo.fr/hdl:/2441/3k0m7r593p8gs9njjtpupmlknu/resources/wp-78-eymeoud-vertier.pdf">link</a></li>
-<li>are women discriminated against by voters in local elections?</li>
+<li><em>Gender Biases: Evidence from a Natural Experiment in French Local Elections</em>
+<ul>
+<li>(Eymeoud &amp; Vertier, 2018)</li>
+</ul></li>
 </ul>
-<p>. . .</p>
-<p>Result: yes, they get 1.5% less votes by right-wing voters</p>
-<p>. . .</p>
-<p>What was the natural experiment?</p>
+</section>
+<section id="case-study-eymeoud-vertier-2018" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-eymeoud-vertier-2018">Case Study: Eymeoud &amp; Vertier (2018)</h2>
+<div class="columns">
+<div class="column">
+<p><strong>The Context</strong></p>
+<ul>
+<li>2015 French <em>Departmental</em> Elections.</li>
+<li>Major reform: strict parity.</li>
+<li>Candidates must run in <strong>Pairs</strong> (Binôme: 1 Man + 1 Woman).</li>
+<li>Voters accept the whole pair (no panachage).</li>
+</ul>
+</div><div class="column">
+<p><strong>The Natural Experiment</strong></p>
+<ul>
+<li>How to list the names? (M-F or F-M?)</li>
+<li><strong>Rule</strong>: Determined by <strong>Alphabetical Order</strong>.
+<ul>
+<li>This is “Random” (Exogenous)!</li>
+<li>Whether the Woman is 1st or 2nd is uncorrelated with her quality/ability.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="incremental">
+<ul class="incremental">
+<li><strong>Hypothesis</strong>: Being listed first signals being the “Leader”.</li>
+<li><strong>Result</strong>:
+<ul class="incremental">
+<li>Pairs with <strong>Woman first</strong> received <strong>1.5% fewer votes</strong> from Right-wing voters.</li>
+<li>No significant effect for Left-wing voters.</li>
+</ul></li>
+<li><strong>Conclusion</strong>: Evidence of discriminatory preferences among certain voters.</li>
+</ul>
+</div>
 </section>
 </section>
 <section id="instrumental-variables" class="level1">
@@ -1000,70 +1094,69 @@ and was correlated with the probability that a given person would go to war</li>
 </ul>
 </div>
 </section>
-<section id="reformulate-the-problem" class="level2">
-<h2 class="anchored" data-anchor-id="reformulate-the-problem">Reformulate the problem</h2>
-<div class="columns">
-<div class="column">
-<ul>
-<li>Let’s assume treatment <span class="math inline">\(x\)</span> is a binary variable <span class="math inline">\(\in{0,1}\)</span></li>
-<li>We want to estimate <span class="math display">\[y = \alpha + \beta x + z + \epsilon\]</span> where <span class="math inline">\(z\)</span> is potentially correlated to <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
-<li>There are two groups:
-<ul>
-<li>those who receive the treatment <span class="math display">\[y = \alpha + \beta + z_{T=1} + \epsilon\]</span></li>
-<li>the others <span class="math display">\[y = \alpha + 0 +  z_{T=0} + \epsilon\]</span></li>
-</ul></li>
-</ul>
-</div><div class="column">
-<ul>
-<li>Problem:
-<ul>
-<li>if <span class="math inline">\(z\)</span> is higher in the treatment group, its effect can’t be separated from the treatment effect.</li>
-</ul></li>
-<li>Intuition: what if we make groups differently?
-<ul>
-<li>completely independent from <span class="math inline">\(z\)</span> (and <span class="math inline">\(\epsilon\)</span>)</li>
-<li>not independently from <span class="math inline">\(x\)</span> so that one group will receive more treatment than the other</li>
-</ul></li>
-<li>To make this group we need a new variable <span class="math inline">\(q\)</span> that is:
-<ul>
-<li>correlated with <span class="math inline">\(x\)</span> so that it will correspond to some treatment effect</li>
-<li>uncorrelated to <span class="math inline">\(z\)</span> or <span class="math inline">\(\epsilon\)</span> (exogenous)</li>
-</ul></li>
-</ul>
+<section id="the-iv-solution-dag" class="level2">
+<h2 class="anchored" data-anchor-id="the-iv-solution-dag">The IV Solution (DAG)</h2>
+<p>We introduce an <strong>Instrument (<span class="math inline">\(Z\)</span>)</strong> to break the link.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    U[Unobserved Confounder] -.-&gt; X[Treatment]
+    U -.-&gt; Y[Outcome]
+    X --&gt;|beta| Y
+    Z[Instrument] --&gt;|Relevance| X
+    Z -.-&gt;|Exclusion| Y
+    Z x-.-x U
+
+    style U fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
+    style Z fill:#9f9,stroke:#333,stroke-width:4px
+    linkStyle 4 stroke:red,stroke-width:2px;
+    linkStyle 5 stroke:red,stroke-width:2px;
+</pre>
 </div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>The Logic:</strong></p>
+<ol type="1">
+<li>Verify <span class="math inline">\(Z\)</span> causes variation in <span class="math inline">\(X\)</span>.</li>
+<li>Use <strong>only</strong> that variation in <span class="math inline">\(X\)</span> (caused by <span class="math inline">\(Z\)</span>) to predict <span class="math inline">\(Y\)</span>.</li>
+<li>Since <span class="math inline">\(Z\)</span> is uncorrelated with <span class="math inline">\(U\)</span>, this “clean” variation is safe to use.</li>
+</ol>
 </div>
 </section>
-<section id="two-stage-regression" class="level2">
-<h2 class="anchored" data-anchor-id="two-stage-regression">Two stage regression</h2>
-<div class="columns">
-<div class="column">
-<ul>
-<li>We would like to redo the treatment groups in a way that is independent from <span class="math inline">\(z\)</span> (and everything contained in <span class="math inline">\(\epsilon\)</span>)
-<ul>
-<li><span class="math inline">\(q\)</span> is a binary variable: drafted or not</li>
+<section id="conditions-for-a-valid-instrument" class="level2">
+<h2 class="anchored" data-anchor-id="conditions-for-a-valid-instrument">Conditions for a Valid Instrument</h2>
+<p>To be valid, an instrument <span class="math inline">\(Z\)</span> must satisfy two key conditions:</p>
+<div class="incremental">
+<ol class="incremental" type="1">
+<li><strong>Relevance</strong>: <span class="math inline">\(Cov(Z, X) \neq 0\)</span>
+<ul class="incremental">
+<li>The instrument must actually affect the treatment.</li>
+<li><em>Testable</em>: Regress <span class="math inline">\(X\)</span> on <span class="math inline">\(Z\)</span> and check significance (F-stat &gt; 10).</li>
 </ul></li>
-<li><!-- .element class="fragment" -->
-First stage: regress group assignment on the instrument: <span class="math display">\[x = \alpha_0 + \beta_0 q + \eta\]</span>
-<ul>
-<li>we can now predict group assignment in a way that is independent from <span class="math inline">\(z\)</span> (and everything in <span class="math inline">\(\epsilon\)</span>) <span class="math display">\[\tilde{x} = \alpha_0 + \beta_0 q\]</span></li>
+<li><strong>Exclusion Restriction</strong>: <span class="math inline">\(Cov(Z, \epsilon) = 0\)</span>
+<ul class="incremental">
+<li>The instrument affects <span class="math inline">\(Y\)</span> <strong>ONLY</strong> through <span class="math inline">\(X\)</span>.</li>
+<li>It must NOT be correlated with the omitted variable <span class="math inline">\(U\)</span>.</li>
+<li><em>NOT Testable</em>: Must be argued from theory/institution.</li>
 </ul></li>
-<li><!-- .element class="fragment" -->
-Second stage: use the predicted value instead of the original one <span class="math display">\[y = \alpha + \beta_1 \tilde{x} + z + \epsilon\]</span></li>
-</ul>
-</div><div class="column">
-<ul>
-<li><!-- .element class="fragment" -->
-Result:
-<ul>
-<li>If <span class="math inline">\(\beta_1\)</span> is significantly nonzero, there is a causal effect between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</li>
-<li>Note that <span class="math inline">\(\tilde{x}\)</span> is imperfectly correlated with the treatment: <span class="math inline">\(\beta_1\)</span> can’t be interpreted directly</li>
-<li>The actual effect will be <span class="math inline">\(\frac{\beta_1}{\beta_0}\)</span> (in 1d)</li>
-</ul></li>
-<li><!-- .element class="fragment" -->
-We say that we <strong>instrument</strong> <span class="math inline">\(x\)</span> by <span class="math inline">\(q\)</span>.</li>
-</ul>
+</ol>
 </div>
-</div>
+</section>
+<section id="two-stage-least-squares-2sls" class="level2">
+<h2 class="anchored" data-anchor-id="two-stage-least-squares-2sls">Two Stage Least Squares (2SLS)</h2>
+<p>How do we estimate this? In two stages:</p>
+<p><strong>Stage 1: Predict the Treatment</strong> Isolate the part of <span class="math inline">\(X\)</span> driven by <span class="math inline">\(Z\)</span>. <span class="math display">\[ \hat{x} = \alpha_0 + \beta_0 z \]</span></p>
+<p><strong>Stage 2: Estimate the Effect</strong> Use the predicted treatment <span class="math inline">\(\hat{x}\)</span> (which is “clean”) to explain <span class="math inline">\(Y\)</span>. <span class="math display">\[ y = \alpha + \beta_{IV} \hat{x} + \epsilon \]</span></p>
+<ul>
+<li><strong>Result</strong>: <span class="math inline">\(\beta_{IV}\)</span> is a consistent estimator of the causal effect.</li>
+<li><strong>Intuition</strong>: <span class="math inline">\(\beta_{IV} \approx \frac{\text{Effect of Z on Y}}{\text{Effect of Z on X}}\)</span> (Wald Estimator)</li>
+</ul>
 </section>
 <section id="choosing-a-good-instrument" class="level2">
 <h2 class="anchored" data-anchor-id="choosing-a-good-instrument">Choosing a good instrument</h2>
@@ -1102,6 +1195,40 @@ We say that we <strong>instrument</strong> <span class="math inline">\(x\)</span
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>ols <span class="op">=</span> IV2SLS.from_formula(formula, data)</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ols_res <span class="op">=</span> ols.fit(cov_type<span class="op">=</span><span class="st">"robust"</span>)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ols_res)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<div class="incremental">
+<ol class="incremental" type="1">
+<li><strong>Causality <span class="math inline">\(\neq\)</span> Correlation</strong>: We need to worry about <em>endogeneity</em> (confounders, reverse causality).</li>
+<li><strong>Gold Standard</strong>: Randomized Control Trials (RCT) solve this by forcing <span class="math inline">\(X\)</span> to be random.</li>
+<li><strong>Instrumental Variables (IV)</strong>:
+<ul class="incremental">
+<li>We look for a “natural experiment” (<span class="math inline">\(Z\)</span>) that mimics an RCT.</li>
+<li><span class="math inline">\(Z\)</span> must be <strong>Relevant</strong> (<span class="math inline">\(Z \to X\)</span>) and <strong>Exogenous</strong> (<span class="math inline">\(Z \perp \epsilon\)</span>).</li>
+</ul></li>
+<li><strong>Implementation</strong>: Use Two-Stage Least Squares (2SLS) supported by libraries like <code>linearmodels</code></li>
+</ol>
+</div>
+<div class="fragment">
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Finding a valid instrument is <strong>hard</strong>. A bad instrument (weak or endogenous) can be worse than OLS!</p>
+</div>
+</div>
+</div>
 
 
 </section>

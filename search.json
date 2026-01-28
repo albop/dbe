@@ -1525,11 +1525,46 @@
     "text": "from matplotlib import pyplot as plt\nimport numpy as np\nimport pandas as pd\n\n\nimport statsmodels.api as sm\n\n\ndf.describe()\n\n\n\n\n\n\n\n\nincome\neducation\nprestige\n\n\n\n\ncount\n45.000000\n45.000000\n45.000000\n\n\nmean\n41.866667\n52.555556\n47.688889\n\n\nstd\n24.435072\n29.760831\n31.510332\n\n\nmin\n7.000000\n7.000000\n3.000000\n\n\n25%\n21.000000\n26.000000\n16.000000\n\n\n50%\n42.000000\n45.000000\n41.000000\n\n\n75%\n64.000000\n84.000000\n81.000000\n\n\nmax\n81.000000\n100.000000\n97.000000\n\n\n\n\n\n\n\n\ndf.cov()\n\n\n\n\n\n\n\n\nincome\neducation\nprestige\n\n\n\n\nincome\n597.072727\n526.871212\n645.071212\n\n\neducation\n526.871212\n885.707071\n798.904040\n\n\nprestige\n645.071212\n798.904040\n992.901010\n\n\n\n\n\n\n\n\nfrom matplotlib import pyplot as plt\n\n\nplt.figure(figsize=(8,6))\nplt.plot(df['education'],df['income'],'o')\nplt.grid()\nplt.xlabel(\"x (Education)\")\nplt.ylabel(\"y (Income)\")\nplt.savefig(\"data_description.png\")\n\n\n\n\n\n\n\n\n\nfor i in [1,2,3]:\n    xvec = np.linspace(10,100)\n\n    plt.figure(figsize=(12,8))\n    plt.plot(df['education'],df['income'],'o')\n\n    plt.plot(xvec, xvec * 0 + 50)\n    if i&gt;=2:\n        plt.plot(xvec, xvec )\n    if i&gt;=3:\n        plt.plot(xvec,  90- 0.6*xvec )\n\n    plt.grid()\n    plt.xlabel(\"x (Education)\")\n    plt.ylabel(\"y (Income)\")\n    plt.savefig(f\"which_line_{i}.png\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nfrom ipywidgets import interact\n\n\nimport matplotlib.patches as patches\n\n\na = 0.1\nb = 1.0\nind = 23\n\n\napprox =  a + b*xvec\n\n# Create figure and axes\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\nplt.plot(df['education'],df['income'],'o')\nplt.plot(xvec, approx, color='red')\n\nx, y = df['education'][ind], df['income'][ind]\nplt.plot(x, y, 'o', color='red' )\np = a+b*x\nplt.grid(True)\nh = abs(p-y)\nplt.vlines(x, y+h, y, color='red')\n\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.savefig(f\"error_0.png\")\n\n\n\n\n\n\n\n\n\nplt.vlines?\n\n\nSignature:\nplt.vlines(\n    x,\n    ymin,\n    ymax,\n    colors=None,\n    linestyles='solid',\n    label='',\n    *,\n    data=None,\n    **kwargs,\n)\nDocstring:\nPlot vertical lines.\nPlot vertical lines at each *x* from *ymin* to *ymax*.\nParameters\n----------\nx : float or array-like\n    x-indexes where to plot the lines.\nymin, ymax : float or array-like\n    Respective beginning and end of each line. If scalars are\n    provided, all lines will have same length.\ncolors : list of colors, default: :rc:`lines.color`\nlinestyles : {'solid', 'dashed', 'dashdot', 'dotted'}, optional\nlabel : str, default: ''\nReturns\n-------\n`~matplotlib.collections.LineCollection`\nOther Parameters\n----------------\n**kwargs : `~matplotlib.collections.LineCollection` properties.\nSee Also\n--------\nhlines : horizontal lines\naxvline: vertical line across the axes\nNotes\n-----\n.. note::\n    In addition to the above described arguments, this function can take\n    a *data* keyword argument. If such a *data* argument is given,\n    the following arguments can also be string ``s``, which is\n    interpreted as ``data[s]`` (unless this raises an exception):\n    *x*, *ymin*, *ymax*, *colors*.\n    Objects passed as **data** must support item access (``data[s]``) and\n    membership test (``s in data``).\nFile:      ~/.local/opt/miniconda/lib/python3.8/site-packages/matplotlib/pyplot.py\nType:      function\n\n\n\n\n\na = 0.1\nb = 1.0\nind = 23\n\n\napprox =  a + b*xvec\n\n# Create figure and axes\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\nplt.plot(df['education'],df['income'],'o')\nplt.plot(xvec, approx, color='red')\n\nx, y = df['education'][ind], df['income'][ind]\nplt.plot(x, y, 'o', color='red' )\np = a+b*x\nplt.grid(True)\nh = abs(p-y)\nif p-y&gt;0:\n    # Create a Rectangle patch\n    rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n    ax.add_patch(rect)\n    \nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.savefig(f\"errors_{1}.png\")\n\n\n\n\n\n\n\n\n\ndef L(a,b):\n    Δ = a + b*df['education'] - df['income']\n    return (Δ**2).sum()\n\n\na = 0.1\nb = 0.8\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red')\n\nplt.grid(True)\nfor ind in range(df.shape[0]):\n    \n    x, y = df['education'][ind], df['income'][ind]\n    p = a+b*x\n\n    h = abs(p-y)\n    if p-y&gt;0:\n        # Create a Rectangle patch\n        rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\n    else:\n        rect = patches.Rectangle((x,y-h),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"errors_2.png\")\n\n\n\n\n\n\n\n\n\na = 90\nb = -0.6\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red')\n\nplt.grid(True)\nfor ind in range(df.shape[0]):\n    \n    x, y = df['education'][ind], df['income'][ind]\n    p = a+b*x\n\n    h = abs(p-y)\n    if p-y&gt;0:\n        # Create a Rectangle patch\n        rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\n    else:\n        rect = patches.Rectangle((x,y-h),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"errors_3.png\")\n\n\n\n\n\n\n\n\n\nimport scipy.optimize\n\n\nscipy.optimize.minimize(lambda x: L(x[0], x[1]),np.array([0.5, 0.5]))\n\n      fun: 12480.970174488397\n hess_inv: array([[ 7.14169839e-09, -3.91281920e-09],\n       [-3.91281920e-09,  2.46663613e-09]])\n      jac: array([0.00024414, 0.00012207])\n  message: 'Desired error not necessarily achieved due to precision loss.'\n     nfev: 57\n      nit: 7\n     njev: 19\n   status: 2\n  success: False\n        x: array([10.60350224,  0.59485938])\n\n\n\na = 10\nb = 0.59\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red')\n\nplt.grid(True)\nfor ind in range(df.shape[0]):\n    \n    x, y = df['education'][ind], df['income'][ind]\n    p = a+b*x\n\n    h = abs(p-y)\n    if p-y&gt;0:\n        # Create a Rectangle patch\n        rect = patches.Rectangle((x,y),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\n    else:\n        rect = patches.Rectangle((x,y-h),h,h,linewidth=1, color='red', fill=True, alpha=0.05)\n        ax.add_patch(rect)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"errors_4.png\")\n\n\n\n\n\n\n\n\n\na = 10\nb = 0.59\n\napprox =  a + b*xvec\n\n\n# plt.figure(figsize=(8,6))\nfig,ax = plt.subplots(1,figsize=(12,8))\n\n\nplt.plot(df['education'],df['income'],'o', label=f\"L({a,b})={L(a,b)}\")\nplt.plot(xvec, approx, color='red', alpha=0.5)\n\nplt.plot(60, a + b*60, 'o', color='red',)\n\nprint(a+b*60)\nplt.xlim(0,140)\nplt.ylim(0,100)\nplt.legend(loc='upper right')\nplt.savefig(f\"prediction.png\")\n\n45.4\n\n\n\n\n\n\n\n\n\n\na = 10\nb = 0.59\n\napprox =  (a + b*df['education'] - df['income'])\n\nplt.figure(figsize=(12,6))\n\nplt.subplot(121)\nplt.plot(approx)\nplt.grid(False)\nplt.title(\"Residuals\")\n\n\nplt.subplot(122)\ndistplot(approx)\nplt.title(\"Distribution of residuals\")\nplt.grid()\n\nplt.savefig(\"residuals.png\")\n\n/home/pablo/.local/opt/miniconda/lib/python3.8/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).\n  warnings.warn(msg, FutureWarning)\n\n\n\n\n\n\n\n\n\n\n(a + b*df['education'] - df['income']).std()\n\n16.842782676352154\n\n\n\n\n\n/home/pablo/.local/opt/miniconda/lib/python3.8/site-packages/seaborn/distributions.py:2557: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).\n  warnings.warn(msg, FutureWarning)\n\n\n\n\n\n\n\n\n\n\nfrom scipy.stats import f\n\n\nf(0.3)\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\n&lt;ipython-input-191-91b22dc02480&gt; in &lt;module&gt;\n----&gt; 1 f(0.3)\n\n~/.local/opt/miniconda/lib/python3.8/site-packages/scipy/stats/_distn_infrastructure.py in __call__(self, *args, **kwds)\n    778 \n    779     def __call__(self, *args, **kwds):\n--&gt; 780         return self.freeze(*args, **kwds)\n    781     __call__.__doc__ = freeze.__doc__\n    782 \n\n~/.local/opt/miniconda/lib/python3.8/site-packages/scipy/stats/_distn_infrastructure.py in freeze(self, *args, **kwds)\n    775 \n    776         \"\"\"\n--&gt; 777         return rv_frozen(self, *args, **kwds)\n    778 \n    779     def __call__(self, *args, **kwds):\n\n~/.local/opt/miniconda/lib/python3.8/site-packages/scipy/stats/_distn_infrastructure.py in __init__(self, dist, *args, **kwds)\n    422         self.dist = dist.__class__(**dist._updated_ctor_param())\n    423 \n--&gt; 424         shapes, _, _ = self.dist._parse_args(*args, **kwds)\n    425         self.a, self.b = self.dist._get_support(*shapes)\n    426 \n\nTypeError: _parse_args() missing 1 required positional argument: 'dfd'\n\n\n\n\nnp.rand\n\n\nK = 100\nxvec = np.linspace(0,1,K)\ne1 = np.random.randn(K)*0.1\nyvec = 0.1 + xvec*0.4 + e1\ne2 = np.random.randn(K)*0.05\nyvec2 = 0.1 + xvec*(xvec-1)/2 + e2\ne3 = np.random.randn(K)*xvec/2\nyvec3 = 0.1 + xvec + e3\n\nyvec4 = 0.1 + np.sin(xvec*6) + np.random.randn(K)*xvec/2\n\n\nfrom dolo.numeric.processes import VAR1\n\n\nsim = VAR1( ρ=0.8, Σ=0.001).simulate(N=1,T=100)\nyvec4 = 0.1 + xvec*0.4 + sim.ravel()\n\n\nplt.figure(figsize=(18,6))\nplt.subplot(241)\nplt.plot(xvec, yvec,'o')\nplt.plot(xvec, 0.1 + xvec*0.4 )\nplt.ylabel(\"Series\")\nplt.title(\"white noise\")\nplt.subplot(242)\nplt.plot(xvec, yvec2, 'o')\nplt.plot(xvec, yvec2*0)\nplt.title('nonlinear')\nplt.subplot(243)\nplt.plot(xvec, yvec3,'o')\nplt.plot(xvec, 0.1 + xvec)\nplt.title('heteroskedastic')\nplt.subplot(244)\nplt.plot(xvec, yvec4,'o')\nplt.plot(xvec, xvec*0.6)\n\nplt.title('correlated')\n\n\nplt.subplot(245)\nplt.plot(xvec, e1,'o')\nplt.ylabel(\"Residuals\")\nplt.subplot(246)\nplt.plot(xvec, yvec2-0.075, 'o')\n\nplt.subplot(247)\nplt.plot(xvec, e3,'o')\nplt.subplot(248)\nplt.plot(xvec, sim.ravel(),'o')\n\nplt.tight_layout()\n\nplt.savefig(\"residuals_circus.png\")"
   },
   {
+    "objectID": "slides/session_6a/index.html#motivation",
+    "href": "slides/session_6a/index.html#motivation",
+    "title": "Introduction to Panel Data",
+    "section": "Motivation",
+    "text": "Motivation"
+  },
+  {
+    "objectID": "slides/session_6a/index.html#data-dimensions-time-and-space",
+    "href": "slides/session_6a/index.html#data-dimensions-time-and-space",
+    "title": "Introduction to Panel Data",
+    "section": "Data Dimensions: Time and Space",
+    "text": "Data Dimensions: Time and Space"
+  },
+  {
+    "objectID": "slides/session_6a/index_handout.html",
+    "href": "slides/session_6a/index_handout.html",
+    "title": "Introduction to Panel Data",
+    "section": "",
+    "text": "Question: Does drinking coffee improve productivity?\nData: We survey 1000 employees over 5 years.\n\n\n\nCross-Sectional View: Compare Alice (drinks 5 cups) vs. Bob (drinks 0 cups).\n\nFinding: Alice is more stressed and less productive. \\(\\rightarrow\\) Coffee is bad?\n\nTime-Series View: Follow Alice when she varies her coffee intake.\n\nFinding: On days she drinks coffee, she gets more done. \\(\\rightarrow\\) Coffee is good!\n\nThe Puzzle: Alice works in a high-pressure trading floor (stress causes coffee). Bob works in a library.\n\n\n\n\n\n\n\n\n\nTipThe Power of Panels\n\n\n\nPanel data lets us separate the individual effect (Alice vs Bob) from the causal effect (Coffee vs No Coffee).\n\n\n\n\n\n\n\n\n\n\n\n\nUntil now, we have been rather loose about where the data comes from.\nTrying to explain \\(N\\) observations: \\(y_n = a + b x_n, n\\in [1,N]\\)\nAll these lonely observations, where do they all come from?\n\n\n\nIndividuals (Space)  (Cross-section)\n\n\nDates (Time)  (Time-series)\n\n\n\n\n\n\n\n\n\nvery simple study: structural break\n\ndoes regression on \\([T_1, \\overline{T}]\\) yield (significantly) different results on \\([\\overline{T}, T_2]\\)\n\ngoing further: time series analysis\n\ndata is typically autocorrelated\nexample (AR1) \\(x_t = a  + b x_{t-1} + \\epsilon_t\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdea: Survey different random people each year.\nExample: “US Census 2000, 2010, 2020”\nStructure:\n\nIndex individual \\(i\\) and time \\(t\\).\nBut \\(i=1\\) in 2000 is NOT the same person as \\(i=1\\) in 2010.\n\nAnalysis:\n\nWe can study trends (e.g. inequality over time).\nBut we cannot see who got richer.\n\n\n\n\n\n\n\n\nIdea: Follow the same individuals over time.\nExample: “Tracking the same 5000 families for 20 years (PSID)”\nStructure:\n\n\\(y_{i,t}\\) is person \\(i\\) at date \\(t\\).\n\\(y_{i,t+1}\\) is the same person, later.\n\nPower:\n\nWe can control for unobserved characteristics of \\(i\\).\nWe can study detailed dynamics.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBalanced: all individuals in the sample are followed from 1 to T\nUnbalanced: some indivuduals start later, stop earlier\n\n\n\n\n\nCrude solutions:\n\ntruncate the dates between \\([T_1, T_2]\\) so that dataset is balanced\neliminate individuals who are not present in the full sample\n\nNot very good:\n\ncan limit a lot the size of the sample\ncan induce a “selection bias”\n\nReal gurus know how to deal with missing values\n\nmany algorithms can be adapted\n\n\n\n\n\n\n\n\n\n\n\nwe tend to prefer here the long format (w.r.t id and date)\nthere can be many columns though (for each variable)\n\n\n\n\n\n\nmicro-panel: \\(T&lt;&lt;N\\)\n\nPanel Study of Income Dynamics (PSID): 5000 consumers since 1967 (US)\n\nreinterview same individuals from year to year\nbut some go in/out of the panel\n\nSurvey of Consumer and Finance (SCF)\n…\n\nmacro-panel: \\(T\\approx N\\)\n\nWIIW: 23 countries since the 60s (central, east and southern Europe)"
+  },
+  {
+    "objectID": "slides/session_6a/index_handout.html#motivation",
+    "href": "slides/session_6a/index_handout.html#motivation",
+    "title": "Introduction to Panel Data",
+    "section": "",
+    "text": "Question: Does drinking coffee improve productivity?\nData: We survey 1000 employees over 5 years.\n\n\n\nCross-Sectional View: Compare Alice (drinks 5 cups) vs. Bob (drinks 0 cups).\n\nFinding: Alice is more stressed and less productive. \\(\\rightarrow\\) Coffee is bad?\n\nTime-Series View: Follow Alice when she varies her coffee intake.\n\nFinding: On days she drinks coffee, she gets more done. \\(\\rightarrow\\) Coffee is good!\n\nThe Puzzle: Alice works in a high-pressure trading floor (stress causes coffee). Bob works in a library.\n\n\n\n\n\n\n\n\n\nTipThe Power of Panels\n\n\n\nPanel data lets us separate the individual effect (Alice vs Bob) from the causal effect (Coffee vs No Coffee)."
+  },
+  {
+    "objectID": "slides/session_6a/index_handout.html#data-dimensions-time-and-space",
+    "href": "slides/session_6a/index_handout.html#data-dimensions-time-and-space",
+    "title": "Introduction to Panel Data",
+    "section": "",
+    "text": "Until now, we have been rather loose about where the data comes from.\nTrying to explain \\(N\\) observations: \\(y_n = a + b x_n, n\\in [1,N]\\)\nAll these lonely observations, where do they all come from?\n\n\n\nIndividuals (Space)  (Cross-section)\n\n\nDates (Time)  (Time-series)\n\n\n\n\n\n\n\n\n\nvery simple study: structural break\n\ndoes regression on \\([T_1, \\overline{T}]\\) yield (significantly) different results on \\([\\overline{T}, T_2]\\)\n\ngoing further: time series analysis\n\ndata is typically autocorrelated\nexample (AR1) \\(x_t = a  + b x_{t-1} + \\epsilon_t\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdea: Survey different random people each year.\nExample: “US Census 2000, 2010, 2020”\nStructure:\n\nIndex individual \\(i\\) and time \\(t\\).\nBut \\(i=1\\) in 2000 is NOT the same person as \\(i=1\\) in 2010.\n\nAnalysis:\n\nWe can study trends (e.g. inequality over time).\nBut we cannot see who got richer.\n\n\n\n\n\n\n\n\nIdea: Follow the same individuals over time.\nExample: “Tracking the same 5000 families for 20 years (PSID)”\nStructure:\n\n\\(y_{i,t}\\) is person \\(i\\) at date \\(t\\).\n\\(y_{i,t+1}\\) is the same person, later.\n\nPower:\n\nWe can control for unobserved characteristics of \\(i\\).\nWe can study detailed dynamics.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBalanced: all individuals in the sample are followed from 1 to T\nUnbalanced: some indivuduals start later, stop earlier\n\n\n\n\n\nCrude solutions:\n\ntruncate the dates between \\([T_1, T_2]\\) so that dataset is balanced\neliminate individuals who are not present in the full sample\n\nNot very good:\n\ncan limit a lot the size of the sample\ncan induce a “selection bias”\n\nReal gurus know how to deal with missing values\n\nmany algorithms can be adapted\n\n\n\n\n\n\n\n\n\n\n\nwe tend to prefer here the long format (w.r.t id and date)\nthere can be many columns though (for each variable)\n\n\n\n\n\n\nmicro-panel: \\(T&lt;&lt;N\\)\n\nPanel Study of Income Dynamics (PSID): 5000 consumers since 1967 (US)\n\nreinterview same individuals from year to year\nbut some go in/out of the panel\n\nSurvey of Consumer and Finance (SCF)\n…\n\nmacro-panel: \\(T\\approx N\\)\n\nWIIW: 23 countries since the 60s (central, east and southern Europe)"
+  },
+  {
     "objectID": "slides/session_4/index.html#remember-dataset-from-last-time",
     "href": "slides/session_4/index.html#remember-dataset-from-last-time",
     "title": "Multiple Regression",
     "section": "Remember dataset from last time",
-    "text": "Remember dataset from last time\n\n\n\n\n\n\ntype\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = x + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = x + 0.83 \\text{prestige}\\]\nWhich one is better?"
+    "text": "Remember dataset from last time\n\n\n\n\n\n\ntype\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = xx + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = xx + 0.83 \\text{prestige}\\]\nWhich one is better?"
   },
   {
     "objectID": "slides/session_4/index.html#prestige-or-education",
@@ -1648,7 +1683,7 @@
     "href": "slides/session_4/index.html#confidence-intervals",
     "title": "Multiple Regression",
     "section": "Confidence intervals",
-    "text": "Confidence intervals\nSame as in the 1d case.\n\nTake estimate \\(\\color{red}{\\beta_i}\\) with an estimate of its standard deviation \\(\\color{red}{\\hat{\\sigma}(\\beta_i)}\\)\nCompute student \\(\\color{red}{t^{\\star}}\\) at \\(\\color{red}{\\alpha}\\) confidence level (ex: \\(\\alpha=5\\%\\)) such that:\n\n\\(P(|t|&gt;t^{\\star})&lt;\\alpha\\)\n\n\n\nProduce confidence intervals at \\(\\alpha\\) confidence level:\n\n\\([\\color{red}{\\beta_i} - t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}, \\color{red}{\\beta_i} + t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}]\\)\n\nInterpretation: for a given confidence interval at confidence level \\(\\alpha\\)… - the probability that our coefficient was obtained, if the true coefficient were outside of it, is smaller than \\(\\alpha\\) - if we had run many regressions and computed the confidence interval, the true coefficient would be inside it 95% of the time"
+    "text": "Confidence intervals\nSame as in the 1d case.\n\nTake estimate \\(\\color{red}{\\beta_i}\\) with an estimate of its standard deviation \\(\\color{red}{\\hat{\\sigma}(\\beta_i)}\\)\nCompute student \\(\\color{red}{t^{\\star}}\\) at \\(\\color{red}{\\alpha}\\) confidence level (ex: \\(\\alpha=5\\\\%\\)) such that:\n\n\\(P(|t|&gt;t^{\\star})&lt;\\alpha\\)\n\n\n\nProduce confidence intervals at \\(\\alpha\\) confidence level:\n\n\\([\\color{red}{\\beta_i} - t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}, \\color{red}{\\beta_i} + t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}]\\)\n\nInterpretation:\n\nfor a given confidence interval at confidence level \\(\\alpha\\)…\nthe probability that our coefficient was obtained, if the true coefficient were outside of it, is smaller than \\(\\alpha\\)"
   },
   {
     "objectID": "slides/session_4/index.html#other-tests",
@@ -1697,7 +1732,7 @@
     "href": "slides/session_4/index_handout.html",
     "title": "Multiple Regression",
     "section": "",
-    "text": "type\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = x + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = x + 0.83 \\text{prestige}\\]\nWhich one is better?\n\n\n\n\n\n\n\n\n\nif the goal is to predict: the one with higher explained variance\n\nprestige has higher \\(R^2\\) (\\(0.83^2\\))\n\nunless we are interested in the effect of education\n\n\n\n\n\n\nWhat about using both?\n\n2 variables model: \\[\\text{income} = \\alpha + \\beta_1 \\text{education} + \\beta_2 \\text{prestige}\\]\nwill probably improve prediction power (explained variance)\n\\(\\beta_1\\) might not be meaningful on its own anymore (education and prestige are correlated)\n\n\n\n\n\n\nNow we are trying to fit a plane to a cloud of points.\n \n\n\n\n\n\nTake all observations: \\((\\text{income}_n,\\text{education}_n,\\text{prestige}_n)_{n\\in[0,N]}\\)\nObjective: sum of squares \\[ L(\\alpha, \\beta_1, \\beta_2) = \\sum_i \\left( \\underbrace{ \\alpha + \\beta_1 \\text{education}_n + \\beta_2 \\text{prestige}_n - \\text{income}_n }_{e_n=\\text{prediction error} }\\right)^2 \\]\nMinimize loss function in \\(\\alpha\\), \\(\\beta_1\\), \\(\\beta_2\\)\nAgain, we can perform numerical optimization (machine learning approach)\n\n… but there is an explicit formula\n\n\n\n\n\n\n\n\n\n\\[Y = \\begin{bmatrix}\n\\text{income}_1 \\\\\\\\\n\\vdots \\\\\\\\\n\\text{income}_N\n\\end{bmatrix}\\] \\[X = \\begin{bmatrix}\n1 & \\text{education}_1 & \\text{prestige}_1 \\\\\\\\\n\\vdots & \\vdots & \\vdots \\\\\\\\\n1 &\\text{education}_N & \\text{prestige}_N\n\\end{bmatrix}\\]\n\n\nMatrix Version (look for \\(B = \\left( \\alpha,  \\beta_1 , \\beta_2 \\right)\\)): \\[Y =  X B + E\\]\nNote that constant can be interpreted as a “variable”\nLoss function \\[L(A,B) = (Y - X B)' (Y - X B)\\]\nResult of minimization \\(\\min_{(A,B)} L(A,B)\\) : \\[\\begin{bmatrix}\\alpha & \\beta_1 & \\beta_2 \\end{bmatrix} = (X'X)^{-1} X' Y \\]\n\n\n\n\n\n\n\nResult: \\[\\text{income} = 10.43  + 0.03 \\times \\text{education} + 0.62 \\times \\text{prestige}\\]\nQuestions:\n\nis it a better regression than the other?\nis the coefficient in front of education significant?\nhow do we interpret it?\ncan we build confidence intervals?",
+    "text": "type\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = xx + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = xx + 0.83 \\text{prestige}\\]\nWhich one is better?\n\n\n\n\n\n\n\n\n\nif the goal is to predict: the one with higher explained variance\n\nprestige has higher \\(R^2\\) (\\(0.83^2\\))\n\nunless we are interested in the effect of education\n\n\n\n\n\n\nWhat about using both?\n\n2 variables model: \\[\\text{income} = \\alpha + \\beta_1 \\text{education} + \\beta_2 \\text{prestige}\\]\nwill probably improve prediction power (explained variance)\n\\(\\beta_1\\) might not be meaningful on its own anymore (education and prestige are correlated)\n\n\n\n\n\n\nNow we are trying to fit a plane to a cloud of points.\n \n\n\n\n\n\nTake all observations: \\((\\text{income}_n,\\text{education}_n,\\text{prestige}_n)_{n\\in[0,N]}\\)\nObjective: sum of squares \\[ L(\\alpha, \\beta_1, \\beta_2) = \\sum_i \\left( \\underbrace{ \\alpha + \\beta_1 \\text{education}_n + \\beta_2 \\text{prestige}_n - \\text{income}_n }_{e_n=\\text{prediction error} }\\right)^2 \\]\nMinimize loss function in \\(\\alpha\\), \\(\\beta_1\\), \\(\\beta_2\\)\nAgain, we can perform numerical optimization (machine learning approach)\n\n… but there is an explicit formula\n\n\n\n\n\n\n\n\n\n\\[Y = \\begin{bmatrix}\n\\text{income}_1 \\\\\\\\\n\\vdots \\\\\\\\\n\\text{income}_N\n\\end{bmatrix}\\] \\[X = \\begin{bmatrix}\n1 & \\text{education}_1 & \\text{prestige}_1 \\\\\\\\\n\\vdots & \\vdots & \\vdots \\\\\\\\\n1 &\\text{education}_N & \\text{prestige}_N\n\\end{bmatrix}\\]\n\n\nMatrix Version (look for \\(B = \\left( \\alpha,  \\beta_1 , \\beta_2 \\right)\\)): \\[Y =  X B + E\\]\nNote that constant can be interpreted as a “variable”\nLoss function \\[L(A,B) = (Y - X B)' (Y - X B)\\]\nResult of minimization \\(\\min_{(A,B)} L(A,B)\\) : \\[\\begin{bmatrix}\\alpha & \\beta_1 & \\beta_2 \\end{bmatrix} = (X'X)^{-1} X' Y \\]\n\n\n\n\n\n\n\nResult: \\[\\text{income} = 10.43  + 0.03 \\times \\text{education} + 0.62 \\times \\text{prestige}\\]\nQuestions:\n\nis it a better regression than the other?\nis the coefficient in front of education significant?\nhow do we interpret it?\ncan we build confidence intervals?",
     "crumbs": [
       "lectures",
       "Multiple Regression"
@@ -1708,7 +1743,7 @@
     "href": "slides/session_4/index_handout.html#remember-dataset-from-last-time",
     "title": "Multiple Regression",
     "section": "",
-    "text": "type\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = x + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = x + 0.83 \\text{prestige}\\]\nWhich one is better?",
+    "text": "type\nincome\neducation\nprestige\n\n\n\n\naccountant\nprof\n62\n86\n82\n\n\npilot\nprof\n72\n76\n83\n\n\narchitect\nprof\n75\n92\n90\n\n\nauthor\nprof\n55\n90\n76\n\n\nchemist\nprof\n64\n86\n90\n\n\n\n\n\nLast week we “ran” a linear regression: \\(y = \\alpha + \\beta x\\). Result: \\[\\text{income} = xx + 0.72 \\text{education}\\]\nShould we have looked at “prestige” instead ? \\[\\text{income} = xx + 0.83 \\text{prestige}\\]\nWhich one is better?",
     "crumbs": [
       "lectures",
       "Multiple Regression"
@@ -1895,7 +1930,7 @@
     "href": "slides/session_4/index_handout.html#confidence-intervals",
     "title": "Multiple Regression",
     "section": "Confidence intervals",
-    "text": "Confidence intervals\nSame as in the 1d case.\n\nTake estimate \\(\\color{red}{\\beta_i}\\) with an estimate of its standard deviation \\(\\color{red}{\\hat{\\sigma}(\\beta_i)}\\)\nCompute student \\(\\color{red}{t^{\\star}}\\) at \\(\\color{red}{\\alpha}\\) confidence level (ex: \\(\\alpha=5\\%\\)) such that:\n\n\\(P(|t|&gt;t^{\\star})&lt;\\alpha\\)\n\n\n. . .\nProduce confidence intervals at \\(\\alpha\\) confidence level:\n\n\\([\\color{red}{\\beta_i} - t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}, \\color{red}{\\beta_i} + t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}]\\)\n\nInterpretation: for a given confidence interval at confidence level \\(\\alpha\\)… - the probability that our coefficient was obtained, if the true coefficient were outside of it, is smaller than \\(\\alpha\\) - if we had run many regressions and computed the confidence interval, the true coefficient would be inside it 95% of the time",
+    "text": "Confidence intervals\nSame as in the 1d case.\n\nTake estimate \\(\\color{red}{\\beta_i}\\) with an estimate of its standard deviation \\(\\color{red}{\\hat{\\sigma}(\\beta_i)}\\)\nCompute student \\(\\color{red}{t^{\\star}}\\) at \\(\\color{red}{\\alpha}\\) confidence level (ex: \\(\\alpha=5\\\\%\\)) such that:\n\n\\(P(|t|&gt;t^{\\star})&lt;\\alpha\\)\n\n\n. . .\nProduce confidence intervals at \\(\\alpha\\) confidence level:\n\n\\([\\color{red}{\\beta_i} - t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}, \\color{red}{\\beta_i} + t^{\\star} \\color{red}{\\hat{\\sigma}(\\beta_i)}]\\)\n\nInterpretation:\n\nfor a given confidence interval at confidence level \\(\\alpha\\)…\nthe probability that our coefficient was obtained, if the true coefficient were outside of it, is smaller than \\(\\alpha\\)",
     "crumbs": [
       "lectures",
       "Multiple Regression"
@@ -2084,7 +2119,7 @@
     "href": "slides/session_5/index.html#categorical-variable",
     "title": "Introduction to Instrumental Variables",
     "section": "Categorical variable",
-    "text": "Categorical variable\nLook at the model: \\[y_{\\text{CO2 emission}} = \\alpha + \\beta x_{\\text{banish cars}} \\]\nwhere \\(y_{\\text{CO2 emission}}\\) is an individual’s CO2 emissions and \\(x_{\\text{yellow vest support}}\\) is the response the the question Do you suport the banishment of petrol cars?.\n\n\nResponse is coded up as:\n\n0: Strongly disagree\n1: Disagree\n2: Neutral\n3: Agree\n4: Strongly agree\n\n\nIf the variable was used directly, how would you intepret the coefficient \\(\\beta\\) ?\n\nindex is hierarchical\nbut the distances between 1 and 2 or 2 and 3 are not comparable…"
+    "text": "Categorical variable\nLook at the model: \\[y_{\\text{CO2 emission}} = \\alpha + \\beta x_{\\text{banish cars}} \\]\nwhere \\(y_{\\text{CO2 emission}}\\) is an individual’s CO2 emissions and \\(x_{\\text{banishment support}}\\) is the response the the question Do you suport the banishment of petrol cars?.\n\n\nResponse is coded up as:\n\n0: Strongly disagree\n1: Disagree\n2: Neutral\n3: Agree\n4: Strongly agree\n\n\nIf the variable was used directly, how would you intepret the coefficient \\(\\beta\\) ?\n\nindex is hierarchical\nbut the distances between 1 and 2 or 2 and 3 are not comparable…"
   },
   {
     "objectID": "slides/session_5/index.html#hierarchical-index",
@@ -2105,7 +2140,7 @@
     "href": "slides/session_5/index.html#hierarchical-index-2",
     "title": "Introduction to Instrumental Variables",
     "section": "Hierarchical index (2)",
-    "text": "Hierarchical index (2)\n\\[y_{\\text{CO2 emission}} = \\alpha + \\beta_1 x_{\\text{strdis}} + \\beta_2 x_{\\text{dis}} + \\beta_3 x_{\\text{agr}} + \\beta_4 x_{\\text{stragr}}\\]\n\nInterpretation:\n\nbeing in the group which strongly agrees to the yellow vest’s claim is associated with an additional \\(\\beta_4\\) increase in CO2 consumption compared with members of the neutral group"
+    "text": "Hierarchical index (2)\n\\[y_{\\text{CO2 emission}} = \\alpha + \\beta_1 x_{\\text{strdis}} + \\beta_2 x_{\\text{dis}} + \\beta_3 x_{\\text{agr}} + \\beta_4 x_{\\text{stragr}}\\]\n\nInterpretation:\n\nbeing in the group which strongly agrees to the banishment support’s claim is associated with an additional \\(\\beta_4\\) increase in CO2 consumption compared with members of the neutral group"
   },
   {
     "objectID": "slides/session_5/index.html#nonnumerical-variables",
@@ -2164,6 +2199,20 @@
     "text": "Causality in Statistics\n\n\n\n\n\n\nStatistical definition of causality\n\n\nVariable \\(A\\) causes \\(B\\) in a statistical sense if\n\n\\(A\\) and \\(B\\) are correlated\n\\(A\\) is known before \\(B\\)\ncorrelation between \\(A\\) and \\(B\\) is unaffected by other variables\n\n\n\n\n\nThere are other related statistical definitions:\n\nlike Granger causality…\n… but not for this course"
   },
   {
+    "objectID": "slides/session_5/index.html#the-problem-endogeneity",
+    "href": "slides/session_5/index.html#the-problem-endogeneity",
+    "title": "Introduction to Instrumental Variables",
+    "section": "The Problem: Endogeneity",
+    "text": "The Problem: Endogeneity\n\n\nThe Ideal Regression \\[ y = \\alpha + \\beta x + \\epsilon \\] - We want \\(\\beta\\) to be the causal effect of \\(x\\) on \\(y\\). - Assumption: \\(corr(x, \\epsilon) = 0\\) (Exogeneity)\n\nThe Reality: Endogeneity\n\nOften, \\(x\\) is correlated with the error term \\(\\epsilon\\).\nWhy?\n\nOmitted Variable Bias: A third variable \\(U\\) affects both \\(x\\) and \\(y\\).\nReverse Causality: \\(y\\) causes \\(x\\).\nMeasurement Error.\n\nResult: \\(\\beta\\) is biased! You cannot trust it."
+  },
+  {
+    "objectID": "slides/session_5/index.html#dag-representation-problem",
+    "href": "slides/session_5/index.html#dag-representation-problem",
+    "title": "Introduction to Instrumental Variables",
+    "section": "DAG Representation (Problem)",
+    "text": "DAG Representation (Problem)\nWe can represent this problem using a Causal Graph (DAG):\n\n\n\n\n\ngraph LR\n    U[Unobserved Confounder] --&gt;|?| X[Treatment]\n    U --&gt;|?| Y[Outcome]\n    X --&gt;|beta| Y\n    \n    style U fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5\n\n\n\n\n\n\n\nWe want to measure the arrow \\(X \\to Y\\).\nBut the path \\(X \\leftarrow U \\to Y\\) creates a “backdoor” correlation.\nSince we don’t observe \\(U\\), we can’t control for it."
+  },
+  {
     "objectID": "slides/session_5/index.html#factual-and-counterfactual",
     "href": "slides/session_5/index.html#factual-and-counterfactual",
     "title": "Introduction to Instrumental Variables",
@@ -2210,7 +2259,14 @@
     "href": "slides/session_5/index.html#natural-experiment",
     "title": "Introduction to Instrumental Variables",
     "section": "Natural experiment",
-    "text": "Natural experiment\n\n\n\n\n\n\nNatural Experiment\n\n\nA natural experiment satisfies conditions that treatment is assigned randomly\n\nwithout interference by the econometrician\n\n\n\n\nAn exemple of a Natural Experiment:\n\ngender bias in french local elections (jean-pierre eymeoud, paul vertier) link\nare women discriminated against by voters in local elections?\n\n\nResult: yes, they get 1.5% less votes by right-wing voters\n\n\nWhat was the natural experiment?"
+    "text": "Natural experiment\n\n\n\n\n\n\nNatural Experiment\n\n\nA natural experiment satisfies conditions that treatment is assigned randomly\n\nwithout interference by the econometrician\n\n\n\n\nAn exemple of a Natural Experiment:\n\nGender Biases: Evidence from a Natural Experiment in French Local Elections\n\n(Eymeoud & Vertier, 2018)"
+  },
+  {
+    "objectID": "slides/session_5/index.html#case-study-eymeoud-vertier-2018",
+    "href": "slides/session_5/index.html#case-study-eymeoud-vertier-2018",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Case Study: Eymeoud & Vertier (2018)",
+    "text": "Case Study: Eymeoud & Vertier (2018)\n\n\nThe Context\n\n2015 French Departmental Elections.\nMajor reform: strict parity.\nCandidates must run in Pairs (Binôme: 1 Man + 1 Woman).\nVoters accept the whole pair (no panachage).\n\n\nThe Natural Experiment\n\nHow to list the names? (M-F or F-M?)\nRule: Determined by Alphabetical Order.\n\nThis is “Random” (Exogenous)!\nWhether the Woman is 1st or 2nd is uncorrelated with her quality/ability.\n\n\n\n\nHypothesis: Being listed first signals being the “Leader”.\nResult:\n\nPairs with Woman first received 1.5% fewer votes from Right-wing voters.\nNo significant effect for Left-wing voters.\n\nConclusion: Evidence of discriminatory preferences among certain voters."
   },
   {
     "objectID": "slides/session_5/index.html#example",
@@ -2227,18 +2283,25 @@
     "text": "Problem\n\nTake the linear regression: \\[y = \\alpha + \\beta x + \\epsilon\\]\n\n\\(y\\): salary\n\\(x\\): went to war\n\nWe want to establish causality from x to y\n\nwe would like to interpret \\(x\\) as the “treatment”\n\nBut there can be unobserved confounding factors:\n\nvariable \\(z\\) which causes both x and y\nexemple: socio-economic background, IQ, …\n\nIf we could identify \\(z\\) we could control for it: \\[y = \\alpha + \\beta_1 x + \\beta_2 z + \\epsilon\\]\n\nwe would get a better predictor of \\(y\\) but more uncertainty about \\(\\beta_1\\) (\\(x\\) and \\(z\\) are correlated)"
   },
   {
-    "objectID": "slides/session_5/index.html#reformulate-the-problem",
-    "href": "slides/session_5/index.html#reformulate-the-problem",
+    "objectID": "slides/session_5/index.html#the-iv-solution-dag",
+    "href": "slides/session_5/index.html#the-iv-solution-dag",
     "title": "Introduction to Instrumental Variables",
-    "section": "Reformulate the problem",
-    "text": "Reformulate the problem\n\n\n\nLet’s assume treatment \\(x\\) is a binary variable \\(\\in{0,1}\\)\nWe want to estimate \\[y = \\alpha + \\beta x + z + \\epsilon\\] where \\(z\\) is potentially correlated to \\(x\\) and \\(y\\)\nThere are two groups:\n\nthose who receive the treatment \\[y = \\alpha + \\beta + z_{T=1} + \\epsilon\\]\nthe others \\[y = \\alpha + 0 +  z_{T=0} + \\epsilon\\]\n\n\n\n\nProblem:\n\nif \\(z\\) is higher in the treatment group, its effect can’t be separated from the treatment effect.\n\nIntuition: what if we make groups differently?\n\ncompletely independent from \\(z\\) (and \\(\\epsilon\\))\nnot independently from \\(x\\) so that one group will receive more treatment than the other\n\nTo make this group we need a new variable \\(q\\) that is:\n\ncorrelated with \\(x\\) so that it will correspond to some treatment effect\nuncorrelated to \\(z\\) or \\(\\epsilon\\) (exogenous)"
+    "section": "The IV Solution (DAG)",
+    "text": "The IV Solution (DAG)\nWe introduce an Instrument (\\(Z\\)) to break the link.\n\n\n\n\n\ngraph LR\n    U[Unobserved Confounder] -.-&gt; X[Treatment]\n    U -.-&gt; Y[Outcome]\n    X --&gt;|beta| Y\n    Z[Instrument] --&gt;|Relevance| X\n    Z -.-&gt;|Exclusion| Y\n    Z x-.-x U\n\n    style U fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5\n    style Z fill:#9f9,stroke:#333,stroke-width:4px\n    linkStyle 4 stroke:red,stroke-width:2px;\n    linkStyle 5 stroke:red,stroke-width:2px;\n\n\n\n\n\n\n\nThe Logic:\n\nVerify \\(Z\\) causes variation in \\(X\\).\nUse only that variation in \\(X\\) (caused by \\(Z\\)) to predict \\(Y\\).\nSince \\(Z\\) is uncorrelated with \\(U\\), this “clean” variation is safe to use."
   },
   {
-    "objectID": "slides/session_5/index.html#two-stage-regression",
-    "href": "slides/session_5/index.html#two-stage-regression",
+    "objectID": "slides/session_5/index.html#conditions-for-a-valid-instrument",
+    "href": "slides/session_5/index.html#conditions-for-a-valid-instrument",
     "title": "Introduction to Instrumental Variables",
-    "section": "Two stage regression",
-    "text": "Two stage regression\n\n\n\nWe would like to redo the treatment groups in a way that is independent from \\(z\\) (and everything contained in \\(\\epsilon\\))\n\n\\(q\\) is a binary variable: drafted or not\n\n\nFirst stage: regress group assignment on the instrument: \\[x = \\alpha_0 + \\beta_0 q + \\eta\\]\n\nwe can now predict group assignment in a way that is independent from \\(z\\) (and everything in \\(\\epsilon\\)) \\[\\tilde{x} = \\alpha_0 + \\beta_0 q\\]\n\n\nSecond stage: use the predicted value instead of the original one \\[y = \\alpha + \\beta_1 \\tilde{x} + z + \\epsilon\\]\n\n\n\n\nResult:\n\nIf \\(\\beta_1\\) is significantly nonzero, there is a causal effect between \\(x\\) and \\(y\\).\nNote that \\(\\tilde{x}\\) is imperfectly correlated with the treatment: \\(\\beta_1\\) can’t be interpreted directly\nThe actual effect will be \\(\\frac{\\beta_1}{\\beta_0}\\) (in 1d)\n\n\nWe say that we instrument \\(x\\) by \\(q\\)."
+    "section": "Conditions for a Valid Instrument",
+    "text": "Conditions for a Valid Instrument\nTo be valid, an instrument \\(Z\\) must satisfy two key conditions:\n\nRelevance: \\(Cov(Z, X) \\neq 0\\)\n\nThe instrument must actually affect the treatment.\nTestable: Regress \\(X\\) on \\(Z\\) and check significance (F-stat &gt; 10).\n\nExclusion Restriction: \\(Cov(Z, \\epsilon) = 0\\)\n\nThe instrument affects \\(Y\\) ONLY through \\(X\\).\nIt must NOT be correlated with the omitted variable \\(U\\).\nNOT Testable: Must be argued from theory/institution."
+  },
+  {
+    "objectID": "slides/session_5/index.html#two-stage-least-squares-2sls",
+    "href": "slides/session_5/index.html#two-stage-least-squares-2sls",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Two Stage Least Squares (2SLS)",
+    "text": "Two Stage Least Squares (2SLS)\nHow do we estimate this? In two stages:\nStage 1: Predict the Treatment Isolate the part of \\(X\\) driven by \\(Z\\). \\[ \\hat{x} = \\alpha_0 + \\beta_0 z \\]\nStage 2: Estimate the Effect Use the predicted treatment \\(\\hat{x}\\) (which is “clean”) to explain \\(Y\\). \\[ y = \\alpha + \\beta_{IV} \\hat{x} + \\epsilon \\]\n\nResult: \\(\\beta_{IV}\\) is a consistent estimator of the causal effect.\nIntuition: \\(\\beta_{IV} \\approx \\frac{\\text{Effect of Z on Y}}{\\text{Effect of Z on X}}\\) (Wald Estimator)"
   },
   {
     "objectID": "slides/session_5/index.html#choosing-a-good-instrument",
@@ -2255,11 +2318,18 @@
     "text": "In practice\n\nBoth statsmodels and linearmodels support instrumental variables\n\nlibrary (look for IV2SLS)\n\nLibrary linearmodels has a handy formula syntax: salary ~ 1 + [war ~ draft]\n\nAPI is similar but not exactly identical to statsmodels\n\nExample from the doc\n\nformula = (\n    \"np.log(drugexp) ~ 1 + totchr + age + linc + blhisp + [hi_empunion ~ ssiratio]\"\n)\nols = IV2SLS.from_formula(formula, data)\nols_res = ols.fit(cov_type=\"robust\")\nprint(ols_res)"
   },
   {
+    "objectID": "slides/session_5/index.html#summary",
+    "href": "slides/session_5/index.html#summary",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Summary",
+    "text": "Summary\n\nCausality \\(\\neq\\) Correlation: We need to worry about endogeneity (confounders, reverse causality).\nGold Standard: Randomized Control Trials (RCT) solve this by forcing \\(X\\) to be random.\nInstrumental Variables (IV):\n\nWe look for a “natural experiment” (\\(Z\\)) that mimics an RCT.\n\\(Z\\) must be Relevant (\\(Z \\to X\\)) and Exogenous (\\(Z \\perp \\epsilon\\)).\n\nImplementation: Use Two-Stage Least Squares (2SLS) supported by libraries like linearmodels\n\n\n\n\n\n\n\n\nWarning\n\n\nFinding a valid instrument is hard. A bad instrument (weak or endogenous) can be worse than OLS!"
+  },
+  {
     "objectID": "slides/session_5/index_handout.html",
     "href": "slides/session_5/index_handout.html",
     "title": "Introduction to Instrumental Variables",
     "section": "",
-    "text": "Our multilinear regression: \\[y = \\alpha + \\beta x_1 + \\cdots + \\beta x_n\\]\nSo far, we have only considered real variables: (\\(x_i \\in \\mathbb{R}\\)).\nLike: \\[x_{\\text{gdp}} = \\alpha + \\beta_1 x_{\\text{unemployment}} + \\beta_2 x_{\\text{inflation}}\\]\n\n\n\nHow do we deal with the following cases?\n\nbinary variable: \\(x\\in \\{0,1\\}\\) (or \\(\\{True, False\\}\\))\n\nex: \\(\\text{gonetowar}\\), \\(\\text{hasdegree}\\)\n\ncategorical variable:\n\nex: survey result (0: I don’t know, 1: I strongly disagree, 2: I disagree, 3: I agree, 4: I strongly agree)\nthere is no ranking of answers\nwhen there is ranking: hierarchical index\n\nnonnumerical variables:\n\nex: (flower type: \\(x\\in \\text{myosotis}, \\text{rose}, ...\\))\n\n\n\n\n\n\nNothing to be done: just make sure variables take values 0 or 1. \\[y_\\text{salary} = \\alpha + \\beta x_{\\text{gonetowar}}\\]\nInterpretation:\n\nhaving gone to war is associated with a \\(\\beta\\) increase (or decrease?) in salary (still no causality)\n\n\n\n\n\nLook at the model: \\[y_{\\text{CO2 emission}} = \\alpha + \\beta x_{\\text{banish cars}} \\]\nwhere \\(y_{\\text{CO2 emission}}\\) is an individual’s CO2 emissions and \\(x_{\\text{yellow vest support}}\\) is the response the the question Do you suport the banishment of petrol cars?.\n\n\nResponse is coded up as:\n\n0: Strongly disagree\n1: Disagree\n2: Neutral\n3: Agree\n4: Strongly agree\n\n\nIf the variable was used directly, how would you intepret the coefficient \\(\\beta\\) ?\n\nindex is hierarchical\nbut the distances between 1 and 2 or 2 and 3 are not comparable…\n\n\n\n\n\n\nWe use one dummy variable per possible answer.\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{Strongly Disagree}}\\)\n\\(D_{\\text{Disagree}}\\)\n\\(D_{\\text{Neutral}}\\)\n\\(D_{\\text{Agree}}\\)\n\\(D_{\\text{Strongly Agree}}\\)\n\n\n\n\n1\n0\n0\n0\n0\n\n\n0\n1\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n1\n0\n\n\n0\n0\n0\n0\n1\n\n\n\n\n\n\n\nValues are linked by the specific dummy coding.\n\nthe choice of the reference group (with 0) is not completely neutral\n\nfor linear regressions, we can ignore its implications\n\nit must be frequent enough in the data\n\nNote that hierarchy is lost. The same treatment can be applied to non-hierachical variables\nNow our variables are perfectly colinear:\n\nwe can deduce one from all the others\nwe drop one from the regression: the reference group TODO\n\n\n\n\n\n\\[y_{\\text{CO2 emission}} = \\alpha + \\beta_1 x_{\\text{strdis}} + \\beta_2 x_{\\text{dis}} + \\beta_3 x_{\\text{agr}} + \\beta_4 x_{\\text{stragr}}\\]\n\nInterpretation:\n\nbeing in the group which strongly agrees to the yellow vest’s claim is associated with an additional \\(\\beta_4\\) increase in CO2 consumption compared with members of the neutral group\n\n\n\n\n\n\n\n\n\nWhat about nonnumerical variables?\n\nWhen variables take nonnumerical variables, we convert them to numerical variables.\n\nExample:\n\n\n\n\nactivity\ncode\n\n\n\n\nmassage therapist\n1\n\n\nmortician\n2\n\n\narcheologist\n3\n\n\nfinancial clerks\n4\n\n\n\n\n\n\n\nThen we convert to dummy variables exactly like hierarchical indices\n\nhere \\(\\text{massage therapist}\\) is taken as reference\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{mortician}}\\)\n\\(D_{\\text{archeologist}}\\)\n\\(D_{\\text{financial clerks}}\\)\n\n\n\n\n1\n0\n0\n\n\n0\n1\n0\n\n\n0\n0\n1\n\n\n\n\n\n\n\n\n\nUse statsmodels/linearmodels to create dummy variables with formula API.\n\nReplace\n\nsalary ~ activity\n\nby:\n\nsalary ~ C(activity)\nThere is an options to choose the reference group\nsalary ~ C(activity, Treatment(reference=\"archeologist\"))",
+    "text": "Our multilinear regression: \\[y = \\alpha + \\beta x_1 + \\cdots + \\beta x_n\\]\nSo far, we have only considered real variables: (\\(x_i \\in \\mathbb{R}\\)).\nLike: \\[x_{\\text{gdp}} = \\alpha + \\beta_1 x_{\\text{unemployment}} + \\beta_2 x_{\\text{inflation}}\\]\n\n\n\nHow do we deal with the following cases?\n\nbinary variable: \\(x\\in \\{0,1\\}\\) (or \\(\\{True, False\\}\\))\n\nex: \\(\\text{gonetowar}\\), \\(\\text{hasdegree}\\)\n\ncategorical variable:\n\nex: survey result (0: I don’t know, 1: I strongly disagree, 2: I disagree, 3: I agree, 4: I strongly agree)\nthere is no ranking of answers\nwhen there is ranking: hierarchical index\n\nnonnumerical variables:\n\nex: (flower type: \\(x\\in \\text{myosotis}, \\text{rose}, ...\\))\n\n\n\n\n\n\nNothing to be done: just make sure variables take values 0 or 1. \\[y_\\text{salary} = \\alpha + \\beta x_{\\text{gonetowar}}\\]\nInterpretation:\n\nhaving gone to war is associated with a \\(\\beta\\) increase (or decrease?) in salary (still no causality)\n\n\n\n\n\nLook at the model: \\[y_{\\text{CO2 emission}} = \\alpha + \\beta x_{\\text{banish cars}} \\]\nwhere \\(y_{\\text{CO2 emission}}\\) is an individual’s CO2 emissions and \\(x_{\\text{banishment support}}\\) is the response the the question Do you suport the banishment of petrol cars?.\n\n\nResponse is coded up as:\n\n0: Strongly disagree\n1: Disagree\n2: Neutral\n3: Agree\n4: Strongly agree\n\n\nIf the variable was used directly, how would you intepret the coefficient \\(\\beta\\) ?\n\nindex is hierarchical\nbut the distances between 1 and 2 or 2 and 3 are not comparable…\n\n\n\n\n\n\nWe use one dummy variable per possible answer.\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{Strongly Disagree}}\\)\n\\(D_{\\text{Disagree}}\\)\n\\(D_{\\text{Neutral}}\\)\n\\(D_{\\text{Agree}}\\)\n\\(D_{\\text{Strongly Agree}}\\)\n\n\n\n\n1\n0\n0\n0\n0\n\n\n0\n1\n0\n0\n0\n\n\n0\n0\n0\n0\n0\n\n\n0\n0\n0\n1\n0\n\n\n0\n0\n0\n0\n1\n\n\n\n\n\n\n\nValues are linked by the specific dummy coding.\n\nthe choice of the reference group (with 0) is not completely neutral\n\nfor linear regressions, we can ignore its implications\n\nit must be frequent enough in the data\n\nNote that hierarchy is lost. The same treatment can be applied to non-hierachical variables\nNow our variables are perfectly colinear:\n\nwe can deduce one from all the others\nwe drop one from the regression: the reference group TODO\n\n\n\n\n\n\\[y_{\\text{CO2 emission}} = \\alpha + \\beta_1 x_{\\text{strdis}} + \\beta_2 x_{\\text{dis}} + \\beta_3 x_{\\text{agr}} + \\beta_4 x_{\\text{stragr}}\\]\n\nInterpretation:\n\nbeing in the group which strongly agrees to the banishment support’s claim is associated with an additional \\(\\beta_4\\) increase in CO2 consumption compared with members of the neutral group\n\n\n\n\n\n\n\n\n\nWhat about nonnumerical variables?\n\nWhen variables take nonnumerical variables, we convert them to numerical variables.\n\nExample:\n\n\n\n\nactivity\ncode\n\n\n\n\nmassage therapist\n1\n\n\nmortician\n2\n\n\narcheologist\n3\n\n\nfinancial clerks\n4\n\n\n\n\n\n\n\nThen we convert to dummy variables exactly like hierarchical indices\n\nhere \\(\\text{massage therapist}\\) is taken as reference\n\n\n\n\n\n\n\n\n\n\n\\(D_{\\text{mortician}}\\)\n\\(D_{\\text{archeologist}}\\)\n\\(D_{\\text{financial clerks}}\\)\n\n\n\n\n1\n0\n0\n\n\n0\n1\n0\n\n\n0\n0\n1\n\n\n\n\n\n\n\n\n\nUse statsmodels/linearmodels to create dummy variables with formula API.\n\nReplace\n\nsalary ~ activity\n\nby:\n\nsalary ~ C(activity)\nThere is an options to choose the reference group\nsalary ~ C(activity, Treatment(reference=\"archeologist\"))",
     "crumbs": [
       "lectures",
       "Introduction to Instrumental Variables"
@@ -2303,7 +2373,7 @@
     "href": "slides/session_5/index_handout.html#categorical-variable",
     "title": "Introduction to Instrumental Variables",
     "section": "",
-    "text": "Look at the model: \\[y_{\\text{CO2 emission}} = \\alpha + \\beta x_{\\text{banish cars}} \\]\nwhere \\(y_{\\text{CO2 emission}}\\) is an individual’s CO2 emissions and \\(x_{\\text{yellow vest support}}\\) is the response the the question Do you suport the banishment of petrol cars?.\n\n\nResponse is coded up as:\n\n0: Strongly disagree\n1: Disagree\n2: Neutral\n3: Agree\n4: Strongly agree\n\n\nIf the variable was used directly, how would you intepret the coefficient \\(\\beta\\) ?\n\nindex is hierarchical\nbut the distances between 1 and 2 or 2 and 3 are not comparable…",
+    "text": "Look at the model: \\[y_{\\text{CO2 emission}} = \\alpha + \\beta x_{\\text{banish cars}} \\]\nwhere \\(y_{\\text{CO2 emission}}\\) is an individual’s CO2 emissions and \\(x_{\\text{banishment support}}\\) is the response the the question Do you suport the banishment of petrol cars?.\n\n\nResponse is coded up as:\n\n0: Strongly disagree\n1: Disagree\n2: Neutral\n3: Agree\n4: Strongly agree\n\n\nIf the variable was used directly, how would you intepret the coefficient \\(\\beta\\) ?\n\nindex is hierarchical\nbut the distances between 1 and 2 or 2 and 3 are not comparable…",
     "crumbs": [
       "lectures",
       "Introduction to Instrumental Variables"
@@ -2336,7 +2406,7 @@
     "href": "slides/session_5/index_handout.html#hierarchical-index-2",
     "title": "Introduction to Instrumental Variables",
     "section": "",
-    "text": "\\[y_{\\text{CO2 emission}} = \\alpha + \\beta_1 x_{\\text{strdis}} + \\beta_2 x_{\\text{dis}} + \\beta_3 x_{\\text{agr}} + \\beta_4 x_{\\text{stragr}}\\]\n\nInterpretation:\n\nbeing in the group which strongly agrees to the yellow vest’s claim is associated with an additional \\(\\beta_4\\) increase in CO2 consumption compared with members of the neutral group",
+    "text": "\\[y_{\\text{CO2 emission}} = \\alpha + \\beta_1 x_{\\text{strdis}} + \\beta_2 x_{\\text{dis}} + \\beta_3 x_{\\text{agr}} + \\beta_4 x_{\\text{stragr}}\\]\n\nInterpretation:\n\nbeing in the group which strongly agrees to the banishment support’s claim is associated with an additional \\(\\beta_4\\) increase in CO2 consumption compared with members of the neutral group",
     "crumbs": [
       "lectures",
       "Introduction to Instrumental Variables"
@@ -2431,6 +2501,28 @@
     ]
   },
   {
+    "objectID": "slides/session_5/index_handout.html#the-problem-endogeneity",
+    "href": "slides/session_5/index_handout.html#the-problem-endogeneity",
+    "title": "Introduction to Instrumental Variables",
+    "section": "The Problem: Endogeneity",
+    "text": "The Problem: Endogeneity\n\n\nThe Ideal Regression \\[ y = \\alpha + \\beta x + \\epsilon \\] - We want \\(\\beta\\) to be the causal effect of \\(x\\) on \\(y\\). - Assumption: \\(corr(x, \\epsilon) = 0\\) (Exogeneity)\n\nThe Reality: Endogeneity\n\nOften, \\(x\\) is correlated with the error term \\(\\epsilon\\).\nWhy?\n\nOmitted Variable Bias: A third variable \\(U\\) affects both \\(x\\) and \\(y\\).\nReverse Causality: \\(y\\) causes \\(x\\).\nMeasurement Error.\n\nResult: \\(\\beta\\) is biased! You cannot trust it.",
+    "crumbs": [
+      "lectures",
+      "Introduction to Instrumental Variables"
+    ]
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#dag-representation-problem",
+    "href": "slides/session_5/index_handout.html#dag-representation-problem",
+    "title": "Introduction to Instrumental Variables",
+    "section": "DAG Representation (Problem)",
+    "text": "DAG Representation (Problem)\nWe can represent this problem using a Causal Graph (DAG):\n\n\n\n\n\ngraph LR\n    U[Unobserved Confounder] --&gt;|?| X[Treatment]\n    U --&gt;|?| Y[Outcome]\n    X --&gt;|beta| Y\n    \n    style U fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5\n\n\n\n\n\n\n\nWe want to measure the arrow \\(X \\to Y\\).\nBut the path \\(X \\leftarrow U \\to Y\\) creates a “backdoor” correlation.\nSince we don’t observe \\(U\\), we can’t control for it.",
+    "crumbs": [
+      "lectures",
+      "Introduction to Instrumental Variables"
+    ]
+  },
+  {
     "objectID": "slides/session_5/index_handout.html#factual-and-counterfactual",
     "href": "slides/session_5/index_handout.html#factual-and-counterfactual",
     "title": "Introduction to Instrumental Variables",
@@ -2479,7 +2571,7 @@
     "href": "slides/session_5/index_handout.html#formalisation-of-the-problem",
     "title": "Introduction to Instrumental Variables",
     "section": "Formalisation of the problem",
-    "text": "Formalisation of the problem\n\n\n\n\n\n\nCause (A): two groups of people\n\nthose given a shirt (treatment 1)\nthose not given a shirt (treatment 0)\n\nPossible consequence (B): performance\nTake a given agent Alice: she performs well with a PSG shirt.\n\nmaybe she is a good investor?\nor maybe she is playing for her team?\n\nLet’s try to have her play again without the football shirt\n\nnow the experiment has changed: she has gained experience, is more tired, misses the shirt…\nit is impossible to get a perfect counterfactual (i.e. where only A changes)\n\n\n\n\nLet’s take somebody else then? Bob was really bad without a PSG shirt.\n\nhe might be a bad investor? or he didn’t understand the rules?\nsome other variables have changed, not only the treatment\n\nHow to make a perfect experiment?\n\nChoose randomly whether assigning a shirt or not\nby construction the treatment will not be correlated with other variables",
+    "text": "Formalisation of the problem\n\n\n\n\n\n\n\nCause (A): two groups of people\n\nthose given a shirt (treatment 1)\nthose not given a shirt (treatment 0)\n\nPossible consequence (B): performance\nTake a given agent Alice: she performs well with a PSG shirt.\n\nmaybe she is a good investor?\nor maybe she is playing for her team?\n\nLet’s try to have her play again without the football shirt\n\nnow the experiment has changed: she has gained experience, is more tired, misses the shirt…\nit is impossible to get a perfect counterfactual (i.e. where only A changes)\n\n\n\n\n\n\nLet’s take somebody else then? Bob was really bad without a PSG shirt.\n\nhe might be a bad investor? or he didn’t understand the rules?\nsome other variables have changed, not only the treatment\n\nHow to make a perfect experiment?\n\nChoose randomly whether assigning a shirt or not\nby construction the treatment will not be correlated with other variables",
     "crumbs": [
       "lectures",
       "Introduction to Instrumental Variables"
@@ -2501,7 +2593,18 @@
     "href": "slides/session_5/index_handout.html#natural-experiment",
     "title": "Introduction to Instrumental Variables",
     "section": "Natural experiment",
-    "text": "Natural experiment\n\n\n\n\n\n\nTipNatural Experiment\n\n\n\nA natural experiment satisfies conditions that treatment is assigned randomly\n\nwithout interference by the econometrician\n\n\n\nAn exemple of a Natural Experiment:\n\ngender bias in french local elections (jean-pierre eymeoud, paul vertier) link\nare women discriminated against by voters in local elections?\n\n. . .\nResult: yes, they get 1.5% less votes by right-wing voters\n. . .\nWhat was the natural experiment?",
+    "text": "Natural experiment\n\n\n\n\n\n\nTipNatural Experiment\n\n\n\nA natural experiment satisfies conditions that treatment is assigned randomly\n\nwithout interference by the econometrician\n\n\n\nAn exemple of a Natural Experiment:\n\nGender Biases: Evidence from a Natural Experiment in French Local Elections\n\n(Eymeoud & Vertier, 2018)",
+    "crumbs": [
+      "lectures",
+      "Introduction to Instrumental Variables"
+    ]
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#case-study-eymeoud-vertier-2018",
+    "href": "slides/session_5/index_handout.html#case-study-eymeoud-vertier-2018",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Case Study: Eymeoud & Vertier (2018)",
+    "text": "Case Study: Eymeoud & Vertier (2018)\n\n\nThe Context\n\n2015 French Departmental Elections.\nMajor reform: strict parity.\nCandidates must run in Pairs (Binôme: 1 Man + 1 Woman).\nVoters accept the whole pair (no panachage).\n\n\nThe Natural Experiment\n\nHow to list the names? (M-F or F-M?)\nRule: Determined by Alphabetical Order.\n\nThis is “Random” (Exogenous)!\nWhether the Woman is 1st or 2nd is uncorrelated with her quality/ability.\n\n\n\n\n\n\nHypothesis: Being listed first signals being the “Leader”.\nResult:\n\nPairs with Woman first received 1.5% fewer votes from Right-wing voters.\nNo significant effect for Left-wing voters.\n\nConclusion: Evidence of discriminatory preferences among certain voters.",
     "crumbs": [
       "lectures",
       "Introduction to Instrumental Variables"
@@ -2530,22 +2633,33 @@
     ]
   },
   {
-    "objectID": "slides/session_5/index_handout.html#reformulate-the-problem",
-    "href": "slides/session_5/index_handout.html#reformulate-the-problem",
+    "objectID": "slides/session_5/index_handout.html#the-iv-solution-dag",
+    "href": "slides/session_5/index_handout.html#the-iv-solution-dag",
     "title": "Introduction to Instrumental Variables",
-    "section": "Reformulate the problem",
-    "text": "Reformulate the problem\n\n\n\nLet’s assume treatment \\(x\\) is a binary variable \\(\\in{0,1}\\)\nWe want to estimate \\[y = \\alpha + \\beta x + z + \\epsilon\\] where \\(z\\) is potentially correlated to \\(x\\) and \\(y\\)\nThere are two groups:\n\nthose who receive the treatment \\[y = \\alpha + \\beta + z_{T=1} + \\epsilon\\]\nthe others \\[y = \\alpha + 0 +  z_{T=0} + \\epsilon\\]\n\n\n\n\nProblem:\n\nif \\(z\\) is higher in the treatment group, its effect can’t be separated from the treatment effect.\n\nIntuition: what if we make groups differently?\n\ncompletely independent from \\(z\\) (and \\(\\epsilon\\))\nnot independently from \\(x\\) so that one group will receive more treatment than the other\n\nTo make this group we need a new variable \\(q\\) that is:\n\ncorrelated with \\(x\\) so that it will correspond to some treatment effect\nuncorrelated to \\(z\\) or \\(\\epsilon\\) (exogenous)",
+    "section": "The IV Solution (DAG)",
+    "text": "The IV Solution (DAG)\nWe introduce an Instrument (\\(Z\\)) to break the link.\n\n\n\n\n\ngraph LR\n    U[Unobserved Confounder] -.-&gt; X[Treatment]\n    U -.-&gt; Y[Outcome]\n    X --&gt;|beta| Y\n    Z[Instrument] --&gt;|Relevance| X\n    Z -.-&gt;|Exclusion| Y\n    Z x-.-x U\n\n    style U fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5\n    style Z fill:#9f9,stroke:#333,stroke-width:4px\n    linkStyle 4 stroke:red,stroke-width:2px;\n    linkStyle 5 stroke:red,stroke-width:2px;\n\n\n\n\n\n\n\nThe Logic:\n\nVerify \\(Z\\) causes variation in \\(X\\).\nUse only that variation in \\(X\\) (caused by \\(Z\\)) to predict \\(Y\\).\nSince \\(Z\\) is uncorrelated with \\(U\\), this “clean” variation is safe to use.",
     "crumbs": [
       "lectures",
       "Introduction to Instrumental Variables"
     ]
   },
   {
-    "objectID": "slides/session_5/index_handout.html#two-stage-regression",
-    "href": "slides/session_5/index_handout.html#two-stage-regression",
+    "objectID": "slides/session_5/index_handout.html#conditions-for-a-valid-instrument",
+    "href": "slides/session_5/index_handout.html#conditions-for-a-valid-instrument",
     "title": "Introduction to Instrumental Variables",
-    "section": "Two stage regression",
-    "text": "Two stage regression\n\n\n\nWe would like to redo the treatment groups in a way that is independent from \\(z\\) (and everything contained in \\(\\epsilon\\))\n\n\\(q\\) is a binary variable: drafted or not\n\n\nFirst stage: regress group assignment on the instrument: \\[x = \\alpha_0 + \\beta_0 q + \\eta\\]\n\nwe can now predict group assignment in a way that is independent from \\(z\\) (and everything in \\(\\epsilon\\)) \\[\\tilde{x} = \\alpha_0 + \\beta_0 q\\]\n\n\nSecond stage: use the predicted value instead of the original one \\[y = \\alpha + \\beta_1 \\tilde{x} + z + \\epsilon\\]\n\n\n\n\nResult:\n\nIf \\(\\beta_1\\) is significantly nonzero, there is a causal effect between \\(x\\) and \\(y\\).\nNote that \\(\\tilde{x}\\) is imperfectly correlated with the treatment: \\(\\beta_1\\) can’t be interpreted directly\nThe actual effect will be \\(\\frac{\\beta_1}{\\beta_0}\\) (in 1d)\n\n\nWe say that we instrument \\(x\\) by \\(q\\).",
+    "section": "Conditions for a Valid Instrument",
+    "text": "Conditions for a Valid Instrument\nTo be valid, an instrument \\(Z\\) must satisfy two key conditions:\n\n\nRelevance: \\(Cov(Z, X) \\neq 0\\)\n\nThe instrument must actually affect the treatment.\nTestable: Regress \\(X\\) on \\(Z\\) and check significance (F-stat &gt; 10).\n\nExclusion Restriction: \\(Cov(Z, \\epsilon) = 0\\)\n\nThe instrument affects \\(Y\\) ONLY through \\(X\\).\nIt must NOT be correlated with the omitted variable \\(U\\).\nNOT Testable: Must be argued from theory/institution.",
+    "crumbs": [
+      "lectures",
+      "Introduction to Instrumental Variables"
+    ]
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#two-stage-least-squares-2sls",
+    "href": "slides/session_5/index_handout.html#two-stage-least-squares-2sls",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Two Stage Least Squares (2SLS)",
+    "text": "Two Stage Least Squares (2SLS)\nHow do we estimate this? In two stages:\nStage 1: Predict the Treatment Isolate the part of \\(X\\) driven by \\(Z\\). \\[ \\hat{x} = \\alpha_0 + \\beta_0 z \\]\nStage 2: Estimate the Effect Use the predicted treatment \\(\\hat{x}\\) (which is “clean”) to explain \\(Y\\). \\[ y = \\alpha + \\beta_{IV} \\hat{x} + \\epsilon \\]\n\nResult: \\(\\beta_{IV}\\) is a consistent estimator of the causal effect.\nIntuition: \\(\\beta_{IV} \\approx \\frac{\\text{Effect of Z on Y}}{\\text{Effect of Z on X}}\\) (Wald Estimator)",
     "crumbs": [
       "lectures",
       "Introduction to Instrumental Variables"
@@ -2568,6 +2682,17 @@
     "title": "Introduction to Instrumental Variables",
     "section": "In practice",
     "text": "In practice\n\nBoth statsmodels and linearmodels support instrumental variables\n\nlibrary (look for IV2SLS)\n\nLibrary linearmodels has a handy formula syntax: salary ~ 1 + [war ~ draft]\n\nAPI is similar but not exactly identical to statsmodels\n\nExample from the doc\n\nformula = (\n    \"np.log(drugexp) ~ 1 + totchr + age + linc + blhisp + [hi_empunion ~ ssiratio]\"\n)\nols = IV2SLS.from_formula(formula, data)\nols_res = ols.fit(cov_type=\"robust\")\nprint(ols_res)",
+    "crumbs": [
+      "lectures",
+      "Introduction to Instrumental Variables"
+    ]
+  },
+  {
+    "objectID": "slides/session_5/index_handout.html#summary",
+    "href": "slides/session_5/index_handout.html#summary",
+    "title": "Introduction to Instrumental Variables",
+    "section": "Summary",
+    "text": "Summary\n\n\nCausality \\(\\neq\\) Correlation: We need to worry about endogeneity (confounders, reverse causality).\nGold Standard: Randomized Control Trials (RCT) solve this by forcing \\(X\\) to be random.\nInstrumental Variables (IV):\n\nWe look for a “natural experiment” (\\(Z\\)) that mimics an RCT.\n\\(Z\\) must be Relevant (\\(Z \\to X\\)) and Exogenous (\\(Z \\perp \\epsilon\\)).\n\nImplementation: Use Two-Stage Least Squares (2SLS) supported by libraries like linearmodels\n\n\n\n\n\n\n\n\n\nWarningWarning\n\n\n\nFinding a valid instrument is hard. A bad instrument (weak or endogenous) can be worse than OLS!",
     "crumbs": [
       "lectures",
       "Introduction to Instrumental Variables"
@@ -3071,256 +3196,11 @@
     "text": "from matplotlib import pyplot as plt\nimport numpy as np\nimport pandas as pd\n\n\ndef generate_dataset(μ1, μ2, α, β, σ, N=10):\n    xvec = np.random.uniform(μ1, μ2, N)\n    yvec = α + β*xvec + np.random.normal(size=N)*σ\n    return pd.DataFrame({'x': xvec, 'y': yvec})\n\n\ndf = generate_dataset(0.0, 1.0, 0.1, 0.8, 0.1)\n\n\nplt.plot(df['x'], df['y'], 'o')\nplt.grid()\n\n\n\n\n\n\n\n\n\ndef plot_distribution(α, β, σ, N=100000, μ1=0.0, μ2=1.0):\n    xvec = np.random.uniform(μ1, μ2, N)\n    yvec = α + β*xvec + np.random.normal(size=N)*σ\n    plt.plot(xvec, yvec, '.r', alpha=0.005)\n    plt.plot(xvec, α + β*xvec, color='black')\n\n# missing ridge line\n\n\nimport statsmodels\n\n\nμ1 = 0\nμ2 = 1.0\nα = 0.1\nβ = 0.8\nσ = 0.2\nN = 20\nK = 1000\n\n\nimport statsmodels.formula.api as smf\n\n\ndf = generate_dataset(μ1, μ2, α, β, σ, N=N)\n\n\nres = smf.ols(formula='y ~ x + 1', data=df).fit()\nparams = res.params\nαhat = params['Intercept']\nβhat = params['x']\nσhat = res.resid.std()\n\n\nres.summary()\n\n\nOLS Regression Results\n\n\nDep. Variable:\ny\nR-squared:\n0.692\n\n\nModel:\nOLS\nAdj. R-squared:\n0.675\n\n\nMethod:\nLeast Squares\nF-statistic:\n40.48\n\n\nDate:\nTue, 26 Jan 2021\nProb (F-statistic):\n5.41e-06\n\n\nTime:\n04:02:36\nLog-Likelihood:\n7.6662\n\n\nNo. Observations:\n20\nAIC:\n-11.33\n\n\nDf Residuals:\n18\nBIC:\n-9.341\n\n\nDf Model:\n1\n\n\n\n\nCovariance Type:\nnonrobust\n\n\n\n\n\n\n\n\n\n\n\ncoef\nstd err\nt\nP&gt;|t|\n[0.025\n0.975]\n\n\nIntercept\n0.1210\n0.077\n1.565\n0.135\n-0.041\n0.283\n\n\nx\n0.7941\n0.125\n6.362\n0.000\n0.532\n1.056\n\n\n\n\n\n\n\n\nOmnibus:\n1.410\nDurbin-Watson:\n1.507\n\n\nProb(Omnibus):\n0.494\nJarque-Bera (JB):\n0.890\n\n\nSkew:\n-0.081\nProb(JB):\n0.641\n\n\nKurtosis:\n1.979\nCond. No.\n4.20\n\n\n\nNotes:[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n\n\n\nres.predict(df['x'])\n\n0     0.326200\n1     0.211704\n2     0.798819\n3     0.603306\n4     0.573319\n5     0.823919\n6     0.740622\n7     0.503227\n8     0.292622\n9     0.489566\n10    0.138720\n11    0.355157\n12    0.594171\n13    0.883917\n14    0.266229\n15    0.827021\n16    0.912376\n17    0.163088\n18    0.684858\n19    0.732782\ndtype: float64\n\n\n\nfor i in [1,2,3]:\n    \n    fig = plt.figure(figsize=(10,14))\n    plt.subplot(311)\n    plot_distribution(0.1, 0.8, 0.2)\n    plt.grid()\n    plt.title(f\"True Distribution: $y = {α:.2f} + {β:.2f} x + {σ:.2f} u$\")\n    plt.xlim(0,1)\n    plt.ylim(-0.5, 1.5)\n\n    plt.subplot(312)\n    plt.xlim(0,1)\n    plt.ylim(-0.5, 1.5)\n    if i&gt;=2:\n        plt.plot(df['x'], df['y'], 'o')\n    if i&gt;=3:\n        plt.plot(df['x'], res.predict(), label=f'$\\hat{{α}}={αhat:.2f}; \\hat{{β}}={βhat:.2f}$')\n        plt.legend(loc='lower right')\n    plt.title(\"Random Draw\")\n    plt.grid()\n    \n    plt.savefig(f\"regression_uncertainty_{i}.png\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport scipy.stats\n\n\ndatasets = [generate_dataset(μ1, μ2, αhat, βhat, σhat, N=N) for i in range(K)]\nall_params = [smf.ols(formula='x ~ y + 1', data=df).fit() for df in datasets]\nαvec = np.array( [e.params['Intercept'] for e in all_params] )\nβvec = np.array( [e.params['y'] for e in all_params] )\n\n\ngkd = scipy.stats.kde.gaussian_kde(βvec)\n\n\nfor i in [1,2,3,4,5,6,7,8,9,10,100]:\n\n    fig = plt.figure(figsize=(10,14))\n    plt.subplot(311)\n    plot_distribution(0.1, 0.8, 0.2)\n    plt.grid()\n    plt.title(f\"True Distribution: $y = {αhat:.2f} + {βhat:.2f} x + {σhat:.2f} u$\")\n    plt.xlim(0,1)\n    plt.ylim(-0.5, 1.5)\n    \n    plt.subplot(312)\n    plt.xlim(0,1)\n    plt.ylim(-0.5, 1.5)\n    df = datasets[i]\n    if i&gt;=2:\n        plt.plot(df['x'], df['y'], 'o')\n    plt.title(\"Random Draw\")\n    plt.grid()\n\n    plt.subplot(313)\n    if i==3:\n        plt.plot(βvec[i], βvec[i]*0, 'o')\n    if i&gt;4:\n        plt.plot(βvec[3:i], βvec[3:i]*0, 'o')\n    if i&gt;10:\n        xx = np.linspace(0.2, 1.4, 10000)\n        plt.plot( βvec, gkd.pdf(βvec), '.')\n    plt.title(\"Distribution of β\")\n    plt.xlim(0.2, 1.4)\n    plt.ylim(-0.1, 4)\n    plt.grid()\n\n    plt.tight_layout()\n\n    plt.savefig(f\"random_estimates_{i}.png\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nplt.plot( βvec, βvec*0, 'o')"
   },
   {
-    "objectID": "slides/session_9/index.html#do-you-like-poetry",
-    "href": "slides/session_9/index.html#do-you-like-poetry",
-    "title": "Intro to Large Language Models",
-    "section": "Do you like poetry?",
-    "text": "Do you like poetry?\n\n\nA rose is a rose is a rose\n\n\n\nGertrude Stein\n\n\n\nBrexit means Brexit means Brexit\n\n\n\nJohn Crace\n\n\n\nElementary my dear Watson\n\n\n\nP.G. Woodehouse\n\n\n \n\n\nThere is an easy way for Europe to respond to the trade war started by Donald Trump\n\n\n\n  \nIf we could complete any sentence. . . Would we be able to solve any problem?\n\n\n  \n⮕ We are witnessing the advent of language-based AI."
-  },
-  {
-    "objectID": "slides/session_9/index.html#complete-text",
-    "href": "slides/session_9/index.html#complete-text",
-    "title": "Intro to Large Language Models",
-    "section": "Complete Text",
-    "text": "Complete Text\nAll1 Generative Language Models so far perform text completion\nThey generate plausible2 text following a prompt.\nThe type of answer, will depend on the kind of prompt.\nthe next generation might have the ability to plan and/or a world modelhere, plausible, means that it is more likely to be a correct text written by a human, rather than otherwise"
-  },
-  {
-    "objectID": "slides/session_9/index.html#gpt-playground",
-    "href": "slides/session_9/index.html#gpt-playground",
-    "title": "Intro to Large Language Models",
-    "section": "GPT Playground",
-    "text": "GPT Playground\nTo use AI you have to experiment with the prompt.\n\ntry the Playground mode\n\nIt is the same as learning how to do google queries\n\naltavista: +noir +film -\"pinot noir\"\nnowadays: ???\n\n“Prompt engineering” is becoming a discipline in itself…"
-  },
-  {
-    "objectID": "slides/session_9/index.html#some-examples",
-    "href": "slides/session_9/index.html#some-examples",
-    "title": "Intro to Large Language Models",
-    "section": "Some Examples",
-    "text": "Some Examples\nBy providing enough context, it is possible to perform amazing tasks\nLook at the demos\nEven Chat Interfaces have a hidden prompt."
-  },
-  {
-    "objectID": "slides/session_9/index.html#language-models-and-cryptography",
-    "href": "slides/session_9/index.html#language-models-and-cryptography",
-    "title": "Intro to Large Language Models",
-    "section": "Language Models and Cryptography",
-    "text": "Language Models and Cryptography\n\nThe Caesar code"
-  },
-  {
-    "objectID": "slides/session_9/index.html#section",
-    "href": "slides/session_9/index.html#section",
-    "title": "Intro to Large Language Models",
+    "objectID": "slides/session_9/index_handout.html",
+    "href": "slides/session_9/index_handout.html",
+    "title": "Large Language Models",
     "section": "",
-    "text": "Zodiac 408 Cipher"
-  },
-  {
-    "objectID": "slides/session_9/index.html#section-1",
-    "href": "slides/session_9/index.html#section-1",
-    "title": "Intro to Large Language Models",
-    "section": "",
-    "text": "Zodiac 408 Cipher\n\n\n\n\n\n\n\nKey for Zodiac 408\n\n\n\n\n\n\nFigure 1: Solved in a week by Bettye and Donald Harden using frequency tables."
-  },
-  {
-    "objectID": "slides/session_9/index.html#section-2",
-    "href": "slides/session_9/index.html#section-2",
-    "title": "Intro to Large Language Models",
-    "section": "",
-    "text": "Later in 2001, in a prison, somewhere in California\n\n\nSolved by Stanford’s Persi Diaconis and his students using Monte Carlo Markov Chains"
-  },
-  {
-    "objectID": "slides/session_9/index.html#monte-carlo-markov-chains",
-    "href": "slides/session_9/index.html#monte-carlo-markov-chains",
-    "title": "Intro to Large Language Models",
-    "section": "Monte Carlo Markov Chains",
-    "text": "Monte Carlo Markov Chains\nTake a letter \\(x_n\\), what is the probability of the next letter being \\(x_{n+1}\\)?\n\\[\\pi_{X,Y} = P(x_{n+1}=Y, x_{n}=X)\\]\nfor \\(X=\\{a, b, .... , z\\} , Y=\\{a,b,c, ... z\\}\\)\nThe language model can be trained using dataset of english language.\nAnd used to determine whether a given cipher-key is consistent with english language.\nIt yields a very efficient algorithm to decode any caesar code (with very small sample)"
-  },
-  {
-    "objectID": "slides/session_9/index.html#mcmc-to-generate-text",
-    "href": "slides/session_9/index.html#mcmc-to-generate-text",
-    "title": "Intro to Large Language Models",
-    "section": "MCMC to generate text",
-    "text": "MCMC to generate text\nMCMCs can also be used to generate text:\n\ntake initial prompt: I think therefore I\n\nlast letter is I\nmost plausible character afterwards is \nmost plausible character afterwards is I\n\nResult: I think therefore I I I I I I\n\nNot good but promising (🤷)"
-  },
-  {
-    "objectID": "slides/session_9/index.html#mcmc-to-generate-text-1",
-    "href": "slides/session_9/index.html#mcmc-to-generate-text-1",
-    "title": "Intro to Large Language Models",
-    "section": "MCMC to generate text",
-    "text": "MCMC to generate text\nGoing further\n\naugment memory\n\nfore I&gt; ???\n\nchange basic unit (use phonems or words)\n\nAn example using MCMC\n\nusing words and 3 states He ha ‘s kill’d me Mother , Run away I pray you Oh this is Counter you false Danish Dogges ."
-  },
-  {
-    "objectID": "slides/session_9/index.html#big-mcmc",
-    "href": "slides/session_9/index.html#big-mcmc",
-    "title": "Intro to Large Language Models",
-    "section": "Big MCMC",
-    "text": "Big MCMC\nCan we augment memory?\n\nif you want to compute the most frequent letter (among 26) after 50 letters, you need to take into account 5.6061847e+70 combinations !\n\nimpossible to store, let alone do the training\n\nbut some combinations are useless:\n\nwjai dfni\nDespite the constant negative press covfefe 🤔"
-  },
-  {
-    "objectID": "slides/session_9/index.html#neural-networks",
-    "href": "slides/session_9/index.html#neural-networks",
-    "title": "Intro to Large Language Models",
-    "section": "Neural Networks",
-    "text": "Neural Networks\n\n\n\n\n\n\n\nNeural Network\n\n\n\n\nNeural networks make it possible to increase the state-space to represent\n\n\\[\\forall X, P(x_n=X| x_{n-1}, ..., x_{n-k}) = \\varphi^{NL}( x_{n-1}, ..., x_{n-k}; \\theta )\\]\nwith a smaller vector of parameters \\(\\theta\\)\n\nNeural netowrks reduce endogenously the dimensionality."
-  },
-  {
-    "objectID": "slides/session_9/index.html#recurrent-neural-networks",
-    "href": "slides/session_9/index.html#recurrent-neural-networks",
-    "title": "Intro to Large Language Models",
-    "section": "Recurrent Neural Networks",
-    "text": "Recurrent Neural Networks\n\n\nIn 2015\n\n\n\n\n\nNeural Network reduce dimensionality of data discovering structure\nhidden state encodes meaning of the model so far"
-  },
-  {
-    "objectID": "slides/session_9/index.html#long-short-term-memory",
-    "href": "slides/session_9/index.html#long-short-term-memory",
-    "title": "Intro to Large Language Models",
-    "section": "Long Short Term Memory",
-    "text": "Long Short Term Memory\n\n\n2000-&gt;2019 : Emergence of Long Short Term Memory models\n\nspeech recognition\nLSTM behind “Google Translate”, “Alexa”, …"
-  },
-  {
-    "objectID": "slides/session_9/index.html#the-rise-of-transformers",
-    "href": "slides/session_9/index.html#the-rise-of-transformers",
-    "title": "Intro to Large Language Models",
-    "section": "The Rise of transformers",
-    "text": "The Rise of transformers\nA special kind of encoder/decoder architecture.\n\n\nMost successful models since 2017\n\nPosition Encodings\n\nmodel is not sequential anymore\ntries to learn sequence\n\nAttention\n\nattention is all you need\n\nSelf-Attention\n\n\n\n\nExplanations here or here"
-  },
-  {
-    "objectID": "slides/session_9/index.html#encoders-decoders-13",
-    "href": "slides/session_9/index.html#encoders-decoders-13",
-    "title": "Intro to Large Language Models",
-    "section": "Encoders / Decoders (1/3)",
-    "text": "Encoders / Decoders (1/3)\nTake some data \\((x_n)\\in R^x\\).\nConsider two functions:\n\nan encoder \\[\\varphi^E(x; \\theta^E) = h \\in \\mathbb{R^h}\\]\na decoder: \\[\\varphi^D(h; \\theta^D) = x' \\in \\mathbb{R^x}\\]\n\nTrain the coefficients with:\n\\[\\min_{\\theta^E, \\theta^D}  \\left( \\varphi^D( \\varphi^E(x_n; \\theta^E), \\theta^D) - x_n\\right)^2\\]\ni.e. train the nets \\(\\varphi^D\\) and \\(\\varphi^E\\) to predict the “data from the data” (it is called autoencoding)"
-  },
-  {
-    "objectID": "slides/session_9/index.html#encoders-decoders-23",
-    "href": "slides/session_9/index.html#encoders-decoders-23",
-    "title": "Intro to Large Language Models",
-    "section": "Encoders / Decoders (2/3)",
-    "text": "Encoders / Decoders (2/3)\nThe relation \\(\\varphi^D( \\varphi^E(x_n; \\theta^E), \\theta^D) ~ x_n\\) can be rewritten as\n\\[x_n \\xrightarrow{\\varphi^E(; \\theta^E)} h \\xrightarrow{\\varphi^D(; \\theta^D)} x_n \\]\nWhen that relation is (mostly) satisfied and \\(\\mathbb{R}^h &lt;&lt; \\mathbb{R}^x\\), \\(h\\) can be viewed as a lower dimension representation of \\(x\\). It encodes the information as a lower dimension vector \\(h\\) and is called learned embeddings.\nIn particular words have a vector representation in this space!"
-  },
-  {
-    "objectID": "slides/session_9/index.html#encoders-decoders-33",
-    "href": "slides/session_9/index.html#encoders-decoders-33",
-    "title": "Intro to Large Language Models",
-    "section": "Encoders / Decoders (3/3)",
-    "text": "Encoders / Decoders (3/3)\n\ninstead of \\(\\underbrace{x_n}_{\\text{prompt}} \\rightarrow \\underbrace{y_n}_{\\text{text completion}}\\)\none can learn \\(\\underbrace{h_n}_{\\text{prompt (low dim)}} \\xrightarrow{\\varphi^C( ; \\theta^C)} \\underbrace{h_n^c}_{\\text{text completion (low dim)}}\\)\n\nit is easier to learn\n\nand perform the original task as \\[\\underbrace{x_n}_{\\text{prompt}} \\xrightarrow{\\varphi^E}  h_n \\xrightarrow{\\varphi^C} h_n^C \\xrightarrow{\\varphi^D} \\underbrace{y_n}_{\\text{text completion}}\\]\n\nThis very powerful approach can be applied to combine encoders/decoders from different contexts (ex Dall-E)"
-  },
-  {
-    "objectID": "slides/session_9/index.html#attention",
-    "href": "slides/session_9/index.html#attention",
-    "title": "Intro to Large Language Models",
-    "section": "Attention",
-    "text": "Attention\nMain flaw with the recursive approach:\n\nthe context made to predict new words/embeddings puts a lower weight on further words/embeddings\nthis is related to the so-called vanishing gradient problem\n\n\n\n\nWith the attention mechanism, each predicted word/embedding is determined by all preceding words/embeddings, with different weights that are endogenous.\n\n\n\n\nAttention"
-  },
-  {
-    "objectID": "slides/session_9/index.html#quick-summary",
-    "href": "slides/session_9/index.html#quick-summary",
-    "title": "Intro to Large Language Models",
-    "section": "Quick summary",
-    "text": "Quick summary\n\nShort History of Language models\n\nfrequency tables\nmonte carlo markov chains\ndeep learning -&gt; recurrent neural networks\nlong-short-term memory (&gt;2000)\nencoders-decoders\ntransformers (&gt;2018)\n\nattention is all you need\ncheckout the video from 3blue1brown on attention. It’s brilliant! . . .\n\n\nSince 2010 main breakthrough came through the development of deep-learning techniques (software/hardware)\nRecently, models/algorithms have improved tremendously"
-  },
-  {
-    "objectID": "slides/session_9/index.html#gpt",
-    "href": "slides/session_9/index.html#gpt",
-    "title": "Intro to Large Language Models",
-    "section": "GPT",
-    "text": "GPT\nMost famous engine developped by OpenAI: Generative Pre-trained Transformer (aka GPT)\n\n\nGPT1 (1018)\n\n0.1 billion parameters\nhad to be fine-tuned to a particular problem\ntransfer learning (few shots learning)\n\nGPT2:\n\nmultitask\nno mandatory fine tuning\n\nGPT3:\n\nbigger: 175 billions parameters\n\nGPT4:\n\neven bigger: 1000 billions parameters ???\non your harddrive: 1Tb"
-  },
-  {
-    "objectID": "slides/session_9/index.html#corpus",
-    "href": "slides/session_9/index.html#corpus",
-    "title": "Intro to Large Language Models",
-    "section": "Corpus",
-    "text": "Corpus\n\n\nGPT-3 was trained1 on\n\nCommonCrawl\nWebText (proprietary db, with opensource alternative )\nWikipedia\nmany books\n\n⇒ 45 TB of data\n\ncured into a smaller datasets\n\n⇒ size ???\nDataset (mostly) ends in 2021.\n\n\n\nDetailed information about gpt-4 is harder to find."
-  },
-  {
-    "objectID": "slides/session_9/index.html#how-is-the-model-trained",
-    "href": "slides/session_9/index.html#how-is-the-model-trained",
-    "title": "Intro to Large Language Models",
-    "section": "How is the model trained?",
-    "text": "How is the model trained?\nSeveral concepts are relevant here:\n\nunsupervised learning\n\nautoencoding\n⇒ build a representation of the text\n\nfine tuning\nreinforcement learning"
-  },
-  {
-    "objectID": "slides/session_9/index.html#what-is-learning",
-    "href": "slides/session_9/index.html#what-is-learning",
-    "title": "Intro to Large Language Models",
-    "section": "What is learning?",
-    "text": "What is learning?\nA machine can perform a task \\(f(x; \\theta)\\) for some input \\(x\\) in a data-generating process \\(\\mathcal{X}\\) and and some parameters \\(\\theta\\).\nA typical learning task consists in optimizing a loss function (aka theoretical risk): \\[\\min _{\\theta} \\mathcal{L}(\\theta) = \\mathbb{E}_{\\theta} f(x; \\theta)\\]\nThe central learning method to minimize the objective is called stochastic gradient descent.\n\n\n\n.\n\n\n\n\nA common issue in ai is that of preference misspecification. (Cf Bostrom or link)"
-  },
-  {
-    "objectID": "slides/session_9/index.html#learning-set",
-    "href": "slides/session_9/index.html#learning-set",
-    "title": "Intro to Large Language Models",
-    "section": "Learning Set",
-    "text": "Learning Set\nIn practice one has access to a dataset \\((x_n) \\subset \\mathcal{X}\\) and minimizes the “empirical” risk function\n\\[L\\left( (x_n)_{n=1:N}, \\theta \\right) = \\frac{1}{N} \\sum_{n=1}^N f(x; \\theta)\\]\n\nRegular case: in usual cases, we assume that the dataset is generated by the true model (data-generating process)\nTwo important variants:\n\ntransfer learning:\n\ngoal is to use the model \\(\\mathcal{X}\\) but the training dataset is generated from another data-generating process \\(\\mathcal{Y}\\)\n\\(\\mathcal{Y}\\) can be a subset of \\(\\mathcal{X}\\) or (partially) disjoint\ndo you need some data from \\(\\mathcal{Y}\\) (few shots learning) or non at all (zero-shot learning)\n\nreinforcement learning\n\nthe learning algorithm can generate some data to improve learning"
-  },
-  {
-    "objectID": "slides/session_9/index.html#transfer-learning",
-    "href": "slides/session_9/index.html#transfer-learning",
-    "title": "Intro to Large Language Models",
-    "section": "Transfer learning",
-    "text": "Transfer learning\n\nGPT is inherently a transfer learning machine\n\nwhy?\n\nearlier versions (GPT-1, GPT-2) needed some examples before being able to perform any given task:\n\nfine-tuning: retrain some coefficients of the wole NN\n\nnew versions (&gt;GPT-3) can perform zero-shot tasks just by text completion\n\nfine-tuning can be emulated by prompting\nthere is still a fine-tuning API"
-  },
-  {
-    "objectID": "slides/session_9/index.html#reinforcement-learning",
-    "href": "slides/session_9/index.html#reinforcement-learning",
-    "title": "Intro to Large Language Models",
-    "section": "Reinforcement Learning",
-    "text": "Reinforcement Learning\nA reinforcement learning algorithm can take actions which have two effects:\n\nprovide some reward to the algorithm\ngenerate (more) data to improve the quality of future actions\n\nExample:\n\nchoose a restaurant\ndrive a car\nfamous examples: breakout, hide and seek"
-  },
-  {
-    "objectID": "slides/session_9/index.html#reinforcement-learning-for-gpt-4",
-    "href": "slides/session_9/index.html#reinforcement-learning-for-gpt-4",
-    "title": "Intro to Large Language Models",
-    "section": "Reinforcement Learning for GPT-4",
-    "text": "Reinforcement Learning for GPT-4\nThe GPT-4 model has been fine-tuned with reinforcement learning. The language model was rewarded for providing the right kind of answer:\n\nthe feedback came from kenyan workers (sic!)\n\nTwo main variants on top of foundation model GPT Base:1\n\ninstructGPT\n\nalignment, non-toxicity, …\nfactual correctness\n\nchatGPT\n\nfollow a conversation\norganization of answer\nnot just a context on top of GPT\n\n\nComing next: assistants."
-  },
-  {
-    "objectID": "slides/session_9/index.html#section-3",
-    "href": "slides/session_9/index.html#section-3",
-    "title": "Intro to Large Language Models",
-    "section": "",
-    "text": "There is information about how GPT-3 was trained (check technical paper or summary)"
-  },
-  {
-    "objectID": "slides/session_9/index.html#many-models-are-available",
-    "href": "slides/session_9/index.html#many-models-are-available",
-    "title": "Intro to Large Language Models",
-    "section": "Many models are available",
-    "text": "Many models are available\nWhich of the following model should you use?\nLots of GPT variants:\n\no3-mini\ngpt-4o\ngpt-4-turbo-preview\ntext-ada-001\n…\n\n\nAnd a lot of competititors:\n\nmistral, deepseek, llama, …\nall with different subvariants\nThey usually provide a compatible API (you can use openai)"
-  },
-  {
-    "objectID": "slides/session_9/index.html#the-different-variants-of-gpt",
-    "href": "slides/session_9/index.html#the-different-variants-of-gpt",
-    "title": "Intro to Large Language Models",
-    "section": "The different variants of GPT",
-    "text": "The different variants of GPT\nWhat are the differences between the various engines?\n\narchitecture\nmodel size\n\nfull size\nquantized model size\n\ntraining set of foundation model (GPT Base)\ntype of fine-tuning (instruct/chat/code)\ntype of interface"
-  },
-  {
-    "objectID": "slides/session_9/index.html#section-4",
-    "href": "slides/session_9/index.html#section-4",
-    "title": "Intro to Large Language Models",
-    "section": "",
-    "text": "Checkout the awesome list!"
-  },
-  {
-    "objectID": "slides/session_9/index.html#section-5",
-    "href": "slides/session_9/index.html#section-5",
-    "title": "Intro to Large Language Models",
-    "section": "",
-    "text": "What are the trends?\n\nmany foundation Models\n\nmove from opensource to closedsource\nbut: opensource is still very alive\nopensource is gaining momentum again\n\nllama, mistral, deepseek have opensource specificiations\nopenweights\n\n\nresearch to reduce size of models / training time\n\nquantized versions\n\nmany more versions specialized (fine-tuned) to specific tasks\n\nexample: all _code models"
-  },
-  {
-    "objectID": "slides/session_9/index.html#one-common-misconception",
-    "href": "slides/session_9/index.html#one-common-misconception",
-    "title": "Intro to Large Language Models",
-    "section": "One common misconception",
-    "text": "One common misconception\n\nLanguage models hallucinate facts…\n\ntherefore are definitely unreliable\n\nThere are possible workarounds\n\navoid tasks where hallucinations occur\n\nex: ask for paper citations\n\nmore structure in the prompting\n\nex: detail your reasoning (aka chain of thought prompting)"
-  },
-  {
-    "objectID": "slides/session_9/index.html#its-all-ongoing",
-    "href": "slides/session_9/index.html#its-all-ongoing",
-    "title": "Intro to Large Language Models",
-    "section": "It’s all ongoing",
-    "text": "It’s all ongoing\n\n\n\nAnd research being done…\n\non using fine-tuning for more correctness (e.g. instructGPT)\non using specific context (Retrieval Augmented Generation)\n\nex: GPTs\n\non developing mixed systems\n\nGPT Assistants and Scite\n\n\nAt the same time, lots of products get designed\n\npsst: under the hood, they make API calls…\n… and provide interfaces to other APIs\n\nDon’t be fooled by the marketing:\n\ndo it yourself !"
+    "text": "Come back later!."
   },
   {
     "objectID": "slides/session_2/Exercises_correction.html",
@@ -5043,6 +4923,20 @@
     "text": "Run the regression\nRun the basic regression. Interpret the results.\nWhich control variables would you propose to add? Does it increase prediction power? How do you interpret that?"
   },
   {
+    "objectID": "slides/session_6a/Panel_data.html",
+    "href": "slides/session_6a/Panel_data.html",
+    "title": "Exercise on panel data",
+    "section": "",
+    "text": "Our goal here, is to redo some of the analysis from:\nF. Vella and M. Verbeek (1998), “Whose Wages Do Unions Raise? A Dynamic Model of Unionism and Wage Rate Determination for Young Men,” Journal of Applied Econometrics 13, 163-183.\nImport the dataset wage_panel from linearmodels.datasets. Describe it and make sure it is in a format suitable for panel data analysis. Show graphically the decrease in unionization over the period.\n\nfrom linearmodels.datasets import wage_panel\n\n\ndf = wage_panel.load()\n\n\ndf\n\n\n\n\n\n\n\n\nnr\nyear\nblack\nexper\nhisp\nhours\nmarried\neduc\nunion\nlwage\nexpersq\noccupation\n\n\n\n\n0\n13\n1980\n0\n1\n0\n2672\n0\n14\n0\n1.197540\n1\n9\n\n\n1\n13\n1981\n0\n2\n0\n2320\n0\n14\n1\n1.853060\n4\n9\n\n\n2\n13\n1982\n0\n3\n0\n2940\n0\n14\n0\n1.344462\n9\n9\n\n\n3\n13\n1983\n0\n4\n0\n2960\n0\n14\n0\n1.433213\n16\n9\n\n\n4\n13\n1984\n0\n5\n0\n3071\n0\n14\n0\n1.568125\n25\n5\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n4355\n12548\n1983\n0\n8\n0\n2080\n1\n9\n0\n1.591879\n64\n5\n\n\n4356\n12548\n1984\n0\n9\n0\n2080\n1\n9\n1\n1.212543\n81\n5\n\n\n4357\n12548\n1985\n0\n10\n0\n2080\n1\n9\n0\n1.765962\n100\n5\n\n\n4358\n12548\n1986\n0\n11\n0\n2080\n1\n9\n1\n1.745894\n121\n5\n\n\n4359\n12548\n1987\n0\n12\n0\n3380\n1\n9\n1\n1.466543\n144\n5\n\n\n\n\n4360 rows × 12 columns\n\n\n\nColumn nr corresponds to the individual number. Column year corresponds to observation date. We need two set these two columns as a hierarchical index (so that first index corresponds to nr and the second one corresponds to year)\n\ndf.set_index([\"nr\", \"year\"], inplace=True)\ndf\n\n\n\n\n\n\n\n\n\nblack\nexper\nhisp\nhours\nmarried\neduc\nunion\nlwage\nexpersq\noccupation\n\n\nnr\nyear\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n13\n1980\n0\n1\n0\n2672\n0\n14\n0\n1.197540\n1\n9\n\n\n1981\n0\n2\n0\n2320\n0\n14\n1\n1.853060\n4\n9\n\n\n1982\n0\n3\n0\n2940\n0\n14\n0\n1.344462\n9\n9\n\n\n1983\n0\n4\n0\n2960\n0\n14\n0\n1.433213\n16\n9\n\n\n1984\n0\n5\n0\n3071\n0\n14\n0\n1.568125\n25\n5\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n12548\n1983\n0\n8\n0\n2080\n1\n9\n0\n1.591879\n64\n5\n\n\n1984\n0\n9\n0\n2080\n1\n9\n1\n1.212543\n81\n5\n\n\n1985\n0\n10\n0\n2080\n1\n9\n0\n1.765962\n100\n5\n\n\n1986\n0\n11\n0\n2080\n1\n9\n1\n1.745894\n121\n5\n\n\n1987\n0\n12\n0\n3380\n1\n9\n1\n1.466543\n144\n5\n\n\n\n\n4360 rows × 10 columns\n\n\n\n\ndf.describe()\n\n\n\n\n\n\n\n\nblack\nexper\nhisp\nhours\nmarried\neduc\nunion\nlwage\nexpersq\noccupation\n\n\n\n\ncount\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n\n\nmean\n0.115596\n6.514679\n0.155963\n2191.257339\n0.438991\n11.766972\n0.244037\n1.649147\n50.424771\n4.988532\n\n\nstd\n0.319777\n2.825873\n0.362862\n566.352301\n0.496321\n1.746181\n0.429564\n0.532609\n40.781991\n2.319978\n\n\nmin\n0.000000\n0.000000\n0.000000\n120.000000\n0.000000\n3.000000\n0.000000\n-3.579079\n0.000000\n1.000000\n\n\n25%\n0.000000\n4.000000\n0.000000\n2040.000000\n0.000000\n11.000000\n0.000000\n1.350717\n16.000000\n4.000000\n\n\n50%\n0.000000\n6.000000\n0.000000\n2080.000000\n0.000000\n12.000000\n0.000000\n1.671143\n36.000000\n5.000000\n\n\n75%\n0.000000\n9.000000\n0.000000\n2414.250000\n1.000000\n12.000000\n0.000000\n1.991086\n81.000000\n6.000000\n\n\nmax\n1.000000\n18.000000\n1.000000\n4992.000000\n1.000000\n16.000000\n1.000000\n4.051860\n324.000000\n9.000000\n\n\n\n\n\n\n\n\n# groupby syntax is very convenient here\ndf.groupby(\"year\")['union'].sum() # number of unionized employees\n\nyear\n1980    137\n1981    136\n1982    140\n1983    134\n1984    137\n1985    122\n1986    115\n1987    143\nName: union, dtype: int64\n\n\n\nN = df.groupby(\"year\")['union'].count()\n\n\nunion_rate =  df.groupby(\"year\")['union'].sum() / N\nunion_rate\n\nyear\n1980    0.251376\n1981    0.249541\n1982    0.256881\n1983    0.245872\n1984    0.251376\n1985    0.223853\n1986    0.211009\n1987    0.262385\nName: union, dtype: float64\n\n\nLet’s plot decline over time of unionization rate\n\nfrom matplotlib import pyplot as plt\nplt.plot(union_rate.index, union_rate)\n\n\n\n\n\n\n\n\nOur goal is to estimate the wage premium (if any) associated to belonging to a union.\nWe first consider a model \\(y_{i,t} = \\alpha + X_{i,t} \\beta + \\epsilon_{i,t}\\) where \\(y_{i,t}\\) is the wage and \\(X_{i,t}\\) contains a vector of regressors which can explain it.\nEstimate this model using OLS. What is the effect of union. What is the problem of this regression? Should we use individual or time fixed effects?\n\nimport linearmodels\n\n\nfrom linearmodels import PanelOLS\n\nmod = PanelOLS.from_formula(\n    \"lwage ~ black + hisp + exper + hours + married + educ + union + expersq + occupation\",\n    data=df\n)\nmod.fit()\n\n\nPanelOLS Estimation Summary\n\n\nDep. Variable:\nlwage\nR-squared:\n0.9250\n\n\nEstimator:\nPanelOLS\nR-squared (Between):\n0.9592\n\n\nNo. Observations:\n4360\nR-squared (Within):\n0.1763\n\n\nDate:\nTue, Mar 15 2022\nR-squared (Overall):\n0.9250\n\n\nTime:\n11:45:22\nLog-likelihood\n-2938.0\n\n\nCov. Estimator:\nUnadjusted\n\n\n\n\n\n\nF-statistic:\n5960.1\n\n\nEntities:\n545\nP-value\n0.0000\n\n\nAvg Obs:\n8.0000\nDistribution:\nF(9,4351)\n\n\nMin Obs:\n8.0000\n\n\n\n\nMax Obs:\n8.0000\nF-statistic (robust):\n5960.1\n\n\n\n\nP-value\n0.0000\n\n\nTime periods:\n8\nDistribution:\nF(9,4351)\n\n\nAvg Obs:\n545.00\n\n\n\n\nMin Obs:\n545.00\n\n\n\n\nMax Obs:\n545.00\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter Estimates\n\n\n\nParameter\nStd. Err.\nT-stat\nP-value\nLower CI\nUpper CI\n\n\nblack\n-0.1195\n0.0234\n-5.1075\n0.0000\n-0.1653\n-0.0736\n\n\nhisp\n0.0483\n0.0204\n2.3700\n0.0178\n0.0083\n0.0882\n\n\nexper\n0.1097\n0.0097\n11.305\n0.0000\n0.0906\n0.1287\n\n\nhours\n-5.894e-05\n1.28e-05\n-4.6029\n0.0000\n-8.404e-05\n-3.384e-05\n\n\nmarried\n0.1066\n0.0156\n6.8501\n0.0000\n0.0761\n0.1371\n\n\neduc\n0.1093\n0.0028\n38.939\n0.0000\n0.1038\n0.1149\n\n\nunion\n0.2017\n0.0172\n11.714\n0.0000\n0.1680\n0.2355\n\n\nexpersq\n-0.0038\n0.0007\n-5.4359\n0.0000\n-0.0051\n-0.0024\n\n\noccupation\n-0.0253\n0.0029\n-8.5924\n0.0000\n-0.0311\n-0.0196\n\n\n\nid: 0x7f6b2d76f040\n\n\nThe regression is significant: R2 is significantly different from zero (p-value&lt; 1e-5). All coefficients are significant at the 5% level, including the coefficient in front of lwage (log of wages).\nAccording to this coefficient, belonging to a union in a given year, includes salary by 20% approximately. (log(1+0.2)~18%)\nFormulate a model with individual fixed effect. Run a panel regression. Comment the results.\nIn this regression, non-observed heterogeneity between individuals, might explain difference in wage levels, and lead to systematic biases in the estimated coefficient. To control for it, we can add individual fixed effects.\n\nfrom linearmodels import PanelOLS\n\nmod = PanelOLS.from_formula(\n    \"lwage ~ black + hisp + exper + hours + married + educ + union + expersq + occupation + EntityEffects\",\n    data=df)\nprint(mod.fit())\n\n\n---------------------------------------------------------------------------\nAbsorbingEffectError                      Traceback (most recent call last)\n&lt;ipython-input-23-567e61e9d0b5&gt; in &lt;module&gt;\n      4     \"lwage ~ black + hisp + exper + hours + married + educ + union + expersq + occupation + EntityEffects\",\n      5     data=df)\n----&gt; 6 print(mod.fit())\n\n~/.local/opt/miniconda/lib/python3.8/site-packages/linearmodels/panel/model.py in fit(self, use_lsdv, use_lsmr, low_memory, cov_type, debiased, auto_df, count_effects, **cov_config)\n   1726         if self.entity_effects or self.time_effects or self.other_effects:\n   1727             if not self._drop_absorbed:\n-&gt; 1728                 check_absorbed(x, [str(var) for var in self.exog.vars])\n   1729             else:\n   1730                 # TODO: Need to special case the constant here when determining which to retain\n\n~/.local/opt/miniconda/lib/python3.8/site-packages/linearmodels/panel/utility.py in check_absorbed(x, variables, x_orig)\n    441         absorbed_variables = \"\\n\".join(rows)\n    442         msg = absorbing_error_msg.format(absorbed_variables=absorbed_variables)\n--&gt; 443         raise AbsorbingEffectError(msg)\n    444     if x_orig is None:\n    445         return\n\nAbsorbingEffectError: \nThe model cannot be estimated. The included effects have fully absorbed\none or more of the variables. This occurs when one or more of the dependent\nvariable is perfectly explained using the effects included in the model.\n\nThe following variables or variable combinations have been fully absorbed\nor have become perfectly collinear after effects are removed:\n\n          black\n          hisp\n          married, educ\n\nSet drop_absorbed=True to automatically drop absorbed variables.\n\n\n\n\nWe observe that the fixed effects are “absorbing” some indicator variables (black, hisp, married, educ). For conistency, we have to remove them from the regression.\n\nmod = PanelOLS.from_formula(\"lwage ~ black + hisp + exper + hours + married + educ + union + expersq + occupation + EntityEffects\", data=df, drop_absorbed=True)\n\n\nmod.fit()\n\n/home/pablo/.local/opt/miniconda/lib/python3.8/site-packages/linearmodels/panel/model.py:1743: AbsorbingEffectWarning: \nVariables have been fully absorbed and have removed from the regression:\n\nblack, hisp, educ\n\n  warnings.warn(\n\n\n\nPanelOLS Estimation Summary\n\n\nDep. Variable:\nlwage\nR-squared:\n0.2005\n\n\nEstimator:\nPanelOLS\nR-squared (Between):\n0.3244\n\n\nNo. Observations:\n4360\nR-squared (Within):\n0.2005\n\n\nDate:\nTue, Mar 15 2022\nR-squared (Overall):\n0.3190\n\n\nTime:\n11:52:33\nLog-likelihood\n-1271.2\n\n\nCov. Estimator:\nUnadjusted\n\n\n\n\n\n\nF-statistic:\n159.19\n\n\nEntities:\n545\nP-value\n0.0000\n\n\nAvg Obs:\n8.0000\nDistribution:\nF(6,3809)\n\n\nMin Obs:\n8.0000\n\n\n\n\nMax Obs:\n8.0000\nF-statistic (robust):\n159.19\n\n\n\n\nP-value\n0.0000\n\n\nTime periods:\n8\nDistribution:\nF(6,3809)\n\n\nAvg Obs:\n545.00\n\n\n\n\nMin Obs:\n545.00\n\n\n\n\nMax Obs:\n545.00\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter Estimates\n\n\n\nParameter\nStd. Err.\nT-stat\nP-value\nLower CI\nUpper CI\n\n\nexper\n0.1349\n0.0086\n15.710\n0.0000\n0.1181\n0.1518\n\n\nhours\n-0.0001\n1.342e-05\n-10.273\n0.0000\n-0.0002\n-0.0001\n\n\nmarried\n0.0457\n0.0181\n2.5276\n0.0115\n0.0102\n0.0811\n\n\nunion\n0.0786\n0.0191\n4.1134\n0.0000\n0.0411\n0.1160\n\n\nexpersq\n-0.0052\n0.0006\n-8.5424\n0.0000\n-0.0064\n-0.0040\n\n\noccupation\n-0.0080\n0.0035\n-2.2798\n0.0227\n-0.0149\n-0.0011\n\n\n\nF-test for Poolability: 9.1024P-value: 0.0000Distribution: F(544,3809)Included effects: Entityid: 0x7f6b29688c70\n\n\nWe observe that the variables in this regression have a worse predictive power than the former one. This is not a surprise: we have replaced many observed characteristics by fixed effect that are fitted to every single individual. For predictions there is no way to guess the fixed effect, which is why the R2 is low. Note that the effect of belonging to a union, is reduced by half (8% increase in salary explained by unionization), which points to an important effect of unobserved heterogeneity.\nFormulate a model with individual and time fixed effect. Run a panel regression. Comment the results.\nIn the same spirit, the time trend, is not accounted for in the regression, which might explain some of the results. Let’s add time fixed effects.\n\nmod = PanelOLS.from_formula(\n    \"lwage ~ black + hisp + exper + hours + married + educ + union + expersq + occupation \\\n    + EntityEffects + TimeEffects\", data=df, drop_absorbed=True)\n\n\nmod.fit()\n\n/home/pablo/.local/opt/miniconda/lib/python3.8/site-packages/linearmodels/panel/model.py:1743: AbsorbingEffectWarning: \nVariables have been fully absorbed and have removed from the regression:\n\nblack, hisp, exper, educ\n\n  warnings.warn(\n\n\n\nPanelOLS Estimation Summary\n\n\nDep. Variable:\nlwage\nR-squared:\n0.0487\n\n\nEstimator:\nPanelOLS\nR-squared (Between):\n-0.8389\n\n\nNo. Observations:\n4360\nR-squared (Within):\n-0.6698\n\n\nDate:\nTue, Mar 15 2022\nR-squared (Overall):\n-0.8315\n\n\nTime:\n11:55:45\nLog-likelihood\n-1263.6\n\n\nCov. Estimator:\nUnadjusted\n\n\n\n\n\n\nF-statistic:\n38.919\n\n\nEntities:\n545\nP-value\n0.0000\n\n\nAvg Obs:\n8.0000\nDistribution:\nF(5,3803)\n\n\nMin Obs:\n8.0000\n\n\n\n\nMax Obs:\n8.0000\nF-statistic (robust):\n38.919\n\n\n\n\nP-value\n0.0000\n\n\nTime periods:\n8\nDistribution:\nF(5,3803)\n\n\nAvg Obs:\n545.00\n\n\n\n\nMin Obs:\n545.00\n\n\n\n\nMax Obs:\n545.00\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter Estimates\n\n\n\nParameter\nStd. Err.\nT-stat\nP-value\nLower CI\nUpper CI\n\n\nhours\n-0.0001\n1.342e-05\n-10.351\n0.0000\n-0.0002\n-0.0001\n\n\nmarried\n0.0470\n0.0181\n2.6047\n0.0092\n0.0116\n0.0825\n\n\nunion\n0.0762\n0.0191\n3.9822\n0.0001\n0.0387\n0.1136\n\n\nexpersq\n-0.0061\n0.0007\n-8.7238\n0.0000\n-0.0075\n-0.0048\n\n\noccupation\n-0.0078\n0.0035\n-2.2274\n0.0260\n-0.0147\n-0.0009\n\n\n\nF-test for Poolability: 9.4090P-value: 0.0000Distribution: F(551,3803)Included effects: Entity, Timeid: 0x7f6b29619790\n\n\nHere the addition of time fixed effects, reduces the explanatory power a bit further, but does not change much the estimate for the effect of unionization (still around 8%)."
+  },
+  {
+    "objectID": "slides/session_6a/Panel_data.html#whose-wages-do-union-raise",
+    "href": "slides/session_6a/Panel_data.html#whose-wages-do-union-raise",
+    "title": "Exercise on panel data",
+    "section": "",
+    "text": "Our goal here, is to redo some of the analysis from:\nF. Vella and M. Verbeek (1998), “Whose Wages Do Unions Raise? A Dynamic Model of Unionism and Wage Rate Determination for Young Men,” Journal of Applied Econometrics 13, 163-183.\nImport the dataset wage_panel from linearmodels.datasets. Describe it and make sure it is in a format suitable for panel data analysis. Show graphically the decrease in unionization over the period.\n\nfrom linearmodels.datasets import wage_panel\n\n\ndf = wage_panel.load()\n\n\ndf\n\n\n\n\n\n\n\n\nnr\nyear\nblack\nexper\nhisp\nhours\nmarried\neduc\nunion\nlwage\nexpersq\noccupation\n\n\n\n\n0\n13\n1980\n0\n1\n0\n2672\n0\n14\n0\n1.197540\n1\n9\n\n\n1\n13\n1981\n0\n2\n0\n2320\n0\n14\n1\n1.853060\n4\n9\n\n\n2\n13\n1982\n0\n3\n0\n2940\n0\n14\n0\n1.344462\n9\n9\n\n\n3\n13\n1983\n0\n4\n0\n2960\n0\n14\n0\n1.433213\n16\n9\n\n\n4\n13\n1984\n0\n5\n0\n3071\n0\n14\n0\n1.568125\n25\n5\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n4355\n12548\n1983\n0\n8\n0\n2080\n1\n9\n0\n1.591879\n64\n5\n\n\n4356\n12548\n1984\n0\n9\n0\n2080\n1\n9\n1\n1.212543\n81\n5\n\n\n4357\n12548\n1985\n0\n10\n0\n2080\n1\n9\n0\n1.765962\n100\n5\n\n\n4358\n12548\n1986\n0\n11\n0\n2080\n1\n9\n1\n1.745894\n121\n5\n\n\n4359\n12548\n1987\n0\n12\n0\n3380\n1\n9\n1\n1.466543\n144\n5\n\n\n\n\n4360 rows × 12 columns\n\n\n\nColumn nr corresponds to the individual number. Column year corresponds to observation date. We need two set these two columns as a hierarchical index (so that first index corresponds to nr and the second one corresponds to year)\n\ndf.set_index([\"nr\", \"year\"], inplace=True)\ndf\n\n\n\n\n\n\n\n\n\nblack\nexper\nhisp\nhours\nmarried\neduc\nunion\nlwage\nexpersq\noccupation\n\n\nnr\nyear\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n13\n1980\n0\n1\n0\n2672\n0\n14\n0\n1.197540\n1\n9\n\n\n1981\n0\n2\n0\n2320\n0\n14\n1\n1.853060\n4\n9\n\n\n1982\n0\n3\n0\n2940\n0\n14\n0\n1.344462\n9\n9\n\n\n1983\n0\n4\n0\n2960\n0\n14\n0\n1.433213\n16\n9\n\n\n1984\n0\n5\n0\n3071\n0\n14\n0\n1.568125\n25\n5\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n12548\n1983\n0\n8\n0\n2080\n1\n9\n0\n1.591879\n64\n5\n\n\n1984\n0\n9\n0\n2080\n1\n9\n1\n1.212543\n81\n5\n\n\n1985\n0\n10\n0\n2080\n1\n9\n0\n1.765962\n100\n5\n\n\n1986\n0\n11\n0\n2080\n1\n9\n1\n1.745894\n121\n5\n\n\n1987\n0\n12\n0\n3380\n1\n9\n1\n1.466543\n144\n5\n\n\n\n\n4360 rows × 10 columns\n\n\n\n\ndf.describe()\n\n\n\n\n\n\n\n\nblack\nexper\nhisp\nhours\nmarried\neduc\nunion\nlwage\nexpersq\noccupation\n\n\n\n\ncount\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n4360.000000\n\n\nmean\n0.115596\n6.514679\n0.155963\n2191.257339\n0.438991\n11.766972\n0.244037\n1.649147\n50.424771\n4.988532\n\n\nstd\n0.319777\n2.825873\n0.362862\n566.352301\n0.496321\n1.746181\n0.429564\n0.532609\n40.781991\n2.319978\n\n\nmin\n0.000000\n0.000000\n0.000000\n120.000000\n0.000000\n3.000000\n0.000000\n-3.579079\n0.000000\n1.000000\n\n\n25%\n0.000000\n4.000000\n0.000000\n2040.000000\n0.000000\n11.000000\n0.000000\n1.350717\n16.000000\n4.000000\n\n\n50%\n0.000000\n6.000000\n0.000000\n2080.000000\n0.000000\n12.000000\n0.000000\n1.671143\n36.000000\n5.000000\n\n\n75%\n0.000000\n9.000000\n0.000000\n2414.250000\n1.000000\n12.000000\n0.000000\n1.991086\n81.000000\n6.000000\n\n\nmax\n1.000000\n18.000000\n1.000000\n4992.000000\n1.000000\n16.000000\n1.000000\n4.051860\n324.000000\n9.000000\n\n\n\n\n\n\n\n\n# groupby syntax is very convenient here\ndf.groupby(\"year\")['union'].sum() # number of unionized employees\n\nyear\n1980    137\n1981    136\n1982    140\n1983    134\n1984    137\n1985    122\n1986    115\n1987    143\nName: union, dtype: int64\n\n\n\nN = df.groupby(\"year\")['union'].count()\n\n\nunion_rate =  df.groupby(\"year\")['union'].sum() / N\nunion_rate\n\nyear\n1980    0.251376\n1981    0.249541\n1982    0.256881\n1983    0.245872\n1984    0.251376\n1985    0.223853\n1986    0.211009\n1987    0.262385\nName: union, dtype: float64\n\n\nLet’s plot decline over time of unionization rate\n\nfrom matplotlib import pyplot as plt\nplt.plot(union_rate.index, union_rate)\n\n\n\n\n\n\n\n\nOur goal is to estimate the wage premium (if any) associated to belonging to a union.\nWe first consider a model \\(y_{i,t} = \\alpha + X_{i,t} \\beta + \\epsilon_{i,t}\\) where \\(y_{i,t}\\) is the wage and \\(X_{i,t}\\) contains a vector of regressors which can explain it.\nEstimate this model using OLS. What is the effect of union. What is the problem of this regression? Should we use individual or time fixed effects?\n\nimport linearmodels\n\n\nfrom linearmodels import PanelOLS\n\nmod = PanelOLS.from_formula(\n    \"lwage ~ black + hisp + exper + hours + married + educ + union + expersq + occupation\",\n    data=df\n)\nmod.fit()\n\n\nPanelOLS Estimation Summary\n\n\nDep. Variable:\nlwage\nR-squared:\n0.9250\n\n\nEstimator:\nPanelOLS\nR-squared (Between):\n0.9592\n\n\nNo. Observations:\n4360\nR-squared (Within):\n0.1763\n\n\nDate:\nTue, Mar 15 2022\nR-squared (Overall):\n0.9250\n\n\nTime:\n11:45:22\nLog-likelihood\n-2938.0\n\n\nCov. Estimator:\nUnadjusted\n\n\n\n\n\n\nF-statistic:\n5960.1\n\n\nEntities:\n545\nP-value\n0.0000\n\n\nAvg Obs:\n8.0000\nDistribution:\nF(9,4351)\n\n\nMin Obs:\n8.0000\n\n\n\n\nMax Obs:\n8.0000\nF-statistic (robust):\n5960.1\n\n\n\n\nP-value\n0.0000\n\n\nTime periods:\n8\nDistribution:\nF(9,4351)\n\n\nAvg Obs:\n545.00\n\n\n\n\nMin Obs:\n545.00\n\n\n\n\nMax Obs:\n545.00\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter Estimates\n\n\n\nParameter\nStd. Err.\nT-stat\nP-value\nLower CI\nUpper CI\n\n\nblack\n-0.1195\n0.0234\n-5.1075\n0.0000\n-0.1653\n-0.0736\n\n\nhisp\n0.0483\n0.0204\n2.3700\n0.0178\n0.0083\n0.0882\n\n\nexper\n0.1097\n0.0097\n11.305\n0.0000\n0.0906\n0.1287\n\n\nhours\n-5.894e-05\n1.28e-05\n-4.6029\n0.0000\n-8.404e-05\n-3.384e-05\n\n\nmarried\n0.1066\n0.0156\n6.8501\n0.0000\n0.0761\n0.1371\n\n\neduc\n0.1093\n0.0028\n38.939\n0.0000\n0.1038\n0.1149\n\n\nunion\n0.2017\n0.0172\n11.714\n0.0000\n0.1680\n0.2355\n\n\nexpersq\n-0.0038\n0.0007\n-5.4359\n0.0000\n-0.0051\n-0.0024\n\n\noccupation\n-0.0253\n0.0029\n-8.5924\n0.0000\n-0.0311\n-0.0196\n\n\n\nid: 0x7f6b2d76f040\n\n\nThe regression is significant: R2 is significantly different from zero (p-value&lt; 1e-5). All coefficients are significant at the 5% level, including the coefficient in front of lwage (log of wages).\nAccording to this coefficient, belonging to a union in a given year, includes salary by 20% approximately. (log(1+0.2)~18%)\nFormulate a model with individual fixed effect. Run a panel regression. Comment the results.\nIn this regression, non-observed heterogeneity between individuals, might explain difference in wage levels, and lead to systematic biases in the estimated coefficient. To control for it, we can add individual fixed effects.\n\nfrom linearmodels import PanelOLS\n\nmod = PanelOLS.from_formula(\n    \"lwage ~ black + hisp + exper + hours + married + educ + union + expersq + occupation + EntityEffects\",\n    data=df)\nprint(mod.fit())\n\n\n---------------------------------------------------------------------------\nAbsorbingEffectError                      Traceback (most recent call last)\n&lt;ipython-input-23-567e61e9d0b5&gt; in &lt;module&gt;\n      4     \"lwage ~ black + hisp + exper + hours + married + educ + union + expersq + occupation + EntityEffects\",\n      5     data=df)\n----&gt; 6 print(mod.fit())\n\n~/.local/opt/miniconda/lib/python3.8/site-packages/linearmodels/panel/model.py in fit(self, use_lsdv, use_lsmr, low_memory, cov_type, debiased, auto_df, count_effects, **cov_config)\n   1726         if self.entity_effects or self.time_effects or self.other_effects:\n   1727             if not self._drop_absorbed:\n-&gt; 1728                 check_absorbed(x, [str(var) for var in self.exog.vars])\n   1729             else:\n   1730                 # TODO: Need to special case the constant here when determining which to retain\n\n~/.local/opt/miniconda/lib/python3.8/site-packages/linearmodels/panel/utility.py in check_absorbed(x, variables, x_orig)\n    441         absorbed_variables = \"\\n\".join(rows)\n    442         msg = absorbing_error_msg.format(absorbed_variables=absorbed_variables)\n--&gt; 443         raise AbsorbingEffectError(msg)\n    444     if x_orig is None:\n    445         return\n\nAbsorbingEffectError: \nThe model cannot be estimated. The included effects have fully absorbed\none or more of the variables. This occurs when one or more of the dependent\nvariable is perfectly explained using the effects included in the model.\n\nThe following variables or variable combinations have been fully absorbed\nor have become perfectly collinear after effects are removed:\n\n          black\n          hisp\n          married, educ\n\nSet drop_absorbed=True to automatically drop absorbed variables.\n\n\n\n\nWe observe that the fixed effects are “absorbing” some indicator variables (black, hisp, married, educ). For conistency, we have to remove them from the regression.\n\nmod = PanelOLS.from_formula(\"lwage ~ black + hisp + exper + hours + married + educ + union + expersq + occupation + EntityEffects\", data=df, drop_absorbed=True)\n\n\nmod.fit()\n\n/home/pablo/.local/opt/miniconda/lib/python3.8/site-packages/linearmodels/panel/model.py:1743: AbsorbingEffectWarning: \nVariables have been fully absorbed and have removed from the regression:\n\nblack, hisp, educ\n\n  warnings.warn(\n\n\n\nPanelOLS Estimation Summary\n\n\nDep. Variable:\nlwage\nR-squared:\n0.2005\n\n\nEstimator:\nPanelOLS\nR-squared (Between):\n0.3244\n\n\nNo. Observations:\n4360\nR-squared (Within):\n0.2005\n\n\nDate:\nTue, Mar 15 2022\nR-squared (Overall):\n0.3190\n\n\nTime:\n11:52:33\nLog-likelihood\n-1271.2\n\n\nCov. Estimator:\nUnadjusted\n\n\n\n\n\n\nF-statistic:\n159.19\n\n\nEntities:\n545\nP-value\n0.0000\n\n\nAvg Obs:\n8.0000\nDistribution:\nF(6,3809)\n\n\nMin Obs:\n8.0000\n\n\n\n\nMax Obs:\n8.0000\nF-statistic (robust):\n159.19\n\n\n\n\nP-value\n0.0000\n\n\nTime periods:\n8\nDistribution:\nF(6,3809)\n\n\nAvg Obs:\n545.00\n\n\n\n\nMin Obs:\n545.00\n\n\n\n\nMax Obs:\n545.00\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter Estimates\n\n\n\nParameter\nStd. Err.\nT-stat\nP-value\nLower CI\nUpper CI\n\n\nexper\n0.1349\n0.0086\n15.710\n0.0000\n0.1181\n0.1518\n\n\nhours\n-0.0001\n1.342e-05\n-10.273\n0.0000\n-0.0002\n-0.0001\n\n\nmarried\n0.0457\n0.0181\n2.5276\n0.0115\n0.0102\n0.0811\n\n\nunion\n0.0786\n0.0191\n4.1134\n0.0000\n0.0411\n0.1160\n\n\nexpersq\n-0.0052\n0.0006\n-8.5424\n0.0000\n-0.0064\n-0.0040\n\n\noccupation\n-0.0080\n0.0035\n-2.2798\n0.0227\n-0.0149\n-0.0011\n\n\n\nF-test for Poolability: 9.1024P-value: 0.0000Distribution: F(544,3809)Included effects: Entityid: 0x7f6b29688c70\n\n\nWe observe that the variables in this regression have a worse predictive power than the former one. This is not a surprise: we have replaced many observed characteristics by fixed effect that are fitted to every single individual. For predictions there is no way to guess the fixed effect, which is why the R2 is low. Note that the effect of belonging to a union, is reduced by half (8% increase in salary explained by unionization), which points to an important effect of unobserved heterogeneity.\nFormulate a model with individual and time fixed effect. Run a panel regression. Comment the results.\nIn the same spirit, the time trend, is not accounted for in the regression, which might explain some of the results. Let’s add time fixed effects.\n\nmod = PanelOLS.from_formula(\n    \"lwage ~ black + hisp + exper + hours + married + educ + union + expersq + occupation \\\n    + EntityEffects + TimeEffects\", data=df, drop_absorbed=True)\n\n\nmod.fit()\n\n/home/pablo/.local/opt/miniconda/lib/python3.8/site-packages/linearmodels/panel/model.py:1743: AbsorbingEffectWarning: \nVariables have been fully absorbed and have removed from the regression:\n\nblack, hisp, exper, educ\n\n  warnings.warn(\n\n\n\nPanelOLS Estimation Summary\n\n\nDep. Variable:\nlwage\nR-squared:\n0.0487\n\n\nEstimator:\nPanelOLS\nR-squared (Between):\n-0.8389\n\n\nNo. Observations:\n4360\nR-squared (Within):\n-0.6698\n\n\nDate:\nTue, Mar 15 2022\nR-squared (Overall):\n-0.8315\n\n\nTime:\n11:55:45\nLog-likelihood\n-1263.6\n\n\nCov. Estimator:\nUnadjusted\n\n\n\n\n\n\nF-statistic:\n38.919\n\n\nEntities:\n545\nP-value\n0.0000\n\n\nAvg Obs:\n8.0000\nDistribution:\nF(5,3803)\n\n\nMin Obs:\n8.0000\n\n\n\n\nMax Obs:\n8.0000\nF-statistic (robust):\n38.919\n\n\n\n\nP-value\n0.0000\n\n\nTime periods:\n8\nDistribution:\nF(5,3803)\n\n\nAvg Obs:\n545.00\n\n\n\n\nMin Obs:\n545.00\n\n\n\n\nMax Obs:\n545.00\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nParameter Estimates\n\n\n\nParameter\nStd. Err.\nT-stat\nP-value\nLower CI\nUpper CI\n\n\nhours\n-0.0001\n1.342e-05\n-10.351\n0.0000\n-0.0002\n-0.0001\n\n\nmarried\n0.0470\n0.0181\n2.6047\n0.0092\n0.0116\n0.0825\n\n\nunion\n0.0762\n0.0191\n3.9822\n0.0001\n0.0387\n0.1136\n\n\nexpersq\n-0.0061\n0.0007\n-8.7238\n0.0000\n-0.0075\n-0.0048\n\n\noccupation\n-0.0078\n0.0035\n-2.2274\n0.0260\n-0.0147\n-0.0009\n\n\n\nF-test for Poolability: 9.4090P-value: 0.0000Distribution: F(551,3803)Included effects: Entity, Timeid: 0x7f6b29619790\n\n\nHere the addition of time fixed effects, reduces the explanatory power a bit further, but does not change much the estimate for the effect of unionization (still around 8%)."
+  },
+  {
     "objectID": "slides/session_8/index_archive.html#classification",
     "href": "slides/session_8/index_archive.html#classification",
     "title": "Introduction to Machine Learning (2)",
@@ -5366,7 +5260,7 @@
     "href": "slides/session_1/index.html#general-1",
     "title": "Introduction",
     "section": "General (1)",
-    "text": "General (1)\n\nYour instructors:\n\nPablo Winadnt: pwinant@escp.eu (course)\nEzgi Ozsogut: ezgi.ozsogut@escp.eu (tutorials)\n\nHint: start your mail subject by [dbe]",
+    "text": "General (1)\n\nYour instructors:\n\nPablo Winadnt: pwinant@escp.eu (course and tutorials)\nRabab Khatib: rabab.khatib@edu.escp.eu (tutorials)\n\nHint: start your mail subject by [dbe]",
     "crumbs": [
       "lectures",
       "Introduction"
@@ -6199,14 +6093,14 @@
     "href": "index.html",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\n\nTitle\n\n\n\n\n\n\n\n\nJan 14, 2026\n\n\nIntroduction\n\n\n\n\n\n\nJan 14, 2026\n\n\nDataframes\n\n\n\n\n\n\nJan 21, 2026\n\n\nMultiple Regression\n\n\n\n\n\n\nJan 28, 2026\n\n\nIntroduction to Instrumental Variables\n\n\n\n\n\n\nJan 29, 2026\n\n\nLinear Regression\n\n\n\n\n\n\nFeb 19, 2026\n\n\nIntroduction to Machine Learning\n\n\n\n\n\n\nMar 4, 2026\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\n\n\nMar 25, 2026\n\n\nText Analysis\n\n\n\n\n\n\nApr 1, 2026\n\n\nIntro to Large Language Models\n\n\n\n\n\n\nApr 8, 2026\n\n\nFinal Exam 🤞\n\n\n\n\n\n\n \n\n\nSome Important Points\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\n\nTitle\n\n\n\n\n\n\n\n\nJan 14, 2026\n\n\nIntroduction\n\n\n\n\n\n\nJan 14, 2026\n\n\nDataframes\n\n\n\n\n\n\nJan 21, 2026\n\n\nLinear Regression\n\n\n\n\n\n\nJan 21, 2026\n\n\nMultiple Regression\n\n\n\n\n\n\nJan 28, 2026\n\n\nIntroduction to Instrumental Variables\n\n\n\n\n\n\nJan 28, 2026\n\n\nIntroduction to Panel Data\n\n\n\n\n\n\nFeb 4, 2026\n\n\nIntroduction to Machine Learning\n\n\n\n\n\n\nMar 4, 2026\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\n\n\nMar 25, 2026\n\n\nText Analysis\n\n\n\n\n\n\nApr 1, 2026\n\n\nLarge Language Models\n\n\n\n\n\n\nApr 8, 2026\n\n\nFinal Exam 🤞\n\n\n\n\n\n\n \n\n\nSome Important Points\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#schedule",
     "href": "index.html#schedule",
     "title": "Data-Based Economics",
     "section": "",
-    "text": "Date\n\n\n\nTitle\n\n\n\n\n\n\n\n\nJan 14, 2026\n\n\nIntroduction\n\n\n\n\n\n\nJan 14, 2026\n\n\nDataframes\n\n\n\n\n\n\nJan 21, 2026\n\n\nMultiple Regression\n\n\n\n\n\n\nJan 28, 2026\n\n\nIntroduction to Instrumental Variables\n\n\n\n\n\n\nJan 29, 2026\n\n\nLinear Regression\n\n\n\n\n\n\nFeb 19, 2026\n\n\nIntroduction to Machine Learning\n\n\n\n\n\n\nMar 4, 2026\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\n\n\nMar 25, 2026\n\n\nText Analysis\n\n\n\n\n\n\nApr 1, 2026\n\n\nIntro to Large Language Models\n\n\n\n\n\n\nApr 8, 2026\n\n\nFinal Exam 🤞\n\n\n\n\n\n\n \n\n\nSome Important Points\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\n\nTitle\n\n\n\n\n\n\n\n\nJan 14, 2026\n\n\nIntroduction\n\n\n\n\n\n\nJan 14, 2026\n\n\nDataframes\n\n\n\n\n\n\nJan 21, 2026\n\n\nLinear Regression\n\n\n\n\n\n\nJan 21, 2026\n\n\nMultiple Regression\n\n\n\n\n\n\nJan 28, 2026\n\n\nIntroduction to Instrumental Variables\n\n\n\n\n\n\nJan 28, 2026\n\n\nIntroduction to Panel Data\n\n\n\n\n\n\nFeb 4, 2026\n\n\nIntroduction to Machine Learning\n\n\n\n\n\n\nMar 4, 2026\n\n\nIntroduction to Machine Learning (2)\n\n\n\n\n\n\nMar 25, 2026\n\n\nText Analysis\n\n\n\n\n\n\nApr 1, 2026\n\n\nLarge Language Models\n\n\n\n\n\n\nApr 8, 2026\n\n\nFinal Exam 🤞\n\n\n\n\n\n\n \n\n\nSome Important Points\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#evaluation",

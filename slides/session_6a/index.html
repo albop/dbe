@@ -10,8 +10,8 @@
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Pablo Winant">
-  <meta name="dcterms.date" content="2026-03-04">
-  <title>Data-Based Economics – Introduction to Machine Learning (2)</title>
+  <meta name="dcterms.date" content="2026-01-28">
+  <title>Data-Based Economics – Introduction to Panel Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -194,7 +194,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction to Machine Learning (2)</h1>
+  <h1 class="title">Introduction to Panel Data</h1>
   <p class="subtitle">Data-Based Economics, ESCP, 2025-2026</p>
 
 <div class="quarto-title-authors">
@@ -205,265 +205,503 @@ Pablo Winant
 </div>
 </div>
 
-  <p class="date">2026-03-04</p>
+  <p class="date">2026-01-28</p>
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a href="#/panels-longitudinal-data" id="/toc-panels-longitudinal-data">Panels: Longitudinal Data</a></li>
+<li><a href="#/the-curse-of-heterogeneity" id="/toc-the-curse-of-heterogeneity">The Curse of Heterogeneity</a></li>
+<li><a href="#/diff-in-diff" id="/toc-diff-in-diff">Diff in Diff</a></li>
+<li><a href="#/conclusion" id="/toc-conclusion">Conclusion</a></li>
+</ul>
+</nav>
 </section>
 <section>
-<section id="classification-problems" class="title-slide slide level1 center">
-<h1>Classification Problems</h1>
+<section id="panels-longitudinal-data" class="title-slide slide level1 center">
+<h1>Panels: Longitudinal Data</h1>
 
 </section>
-<section id="classification-problem" class="slide level2">
-<h2>Classification problem</h2>
-<ul>
-<li>Binary Classification
-<ul>
-<li>Goal is to make a <em>prediction</em> <span class="math inline">\(c_n = f(x_{1,1}, ... x_{k,n})\)</span> …</li>
-<li>…where <span class="math inline">\(c_i\)</span> is a binary variable (<span class="math inline">\(\in\{0,1\}\)</span>)</li>
-<li>… and <span class="math inline">\((x_{i,n})_{k\in[1,n]}\)</span>, <span class="math inline">\(k\)</span> different features to predict <span class="math inline">\(c_n\)</span></li>
-</ul></li>
-<li>Multicategory Classification
-<ul>
-<li>The variable to predict takes values in a non ordered set with <span class="math inline">\(p\)</span> different values</li>
-</ul></li>
-</ul>
+<section id="motivation" class="slide level2">
+<h2>Motivation</h2>
 </section>
-<section id="logistic-regression" class="slide level2">
-<h2>Logistic regression</h2>
-<div class="columns">
-<div class="column">
-<ul>
-<li>Given a regression model (a linear predictor) <span class="math display">\[ a_0 + a_1 x_1 + a_2 x_2 + \cdots a_n x_n \]</span></li>
-<li>one can build a classification model: <span class="math display">\[ f(x_1, ..., x_n) = \sigma( a_0 + a_1 x_1 + a_2 x_2 + \cdots a_n x_n )\]</span> where <span class="math inline">\(\sigma(x)=\frac{1}{1+\exp(-x)}\)</span> is the logistic function a.k.a. sigmoid</li>
-<li>The loss function to minimize is: <span class="math display">\[L() = \sum_n (c_n - \sigma( a_{0} + a_1 x_{1,n} + a_2 x_{2,n} + \cdots a_k x_{k,n} ) )^2\]</span></li>
-<li>This works for any regression model (LASSO, RIDGE, nonlinear…)</li>
-</ul>
-</div><div class="column">
-<p><img data-src="graphs/sigmoid.png"></p>
-</div></div>
-</section>
-<section id="logistic-regression-1" class="slide level2">
-<h2>Logistic regression</h2>
-<ul>
-<li>The linear model predicts an intensity/score (not a category) <span class="math display">\[ f(x_1, ..., x_n) = \sigma( \underbrace{a_0 + a_1 x_1 + a_2 x_2 + \cdots a_n x_n }_{\text{score}})\]</span></li>
-<li><span class="math inline">\(f\)</span> can be interpreted as the “probability” to be 1 rather than 0.</li>
-<li>To make a prediction: round to 0 or 1.</li>
-</ul>
+<section class="slide level2">
 
-<img src="graphs/datacamp.jpeg" width="60%" class="r-stretch"></section>
-<section id="multinomial-regression" class="slide level2">
-<h2>Multinomial regression</h2>
+<h3 id="a-simple-question">A Simple Question</h3>
 <ul>
-<li class="fragment">If there are <span class="math inline">\(P\)</span> categories to predict:
-<ul>
-<li class="fragment">build a linear predictor <span class="math inline">\(f_p\)</span> for each category <span class="math inline">\(p\)</span></li>
-<li class="fragment">linear predictor is also called score</li>
-</ul></li>
-<li class="fragment">To predict:
-<ul>
-<li class="fragment">evaluate the score of all categories</li>
-<li class="fragment">choose the one with highest score</li>
-</ul></li>
-<li class="fragment">To train the model:
-<ul>
-<li class="fragment">train separately all scores (works for any predictor, not just linear)</li>
-<li class="fragment">… there are more subtle approaches (not here)</li>
-</ul></li>
+<li><strong>Question</strong>: Does drinking coffee improve productivity?</li>
+<li><strong>Data</strong>: We survey 1000 employees over 5 years.</li>
 </ul>
-</section></section>
-<section>
-<section id="other-classifiers" class="title-slide slide level1 center">
-<h1>Other Classifiers</h1>
+<ul>
+<li class="fragment"><strong>Cross-Sectional View</strong>: Compare Alice (drinks 5 cups) vs.&nbsp;Bob (drinks 0 cups).
+<ul>
+<li class="fragment"><em>Finding</em>: Alice is more stressed and less productive. <span class="math inline">\(\rightarrow\)</span> Coffee is bad?</li>
+</ul></li>
+<li class="fragment"><strong>Time-Series View</strong>: Follow Alice when she varies her coffee intake.
+<ul>
+<li class="fragment"><em>Finding</em>: On days she drinks coffee, she gets more done. <span class="math inline">\(\rightarrow\)</span> Coffee is good!</li>
+</ul></li>
+<li class="fragment"><strong>The Puzzle</strong>: Alice works in a high-pressure trading floor (stress causes coffee). Bob works in a library.</li>
+</ul>
+<div class="fragment fade-up">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The Power of Panels</strong></p>
+</div>
+<div class="callout-content">
+<p>Panel data lets us separate the <strong>individual effect</strong> (Alice vs Bob) from the <strong>causal effect</strong> (Coffee vs No Coffee).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-dimensions-time-and-space" class="slide level2">
+<h2>Data Dimensions: Time and Space</h2>
+</section>
+<section class="slide level2">
 
-</section>
-<section id="common-classification-algorithms" class="slide level2">
-<h2>Common classification algorithms</h2>
-<p>There are many:</p>
+<h3 id="two-dimensions">Two Dimensions</h3>
 <ul>
-<li>Logistic Regression</li>
-<li>Naive Bayes Classifier</li>
-<li>Nearest Distance</li>
-<li>neural networks (replace score in sigmoid by n.n.)</li>
-<li>Decision Trees</li>
-<li>Support Vector Machines</li>
+<li><p>Until now, we have been rather loose about where the data comes from.</p></li>
+<li><p>Trying to explain <span class="math inline">\(N\)</span> observations: <span class="math inline">\(y_n = a + b x_n, n\in [1,N]\)</span></p></li>
+<li><p>All these lonely observations, where do they all come from?</p></li>
 </ul>
-</section>
-<section id="nearest-distance" class="slide level2">
-<h2>Nearest distance</h2>
 <div class="columns">
-<div class="column">
-<ul>
-<li>Idea:
-<ul>
-<li>in order to predict category <span class="math inline">\(c\)</span> corresponding to <span class="math inline">\(x\)</span> find the closest point <span class="math inline">\(x_0\)</span> in the training set</li>
-<li>Assign to <span class="math inline">\(x\)</span> the same category as <span class="math inline">\(x_0\)</span></li>
-</ul></li>
-<li>But this would be very susceptible to noise</li>
-<li>Amended idea: <span class="math inline">\(k-nearest\)</span> neighbours
-<ul>
-<li>look for the <span class="math inline">\(k\)</span> points closest to <span class="math inline">\(x\)</span></li>
-<li>label <span class="math inline">\(x\)</span> with the same category as the majority of them</li>
-</ul></li>
-<li>Remark: this algorithm uses Euclidean distance. This is why it is important to normalize the dataset.</li>
-</ul>
-</div><div class="column">
-<p><img data-src="graphs/k-nearest.png"></p>
+<div class="column" style="width:50%;">
+<p><strong>Individuals (Space)</strong> <br> <em>(Cross-section)</em></p>
+<p><img data-src="individuals.png"></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Dates (Time)</strong> <br> <em>(Time-series)</em></p>
+<p><img data-src="timeseries.png"></p>
 </div></div>
 </section>
-<section id="decision-tree-random-forests" class="slide level2">
-<h2>Decision Tree / Random Forests</h2>
-<div class="columns">
-<div class="column">
+<section class="slide level2">
+
+<h3 id="time-series">Time Series</h3>
+
+<img data-src="timeseries.png" class="r-stretch"><ul>
+<li>very simple study: structural break
 <ul>
-<li>Decision Tree
-<ul>
-<li>recursively find simple criteria to subdivide dataset</li>
+<li>does regression on <span class="math inline">\([T_1, \overline{T}]\)</span> yield (significantly) different results on <span class="math inline">\([\overline{T}, T_2]\)</span></li>
 </ul></li>
-<li>Problems:
+<li>going further: <em>time series analysis</em>
 <ul>
-<li>Greedy: algorithm does not simplify branches</li>
-<li>easily overfits</li>
-</ul></li>
-<li>Extension : random tree forest
-<ul>
-<li>uses several (randomly generated) trees to generate a prediction</li>
-<li>solves the overfitting problem</li>
+<li>data is typically autocorrelated</li>
+<li>example (AR1) <span class="math inline">\(x_t = a  + b x_{t-1} + \epsilon_t\)</span></li>
 </ul></li>
 </ul>
-</div><div class="column">
-<p><img data-src="graphs/decision_tree.png"></p>
-</div></div>
 </section>
-<section id="support-vector-classification" class="slide level2">
-<h2>Support Vector Classification</h2>
+<section class="slide level2">
+
+<h3 id="longitudinal-data-panel-data">Longitudinal Data / Panel Data</h3>
 <div class="columns">
-<div class="column">
-<ul>
-<li><!-- .element: class="fragment" data-fragment-index="1" -->
-Separates data by one line (hyperplane).</li>
-<li><!-- .element: class="fragment" data-fragment-index="2" -->
-Chooses the largest margin according to <emph>support vectors</emph></li>
-<li><!-- .element: class="fragment" data-fragment-index="3" -->
-Can use a nonlinear kernel.</li>
-</ul>
-</div><div class="column">
+<div class="column" style="width:50%;">
 <div class="r-stack">
-<p><img data-src="graphs/hyperplanes.png" class="fragment current-visible"></p>
-<p><img data-src="graphs/margin.jpg" class="fragment current-visible"></p>
-<p><img data-src="graphs/nonlinear_svm.png" class="fragment current-visible"></p>
+<div class="fragment current-visible" data-fragment-index="1">
+<h4 id="repeated-cross-sections">1. Repeated Cross-Sections</h4>
+<ul>
+<li><strong>Idea</strong>: Survey different random people each year.</li>
+<li><strong>Example</strong>: “US Census 2000, 2010, 2020”</li>
+<li><strong>Structure</strong>:
+<ul>
+<li>Index individual <span class="math inline">\(i\)</span> and time <span class="math inline">\(t\)</span>.</li>
+<li>But <span class="math inline">\(i=1\)</span> in 2000 is NOT the same person as <span class="math inline">\(i=1\)</span> in 2010.</li>
+</ul></li>
+<li><strong>Analysis</strong>:
+<ul>
+<li>We can study trends (e.g.&nbsp;inequality over time).</li>
+<li>But we cannot see <em>who</em> got richer.</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment current-visible" data-fragment-index="2">
+<h4 id="longitudinal-panel-data">2. Longitudinal (Panel) Data</h4>
+<ul>
+<li><strong>Idea</strong>: Follow the <strong>same</strong> individuals over time.</li>
+<li><strong>Example</strong>: “Tracking the same 5000 families for 20 years (PSID)”</li>
+<li><strong>Structure</strong>:
+<ul>
+<li><span class="math inline">\(y_{i,t}\)</span> is person <span class="math inline">\(i\)</span> at date <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(y_{i,t+1}\)</span> is the same person, later.</li>
+</ul></li>
+<li><strong>Power</strong>:
+<ul>
+<li>We can control for unobserved characteristics of <span class="math inline">\(i\)</span>.</li>
+<li>We can study detailed dynamics.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="r-stack">
+<p><img data-src="panel_2.jpg" class="fragment current-visible" data-fragment-index="1"></p>
+<p><img data-src="panel_1.jpg" class="fragment current-visible" data-fragment-index="2"></p>
 </div>
 </div></div>
 </section>
-<section id="all-these-algorithms-are-super-easy-to-use" class="slide level2">
-<h2>All these algorithms are super easy to use!</h2>
-<p>Examples:</p>
+<section class="slide level2">
+
+<h3 id="balanced-vs-unbalanced">Balanced vs Unbalanced</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li>Decision Tree</li>
+<li>Balanced: all individuals in the sample are followed from 1 to T</li>
+<li>Unbalanced: some indivuduals start later, stop earlier</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb1-2"><a></a>clf <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="fragment">
+<p><img data-src="balanced_unbalanced.png" style="width:100.0%"></p>
+</div><div class="column" style="width:50%;">
 <ul>
-<li>Support Vector</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
-<span id="cb2-2"><a></a>clf <span class="op">=</span> SVC(random_state<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="fragment">
+<li class="fragment">Crude solutions:
 <ul>
-<li>Ridge Regression</li>
+<li class="fragment">truncate the dates between <span class="math inline">\([T_1, T_2]\)</span> so that dataset is balanced</li>
+<li class="fragment">eliminate individuals who are not present in the full sample</li>
+</ul></li>
+<li class="fragment">Not very good:
+<ul>
+<li class="fragment">can limit a lot the size of the sample</li>
+<li class="fragment">can induce a “selection bias”</li>
+</ul></li>
+<li class="fragment">Real gurus know how to deal with missing values
+<ul>
+<li class="fragment">many algorithms can be adapted</li>
+</ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> Ridge</span>
-<span id="cb3-2"><a></a>clf <span class="op">=</span> Ridge(random_state<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="long-and-wide-format">Long and wide format</h3>
+
+<img data-src="long_wide.png" style="width:80.0%" class="r-stretch"><ul>
+<li>we tend to prefer here the long format (w.r.t id and date)</li>
+<li>there can be many columns though (for each variable)</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="micro-panel-vs-macro-panel">Micro-Panel vs Macro-Panel</h3>
+<ul>
+<li><strong>micro-panel</strong>: <span class="math inline">\(T&lt;&lt;N\)</span>
+<ul>
+<li>Panel Study of Income Dynamics (PSID): 5000 consumers since 1967 (US)
+<ul>
+<li>reinterview same individuals from year to year</li>
+<li>but some go in/out of the panel</li>
+</ul></li>
+<li>Survey of Consumer and Finance (SCF)</li>
+<li>…</li>
+</ul></li>
+<li><strong>macro-panel</strong>: <span class="math inline">\(T\approx N\)</span>
+<ul>
+<li>WIIW: 23 countries since the 60s (central, east and southern Europe)</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
 </section></section>
 <section>
-<section id="validation" class="title-slide slide level1 center">
-<h1>Validation</h1>
+<section id="the-curse-of-heterogeneity" class="title-slide slide level1 center">
+<h1>The Curse of Heterogeneity</h1>
 
 </section>
-<section id="validity-of-a-classification-algorithm" class="slide level2">
-<h2>Validity of a classification algorithm</h2>
+<section class="slide level2">
+
+<h3 id="the-trap-of-pooled-regression">The Trap of Pooled Regression</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="r-stack">
+<p><img data-src="bias_1.jpg" class="fragment current-visible" data-fragment-index="1"></p>
+<p><img data-src="bias_2.jpg" class="fragment" data-fragment-index="2"></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Context</strong>: We want to explain economic growth (<span class="math inline">\(y\)</span>) using trade openness (<span class="math inline">\(x\)</span>) for several countries.</p>
+<div class="fragment" data-fragment-index="2">
+<p><strong>The Mistake</strong>: “Pooled Regression”</p>
 <ul>
-<li><p>Independently of how the classification is made, its validity can be assessed with a similar procedure as in the regression.</p></li>
-<li><p>Separate training set and test set</p>
+<li>We throw all data points (all countries, all years) into one big pot.</li>
+<li>Formula: <span class="math inline">\(y_{i,t} = a + b x_{i,t} + \epsilon_{i,t}\)</span></li>
+<li><strong>Result</strong>: We find a <em>negative</em> relationship (the green line)!</li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="3">
+<p><strong>The Reality</strong>:</p>
 <ul>
-<li>do not touch test set at all during the training</li>
+<li>Look closely at each country (dots of same color).</li>
+<li>Within each country, the relationship is <em>positive</em>!</li>
+<li><strong>Conclusion</strong>: We missed the <strong>“Country Effect”</strong> (Unobserved Heterogeneity).</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="the-solution-individual-fixed-effects">The Solution: Individual Fixed Effects</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="bias_3.jpg"></p>
+</div><div class="column" style="width:50%;">
+<h4 id="the-intuition">The Intuition</h4>
+<p>We admit that some individuals are just naturally “higher” or “lower” than others. We give each individual their own starting point (intercept).</p>
+<h4 id="the-model">The Model</h4>
+<p><span class="math display">\[ y_{i,t} = \underbrace{\alpha_i}_{\text{Individual Intercept}} +  \beta x_{i,t} + \epsilon_{i,t}\]</span></p>
+<ul>
+<li><span class="math inline">\(\alpha_i\)</span> is the <strong>Fixed Effect</strong>. It captures <strong>EVERYTHING</strong> that is:
+<ul>
+<li>Specific to individual <span class="math inline">\(i\)</span></li>
+<li>Constant over time (time-invariant)</li>
+<li>Even if we can’t observe it! (e.g., “Culture”, “Talent”)</li>
 </ul></li>
-<li><p>Compute score: number of correctly identified categories</p>
+</ul>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="fixed-effect-implementation">Fixed effect (implementation)</h3>
 <ul>
-<li>note that this is not the same as the loss function minimized by the training</li>
+<li>Fixed effect regression: <span class="math display">\[ y_{i,t} = a + a_i +  b x_{i,t} + \epsilon_{i,t}\]</span> is equivalent to <span class="math display">\[ y_{i,t} = a.1 + a_1 d_{i=1} + \cdots + a_I d_{i=I} +  b x_{i,t} + \epsilon_{i,t}\]</span> where <span class="math inline">\(d\)</span> is a dummy variable such that <span class="math inline">\(d_{i=j} = \begin{cases}1, &amp; \text{if}\ i=j \\\\ 0, &amp; \text{otherwise}\end{cases}\)</span></li>
+<li>Minor problem: <span class="math inline">\(1, d_{i=1}, ... d_{i=I}\)</span> are not independent: <span class="math inline">\(\sum_{j=1}^I \delta_{i=j}=1\)</span>
+<ul>
+<li>Solution: ignore one of them, exactly like the dummies for categorical variables</li>
+</ul></li>
+<li>Now the regression can be estimated with OLS…</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="estimation-methods">Estimation methods</h3>
+<ul>
+<li>… Now the regression can be estimated with OLS (or other)
+<ul>
+<li>naive approach fails for big panels (lots of dummy regressors makes <span class="math inline">\(X^{\prime}X\)</span> hard to invert)</li>
+<li>smart approach decomposes computation in several steps
+<ul>
+<li>“between” and “within” estimator (for advanced panel course)</li>
+</ul></li>
+<li>software does it for us…</li>
+</ul></li>
+<li>Like always, we get estimates and significance numbers / confidence intervals</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="time-fixed-effects">Time Fixed Effects</h3>
+<ul>
+<li>Sometimes, we know the whole dataset is affected by common time-varying shocks
+<ul>
+<li>assume there isn’t a variable we can use to capture them (unobservable shocks)</li>
+</ul></li>
+<li>We can use time-fixed effects to capture them: <span class="math display">\[ y_{i,t} = a + a_t +  b x_{i,t}\]</span></li>
+<li>Analysis is very similar to individual fixed effects</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="both-fixed-effects">Both Fixed Effects</h3>
+<ul>
+<li>We can capture time heterogeneity and individual heterogeneity at the same time. <span class="math display">\[ y_{i,t} = a + a_i + a_t +  b x_{i,t}\]</span></li>
+<li>More of it soon.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="limitation-of-fixed-effects">Limitation of fixed effects</h3>
+<ul>
+<li>Problem with fixed effect model:
+<ul>
+<li>each individual has a unique fixed effect</li>
+<li>it is impossible to predict it from other characteristics
+<ul>
+<li>… and to compare an individual’s fixed effect to the predicted value</li>
+</ul></li>
+</ul></li>
+<li>Solution:
+<ul>
+<li>instead of assuming that specific effect is completely free, constrain it to follow a distribution: <span class="math display">\[y_{i,t} = \alpha + \beta x_{i,t} + \epsilon_{i,t}\]</span> <span class="math display">\[\epsilon_{i,t} = \epsilon_i + \epsilon_t + \epsilon\]</span></li>
+<li>where <span class="math inline">\(\epsilon_{i}\)</span>, <span class="math inline">\(\epsilon_t\)</span> and <span class="math inline">\(\epsilon\)</span> are random variables with usual normality assumptions</li>
 </ul></li>
 </ul>
 </section>
-<section id="classification-matrix" class="slide level2">
-<h2>Classification matrix</h2>
-<ul>
-<li>For binary classification, we focus on the <em>classification matrix</em> or <em>confusion matrix</em>.</li>
-</ul>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Predicted</th>
-<th>(0) Actual</th>
-<th>(1) Actual</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-<td>true negatives (TN)</td>
-<td>false negatives (FN)</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>false positives (FP)</td>
-<td>true positives (TP)</td>
-</tr>
-</tbody>
-</table>
-<div class="fragment">
-<p>We can then define different measures:</p>
-<ul>
-<li>Sensitivity aka True Positive Rate (TPR): <span class="math inline">\(\frac{TP}{FP+TP}\)</span></li>
-<li>False Positive Rate (FPR): <span class="math inline">\(\frac{FP}{TN+FP}\)</span></li>
-<li>Overall accuracy: <span class="math inline">\(\frac{\text{TN}+\text{TP}}{\text{total}}\)</span></li>
-</ul>
-</div>
-<div class="fragment">
-<p>Which one to favour depends on the use case</p>
-</div>
-</section>
-<section id="example-london-police" class="slide level2">
-<h2>Example: London Police</h2>
+<section class="slide level2">
 
-<img data-src="graphs/london-cctv.webp" class="r-stretch quarto-figure-center"><p class="caption">Police cameras in London</p><p>According to <a href="https://www.google.com/search?q=accuracy+facial+recognition+london+police&amp;oq=accuracy+facial+recognition+london+police&amp;aqs=chrome..69i57.6437j1j7&amp;sourceid=chrome&amp;ie=UTF-8">London Police</a> the cameras in London have</p>
+<h3 id="other-models">Other models</h3>
 <ul>
-<li>True Positive Identification rate of over 80% at a fixed number of False Positive Alerts.29 nov. 2022</li>
+<li><p>Composed coefficients: (coefficients can also be heterogenous in both dimension)</p>
+<p><span class="math display">\[y_{i,t} = \alpha_i + \alpha_t + (\beta_i + \beta_t) x_{i,t} + \epsilon_{i,t}\]</span></p></li>
+<li><p>Random coefficients …</p></li>
 </ul>
-<div class="fragment">
-<p>But reporters found a 81% are <a href="https://time.com/5770976/london-facial-recognition-police/">misidentication</a> rate</p>
-</div>
-<div class="fragment">
-<p>Interpretation? Is it working?</p>
-</div>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
+<section class="slide level2">
 
-<img data-src="graphs/classification_score.png" class="r-stretch quarto-figure-center"><p class="caption">In-sample confusion matrix</p><p>Based on consumer data, an algorithm tries to predict the credit score from various client characeristics. The predictions are reported in the confusion matrix.</p>
-<p>Can you calculate: FPR, TPR and overall accuracy?</p>
+</section></section>
+<section>
+<section id="diff-in-diff" class="title-slide slide level1 center">
+<h1>Diff in Diff</h1>
+
 </section>
-<section id="confusion-matrix-with-sklearn" class="slide level2">
-<h2>Confusion matrix with sklearn</h2>
+<section class="slide level2">
+
+<h3 id="a-quasi-experiment">A Quasi-Experiment</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>The Setup</strong></p>
 <ul>
-<li>Predict on the test set:</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>y_pred <span class="op">=</span> model.predict(x_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<li><strong>Scenario</strong>: A school introduces a tutoring program.</li>
+<li><strong>Problem</strong>: Usually, students who <em>need</em> help sign up.
 <ul>
-<li>Compute confusion matrix:</li>
+<li>Comparing Tutors vs Non-Tutors is biased (selection bias).</li>
+</ul></li>
+<li><strong>The Diff-in-Diff Trick</strong>:
+<ul>
+<li>Don’t compare levels. Compare <strong>changes</strong>.</li>
+<li>Compare the <em>improvement</em> of tutored students vs the <em>improvement</em> of non-tutored students.</li>
+</ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
-<span id="cb5-2"><a></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Formalization</strong></p>
+<ul>
+<li>Two groups: Treated (<span class="math inline">\(T=1\)</span>) and Control (<span class="math inline">\(T=0\)</span>).</li>
+<li>Two periods: Pre (<span class="math inline">\(t=0\)</span>) and Post (<span class="math inline">\(t=1\)</span>).</li>
+<li>Goal: Isolate the effect of the Treatment.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Graphical Intuition</strong></p>
+<p><img data-src="schematic_animated.gif"></p>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="the-logic-of-diff-in-diff">The Logic of Diff-in-Diff</h3>
+<ul>
+<li><strong>Goal</strong>: Estimate the <em>extra</em> growth of the treated group compared to the control group.</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The Calculation</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[ \text{DID} = (\bar{y}_{\text{Treat}, \text{Post}} - \bar{y}_{\text{Treat}, \text{Pre}}) - (\bar{y}_{\text{Control}, \text{Post}} - \bar{y}_{\text{Control}, \text{Pre}}) \]</span></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Interpretation</strong>:
+<ul>
+<li><span class="math inline">\((\bar{y}_{C,\text{Post}} - \bar{y}_{C,\text{Pre}})\)</span>: The “Normal” time trend (what would have happened anyway).</li>
+<li><span class="math inline">\((\bar{y}_{T,\text{Post}} - \bar{y}_{T,\text{Pre}})\)</span>: The actual change for the Treated.</li>
+<li>The difference is the <strong>Causal Effect</strong>.</li>
+</ul></li>
+<li><strong>Key Assumption</strong>: <strong>Parallel Trends</strong>.
+<ul>
+<li>Without treatment, both groups would have followed the same trend.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="implementing-diff-in-diff">Implementing Diff-in-Diff</h3>
+<p>We estimate it using a regression with an <strong>Interaction Term</strong>:</p>
+<p><span class="math display">\[y_{i,t} = \alpha + \beta_1 \underbrace{\text{Treat}_i}_{\text{Group}} + \beta_2 \underbrace{\text{Post}_t}_{\text{Time}} + \delta (\underbrace{\text{Treat}_i \times \text{Post}_t}_{\text{Interaction}}) + \epsilon_{i,t}\]</span></p>
+<ul>
+<li><span class="math inline">\(\beta_1\)</span>: Baseline difference between groups.</li>
+<li><span class="math inline">\(\beta_2\)</span>: Common time trend.</li>
+<li><strong><span class="math inline">\(\delta\)</span></strong>: The <strong>Difference-in-Differences estimator</strong>.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Interpretation</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(\delta\)</span> captures the extra jump that the treated group experiences in the second period. This is our causal effect!</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="generalized-diff-in-diff">Generalized Diff-in-Diff</h3>
+<ul>
+<li><p><strong>Scenario</strong>:</p>
+<ul>
+<li>Multiple time periods.</li>
+<li>Different individuals get treated at different times (Staggered adoption).</li>
+</ul></li>
+<li><p><strong>The Model</strong>: Two-Way Fixed Effects (TWFE) <span class="math display">\[y_{i,t} = \underbrace{\alpha_{i}}_{\text{Entity FE}} + \underbrace{\alpha_t}_{\text{Time FE}} + \delta D_{i,t} + \beta x_{i,t} + \epsilon_{i,t}\]</span></p></li>
+<li><p><strong><span class="math inline">\(D_{i,t}\)</span></strong>: The “Post-Treatment” dummy</p>
+<ul>
+<li><span class="math inline">\(D_{i,t} = 1\)</span> if individual <span class="math inline">\(i\)</span> is actively treated at time <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(D_{i,t} = 0\)</span> otherwise.</li>
+</ul></li>
+<li><p><strong>Conclusion</strong>: This is the standard workhorse model for policy evaluation in economics.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="in-practice-python">In practice: Python</h3>
+<ul>
+<li><p>Using the <code>linearmodels</code> library (built on top of pandas/statsmodels).</p></li>
+<li><p><strong>Entity Fixed Effects</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> linearmodels <span class="im">import</span> PanelOLS</span>
+<span id="cb1-2"><a></a><span class="co"># ... load data ...</span></span>
+<span id="cb1-3"><a></a>mod <span class="op">=</span> PanelOLS.from_formula(<span class="st">'invest ~ 1 + value + capital + EntityEffects'</span>, data<span class="op">=</span>df)</span>
+<span id="cb1-4"><a></a>res <span class="op">=</span> mod.fit()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Two-Way Fixed Effects</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>mod <span class="op">=</span> PanelOLS.from_formula(<span class="st">'invest ~ 1 + value + capital + EntityEffects + TimeEffects'</span>, data<span class="op">=</span>df)</span>
+<span id="cb2-2"><a></a>res <span class="op">=</span> mod.fit()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Pro Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><code>PanelOLS</code> handles the dummy variable math efficiently. Don’t try to create 1000 columns of dummies yourself!</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="conclusion" class="title-slide slide level1 center">
+<h1>Conclusion</h1>
+
+</section>
+<section class="slide level2">
+
+<h3 id="takeaways">Takeaways</h3>
+<ol type="1">
+<li class="fragment"><strong>More Data, More Power</strong>: Panel data combines the best of cross-sections (“differences between people”) and time-series (“changes over time”).</li>
+<li class="fragment"><strong>Control the Unobservable</strong>:</li>
+</ol>
+<ul>
+<li class="fragment">For simple cases, you can just add dummy variables to control for heterogeneity, or do different regressions for different groups</li>
+<li class="fragment">Use <strong>Fixed Effects</strong> to absorb constant individual characteristics (culture, ability) that would otherwise bias your results.</li>
+</ul>
+<ol start="3" type="1">
+<li class="fragment"><strong>Think Causally</strong>: <strong>Diff-in-Diff</strong> allows for powerful quasi-experimental analysis (Treated vs Control, Before vs After).</li>
+<li class="fragment"><strong>Tools</strong>: Use <code>linearmodels</code> in Python to handle the complexity automatically.</li>
+</ol>
+<div class="fragment fade-up">
+
+</div>
 
 
 </section></section>
@@ -502,7 +740,7 @@ Can use a nonlinear kernel.</li>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"normal","toc":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"normal"},
 'smaller': false,
  
         // Display controls in the bottom right corner

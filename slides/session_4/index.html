@@ -278,8 +278,8 @@ Pablo Winant
 </table>
 </div><div class="column">
 <ul>
-<li>Last week we “ran” a linear regression: <span class="math inline">\(y = \alpha + \beta x\)</span>. Result: <span class="math display">\[\text{income} = x + 0.72 \text{education}\]</span></li>
-<li>Should we have looked at “prestige” instead ? <span class="math display">\[\text{income} = x + 0.83 \text{prestige}\]</span></li>
+<li>Last week we “ran” a linear regression: <span class="math inline">\(y = \alpha + \beta x\)</span>. Result: <span class="math display">\[\text{income} = xx + 0.72 \text{education}\]</span></li>
+<li>Should we have looked at “prestige” instead ? <span class="math display">\[\text{income} = xx + 0.83 \text{prestige}\]</span></li>
 <li>Which one is better?</li>
 </ul>
 </div></div>
@@ -734,7 +734,7 @@ Recall what we do:
 <p>Same as in the 1d case.</p>
 <ul>
 <li>Take estimate <span class="math inline">\(\color{red}{\beta_i}\)</span> with an estimate of its standard deviation <span class="math inline">\(\color{red}{\hat{\sigma}(\beta_i)}\)</span></li>
-<li>Compute student <span class="math inline">\(\color{red}{t^{\star}}\)</span> at <span class="math inline">\(\color{red}{\alpha}\)</span> confidence level (ex: <span class="math inline">\(\alpha=5\%\)</span>) such that:
+<li>Compute student <span class="math inline">\(\color{red}{t^{\star}}\)</span> at <span class="math inline">\(\color{red}{\alpha}\)</span> confidence level (ex: <span class="math inline">\(\alpha=5\\%\)</span>) such that:
 <ul>
 <li><span class="math inline">\(P(|t|&gt;t^{\star})&lt;\alpha\)</span></li>
 </ul></li>
@@ -744,7 +744,11 @@ Recall what we do:
 <ul>
 <li><span class="math inline">\([\color{red}{\beta_i} - t^{\star} \color{red}{\hat{\sigma}(\beta_i)}, \color{red}{\beta_i} + t^{\star} \color{red}{\hat{\sigma}(\beta_i)}]\)</span></li>
 </ul>
-<p>Interpretation: for a given confidence interval at confidence level <span class="math inline">\(\alpha\)</span>… - the probability that our coefficient was obtained, if the true coefficient were outside of it, is smaller than <span class="math inline">\(\alpha\)</span> - if we had run many regressions and computed the confidence interval, the true coefficient would be inside it 95% of the time</p>
+<p>Interpretation:</p>
+<ul>
+<li>for a given confidence interval at confidence level <span class="math inline">\(\alpha\)</span>…</li>
+<li>the probability that our coefficient was obtained, if the true coefficient were outside of it, is smaller than <span class="math inline">\(\alpha\)</span></li>
+</ul>
 </div>
 </section>
 <section id="other-tests" class="slide level2">
