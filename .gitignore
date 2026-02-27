@@ -6,3 +6,6 @@ _build*# pixi environments
 !.pixi/config.toml
 
 **/*.quarto_ipynb
+
+# ignore temp tutorial folder
+tutorials/ezgi_temp/
