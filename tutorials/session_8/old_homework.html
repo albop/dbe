@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data-Based Economics: Coursework – Data-Based Economics</title>
+<title>Data-Based Economics - Data-Based Economics: Coursework</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,9 +21,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,20 +57,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6f73c5116d67d1f2a0ad64de19d303ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -87,11 +84,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -105,7 +102,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -124,19 +121,19 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
       Data-Based Economics
       </li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
@@ -154,9 +151,9 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">lectures</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -197,22 +194,56 @@ window.Quarto = {
  <span class="menu-text">Introduction to Machine Learning</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">tutorials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_7/index_handout.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to Machine Learning (2)</span></a>
+  <a href="../../tutorials/session_3/Phillips_curve_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizing the Philips Curve</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_8/index_handout.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Text Analysis</span></a>
+  <a href="../../tutorials/session_4/Regressions_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">(Multiple) Regressions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../slides/session_10/index_handout.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Final Exam 🤞(date TBC)</span></a>
+  <a href="../../tutorials/session_5/instrumental_variables_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instrumental variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../tutorials/session_6/machine_learning_regressions_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Machine learning: regressions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">pushups</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pushups/pushups_1_correction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics and Collections</span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +258,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#co2-emissions-and-the-kusnetz-curve" id="toc-co2-emissions-and-the-kusnetz-curve" class="nav-link active" data-scroll-target="#co2-emissions-and-the-kusnetz-curve">CO2 Emissions and the Kusnetz curve</a>
+  <li><a href="#data-based-economics-coursework" id="toc-data-based-economics-coursework" class="nav-link active" data-scroll-target="#data-based-economics-coursework">Data-Based Economics: Coursework</a>
+  <ul class="collapse">
+  <li><a href="#co2-emissions-and-the-kusnetz-curve" id="toc-co2-emissions-and-the-kusnetz-curve" class="nav-link" data-scroll-target="#co2-emissions-and-the-kusnetz-curve">CO2 Emissions and the Kusnetz curve</a>
   <ul class="collapse">
   <li><a href="#importing-the-data" id="toc-importing-the-data" class="nav-link" data-scroll-target="#importing-the-data">Importing the data</a></li>
   <li><a href="#cleaning-up" id="toc-cleaning-up" class="nav-link" data-scroll-target="#cleaning-up">Cleaning up</a></li>
@@ -239,6 +272,7 @@ window.Quarto = {
   <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a></li>
   <li><a href="#training" id="toc-training" class="nav-link" data-scroll-target="#training">Training</a></li>
   <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation">Validation</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -265,6 +299,8 @@ window.Quarto = {
 </header>
 
 
+<section id="data-based-economics-coursework" class="level1">
+<h1>Data-Based Economics: Coursework</h1>
 <p>Students (up to 3):</p>
 <ul>
 <li>x1 Gabrielle Labat</li>
@@ -287,9 +323,9 @@ window.Quarto = {
 <p>Hints: check the documentation from <code>pandas.read_csv()</code> to avoid the import error. You can check the first few lines of the file by typing in a cell: <code>!data/API_EN.ATM.CO2E.PC_DS2_en_csv_v2_5177406.csv</code></p>
 <p>Hint2: Check that all columns are well defined.</p>
 <div id="ddca6bcf-10f4-4922-89c3-0e193a84d9dc" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df_wide <span class="op">=</span> pd.read_csv(<span class="st">'data/API_EN.ATM.CO2E.PC_DS2_en_csv_v2_5177406.csv'</span>, skiprows<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>data<span class="op">/</span>API_EN.ATM.CO2E.PC_DS2_en_csv_v2_5177406.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>data<span class="op">/</span>API_EN.ATM.CO2E.PC_DS2_en_csv_v2_5177406.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/bin/bash: line 1: data/API_EN.ATM.CO2E.PC_DS2_en_csv_v2_5177406.csv: Permission denied</code></pre>
 </div>
@@ -299,12 +335,12 @@ window.Quarto = {
 <p><em>The dataset contains 264 rows (corresponding to different countries and regions) and 61 columns (corresponding to the years 1960 to 2019 and additional columns with country and region information). The data is in a wide format, with each row representing a country/region and each column representing a year.</em></p>
 <p><em>The data is useful for analyzing trends in CO2 emissions over time and comparing emissions across countries and regions. It can also be used for exploring the relationship between CO2 emissions and various economic and environmental factors.</em></p>
 <div id="c618b2c1-f16f-4950-a210-b8d1c046daff" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_wide.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_wide.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -333,7 +369,7 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">count</th>
+<td data-quarto-table-cell-role="th">count</td>
 <td>0.0</td>
 <td>0.0</td>
 <td>0.0</td>
@@ -357,7 +393,7 @@ window.Quarto = {
 <td>0.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">mean</th>
+<td data-quarto-table-cell-role="th">mean</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -381,7 +417,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">std</th>
+<td data-quarto-table-cell-role="th">std</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -405,7 +441,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">min</th>
+<td data-quarto-table-cell-role="th">min</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -429,7 +465,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">25%</th>
+<td data-quarto-table-cell-role="th">25%</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -453,7 +489,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">50%</th>
+<td data-quarto-table-cell-role="th">50%</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -477,7 +513,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">75%</th>
+<td data-quarto-table-cell-role="th">75%</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -501,7 +537,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">max</th>
+<td data-quarto-table-cell-role="th">max</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -536,13 +572,13 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="cleaning-up">Cleaning up</h3>
 <p><strong>Convert the data into the long format using the function <code>pandas.melt()</code>. The columns of the new table <code>df_long</code> should be: <code>["Country Name","Country Code","Indicator Name","Indicator Code", "Date", "Emissions"]</code></strong></p>
 <div id="a89176f8-aa96-49e8-bf47-ff5d3ef88a32" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_long<span class="op">=</span>pd.melt(df_wide,id_vars<span class="op">=</span>[<span class="st">"Country Name"</span>,<span class="st">"Country Code"</span>,<span class="st">"Indicator Name"</span>,<span class="st">"Indicator Code"</span>],var_name<span class="op">=</span><span class="st">"Date"</span>,value_name<span class="op">=</span> <span class="st">"Emissions"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_long</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_long<span class="op">=</span>pd.melt(df_wide,id_vars<span class="op">=</span>[<span class="st">"Country Name"</span>,<span class="st">"Country Code"</span>,<span class="st">"Indicator Name"</span>,<span class="st">"Indicator Code"</span>],var_name<span class="op">=</span><span class="st">"Date"</span>,value_name<span class="op">=</span> <span class="st">"Emissions"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -556,7 +592,7 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>Aruba</td>
 <td>ABW</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -565,7 +601,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>Africa Eastern and Southern</td>
 <td>AFE</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -574,7 +610,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>Afghanistan</td>
 <td>AFG</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -583,7 +619,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>Africa Western and Central</td>
 <td>AFW</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -592,7 +628,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>Angola</td>
 <td>AGO</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -601,7 +637,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -610,7 +646,7 @@ window.Quarto = {
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16753</th>
+<td data-quarto-table-cell-role="th">16753</td>
 <td>Kosovo</td>
 <td>XKX</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -619,7 +655,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">16754</th>
+<td data-quarto-table-cell-role="th">16754</td>
 <td>Yemen, Rep.</td>
 <td>YEM</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -628,7 +664,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16755</th>
+<td data-quarto-table-cell-role="th">16755</td>
 <td>South Africa</td>
 <td>ZAF</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -637,7 +673,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">16756</th>
+<td data-quarto-table-cell-role="th">16756</td>
 <td>Zambia</td>
 <td>ZMB</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -646,7 +682,7 @@ window.Quarto = {
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16757</th>
+<td data-quarto-table-cell-role="th">16757</td>
 <td>Zimbabwe</td>
 <td>ZWE</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -663,12 +699,12 @@ window.Quarto = {
 </div>
 <p><strong>Eliminate all rows for which no emission data is available</strong></p>
 <div id="70057e0b-bc95-44e5-a2b8-81be72ec3f96" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_long.dropna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_long.dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -682,7 +718,7 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7981</th>
+<td data-quarto-table-cell-role="th">7981</td>
 <td>Africa Eastern and Southern</td>
 <td>AFE</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -691,7 +727,7 @@ window.Quarto = {
 <td>0.982136</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">7982</th>
+<td data-quarto-table-cell-role="th">7982</td>
 <td>Afghanistan</td>
 <td>AFG</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -700,7 +736,7 @@ window.Quarto = {
 <td>0.222538</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7983</th>
+<td data-quarto-table-cell-role="th">7983</td>
 <td>Africa Western and Central</td>
 <td>AFW</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -709,7 +745,7 @@ window.Quarto = {
 <td>0.473669</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">7984</th>
+<td data-quarto-table-cell-role="th">7984</td>
 <td>Angola</td>
 <td>AGO</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -718,7 +754,7 @@ window.Quarto = {
 <td>0.554586</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7985</th>
+<td data-quarto-table-cell-role="th">7985</td>
 <td>Albania</td>
 <td>ALB</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -727,7 +763,7 @@ window.Quarto = {
 <td>1.819542</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -736,7 +772,7 @@ window.Quarto = {
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">15954</th>
+<td data-quarto-table-cell-role="th">15954</td>
 <td>Samoa</td>
 <td>WSM</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -745,7 +781,7 @@ window.Quarto = {
 <td>1.415729</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">15956</th>
+<td data-quarto-table-cell-role="th">15956</td>
 <td>Yemen, Rep.</td>
 <td>YEM</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -754,7 +790,7 @@ window.Quarto = {
 <td>0.351859</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">15957</th>
+<td data-quarto-table-cell-role="th">15957</td>
 <td>South Africa</td>
 <td>ZAF</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -763,7 +799,7 @@ window.Quarto = {
 <td>7.568640</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">15958</th>
+<td data-quarto-table-cell-role="th">15958</td>
 <td>Zambia</td>
 <td>ZMB</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -772,7 +808,7 @@ window.Quarto = {
 <td>0.369958</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">15959</th>
+<td data-quarto-table-cell-role="th">15959</td>
 <td>Zimbabwe</td>
 <td>ZWE</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -790,57 +826,10 @@ window.Quarto = {
 <p><strong>Convert the <code>Date</code> column into a date format.</strong></p>
 <p><em>Hint: look for pandas.to_datetime() (This is not absolutely mandatory but makes graphs nicer)</em></p>
 <div id="229a0cc1-3a10-4b6c-8600-fc812797e7fc" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_long[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df_long[<span class="st">'Date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'%Y'</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_long[<span class="st">'Date'</span>].dtype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_long[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df_long[<span class="st">'Date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'%Y'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_long[<span class="st">'Date'</span>].dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[20], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> df_long[<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">Date</span><span style="color:rgb(175,0,0)">'</span>] <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">to_datetime</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">df_long</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Date</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">%</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Y</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/opt/conda/envs/escpython/lib/python3.10/site-packages/pandas/core/tools/datetimes.py:1064</span>, in <span class="ansi-cyan-fg">to_datetime</span><span class="ansi-blue-fg">(arg, errors, dayfirst, yearfirst, utc, format, exact, unit, infer_datetime_format, origin, cache)</span>
-<span class="ansi-green-fg ansi-bold">   1062</span>             result <span style="color:rgb(98,98,98)">=</span> arg<span style="color:rgb(98,98,98)">.</span>tz_localize(tz)
-<span class="ansi-green-fg ansi-bold">   1063</span> <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> <span style="color:rgb(0,135,0)">isinstance</span>(arg, ABCSeries):
-<span class="ansi-green-fg">-&gt; 1064</span>     cache_array <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">_maybe_cache</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">arg</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">cache</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">convert_listlike</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   1065</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> cache_array<span style="color:rgb(98,98,98)">.</span>empty:
-<span class="ansi-green-fg ansi-bold">   1066</span>         result <span style="color:rgb(98,98,98)">=</span> arg<span style="color:rgb(98,98,98)">.</span>map(cache_array)
-
-File <span class="ansi-green-fg">/opt/conda/envs/escpython/lib/python3.10/site-packages/pandas/core/tools/datetimes.py:229</span>, in <span class="ansi-cyan-fg">_maybe_cache</span><span class="ansi-blue-fg">(arg, format, cache, convert_listlike)</span>
-<span class="ansi-green-fg ansi-bold">    227</span> unique_dates <span style="color:rgb(98,98,98)">=</span> unique(arg)
-<span class="ansi-green-fg ansi-bold">    228</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(unique_dates) <span style="color:rgb(98,98,98)">&lt;</span> <span style="color:rgb(0,135,0)">len</span>(arg):
-<span class="ansi-green-fg">--&gt; 229</span>     cache_dates <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">convert_listlike</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">unique_dates</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    230</span>     <span style="font-style:italic;color:rgb(95,135,135)"># GH#45319</span>
-<span class="ansi-green-fg ansi-bold">    231</span>     <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
-
-File <span class="ansi-green-fg">/opt/conda/envs/escpython/lib/python3.10/site-packages/pandas/core/tools/datetimes.py:430</span>, in <span class="ansi-cyan-fg">_convert_listlike_datetimes</span><span class="ansi-blue-fg">(arg, format, name, tz, unit, errors, infer_datetime_format, dayfirst, yearfirst, exact)</span>
-<span class="ansi-green-fg ansi-bold">    427</span>         <span style="color:rgb(0,135,0)">format</span> <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>
-<span class="ansi-green-fg ansi-bold">    429</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">format</span> <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg">--&gt; 430</span>     res <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">_to_datetime_with_format</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg ansi-bold">    431</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">arg</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">orig_arg</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">name</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">tz</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">format</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">exact</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">infer_datetime_format</span>
-<span class="ansi-green-fg ansi-bold">    432</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    433</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> res <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg ansi-bold">    434</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> res
-
-File <span class="ansi-green-fg">/opt/conda/envs/escpython/lib/python3.10/site-packages/pandas/core/tools/datetimes.py:538</span>, in <span class="ansi-cyan-fg">_to_datetime_with_format</span><span class="ansi-blue-fg">(arg, orig_arg, name, tz, fmt, exact, errors, infer_datetime_format)</span>
-<span class="ansi-green-fg ansi-bold">    535</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _box_as_indexlike(result, utc<span style="color:rgb(98,98,98)">=</span>utc, name<span style="color:rgb(98,98,98)">=</span>name)
-<span class="ansi-green-fg ansi-bold">    537</span> <span style="font-style:italic;color:rgb(95,135,135)"># fallback</span>
-<span class="ansi-green-fg">--&gt; 538</span> res <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">_array_strptime_with_fallback</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg ansi-bold">    539</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">arg</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">name</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">tz</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fmt</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">exact</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">infer_datetime_format</span>
-<span class="ansi-green-fg ansi-bold">    540</span> <span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    541</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> res
-
-File <span class="ansi-green-fg">/opt/conda/envs/escpython/lib/python3.10/site-packages/pandas/core/tools/datetimes.py:473</span>, in <span class="ansi-cyan-fg">_array_strptime_with_fallback</span><span class="ansi-blue-fg">(arg, name, tz, fmt, exact, errors, infer_datetime_format)</span>
-<span class="ansi-green-fg ansi-bold">    470</span> utc <span style="color:rgb(98,98,98)">=</span> tz <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">utc</span><span style="color:rgb(175,0,0)">"</span>
-<span class="ansi-green-fg ansi-bold">    472</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg">--&gt; 473</span>     result, timezones <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">array_strptime</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">arg</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">fmt</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">exact</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">exact</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">errors</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    474</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> OutOfBoundsDatetime:
-<span class="ansi-green-fg ansi-bold">    475</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> errors <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">raise</span><span style="color:rgb(175,0,0)">"</span>:
-
-File <span class="ansi-green-fg">/opt/conda/envs/escpython/lib/python3.10/site-packages/pandas/_libs/tslibs/strptime.pyx:150</span>, in <span class="ansi-cyan-fg">pandas._libs.tslibs.strptime.array_strptime</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-red-fg">ValueError</span>: time data 'Unnamed: 66' does not match format '%Y' (match)</pre>
-</div>
+<pre><code>ValueError: time data 'Unnamed: 66' does not match format '%Y' (match)</code></pre>
 </div>
 </div>
 </section>
@@ -849,8 +838,8 @@ File <span class="ansi-green-fg">/opt/conda/envs/escpython/lib/python3.10/site-p
 <p><strong>Plot the evolution over time of total recorded carbon emissions (ommiting dates where no information is available).</strong></p>
 <p>Hint: use <code>groupby()</code></p>
 <div id="0468ef39-de85-4459-a494-88953304ced1" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>total_emissions<span class="op">=</span>df_long[df_long[<span class="st">'Emissions'</span>].notnull()].groupby(df_long[<span class="st">'Date'</span>])[<span class="st">'Emissions'</span>].<span class="bu">sum</span>()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>total_emissions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>total_emissions<span class="op">=</span>df_long[df_long[<span class="st">'Emissions'</span>].notnull()].groupby(df_long[<span class="st">'Date'</span>])[<span class="st">'Emissions'</span>].<span class="bu">sum</span>()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>total_emissions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>Date
 1990     992.579902
@@ -887,12 +876,12 @@ Name: Emissions, dtype: float64</code></pre>
 </div>
 </div>
 <div id="543152e9-f89c-427f-99cc-f23e808fab3a" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.plot(total_emissions)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Years"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Emissions as metric tons per capita"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Evolution of total CO2 emissions over time"</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.show</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.plot(total_emissions)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Years"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Emissions as metric tons per capita"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Evolution of total CO2 emissions over time"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plt.show</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -903,12 +892,12 @@ Name: Emissions, dtype: float64</code></pre>
 </div>
 <p><strong>Plot cumulative carbon emissions</strong></p>
 <div id="85fd41aa-3cc8-4230-bc07-700a50b44718" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.plot(total_emissions.cumsum())</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Years"</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Emissions as metric tons per capita"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Evolution of cumulated CO2 emissions over time"</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plt.show</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.plot(total_emissions.cumsum())</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Years"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Emissions as metric tons per capita"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Evolution of cumulated CO2 emissions over time"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.show</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -934,13 +923,13 @@ Name: Emissions, dtype: float64</code></pre>
 <p>Perform the same steps as in the first part for both series then <code>merge</code> the resulting long databases “on” the <code>Country Code</code> and <code>Date</code> columns.</p>
 <p>You should obtain one single database <code>data</code> containing the columns <code>["Country Name","Country Code","Indicator Name","Indicator Code","Date", "Emissions", "GDP", "Population"]</code></p>
 <div id="fbfd71f0-9604-4961-a857-cc85996bd9ce" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_gdp <span class="op">=</span> pd.read_csv(<span class="st">'data/API_NY.GDP.MKTP.CD_DS2_en_csv_v2_5358352.csv'</span>, skiprows<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df_gdp.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_gdp <span class="op">=</span> pd.read_csv(<span class="st">'data/API_NY.GDP.MKTP.CD_DS2_en_csv_v2_5358352.csv'</span>, skiprows<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df_gdp.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -969,7 +958,7 @@ Name: Emissions, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">count</th>
+<td data-quarto-table-cell-role="th">count</td>
 <td>1.340000e+02</td>
 <td>1.360000e+02</td>
 <td>1.380000e+02</td>
@@ -993,7 +982,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>0.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">mean</th>
+<td data-quarto-table-cell-role="th">mean</td>
 <td>7.103309e+10</td>
 <td>7.186603e+10</td>
 <td>7.549842e+10</td>
@@ -1017,7 +1006,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">std</th>
+<td data-quarto-table-cell-role="th">std</td>
 <td>2.132401e+11</td>
 <td>2.208573e+11</td>
 <td>2.354226e+11</td>
@@ -1041,7 +1030,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">min</th>
+<td data-quarto-table-cell-role="th">min</td>
 <td>1.201201e+07</td>
 <td>1.159201e+07</td>
 <td>9.122751e+06</td>
@@ -1065,7 +1054,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">25%</th>
+<td data-quarto-table-cell-role="th">25%</td>
 <td>5.151683e+08</td>
 <td>5.215510e+08</td>
 <td>5.354690e+08</td>
@@ -1089,7 +1078,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">50%</th>
+<td data-quarto-table-cell-role="th">50%</td>
 <td>2.976974e+09</td>
 <td>2.966849e+09</td>
 <td>3.050700e+09</td>
@@ -1113,7 +1102,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">75%</th>
+<td data-quarto-table-cell-role="th">75%</td>
 <td>2.976519e+10</td>
 <td>2.822553e+10</td>
 <td>2.788859e+10</td>
@@ -1137,7 +1126,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">max</th>
+<td data-quarto-table-cell-role="th">max</td>
 <td>1.392273e+12</td>
 <td>1.448622e+12</td>
 <td>1.550544e+12</td>
@@ -1168,13 +1157,13 @@ Name: Emissions, dtype: float64</code></pre>
 </div>
 </div>
 <div id="3ca91634-34c8-40f6-a413-e50c51f3c223" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_pop<span class="op">=</span>pd.read_csv(<span class="st">'data/API_SP.POP.TOTL_DS2_en_csv_v2_5358404.csv'</span>, skiprows<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df_pop.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_pop<span class="op">=</span>pd.read_csv(<span class="st">'data/API_SP.POP.TOTL_DS2_en_csv_v2_5358404.csv'</span>, skiprows<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df_pop.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1203,7 +1192,7 @@ Name: Emissions, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">count</th>
+<td data-quarto-table-cell-role="th">count</td>
 <td>2.640000e+02</td>
 <td>2.640000e+02</td>
 <td>2.640000e+02</td>
@@ -1227,7 +1216,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>0.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">mean</th>
+<td data-quarto-table-cell-role="th">mean</td>
 <td>1.172187e+08</td>
 <td>1.188268e+08</td>
 <td>1.209957e+08</td>
@@ -1251,7 +1240,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">std</th>
+<td data-quarto-table-cell-role="th">std</td>
 <td>3.693371e+08</td>
 <td>3.738947e+08</td>
 <td>3.806132e+08</td>
@@ -1275,7 +1264,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">min</th>
+<td data-quarto-table-cell-role="th">min</td>
 <td>2.646000e+03</td>
 <td>2.888000e+03</td>
 <td>3.171000e+03</td>
@@ -1299,7 +1288,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">25%</th>
+<td data-quarto-table-cell-role="th">25%</td>
 <td>5.132212e+05</td>
 <td>5.231345e+05</td>
 <td>5.337595e+05</td>
@@ -1323,7 +1312,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">50%</th>
+<td data-quarto-table-cell-role="th">50%</td>
 <td>3.757486e+06</td>
 <td>3.887144e+06</td>
 <td>4.023896e+06</td>
@@ -1347,7 +1336,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">75%</th>
+<td data-quarto-table-cell-role="th">75%</td>
 <td>2.670606e+07</td>
 <td>2.748694e+07</td>
 <td>2.830289e+07</td>
@@ -1371,7 +1360,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">max</th>
+<td data-quarto-table-cell-role="th">max</td>
 <td>3.031565e+09</td>
 <td>3.072511e+09</td>
 <td>3.126935e+09</td>
@@ -1402,13 +1391,13 @@ Name: Emissions, dtype: float64</code></pre>
 </div>
 </div>
 <div id="f4e4d23d-a923-4035-bc20-145694449b9e" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df2_long<span class="op">=</span>pd.melt(df_gdp,id_vars<span class="op">=</span>[<span class="st">"Country Name"</span>,<span class="st">"Country Code"</span>,<span class="st">"Indicator Name"</span>,<span class="st">"Indicator Code"</span>],var_name<span class="op">=</span><span class="st">"Date"</span>,value_name<span class="op">=</span> <span class="st">"GDP"</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df2_long.dropna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df2_long<span class="op">=</span>pd.melt(df_gdp,id_vars<span class="op">=</span>[<span class="st">"Country Name"</span>,<span class="st">"Country Code"</span>,<span class="st">"Indicator Name"</span>,<span class="st">"Indicator Code"</span>],var_name<span class="op">=</span><span class="st">"Date"</span>,value_name<span class="op">=</span> <span class="st">"GDP"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df2_long.dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1422,7 +1411,7 @@ Name: Emissions, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>Africa Eastern and Southern</td>
 <td>AFE</td>
 <td>GDP (current US$)</td>
@@ -1431,7 +1420,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>2.129152e+10</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>Afghanistan</td>
 <td>AFG</td>
 <td>GDP (current US$)</td>
@@ -1440,7 +1429,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>5.377778e+08</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>Africa Western and Central</td>
 <td>AFW</td>
 <td>GDP (current US$)</td>
@@ -1449,7 +1438,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>1.040414e+10</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">13</th>
+<td data-quarto-table-cell-role="th">13</td>
 <td>Australia</td>
 <td>AUS</td>
 <td>GDP (current US$)</td>
@@ -1458,7 +1447,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>1.860567e+10</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">14</th>
+<td data-quarto-table-cell-role="th">14</td>
 <td>Austria</td>
 <td>AUT</td>
 <td>GDP (current US$)</td>
@@ -1467,7 +1456,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>6.592694e+09</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -1476,7 +1465,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16486</th>
+<td data-quarto-table-cell-role="th">16486</td>
 <td>Samoa</td>
 <td>WSM</td>
 <td>GDP (current US$)</td>
@@ -1485,7 +1474,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>8.438424e+08</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">16487</th>
+<td data-quarto-table-cell-role="th">16487</td>
 <td>Kosovo</td>
 <td>XKX</td>
 <td>GDP (current US$)</td>
@@ -1494,7 +1483,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>9.412034e+09</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16489</th>
+<td data-quarto-table-cell-role="th">16489</td>
 <td>South Africa</td>
 <td>ZAF</td>
 <td>GDP (current US$)</td>
@@ -1503,7 +1492,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>4.190150e+11</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">16490</th>
+<td data-quarto-table-cell-role="th">16490</td>
 <td>Zambia</td>
 <td>ZMB</td>
 <td>GDP (current US$)</td>
@@ -1512,7 +1501,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>2.214763e+10</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16491</th>
+<td data-quarto-table-cell-role="th">16491</td>
 <td>Zimbabwe</td>
 <td>ZWE</td>
 <td>GDP (current US$)</td>
@@ -1528,13 +1517,13 @@ Name: Emissions, dtype: float64</code></pre>
 </div>
 </div>
 <div id="7652c394-a4aa-44e3-859b-6833480e724e" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df3_long<span class="op">=</span>pd.melt(df_pop,id_vars<span class="op">=</span>[<span class="st">"Country Name"</span>,<span class="st">"Country Code"</span>,<span class="st">"Indicator Name"</span>,<span class="st">"Indicator Code"</span>],var_name<span class="op">=</span><span class="st">"Date"</span>,value_name<span class="op">=</span> <span class="st">"Population"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df3_long.dropna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df3_long<span class="op">=</span>pd.melt(df_pop,id_vars<span class="op">=</span>[<span class="st">"Country Name"</span>,<span class="st">"Country Code"</span>,<span class="st">"Indicator Name"</span>,<span class="st">"Indicator Code"</span>],var_name<span class="op">=</span><span class="st">"Date"</span>,value_name<span class="op">=</span> <span class="st">"Population"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df3_long.dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1548,7 +1537,7 @@ Name: Emissions, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>Aruba</td>
 <td>ABW</td>
 <td>Population, total</td>
@@ -1557,7 +1546,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>54608.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>Africa Eastern and Southern</td>
 <td>AFE</td>
 <td>Population, total</td>
@@ -1566,7 +1555,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>130692579.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>Afghanistan</td>
 <td>AFG</td>
 <td>Population, total</td>
@@ -1575,7 +1564,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>8622466.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>Africa Western and Central</td>
 <td>AFW</td>
 <td>Population, total</td>
@@ -1584,7 +1573,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>97256290.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>Angola</td>
 <td>AGO</td>
 <td>Population, total</td>
@@ -1593,7 +1582,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>5357195.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -1602,7 +1591,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16487</th>
+<td data-quarto-table-cell-role="th">16487</td>
 <td>Kosovo</td>
 <td>XKX</td>
 <td>Population, total</td>
@@ -1611,7 +1600,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>1786038.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">16488</th>
+<td data-quarto-table-cell-role="th">16488</td>
 <td>Yemen, Rep.</td>
 <td>YEM</td>
 <td>Population, total</td>
@@ -1620,7 +1609,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>32981641.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16489</th>
+<td data-quarto-table-cell-role="th">16489</td>
 <td>South Africa</td>
 <td>ZAF</td>
 <td>Population, total</td>
@@ -1629,7 +1618,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>59392255.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">16490</th>
+<td data-quarto-table-cell-role="th">16490</td>
 <td>Zambia</td>
 <td>ZMB</td>
 <td>Population, total</td>
@@ -1638,7 +1627,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>19473125.0</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16491</th>
+<td data-quarto-table-cell-role="th">16491</td>
 <td>Zimbabwe</td>
 <td>ZWE</td>
 <td>Population, total</td>
@@ -1654,13 +1643,13 @@ Name: Emissions, dtype: float64</code></pre>
 </div>
 </div>
 <div id="42b9fc96-9f39-43e7-a068-3aa24027debb" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_kuznetz<span class="op">=</span> df_long.merge(df2_long,on<span class="op">=</span>[<span class="st">"Date"</span>,<span class="st">"Country Name"</span>,<span class="st">"Country Code"</span>]).merge(df3_long, on<span class="op">=</span>[<span class="st">"Date"</span>,<span class="st">"Country Name"</span>,<span class="st">"Country Code"</span>])</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df_kuznetz.dropna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_kuznetz<span class="op">=</span> df_long.merge(df2_long,on<span class="op">=</span>[<span class="st">"Date"</span>,<span class="st">"Country Name"</span>,<span class="st">"Country Code"</span>]).merge(df3_long, on<span class="op">=</span>[<span class="st">"Date"</span>,<span class="st">"Country Name"</span>,<span class="st">"Country Code"</span>])</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df_kuznetz.dropna()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1680,7 +1669,7 @@ Name: Emissions, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7981</th>
+<td data-quarto-table-cell-role="th">7981</td>
 <td>Africa Eastern and Southern</td>
 <td>AFE</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -1695,7 +1684,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>3.098907e+08</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">7983</th>
+<td data-quarto-table-cell-role="th">7983</td>
 <td>Africa Western and Central</td>
 <td>AFW</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -1710,7 +1699,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>2.067390e+08</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7984</th>
+<td data-quarto-table-cell-role="th">7984</td>
 <td>Angola</td>
 <td>AGO</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -1725,7 +1714,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>1.182864e+07</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">7985</th>
+<td data-quarto-table-cell-role="th">7985</td>
 <td>Albania</td>
 <td>ALB</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -1740,7 +1729,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>3.286542e+06</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">7986</th>
+<td data-quarto-table-cell-role="th">7986</td>
 <td>Andorra</td>
 <td>AND</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -1755,7 +1744,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>5.356900e+04</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">...</th>
+<td data-quarto-table-cell-role="th">...</td>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -1770,7 +1759,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">15953</th>
+<td data-quarto-table-cell-role="th">15953</td>
 <td>World</td>
 <td>WLD</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -1785,7 +1774,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>7.742682e+09</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">15954</th>
+<td data-quarto-table-cell-role="th">15954</td>
 <td>Samoa</td>
 <td>WSM</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -1800,7 +1789,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>2.119050e+05</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">15957</th>
+<td data-quarto-table-cell-role="th">15957</td>
 <td>South Africa</td>
 <td>ZAF</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -1815,7 +1804,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>5.808706e+07</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">15958</th>
+<td data-quarto-table-cell-role="th">15958</td>
 <td>Zambia</td>
 <td>ZMB</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -1830,7 +1819,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>1.838048e+07</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">15959</th>
+<td data-quarto-table-cell-role="th">15959</td>
 <td>Zimbabwe</td>
 <td>ZWE</td>
 <td>CO2 emissions (metric tons per capita)</td>
@@ -1853,88 +1842,86 @@ Name: Emissions, dtype: float64</code></pre>
 </div>
 <p><strong>Regress per capita emissions on gdp per capita and comment.</strong></p>
 <div id="3c8497fd-1735-4054-aab7-169e44db5572" class="cell" data-execution_count="130">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula <span class="im">import</span> api <span class="im">as</span> smf</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df_kuznetz[<span class="st">'GDP_per_capita'</span>]<span class="op">=</span>df_kuznetz[<span class="st">'GDP'</span>]<span class="op">/</span><span class="dv">1000</span><span class="op">/</span>df_kuznetz[<span class="st">'Population'</span>]<span class="co">#on divise le PIB par mille car c'est en million et la population est en milliers</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula <span class="im">import</span> api <span class="im">as</span> smf</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df_kuznetz[<span class="st">'GDP_per_capita'</span>]<span class="op">=</span>df_kuznetz[<span class="st">'GDP'</span>]<span class="op">/</span><span class="dv">1000</span><span class="op">/</span>df_kuznetz[<span class="st">'Population'</span>]<span class="co">#on divise le PIB par mille car c'est en million et la population est en milliers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="1131149d-d268-4cc4-a006-1a0b742cbaef" class="cell" data-execution_count="132">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model<span class="op">=</span>smf.ols(<span class="st">" Emissions ~ GDP_per_capita "</span>, df_kuznetz)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>res<span class="op">=</span>model.fit()</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>res.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model<span class="op">=</span>smf.ols(<span class="st">" Emissions ~ GDP_per_capita "</span>, df_kuznetz)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>res<span class="op">=</span>model.fit()</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>res.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="132">
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Dep. Variable:</th>
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
 <td>Emissions</td>
-<th data-quarto-table-cell-role="th">R-squared:</th>
+<td data-quarto-table-cell-role="th">R-squared:</td>
 <td>0.334</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Model:</th>
+<td data-quarto-table-cell-role="th">Model:</td>
 <td>OLS</td>
-<th data-quarto-table-cell-role="th">Adj. R-squared:</th>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
 <td>0.334</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Method:</th>
+<td data-quarto-table-cell-role="th">Method:</td>
 <td>Least Squares</td>
-<th data-quarto-table-cell-role="th">F-statistic:</th>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
 <td>3473.</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Date:</th>
+<td data-quarto-table-cell-role="th">Date:</td>
 <td>Mon, 03 Apr 2023</td>
-<th data-quarto-table-cell-role="th">Prob (F-statistic):</th>
+<td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>0.00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Time:</th>
+<td data-quarto-table-cell-role="th">Time:</td>
 <td>12:41:31</td>
-<th data-quarto-table-cell-role="th">Log-Likelihood:</th>
+<td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-19885.</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">No. Observations:</th>
+<td data-quarto-table-cell-role="th">No. Observations:</td>
 <td>6937</td>
-<th data-quarto-table-cell-role="th">AIC:</th>
+<td data-quarto-table-cell-role="th">AIC:</td>
 <td>3.977e+04</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Df Residuals:</th>
+<td data-quarto-table-cell-role="th">Df Residuals:</td>
 <td>6935</td>
-<th data-quarto-table-cell-role="th">BIC:</th>
+<td data-quarto-table-cell-role="th">BIC:</td>
 <td>3.979e+04</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Df Model:</th>
+<td data-quarto-table-cell-role="th">Df Model:</td>
 <td>1</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Covariance Type:</th>
+<td data-quarto-table-cell-role="th">Covariance Type:</td>
 <td>nonrobust</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-
-
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td></td>
-<th data-quarto-table-cell-role="th">coef</th>
-<th data-quarto-table-cell-role="th">std err</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">P&gt;|t|</th>
-<th data-quarto-table-cell-role="th">[0.025</th>
-<th data-quarto-table-cell-role="th">0.975]</th>
+<td data-quarto-table-cell-role="th">coef</td>
+<td data-quarto-table-cell-role="th">std err</td>
+<td data-quarto-table-cell-role="th">t</td>
+<td data-quarto-table-cell-role="th">P&gt;|t|</td>
+<td data-quarto-table-cell-role="th">[0.025</td>
+<td data-quarto-table-cell-role="th">0.975]</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Intercept</th>
+<td data-quarto-table-cell-role="th">Intercept</td>
 <td>2.4500</td>
 <td>0.059</td>
 <td>41.326</td>
@@ -1943,7 +1930,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>2.566</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">GDP_per_capita</th>
+<td data-quarto-table-cell-role="th">GDP_per_capita</td>
 <td>0.1852</td>
 <td>0.003</td>
 <td>58.931</td>
@@ -1953,32 +1940,30 @@ Name: Emissions, dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
-
-
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Omnibus:</th>
+<td data-quarto-table-cell-role="th">Omnibus:</td>
 <td>3880.879</td>
-<th data-quarto-table-cell-role="th">Durbin-Watson:</th>
+<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
 <td>1.836</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Prob(Omnibus):</th>
+<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
 <td>0.000</td>
-<th data-quarto-table-cell-role="th">Jarque-Bera (JB):</th>
+<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
 <td>96298.037</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Skew:</th>
+<td data-quarto-table-cell-role="th">Skew:</td>
 <td>2.186</td>
-<th data-quarto-table-cell-role="th">Prob(JB):</th>
+<td data-quarto-table-cell-role="th">Prob(JB):</td>
 <td>0.00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Kurtosis:</th>
+<td data-quarto-table-cell-role="th">Kurtosis:</td>
 <td>20.721</td>
-<th data-quarto-table-cell-role="th">Cond. No.</th>
+<td data-quarto-table-cell-role="th">Cond. No.</td>
 <td>21.9</td>
 </tr>
 </tbody>
@@ -1989,85 +1974,83 @@ Name: Emissions, dtype: float64</code></pre>
 <p><em>The estimated regresssion is <code>emissions per capita = 2,45+ 0,1852 gdp per capita</code>. Both the intercept and the coefficient are significant, indicating that higher GDP per capita is associated with higher per capita emissions, holding other factors constant. The R-squared of the model is relatively low at 0.334, suggesting that other factors not included in the model may also be important in explaining per capita emissions.</em></p>
 <p><strong>Split the sample into the three quantiles, based on gdp/capita in the last period. Run the same regression in all three subsamples. Comment.</strong></p>
 <div id="622dc0ca-ad19-4f70-ab9b-ed63280f13e2" class="cell" data-execution_count="159">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_kuznetz[<span class="st">'Quantile'</span>]<span class="op">=</span> pd.qcut(df_kuznetz[<span class="st">'GDP_per_capita'</span>],q <span class="op">=</span> <span class="dv">3</span>, labels<span class="op">=</span>[<span class="st">'low'</span>, <span class="st">'medium'</span>, <span class="st">'high'</span>])</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>model_low<span class="op">=</span>smf.ols(<span class="st">" Emissions ~ GDP_per_capita "</span>, df_kuznetz[df_kuznetz[<span class="st">'Quantile'</span>] <span class="op">==</span> <span class="st">"low"</span>])</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>res_low<span class="op">=</span>model_low.fit()</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>res_low.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_kuznetz[<span class="st">'Quantile'</span>]<span class="op">=</span> pd.qcut(df_kuznetz[<span class="st">'GDP_per_capita'</span>],q <span class="op">=</span> <span class="dv">3</span>, labels<span class="op">=</span>[<span class="st">'low'</span>, <span class="st">'medium'</span>, <span class="st">'high'</span>])</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>model_low<span class="op">=</span>smf.ols(<span class="st">" Emissions ~ GDP_per_capita "</span>, df_kuznetz[df_kuznetz[<span class="st">'Quantile'</span>] <span class="op">==</span> <span class="st">"low"</span>])</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>res_low<span class="op">=</span>model_low.fit()</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>res_low.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="159">
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Dep. Variable:</th>
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
 <td>Emissions</td>
-<th data-quarto-table-cell-role="th">R-squared:</th>
+<td data-quarto-table-cell-role="th">R-squared:</td>
 <td>0.044</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Model:</th>
+<td data-quarto-table-cell-role="th">Model:</td>
 <td>OLS</td>
-<th data-quarto-table-cell-role="th">Adj. R-squared:</th>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
 <td>0.043</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Method:</th>
+<td data-quarto-table-cell-role="th">Method:</td>
 <td>Least Squares</td>
-<th data-quarto-table-cell-role="th">F-statistic:</th>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
 <td>68.42</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Date:</th>
+<td data-quarto-table-cell-role="th">Date:</td>
 <td>Mon, 03 Apr 2023</td>
-<th data-quarto-table-cell-role="th">Prob (F-statistic):</th>
+<td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>2.89e-16</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Time:</th>
+<td data-quarto-table-cell-role="th">Time:</td>
 <td>13:37:32</td>
-<th data-quarto-table-cell-role="th">Log-Likelihood:</th>
+<td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-2221.9</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">No. Observations:</th>
+<td data-quarto-table-cell-role="th">No. Observations:</td>
 <td>1493</td>
-<th data-quarto-table-cell-role="th">AIC:</th>
+<td data-quarto-table-cell-role="th">AIC:</td>
 <td>4448.</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Df Residuals:</th>
+<td data-quarto-table-cell-role="th">Df Residuals:</td>
 <td>1491</td>
-<th data-quarto-table-cell-role="th">BIC:</th>
+<td data-quarto-table-cell-role="th">BIC:</td>
 <td>4458.</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Df Model:</th>
+<td data-quarto-table-cell-role="th">Df Model:</td>
 <td>1</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Covariance Type:</th>
+<td data-quarto-table-cell-role="th">Covariance Type:</td>
 <td>nonrobust</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-
-
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td></td>
-<th data-quarto-table-cell-role="th">coef</th>
-<th data-quarto-table-cell-role="th">std err</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">P&gt;|t|</th>
-<th data-quarto-table-cell-role="th">[0.025</th>
-<th data-quarto-table-cell-role="th">0.975]</th>
+<td data-quarto-table-cell-role="th">coef</td>
+<td data-quarto-table-cell-role="th">std err</td>
+<td data-quarto-table-cell-role="th">t</td>
+<td data-quarto-table-cell-role="th">P&gt;|t|</td>
+<td data-quarto-table-cell-role="th">[0.025</td>
+<td data-quarto-table-cell-role="th">0.975]</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Intercept</th>
+<td data-quarto-table-cell-role="th">Intercept</td>
 <td>0.0444</td>
 <td>0.073</td>
 <td>0.605</td>
@@ -2076,7 +2059,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>0.189</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">GDP_per_capita</th>
+<td data-quarto-table-cell-role="th">GDP_per_capita</td>
 <td>1.2173</td>
 <td>0.147</td>
 <td>8.272</td>
@@ -2086,32 +2069,30 @@ Name: Emissions, dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
-
-
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Omnibus:</th>
+<td data-quarto-table-cell-role="th">Omnibus:</td>
 <td>1261.416</td>
-<th data-quarto-table-cell-role="th">Durbin-Watson:</th>
+<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
 <td>1.783</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Prob(Omnibus):</th>
+<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
 <td>0.000</td>
-<th data-quarto-table-cell-role="th">Jarque-Bera (JB):</th>
+<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
 <td>26143.353</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Skew:</th>
+<td data-quarto-table-cell-role="th">Skew:</td>
 <td>4.011</td>
-<th data-quarto-table-cell-role="th">Prob(JB):</th>
+<td data-quarto-table-cell-role="th">Prob(JB):</td>
 <td>0.00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Kurtosis:</th>
+<td data-quarto-table-cell-role="th">Kurtosis:</td>
 <td>21.865</td>
-<th data-quarto-table-cell-role="th">Cond. No.</th>
+<td data-quarto-table-cell-role="th">Cond. No.</td>
 <td>6.47</td>
 </tr>
 </tbody>
@@ -2120,84 +2101,82 @@ Name: Emissions, dtype: float64</code></pre>
 </div>
 </div>
 <div id="f566457b-c347-4cf7-b14b-965930ed845e" class="cell" data-execution_count="160">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>model_medium<span class="op">=</span>smf.ols(<span class="st">" Emissions ~ GDP_per_capita "</span>, df_kuznetz[df_kuznetz[<span class="st">'Quantile'</span>] <span class="op">==</span> <span class="st">"medium"</span>])</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>res_medium<span class="op">=</span>model_medium.fit()</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>res_medium.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model_medium<span class="op">=</span>smf.ols(<span class="st">" Emissions ~ GDP_per_capita "</span>, df_kuznetz[df_kuznetz[<span class="st">'Quantile'</span>] <span class="op">==</span> <span class="st">"medium"</span>])</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>res_medium<span class="op">=</span>model_medium.fit()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>res_medium.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="160">
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Dep. Variable:</th>
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
 <td>Emissions</td>
-<th data-quarto-table-cell-role="th">R-squared:</th>
+<td data-quarto-table-cell-role="th">R-squared:</td>
 <td>0.096</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Model:</th>
+<td data-quarto-table-cell-role="th">Model:</td>
 <td>OLS</td>
-<th data-quarto-table-cell-role="th">Adj. R-squared:</th>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
 <td>0.095</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Method:</th>
+<td data-quarto-table-cell-role="th">Method:</td>
 <td>Least Squares</td>
-<th data-quarto-table-cell-role="th">F-statistic:</th>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
 <td>274.8</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Date:</th>
+<td data-quarto-table-cell-role="th">Date:</td>
 <td>Mon, 03 Apr 2023</td>
-<th data-quarto-table-cell-role="th">Prob (F-statistic):</th>
+<td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>9.77e-59</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Time:</th>
+<td data-quarto-table-cell-role="th">Time:</td>
 <td>13:38:08</td>
-<th data-quarto-table-cell-role="th">Log-Likelihood:</th>
+<td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-5698.0</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">No. Observations:</th>
+<td data-quarto-table-cell-role="th">No. Observations:</td>
 <td>2600</td>
-<th data-quarto-table-cell-role="th">AIC:</th>
+<td data-quarto-table-cell-role="th">AIC:</td>
 <td>1.140e+04</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Df Residuals:</th>
+<td data-quarto-table-cell-role="th">Df Residuals:</td>
 <td>2598</td>
-<th data-quarto-table-cell-role="th">BIC:</th>
+<td data-quarto-table-cell-role="th">BIC:</td>
 <td>1.141e+04</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Df Model:</th>
+<td data-quarto-table-cell-role="th">Df Model:</td>
 <td>1</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Covariance Type:</th>
+<td data-quarto-table-cell-role="th">Covariance Type:</td>
 <td>nonrobust</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-
-
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td></td>
-<th data-quarto-table-cell-role="th">coef</th>
-<th data-quarto-table-cell-role="th">std err</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">P&gt;|t|</th>
-<th data-quarto-table-cell-role="th">[0.025</th>
-<th data-quarto-table-cell-role="th">0.975]</th>
+<td data-quarto-table-cell-role="th">coef</td>
+<td data-quarto-table-cell-role="th">std err</td>
+<td data-quarto-table-cell-role="th">t</td>
+<td data-quarto-table-cell-role="th">P&gt;|t|</td>
+<td data-quarto-table-cell-role="th">[0.025</td>
+<td data-quarto-table-cell-role="th">0.975]</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Intercept</th>
+<td data-quarto-table-cell-role="th">Intercept</td>
 <td>0.7320</td>
 <td>0.099</td>
 <td>7.418</td>
@@ -2206,7 +2185,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>0.926</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">GDP_per_capita</th>
+<td data-quarto-table-cell-role="th">GDP_per_capita</td>
 <td>0.6774</td>
 <td>0.041</td>
 <td>16.576</td>
@@ -2216,32 +2195,30 @@ Name: Emissions, dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
-
-
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Omnibus:</th>
+<td data-quarto-table-cell-role="th">Omnibus:</td>
 <td>1316.986</td>
-<th data-quarto-table-cell-role="th">Durbin-Watson:</th>
+<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
 <td>1.691</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Prob(Omnibus):</th>
+<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
 <td>0.000</td>
-<th data-quarto-table-cell-role="th">Jarque-Bera (JB):</th>
+<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
 <td>7900.449</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Skew:</th>
+<td data-quarto-table-cell-role="th">Skew:</td>
 <td>2.395</td>
-<th data-quarto-table-cell-role="th">Prob(JB):</th>
+<td data-quarto-table-cell-role="th">Prob(JB):</td>
 <td>0.00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Kurtosis:</th>
+<td data-quarto-table-cell-role="th">Kurtosis:</td>
 <td>10.071</td>
-<th data-quarto-table-cell-role="th">Cond. No.</th>
+<td data-quarto-table-cell-role="th">Cond. No.</td>
 <td>6.42</td>
 </tr>
 </tbody>
@@ -2250,84 +2227,82 @@ Name: Emissions, dtype: float64</code></pre>
 </div>
 </div>
 <div id="304fdc33-d7e6-4fd5-a24b-d5f31e7bd272" class="cell" data-execution_count="161">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model_high<span class="op">=</span>smf.ols(<span class="st">" Emissions ~ GDP_per_capita "</span>, df_kuznetz[df_kuznetz[<span class="st">'Quantile'</span>] <span class="op">==</span> <span class="st">"high"</span>])</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>res_high<span class="op">=</span>model_high.fit()</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>res_high.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model_high<span class="op">=</span>smf.ols(<span class="st">" Emissions ~ GDP_per_capita "</span>, df_kuznetz[df_kuznetz[<span class="st">'Quantile'</span>] <span class="op">==</span> <span class="st">"high"</span>])</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>res_high<span class="op">=</span>model_high.fit()</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>res_high.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="161">
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Dep. Variable:</th>
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
 <td>Emissions</td>
-<th data-quarto-table-cell-role="th">R-squared:</th>
+<td data-quarto-table-cell-role="th">R-squared:</td>
 <td>0.131</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Model:</th>
+<td data-quarto-table-cell-role="th">Model:</td>
 <td>OLS</td>
-<th data-quarto-table-cell-role="th">Adj. R-squared:</th>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
 <td>0.130</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Method:</th>
+<td data-quarto-table-cell-role="th">Method:</td>
 <td>Least Squares</td>
-<th data-quarto-table-cell-role="th">F-statistic:</th>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
 <td>427.5</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Date:</th>
+<td data-quarto-table-cell-role="th">Date:</td>
 <td>Mon, 03 Apr 2023</td>
-<th data-quarto-table-cell-role="th">Prob (F-statistic):</th>
+<td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>1.37e-88</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Time:</th>
+<td data-quarto-table-cell-role="th">Time:</td>
 <td>13:38:39</td>
-<th data-quarto-table-cell-role="th">Log-Likelihood:</th>
+<td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-8941.7</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">No. Observations:</th>
+<td data-quarto-table-cell-role="th">No. Observations:</td>
 <td>2844</td>
-<th data-quarto-table-cell-role="th">AIC:</th>
+<td data-quarto-table-cell-role="th">AIC:</td>
 <td>1.789e+04</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Df Residuals:</th>
+<td data-quarto-table-cell-role="th">Df Residuals:</td>
 <td>2842</td>
-<th data-quarto-table-cell-role="th">BIC:</th>
+<td data-quarto-table-cell-role="th">BIC:</td>
 <td>1.790e+04</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Df Model:</th>
+<td data-quarto-table-cell-role="th">Df Model:</td>
 <td>1</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Covariance Type:</th>
+<td data-quarto-table-cell-role="th">Covariance Type:</td>
 <td>nonrobust</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-
-
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td></td>
-<th data-quarto-table-cell-role="th">coef</th>
-<th data-quarto-table-cell-role="th">std err</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">P&gt;|t|</th>
-<th data-quarto-table-cell-role="th">[0.025</th>
-<th data-quarto-table-cell-role="th">0.975]</th>
+<td data-quarto-table-cell-role="th">coef</td>
+<td data-quarto-table-cell-role="th">std err</td>
+<td data-quarto-table-cell-role="th">t</td>
+<td data-quarto-table-cell-role="th">P&gt;|t|</td>
+<td data-quarto-table-cell-role="th">[0.025</td>
+<td data-quarto-table-cell-role="th">0.975]</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Intercept</th>
+<td data-quarto-table-cell-role="th">Intercept</td>
 <td>5.7100</td>
 <td>0.152</td>
 <td>37.652</td>
@@ -2336,7 +2311,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>6.007</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">GDP_per_capita</th>
+<td data-quarto-table-cell-role="th">GDP_per_capita</td>
 <td>0.1068</td>
 <td>0.005</td>
 <td>20.676</td>
@@ -2346,32 +2321,30 @@ Name: Emissions, dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
-
-
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Omnibus:</th>
+<td data-quarto-table-cell-role="th">Omnibus:</td>
 <td>1447.885</td>
-<th data-quarto-table-cell-role="th">Durbin-Watson:</th>
+<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
 <td>1.902</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Prob(Omnibus):</th>
+<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
 <td>0.000</td>
-<th data-quarto-table-cell-role="th">Jarque-Bera (JB):</th>
+<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
 <td>12763.970</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Skew:</th>
+<td data-quarto-table-cell-role="th">Skew:</td>
 <td>2.245</td>
-<th data-quarto-table-cell-role="th">Prob(JB):</th>
+<td data-quarto-table-cell-role="th">Prob(JB):</td>
 <td>0.00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Kurtosis:</th>
+<td data-quarto-table-cell-role="th">Kurtosis:</td>
 <td>12.357</td>
-<th data-quarto-table-cell-role="th">Cond. No.</th>
+<td data-quarto-table-cell-role="th">Cond. No.</td>
 <td>42.3</td>
 </tr>
 </tbody>
@@ -2384,85 +2357,83 @@ Name: Emissions, dtype: float64</code></pre>
 <p><span class="math display">\[\frac{ \text{emissions}_{i t} }{ \text{population}_{i t} } = \alpha + \beta_1*\frac{ \text{gdp}_{i t}}{\text{population}_{i t}} + \beta_2*\left( \frac{ \text{gdp}_{i t}}{\text{population}_{i t}} \right)^2 + \text{other factors}_{i t}\]</span></p>
 <p>Justify why <span class="math inline">\(\beta_2&lt;0\)</span> can be interpreted as a proof of the environmental Kuznets hypothesis. Comment.</p>
 <div id="115de259-cbe3-4e65-9e84-a8a063cbf6a0" class="cell" data-execution_count="166">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>nonlinear_regression<span class="op">=</span>smf.ols(<span class="st">'Emissions ~ GDP_per_capita + np.power(GDP_per_capita, 2)'</span>,df_kuznetz)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>res_nl<span class="op">=</span>nonlinear_regression.fit()</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>res_nl.summary()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>nonlinear_regression<span class="op">=</span>smf.ols(<span class="st">'Emissions ~ GDP_per_capita + np.power(GDP_per_capita, 2)'</span>,df_kuznetz)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>res_nl<span class="op">=</span>nonlinear_regression.fit()</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>res_nl.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="166">
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Dep. Variable:</th>
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
 <td>Emissions</td>
-<th data-quarto-table-cell-role="th">R-squared:</th>
+<td data-quarto-table-cell-role="th">R-squared:</td>
 <td>0.465</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Model:</th>
+<td data-quarto-table-cell-role="th">Model:</td>
 <td>OLS</td>
-<th data-quarto-table-cell-role="th">Adj. R-squared:</th>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
 <td>0.465</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Method:</th>
+<td data-quarto-table-cell-role="th">Method:</td>
 <td>Least Squares</td>
-<th data-quarto-table-cell-role="th">F-statistic:</th>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
 <td>3019.</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Date:</th>
+<td data-quarto-table-cell-role="th">Date:</td>
 <td>Mon, 03 Apr 2023</td>
-<th data-quarto-table-cell-role="th">Prob (F-statistic):</th>
+<td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>0.00</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Time:</th>
+<td data-quarto-table-cell-role="th">Time:</td>
 <td>13:49:50</td>
-<th data-quarto-table-cell-role="th">Log-Likelihood:</th>
+<td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-19121.</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">No. Observations:</th>
+<td data-quarto-table-cell-role="th">No. Observations:</td>
 <td>6937</td>
-<th data-quarto-table-cell-role="th">AIC:</th>
+<td data-quarto-table-cell-role="th">AIC:</td>
 <td>3.825e+04</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Df Residuals:</th>
+<td data-quarto-table-cell-role="th">Df Residuals:</td>
 <td>6934</td>
-<th data-quarto-table-cell-role="th">BIC:</th>
+<td data-quarto-table-cell-role="th">BIC:</td>
 <td>3.827e+04</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Df Model:</th>
+<td data-quarto-table-cell-role="th">Df Model:</td>
 <td>2</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Covariance Type:</th>
+<td data-quarto-table-cell-role="th">Covariance Type:</td>
 <td>nonrobust</td>
-<th data-quarto-table-cell-role="th"></th>
+<td data-quarto-table-cell-role="th"></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-
-
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td></td>
-<th data-quarto-table-cell-role="th">coef</th>
-<th data-quarto-table-cell-role="th">std err</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">P&gt;|t|</th>
-<th data-quarto-table-cell-role="th">[0.025</th>
-<th data-quarto-table-cell-role="th">0.975]</th>
+<td data-quarto-table-cell-role="th">coef</td>
+<td data-quarto-table-cell-role="th">std err</td>
+<td data-quarto-table-cell-role="th">t</td>
+<td data-quarto-table-cell-role="th">P&gt;|t|</td>
+<td data-quarto-table-cell-role="th">[0.025</td>
+<td data-quarto-table-cell-role="th">0.975]</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Intercept</th>
+<td data-quarto-table-cell-role="th">Intercept</td>
 <td>1.5088</td>
 <td>0.058</td>
 <td>26.113</td>
@@ -2471,7 +2442,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>1.622</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">GDP_per_capita</th>
+<td data-quarto-table-cell-role="th">GDP_per_capita</td>
 <td>0.3719</td>
 <td>0.005</td>
 <td>69.887</td>
@@ -2480,7 +2451,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>0.382</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">np.power(GDP_per_capita, 2)</th>
+<td data-quarto-table-cell-role="th">np.power(GDP_per_capita, 2)</td>
 <td>-0.0024</td>
 <td>5.76e-05</td>
 <td>-41.345</td>
@@ -2490,32 +2461,30 @@ Name: Emissions, dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
-
-
-<table class="simpletable caption-top table table-sm table-striped small">
+<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Omnibus:</th>
+<td data-quarto-table-cell-role="th">Omnibus:</td>
 <td>4662.808</td>
-<th data-quarto-table-cell-role="th">Durbin-Watson:</th>
+<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
 <td>1.905</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Prob(Omnibus):</th>
+<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
 <td>0.000</td>
-<th data-quarto-table-cell-role="th">Jarque-Bera (JB):</th>
+<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
 <td>103561.456</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">Skew:</th>
+<td data-quarto-table-cell-role="th">Skew:</td>
 <td>2.902</td>
-<th data-quarto-table-cell-role="th">Prob(JB):</th>
+<td data-quarto-table-cell-role="th">Prob(JB):</td>
 <td>0.00</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">Kurtosis:</th>
+<td data-quarto-table-cell-role="th">Kurtosis:</td>
 <td>21.017</td>
-<th data-quarto-table-cell-role="th">Cond. No.</th>
+<td data-quarto-table-cell-role="th">Cond. No.</td>
 <td>1.95e+03</td>
 </tr>
 </tbody>
@@ -2538,16 +2507,16 @@ Name: Emissions, dtype: float64</code></pre>
 <h3 class="anchored" data-anchor-id="preparation">Preparation</h3>
 <p><strong>Import the dataset. Describe it.</strong></p>
 <div id="8791082b-4d5b-449b-a0b0-7dfe1ad45a66" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pandas.read_csv(<span class="st">"hotel_booking.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pandas.read_csv(<span class="st">"hotel_booking.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="481b984c-0294-4a49-a3ab-4ea966a9d470" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2575,7 +2544,7 @@ Name: Emissions, dtype: float64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">count</th>
+<td data-quarto-table-cell-role="th">count</td>
 <td>119390.000000</td>
 <td>119390.000000</td>
 <td>119390.000000</td>
@@ -2598,7 +2567,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>119390.000000</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">mean</th>
+<td data-quarto-table-cell-role="th">mean</td>
 <td>0.370416</td>
 <td>104.011416</td>
 <td>2016.156554</td>
@@ -2621,7 +2590,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>0.571363</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">std</th>
+<td data-quarto-table-cell-role="th">std</td>
 <td>0.482918</td>
 <td>106.863097</td>
 <td>0.707476</td>
@@ -2644,7 +2613,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>0.792798</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">min</th>
+<td data-quarto-table-cell-role="th">min</td>
 <td>0.000000</td>
 <td>0.000000</td>
 <td>2015.000000</td>
@@ -2667,7 +2636,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>0.000000</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">25%</th>
+<td data-quarto-table-cell-role="th">25%</td>
 <td>0.000000</td>
 <td>18.000000</td>
 <td>2016.000000</td>
@@ -2690,7 +2659,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>0.000000</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">50%</th>
+<td data-quarto-table-cell-role="th">50%</td>
 <td>0.000000</td>
 <td>69.000000</td>
 <td>2016.000000</td>
@@ -2713,7 +2682,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>0.000000</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">75%</th>
+<td data-quarto-table-cell-role="th">75%</td>
 <td>1.000000</td>
 <td>160.000000</td>
 <td>2017.000000</td>
@@ -2736,7 +2705,7 @@ Name: Emissions, dtype: float64</code></pre>
 <td>1.000000</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">max</th>
+<td data-quarto-table-cell-role="th">max</td>
 <td>1.000000</td>
 <td>737.000000</td>
 <td>2017.000000</td>
@@ -2767,17 +2736,17 @@ Name: Emissions, dtype: float64</code></pre>
 <p><strong>Split the dataset between a train set and a validation set.</strong></p>
 <p>The validation set should not be touched until the very end.</p>
 <div id="223d82ab-0e45-4a81-8ea7-1865651fd3fb" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn.model_selection</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn.model_selection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="a48643ab-63bc-4a34-8bca-c1e33acc645a" class="cell" data-execution_count="38">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_ml, df_validation <span class="op">=</span> sklearn.model_selection.train_test_split(df, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">56</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># until the very last question, you should use *only* the training set</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df_ml, df_validation <span class="op">=</span> sklearn.model_selection.train_test_split(df, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">56</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># until the very last question, you should use *only* the training set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Split the <code>df_ml</code> dataframe between a training set and a test set.</strong></p>
 <div id="59cbd3c2-762b-4677-a46f-37d04fbf5acd" class="cell" data-execution_count="37">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df_train, df_test <span class="op">=</span> sklearn.model_selection.train_test_split(df_ml)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the various algorithms can be trained and tested using df_train and df_test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df_train, df_test <span class="op">=</span> sklearn.model_selection.train_test_split(df_ml)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the various algorithms can be trained and tested using df_train and df_test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="training" class="level3">
@@ -2790,9 +2759,9 @@ Name: Emissions, dtype: float64</code></pre>
 <h3 class="anchored" data-anchor-id="validation">Validation</h3>
 <p><strong>Using your preferred model, use the validation set to compute the confusion matrix. Comment.</strong></p>
 <div id="3a9a85ee-a346-43d2-a243-b6b80df26ba8" class="cell" data-execution_count="177">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>s<span class="op">=</span><span class="st">'The rain in Spain stays mainly in the plane'</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>s[s.index(<span class="st">'m'</span>):s.index(<span class="st">'S'</span>)<span class="op">+</span><span class="dv">5</span>]</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>s<span class="op">=</span><span class="st">'The rain in Spain stays mainly in the plane'</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>s[s.index(<span class="st">'m'</span>):s.index(<span class="st">'S'</span>)<span class="op">+</span><span class="dv">5</span>]</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="179">
 <pre><code>'mainl'</code></pre>
 </div>
@@ -2801,61 +2770,47 @@ Name: Emissions, dtype: float64</code></pre>
 
 </section>
 </section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -2863,184 +2818,157 @@ Name: Emissions, dtype: float64</code></pre>
       }
       return codeEl.innerText;
     }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/albop\.github\.io\/dbe\/");
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
           }
         }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+        return container.innerHTML
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
-        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
       }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -3048,161 +2976,185 @@ Name: Emissions, dtype: float64</code></pre>
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 </div> <!-- /content -->
 
 
