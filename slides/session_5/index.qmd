@@ -1,8 +1,8 @@
 ---
 title: Introduction to Instrumental Variables
 author: Pablo Winant
-date: 2025/02/12
-subtitle: Data-Based Economics, ESCP, 2024-2025
+date: 2026/01/28
+subtitle: Data-Based Economics, ESCP, 2025-2026
 format:
   revealjs:
     toc: true
@@ -516,6 +516,9 @@ Example: cognitive dissonance
 
 :::: column
 
+
+::::: {.incremental}
+
 - Cause (A): two groups of people  
   - those given a shirt (treatment 1)
   - those not given a shirt (treatment 0)
@@ -530,10 +533,13 @@ Example: cognitive dissonance
   - now the experiment has changed: she has gained experience, is more tired, misses the shirt...
   - it is impossible to get a perfect counterfactual (i.e. where only A changes)
 
+:::::
+
 ::::
 :::: column
 
 
+::::: {.incremental}
 
 - Let's take somebody else then? Bob was really bad without a PSG shirt.
   - he might be a bad investor? or he didn't understand the rules?
@@ -543,6 +549,7 @@ Example: cognitive dissonance
   - Choose *randomly* whether assigning a shirt or not
   - by construction the treatment will not be correlated with other variables
 
+:::::
 ::::
 :::
 

@@ -1,7 +1,7 @@
 ---
 title: Introduction to Machine Learning
-date: 2025/02/19
-subtitle: Data-Based Economics, ESCP, 2024-2025
+date: 2026/02/04
+subtitle: Data-Based Economics, ESCP, 2025-2026
 author: Pablo Winant
 format:
   revealjs:
@@ -403,12 +403,17 @@ Long data is characterized by a high number of observations.
 
 ::::
 
+::: {.fragment fragment-index=2}
 - Modern society is gathering *a lot* of data.
   - in doesn't fit in the computer memory so we can't run a basic regression
+:::
+
+::: {.fragment fragment-index=3}
 - In some cases we would also like to update our model continuously:
   - incremental regression
+:::
 
-::: {.fragment .current-visible fragment-index=2} 
+::: {.fragment fragment-index=4} 
 We need a way to fit a model on a subset of the data at a time.
 :::
 

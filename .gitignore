@@ -7,5 +7,12 @@ _build*# pixi environments
 
 **/*.quarto_ipynb
 
+
+_build/*
 # ignore temp tutorial folder
 tutorials/ezgi_temp/
+
+# large files
+homework/2024/ZA7503_v3-0-0.dta
+homework/2024/economics.xlsx
+tutorials/session_8/loans.csv

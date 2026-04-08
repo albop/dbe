@@ -1,0 +1,112 @@
+# Big data
+
+
+
+
+# Regression / classification algorithms  (1)
+
+Netflix uses machine learning to produce recommendations.
+It uses human-written tags for all its movies and monitors user behaviour to predict the movies that consumers are more likely too choose.
+This flavour of machine learning is called
+
+* supervised learning
+- mirror-image neuronal network
+- clustering
+- behavioural learning
+
+
+
+# Regression / classification algorithms  (2)
+
+	
+Some blog platforms use text analysis to propose a list of posts that are similar to a given post, without developers having 
+to specify any preset list of categories. This flavour of machine learning is called
+
+supervised learning
+* clustering
+reinforcement learning
+content learning
+
+
+
+
+# The result of an ols regression $y=a + b x$
+
+- minimizes the average of the squared errors $(y_i - a - b x_i)$
+- can only be obtained through an iterative algorithm
+- is undefined when there is no correlation between $x$ and $y$
+- is undefined when there is a lot of unconsistent data
+
+
+# Difference prediction / explanation
+
+Find the wrong statement:
+
+- machine learning approaches focus mostly on predictions
+- econometric regressions allow for explanatory analysis
+* the result of an econometric regression is unfit for making predictions
+- statistical inference is more complicated with machine learning approaches
+
+
+# Confounding factor
+
+
+
+# How to deal with a kitchen sink regression ?
+
+When the number of labels is big w.r.t. to the number of features (select the *wrong* answer)
+- for an OLS regression, adjusted R2 will be much lower than R2
+- there is a risk of overfitting the data
+- Ridge Regressions can be used to shrink coefficients towards 0
+- an OLS model might be biased
+
+
+
+
+# Sentiment analysis
+
+Find the wrong answer:
+
+- Sentiment analysis can only be used for a database of text that contains emotional statements
+- Large Language Models can be used to perform sentiment analysis without the need to label data beforehand
+- A short text (like a tweet) can be converted into a vector of numbers to be used in a regular machine learning regression
+- Sentiment analysis can be performed by a supervised algorithm
+
+
+#
+
+#
+
+#
+
+
+In a linear regression, adjusted R2 will be smaller than R2 if:
+
+some regressors have no explanatory power
+some regressors are correlated
+the regression is overfitted
+*all other answers are correct
+
+
+
+
+
+
+
+In a linear regression, when R^2 is low,
+
+we need to compute the Fisher statistics to know whether the regression is globally insignificant or not
+the regression is always insignificant
+the explanatory power is low for every variable, but the prediction power can be good
+there is not enough variability in the dependent variable to run a regression
+
+
+
+
+	
+Take three random variables X, Y and Z. Find the right answer
+
+- If X is correlated with Y, then we can say that X causes Y.
+* If X is correlated with Y, then we can say that Y explains X.
+- If X causes Y, then X is correlated with Y.
+- If X is correlated with Y and Y is correlated with Z, then X is correlated with Z.

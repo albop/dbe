@@ -1,7 +1,7 @@
 ---
 title: "Linear Regression"
-date: 2025/01/29
-subtitle: Data-Based Economics, ESCP, 2024-2025
+date: 2026/01/21
+subtitle: Data-Based Economics, ESCP, 2025-2026
 author: Pablo Winant
 format:
   revealjs:
@@ -16,7 +16,7 @@ format:
     - shinylive
   html:
     output-file: index_handout.html
-jupyter: python3
+jupyter: escp
 execute:
   echo: true
   enabled: true
@@ -656,12 +656,9 @@ In social science, typical required p-value is 5%.
 ::: {.incremental}
 
 - So our estimate is $y = \underbrace{0.121}_{\tilde{\alpha}} + \underbrace{0.794}_{\tilde{\beta}} x$.
-    - we know $\tilde{\beta}$ is a bit random (it's an estimator)
-    - are we even sure $\tilde{\beta}$ could not have been zero?
+    - we know $\tilde{\beta}$ is a bit random (it's an estimator): are we even sure $\tilde{\beta}$ could not have been zero?
 
-- Student Test:
-  - H0: $\beta=0$
-  - H1: $\beta \neq 0$
+- Student Test: H0: $\beta=0$, H1: $\beta \neq 0$
   - Statistics: $t=\frac{\hat{\beta}}{\sigma(\hat{\beta})}$
     - intuitively: compare mean of estimator to its standard deviation
     - also a function of degrees of freedom
@@ -681,18 +678,50 @@ In social science, typical required p-value is 5%.
 
 The student test can also be used to construct confidence intervals.
 
-- Given estimate, $\hat{\beta}$ with standard deviation $\sigma(\hat{\beta})$
+- Given estimate, $\hat{\beta}$ with standard deviation $\sigma(\hat{\beta})$ 
 
 - Given a probability threshold $\alpha$ (for instance $\alpha=0.05$) we can compute $t^{\star}$ such that $P(|t|>t*)=\alpha$
 
-- We construct the __confidence interval__:
-
-$$I^{\alpha} = [\hat{\beta}-t\sigma(\hat{\beta}), \hat{\beta}+t\sigma(\hat{\beta})]$$
+We construct the __confidence interval__: $$I^{\alpha} = [\hat{\beta}-t\sigma(\hat{\beta}), \hat{\beta}+t\sigma(\hat{\beta})]$$
 
 . . .
 
+Interpretation (⚠: subtle)
 
-Interpretation:
+- if the true value was outside of the confidence interval, the probability of obtaining the value that we got would be less than 5%
+- if we had repeated the experiment many times and computed the confidence interval, the true value would be inside it 95% of the time
+- we can say the true value is within the interval with 95% _confidence level_
 
-- if the true value was outside of the confidence interval, the probability of obtaining the value that we got would be less than 5%.
-- we can say the true value is within the interval with 95% confidence level
+
+# Fact Check
+
+## Do more firearms reduce homicide?
+
+**Claim (common intuition):** “More civilian firearms deter crime ⇒ fewer homicides.”
+
+. . .
+
+**Simple cross-country OLS (26 high-income countries, early 1990s)**  
+$$\text{HomicideRate}_i = \alpha + \beta\,\text{GunAvailability}_i + \varepsilon_i$$
+
+- Gun availability proxied by the **Cook index** = average of  
+  (% suicides with a firearm, % homicides with a firearm)
+
+. . .
+
+**What the bivariate regression finds (Table 2):**
+
+- Crude homicide rate:  \(\hat\beta = 9.2\) (p < 0.001), corr = 0.74  
+- Excluding the U.S.:   \(\hat\beta = 4.9\) (p = 0.003), corr = 0.57
+
+. . .
+
+**Takeaway:** The “more guns → less homicide” claim is **not supported** by this simple cross-country correlation.
+
+::: {.small}
+⚠️ **Caution (OLS lesson):** This is **not causal** (possible confounding, reverse causality, measurement error). Use it to practice interpreting \(\hat\beta\), p-values, and thinking about omitted variables.
+:::
+
+::: {.footer}
+Source: Hemenway, D. & Miller, M. (2000). *Firearm Availability and Homicide Rates across 26 High-Income Countries*. **Journal of Trauma**, 49(6), 985–988. [Paper](./FirearmAvailabilityVsHomicideRates.pdf.crdownload)
+:::

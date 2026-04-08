@@ -1,8 +1,8 @@
 ---
 title: Dataframes
 subtitle: Data-Based Economics
-author: Year 2024-2025
-date: 2025/01/21
+author: Year 2025-2026
+date: 2026/01/14
 format:
   html: default
   revealjs:

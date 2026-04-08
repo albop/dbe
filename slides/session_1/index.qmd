@@ -1,8 +1,8 @@
 ---
 title: Introduction
 subtitle: Data-Based Economics
-author: Year 2024-2025
-date: 2025/01/15
+author: Year 2025-2026
+date: 2026/01/14
 format:
   revealjs:
     menu:

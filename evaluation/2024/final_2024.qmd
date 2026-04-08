@@ -1,0 +1,149 @@
+---
+title: Final Exam Part I
+subtitle: Data-Based Economics
+author: Year 2024-2025
+format:
+  ipynb: default
+  html: default
+eval: false
+jupyter: python3
+---
+
+
+__Final Exam - Part 1__
+
+- First Name: ...
+- Last Name: ...
+- Student ID: ...
+
+This part is meant to last about one hour. It must be sent as a Nuvolos assignment by 12pm. Don't worry if it is not finished.
+
+You are free to use any online resource.
+
+It is however strictly forbidden to communicate with other students.
+
+In answering the questions below, don't hesitate to comment abundantly your code, to reflect on what you are doing and take initiatives when you deem it relevant.
+
+Happy coding ! 💪
+
+## Simple Plots
+
+<font color='blue'>__Question 1: Modify the code below so as to add a grid, a legend (line 1: "f1(x)", line 2: "f2(x)"), an x-axis label ("x"), a y-axis label ("f(x)") and a title ("Functions").__ </font>
+
+```{python}
+from matplotlib import pyplot as plt
+x = [e for e in range(10)]
+y1 = [4*(e/10)*(1-e/10) for e in x]
+y2 = [1-(e/10)*(1-e/10) for e in x]
+plt.plot(x,y1)
+plt.plot(x,y2)
+
+# add some lines here
+
+plt.show()
+
+```
+
+## The Feldstein-Horioka Puzzle
+
+In a famous paper, *Domestic saving and international capital flows* (Economic
+Journal, 1980), Martin Feldstein and Charles Horioka, exposed the following
+puzzle:
+
+- if international flows of capital were frictionless, capital allocations
+should be determined by productivity differentials
+- as a result, fluctuations in investment in a given country should be primarly explained by capital flows, not domestic savings
+- yet, the data shows a strong correlation between domestic saving and domestic
+investment
+
+In the original paper, the following regression was run for each country:
+
+$$\frac{I_t}{Y_t} = \alpha + \beta \frac{S_t}{Y_t} + \epsilon_t$$
+
+where $I_t$ is investment, $Y_t$ is gdp, $S_t$ is total savings (which can be computed from consumption $C_t$ as $Y_t-C_t$).
+
+
+Your goal is to estimate this relationship for the USA.
+
+<font color='blue'>__Question 2: Which value of $\beta$ (high $\beta$ or low $\beta$) is associated to a high mobility of capital . Explain.__</font>
+
+
+__The following code downloads aggregates from the national accounts using `dbnomics`.__
+
+```{python}
+import dbnomics
+```
+
+```{python}
+df_ = dbnomics.fetch_series([
+    "OECD/QNA/USA.P5.LNBQRSA.Q", # investment
+    "OECD/QNA/USA.B1_GS1.LNBQRSA.Q", # GDP
+    "OECD/QNA/USA.P3.LNBQRSA.Q" # consumption
+]);
+df_.head()
+```
+
+```{python}
+# keep only the relevant part
+df_ = df_[["Subject","period","value"]]
+df_.head()
+```
+
+```{python}
+df = df_.pivot_table(index="period", columns="Subject", values='value').reset_index()
+df.head()
+```
+
+<font color='blue'>__Question 3: Describe the database__</font>
+
+```{python}
+#| collapsed: true
+#| jupyter: {outputs_hidden: true}
+df.describe()
+```
+
+<font color='blue'>__Question 4: Remove all lines containing NaN values. What is the timespan of the database?__</font>
+
+
+<font color='blue'>__Question 5: Rename the columns of table `df` so that they become ["Consumption", "Investment", "GDP"]__</font>
+
+
+<font color='blue'>__Question 6: Create a new column `Savings` equal to production minus investment.__</font>
+
+
+<font color='blue'>__Question 7: Plot the evolution over time of all time series.__</font>
+
+
+<font color='blue'>__Question 8: Compute and add to the database the two new variables: `I_Y` for $\frac{I_t}{Y_t}$ and `S_Y` for $\frac{S_t}{Y_t}$.__</font>
+
+
+<font color='blue'>__Question 9: Make a scatterplot of $I_Y$ againts $S_Y$.__</font>
+
+
+<font color='blue'>__Question 10: Run the feldstein-horioka regression using statsmodels or linearmodels as you prefer. Intepret the results.__</font>
+
+
+<font color='blue'>__Bonus 1 (intermediate): Run the same regression for different countries and compare the results.__</font>
+
+
+<font color='blue'>__Bonus 2 (harder): Run the same regression for different subperiods: 1970-1979, 1980-1989, 1990-1999, 2000-2009, 2010-2019 and 2020-2023. What happens to the coefficients?__</font>
+
+
+# Screen Time and Autism
+
+A series of studies have found that the amount TV watching by early children is positively correlated to their probability to develop some autism spectrum disorder.
+
+One of these studies, carried out in several US counties has regressed autism rates on the average amount of early screen-time exposure in these counties, *instrumenting* TV watching with the average precipitation level (amount of rain).
+
+<font color='blue'>__Question 11: How could this work? Explain and comment (briefly)__</font>
+
+
+## Prompt Engineering
+
+Warning: This exercise does not yield any point 😎.
+
+Go to https://gandalf.lakera.ai/ and try to break the password.
+
+Report below the highest stage you managed to solve with the corresponding password and prompt.
+
+
